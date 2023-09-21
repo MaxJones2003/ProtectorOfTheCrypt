@@ -21,7 +21,8 @@ public class GridManager : MonoBehaviour
     public GridCellScriptableObject[] sceneryCellObjects;
 
     private PathGenerator pathGenerator;
-    
+    public GameObject loadedPath = null;
+    public List<Vector3> loadedEnemyPath = new List<Vector3>();
     private void Awake()
     {
         Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 4, -gridHeight / 3);
@@ -32,10 +33,7 @@ public class GridManager : MonoBehaviour
             return;
         if(seedScript.pickRandomSeed)
             return;
-        gridWidth = seedScript.mapLevels.mapVariablesList[0].GridWidth;
-        gridHeight = seedScript.mapLevels.mapVariablesList[0].GridHeight;
-        minPathLength = seedScript.mapLevels.mapVariablesList[0].MinPathLength;
-        maxPathLength = seedScript.mapLevels.mapVariablesList[0].MaxPathLength;
+
         Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 4, -gridHeight / 3);
     }
     private void Start()
@@ -43,7 +41,13 @@ public class GridManager : MonoBehaviour
         pathGenerator = new PathGenerator(gridWidth, gridHeight);
         WaveManager = GetComponent<WaveManager>();
         
-        Generate();
+        if(loadedPath == null)
+            Generate();
+        else
+        {
+            Instantiate(loadedPath);
+            SetUpEnemies(loadedEnemyPath);
+        }
     }
 
     /// <summary>
@@ -69,8 +73,11 @@ public class GridManager : MonoBehaviour
 
     private IEnumerator CreateGrid(List<Vector2Int> pathCells)
     {
-        LayPathCells(pathCells);
-        LaySceneryCells();
+        GameObject parentGO = new GameObject();
+        Transform parent = parentGO.transform;
+        parent.name = "Path";
+        LayPathCells(pathCells, parent);
+        LaySceneryCells(parent);
 
         //EnemyManager.SetPathCell(pathGenerator.GenerateRoute());
         List<Vector2Int> cellPoints = pathGenerator.GenerateRoute();
@@ -81,11 +88,16 @@ public class GridManager : MonoBehaviour
         {
             path.Add(new Vector3(point.x, 1f, point.y));
         }
+        SetUpEnemies(path);
+    }
+    private void SetUpEnemies(List<Vector3> path)
+    {
+        loadedEnemyPath = path; // For saving a level
         WaveManager.EnemySpawner.Path = path;
         WaveManager.enabled = true;
     }
 
-    private void LayPathCells(List<Vector2Int> pathCells)
+    private void LayPathCells(List<Vector2Int> pathCells, Transform parent)
     {
         foreach(Vector2Int pathCell in pathCells)
         {
@@ -94,7 +106,7 @@ public class GridManager : MonoBehaviour
             GameObject pathTile = pathCellObjects[neighborValue].cellPrefab;
 
             GameObject pathTileCell = Instantiate(pathTile, new Vector3(pathCell.x, 0f, pathCell.y), Quaternion.identity);
-            pathTileCell.transform.parent = transform;
+            pathTileCell.transform.parent = parent;
             pathTileCell.transform.Rotate(0f, pathCellObjects[neighborValue].yRotation, 0f);
             pathTileCell.transform.GetChild(0).gameObject.tag = "Enviornment";
             //yield return null;
@@ -102,7 +114,7 @@ public class GridManager : MonoBehaviour
         //yield return null;
     }
 
-    private void LaySceneryCells()
+    private void LaySceneryCells(Transform parent)
     {
         for(int x = 0; x < gridWidth; x++)
         {
@@ -112,7 +124,7 @@ public class GridManager : MonoBehaviour
                 {
                     int randomCellIndex = Random.Range(0, sceneryCellObjects.Length);
                     GameObject sceneryTileCell = Instantiate(sceneryCellObjects[randomCellIndex].cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);
-                    sceneryTileCell.transform.parent = transform;
+                    sceneryTileCell.transform.parent = parent;
                     sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Enviornment");
                     sceneryTileCell.transform.GetChild(0).gameObject.tag = "Enviornment";
                     //yield return null;

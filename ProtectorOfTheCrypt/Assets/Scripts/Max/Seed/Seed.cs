@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using System.Linq;
 
@@ -8,21 +9,29 @@ public class Seed : MonoBehaviour
     public bool pickRandomSeed = true;
     [SerializeField] private string GameSeed = "default";
     private int CurrentSeed = 0;
+    [Tooltip("This value MUST be DIFFERENT than all other level numbers, else it will override another map")]
+    [SerializeField] private int LevelNumber;
+    [Tooltip("Place the loaded Path game object into this slot before you save")]
+    [SerializeField] private GameObject LevelPrefab;
 
-    public MapVariablesSO mapLevels;
     private GridManager gridManager;
+
+    private static readonly string SAVE_FOLDER = Application.dataPath + "/Levels";
 
     private void Awake() 
     {
         gridManager = gameObject.GetComponent<GridManager>();
 
         if(pickRandomSeed)
+        {
             GameSeed = CreateRandomSeed(16);
+            InitializeRandom();
+        }
         else
         {
-            GameSeed = LoadCurrentSeed();
+            LoadCurrentLevel(/*Game Manager should probably keep track of the level somehow*/);
+            InitializeRandom();
         }
-        InitializeRandom();
     }
 
     private void InitializeRandom()
@@ -49,18 +58,35 @@ public class Seed : MonoBehaviour
         int h = gridManager.gridHeight;
         int min = gridManager.minPathLength;
         int max = gridManager.maxPathLength;
+        List<Vector3> path = gridManager.loadedEnemyPath;
 
         // Create a new variable containing all the important values
-        MapVariables newMap = new MapVariables(GameSeed, w, h, min, max);
+        MapVariables newMap = new MapVariables(LevelNumber, GameSeed, w, h, min, max, LevelPrefab, path);
 
-        // Save those values to a scriptable object list that contains all the levels
-        mapLevels.mapVariablesList.Add(newMap);
+        string json = JsonUtility.ToJson(newMap);
+        SaveSystem.Save(json, "/Level" + newMap.LevelNumber.ToString());
     }
 
-    public string LoadCurrentSeed()
+    public void LoadCurrentLevel(/*Might get the current level number from here*/)
     {
-        string mapSeed = "";
-        mapSeed = mapLevels.mapVariablesList[0].Seed;
-        return mapSeed;
+        // Figure out what level we're on
+        // Will do when we have more than one level
+        int levelNumber = 0;
+
+        // Based on the level number, determine the file path of the json to load
+        string filePath = "/Level" + levelNumber.ToString();
+        string saveString = SaveSystem.Load(filePath);
+        if (saveString == null) return;
+
+        // Load Variables from JSON
+  
+        MapVariables currentMap = JsonUtility.FromJson<MapVariables>(saveString);
+        gridManager.gridWidth = currentMap.GridWidth;
+        gridManager.gridHeight = currentMap.GridHeight;
+        gridManager.minPathLength = currentMap.MinPathLength;
+        gridManager.maxPathLength = currentMap.MaxPathLength;
+        GameSeed = currentMap.Seed;
+        gridManager.loadedPath = currentMap.LevelPrefab;
+        gridManager.loadedEnemyPath = currentMap.LevelEnemyPath;
     }
 }

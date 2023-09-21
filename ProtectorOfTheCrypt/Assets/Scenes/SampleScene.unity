@@ -866,6 +866,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: LevelNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: pickRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5785639069706798447, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneCamaera
       value: 
