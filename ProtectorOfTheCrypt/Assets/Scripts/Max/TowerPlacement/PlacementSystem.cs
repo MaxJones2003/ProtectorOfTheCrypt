@@ -18,11 +18,11 @@ public class PlacementSystem : MonoBehaviour
 
     private void Update() 
     {
-        /*if(Input.GetKeyDown(KeyCode.Mouse0) && towerCurrentlySelected == false)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && towerCurrentlySelected == false)
         {
             SelectTower("ExampleTower");
-        }*/
-        if(Input.GetKeyUp(KeyCode.Mouse0) && towerCurrentlySelected == true)
+        }
+        else if(Input.GetKeyUp(KeyCode.Mouse0) && towerCurrentlySelected == true)
         {
             SetTowerDown();
         }
@@ -79,8 +79,8 @@ public class PlacementSystem : MonoBehaviour
     /// </summary>
     public void SetTowerDown()
     {
-        currentTowerScriptableObject.Spawn();
         currentTowerModel.AddComponent<ShootMonoBehaviour>().tower = currentTowerScriptableObject;
+        currentTowerScriptableObject.Spawn();
         currentTowerModel = null;
         currentTowerScriptableObject = null;
         towerCurrentlySelected = false;

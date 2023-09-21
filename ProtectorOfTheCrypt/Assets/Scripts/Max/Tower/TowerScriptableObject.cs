@@ -47,6 +47,24 @@ public class TowerScriptableObject : ScriptableObject
     }
     public void Spawn()
     {
+        // Set up the towers monobehaviour with all the variables it will need to shoot at enemies
+        ShootMonoBehaviour shootScript = Model.GetComponent<ShootMonoBehaviour>();
+
+
+
+        // Start firing
+        shootScript.Spawn(DamageConfig, ProjectileConfig, TrailConfig, AudioConfig, ImpactType);
+    }
+    
+    public void Despawn()
+    {
+        Destroy(Model);
+        Destroy(this);
+    }
+
+/*
+    public void Spawn()
+    {
         LastShootTime = 0;
         TrailPool = new ObjectPool<TrailRenderer>(CreateTrail);
 
@@ -57,14 +75,6 @@ public class TowerScriptableObject : ScriptableObject
         ShootSystem = ProjectileSpawnpoint.GetComponent<ParticleSystem>();
         ShootingAudioSource = Model.GetComponent<AudioSource>();
     }
-    
-    public void Despawn()
-    {
-        Destroy(Model);
-        Destroy(this);
-    }
-
-
     #region Shooting
     public void Shoot()
     {
@@ -105,14 +115,14 @@ public class TowerScriptableObject : ScriptableObject
             trail.transform.localPosition = Vector3.zero;
             trail.emitting = true;
             trail.gameObject.SetActive(true);
-        }*/
+        }
     }
-        /* Object Pooling Projectile
+         Object Pooling Projectile
         Bullet bullet = BulletPool.GetObject().GetComponent<Bullet>();
         bullet.gameObject.SetActive(true);
         bullet.OnCollision += HandleBulletCollision;
         bullet.transform.position = ShootSystem.transform.position;
-        bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform, ProjectileConfig.DamageType);*/
+        bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform, ProjectileConfig.DamageType);
 
     private void FindClosestEnemy(out Vector3 directionToEnemy, out bool targetInRange)
     {
@@ -242,5 +252,6 @@ public class TowerScriptableObject : ScriptableObject
         TrailPool.Release(Trail);
     }
     #endregion
+    */
 }
 
