@@ -23,11 +23,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("Music Audioclip List")]
     public AudioClip TitleMusic;
-    public AudioClip PactMusic;
-    public AudioClip MerchantMusic;
-    public AudioClip JoinMusic;
-    public AudioClip DuelMusic;
-    public AudioClip WinMusic;
+    public AudioClip GameMusic;
 
     void Awake()
     {
@@ -64,29 +60,9 @@ public class AudioManager : MonoBehaviour
                     PlaySound(AudioManagerChannels.MusicChannel, TitleMusic);
                     break;
                 }
-            case "JoinScene":
+            case "GameScene":
                 {
-                    PlaySound(AudioManagerChannels.MusicChannel, JoinMusic);
-                    break;
-                }
-            case "DuelScene":
-                {
-                    PlaySound(AudioManagerChannels.MusicChannel, DuelMusic);
-                    break;
-                }
-            case "PactScene":
-                {
-                    PlaySound(AudioManagerChannels.MusicChannel, PactMusic);
-                    break;
-                }
-            case "MerchantScene":
-                {
-                    PlaySound(AudioManagerChannels.MusicChannel, MerchantMusic);
-                    break;
-                }
-            case "WinScene":
-                {
-                    PlaySound(AudioManagerChannels.MusicChannel, WinMusic);
+                    PlaySound(AudioManagerChannels.MusicChannel, GameMusic);
                     break;
                 }
         }

@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public GameMode GameMode;
-
+    public bool isPaused;
     public int Souls { get; private set; } = 100;
     public int Money { get; private set; } = 250;
 
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public void GamePaused(bool isPaused)
     {
+        this.isPaused = isPaused;
         OnGamePaused?.Invoke(isPaused);
     }
 }

@@ -14,7 +14,7 @@ public class WaveManager : MonoBehaviour
     public static event WaveStarted WaveStartDisplay;
 
     public delegate void WaveEnded();
-    public static event WaveStarted WaveEndDisplay;
+    public static event WaveEnded WaveEndDisplay;
 
     [System.Serializable]
     public class Wave
@@ -22,40 +22,43 @@ public class WaveManager : MonoBehaviour
         public Group EnemyGroup;
         [Range(0f, 20f)]
         public float TimeUntilNextWave;
+        public Dialogue Dialogue;
     }
     public List<Wave> WavesToSpawn = new List<Wave>();
-    public Wave CurrentWave;
+    public static Wave CurrentWave;
+
     [HideInInspector]
     public int CurrentWaveCount = -1;
 
-    public enum SpawnState { SPAWNING, WAITING, FINISHED};
+    public enum SpawnState { SPAWNING, WAITING, FINISHED, HALTED };
     public SpawnState state = SpawnState.WAITING;
 
 
     private void Awake()
     {
         EnemySpawner = GetComponent<Spawner>();
-        EnemySpawner.StoppedSpawningObjects += () => WaveCompleted();
-
-        if(GameManager.instance.GameMode is StoryMode)
-        {
-            StoryMode storyMode = GameManager.instance.GameMode as StoryMode;
-            storyMode.waveManager = this;
-        }
-
-        gameObject.SetActive(false);
     }
 
     
 
     private void OnEnable()
     {
+        EnemySpawner.StoppedSpawningObjects += () => WaveCompleted();
+        GameManager.instance.OnGamePaused += (bool pause) => PauseSpawning(pause);
         SpawnWave();
+
+        if(GameManager.instance.GameMode is StoryMode)
+        {
+            StoryMode storyMode = GameManager.instance.GameMode as StoryMode;
+            storyMode.waveManager = this;
+        }
     }
 
     private void OnDisable()
     {
         EnemySpawner.StoppedSpawningObjects -= () => WaveCompleted();
+        GameManager.instance.OnGamePaused -= (bool pause) => PauseSpawning(pause);
+
     }
 
     private void SpawnWave()
@@ -68,14 +71,25 @@ public class WaveManager : MonoBehaviour
         WaveStartDisplay?.Invoke();
     }
 
+    private void PauseSpawning(bool hasPaused)
+    {
+        if (hasPaused)
+            state = SpawnState.HALTED;
+        else
+            SpawnWave();
+    }
+
     private void WaveCompleted()
     {
         WaveEndDisplay?.Invoke();
 
+        if (state == SpawnState.HALTED)
+            return;
+
         if (CurrentWaveCount + 1 >= WavesToSpawn.Count)
         {
-            state = SpawnState.FINISHED; 
-            return;
+            state = SpawnState.FINISHED;
+            enabled = false; // turn off the script since its done spawning stuff. probably needs a game over event here.
         }
         else
         {
@@ -83,6 +97,5 @@ public class WaveManager : MonoBehaviour
         }
 
         Invoke(nameof(SpawnWave), CurrentWave.TimeUntilNextWave);
-        
     }
 }
