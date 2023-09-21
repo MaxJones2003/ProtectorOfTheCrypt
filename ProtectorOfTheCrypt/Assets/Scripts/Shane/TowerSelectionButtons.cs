@@ -5,7 +5,7 @@ using UnityEngine;
 public class TowerSelectionButtons : MonoBehaviour
 {
     public UIButtons UIRef;                                 // Reference to the UIButtons (pause and Tower Box)
-    public PlacementSystem PlaceTowerRef;                   // Reference to Max's Tower Placement System
+    private PlacementSystem PlaceTowerRef;                   // Reference to Max's Tower Placement System
 
     // Update is called once per frame
     void Update()
