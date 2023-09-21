@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         // If the projectile is active: move towards the target
-        if(isTracking)
+        if(isTracking && !paused)
         {
             if(target != null)
             {

@@ -86,10 +86,14 @@ public class WaveManager : MonoBehaviour
         if (state == SpawnState.HALTED)
             return;
 
-        if (CurrentWaveCount + 1 >= WavesToSpawn.Count)
+        if (CurrentWaveCount + 1 >= WavesToSpawn.Count
+            || GameManager.instance.Souls == 0)
         {
+            Debug.Log("Done spawning");
             state = SpawnState.FINISHED;
             enabled = false; // turn off the script since its done spawning stuff. probably needs a game over event here.
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
         }
         else
         {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class TowerSelectionButtons : MonoBehaviour
@@ -13,14 +14,16 @@ public class TowerSelectionButtons : MonoBehaviour
 
     }
 
-    public void Tower1()
+    public void Tower1(int price = 0)
     {
-        PlaceTowerRef.SelectTower("ExampleTower");          // Change the Name in ""s to match Archers
+        if(GameManager.instance.RemoveMoney(price));
+            PlaceTowerRef.SelectTower("ExampleTower");          // Change the Name in ""s to match Archers
     }
 
-    public void Tower2()
+    public void Tower2(int price = 0)
     {
-        PlaceTowerRef.SelectTower("Bomber");                // Change the Name in ""s to match Bombers
+        if (GameManager.instance.RemoveMoney(price)) ;
+            PlaceTowerRef.SelectTower("Bomber");                // Change the Name in ""s to match Bombers
     }
 
     // Cancel() is to get rid of the Tower Selection Menu

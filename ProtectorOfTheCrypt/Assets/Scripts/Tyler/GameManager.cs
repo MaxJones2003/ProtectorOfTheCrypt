@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     public GameMode GameMode;
     public bool isPaused;
-    public int Souls { get; private set; } = 100;
+    public int Souls { get; private set; } = 20;
     public int Money { get; private set; } = 250;
 
     public void Awake()
@@ -22,15 +22,20 @@ public class GameManager : MonoBehaviour
     public void RemoveSouls(int LostSouls)
     {
         Souls -= LostSouls;
-        
-        if(GameMode is StoryMode)
+
+        if (GameMode is StoryMode)
             GameMode.CheckGameLost();
     }
 
     // Pass a negative number to give money to the player.
-    public void RemoveMoney(int SpentMoney)
+    public bool RemoveMoney(int SpentMoney)
     {
-        Money -= SpentMoney;
+        if (Money >= SpentMoney)
+        {
+            Money -= SpentMoney;
+            return true;
+        }
+        return false;
     }
 
     public void GamePaused(bool isPaused)
