@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &101585891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7301970391296090368, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+  m_PrefabInstance: {fileID: 7093297618220644630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &684141712 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 243250082639015522, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
@@ -312,6 +323,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1252827725 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7239967361738099640, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+  m_PrefabInstance: {fileID: 7093297618220644630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1706777118
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +426,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115642046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3224897614308216945, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+  m_PrefabInstance: {fileID: 7093297618220644630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5037776698682299715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -416,6 +449,10 @@ PrefabInstance:
       propertyPath: IGButtons
       value: 
       objectReference: {fileID: 732838310}
+    - target: {fileID: 1134917408692199008, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1744542391884145218, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -723,6 +760,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3224897614308216945, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396940099635996174, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: vSyncToggle
+      value: 
+      objectReference: {fileID: 101585891}
+    - target: {fileID: 3396940099635996174, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: masterSlider
+      value: 
+      objectReference: {fileID: 1252827725}
+    - target: {fileID: 3396940099635996174, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: masterValueText
+      value: 
+      objectReference: {fileID: 2115642046}
+    - target: {fileID: 4856136997821444712, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: m_Name
+      value: MasterVolumeText
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444312186916032917, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7317855348657421185, guid: 359fee0ed521e6249a377d683b735624, type: 3}
       propertyPath: PauseMenuRef
       value: 
@@ -730,6 +791,10 @@ PrefabInstance:
     - target: {fileID: 7386053372624089128, guid: 359fee0ed521e6249a377d683b735624, type: 3}
       propertyPath: m_Name
       value: SettingsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645978167133231633, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: m_Name
+      value: MasterVolume
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -834,6 +899,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5560111889307045153, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255148892129313512, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
