@@ -8,6 +8,7 @@ public class PlacementInputManger : MonoBehaviour
     private Vector3 lastPosition;
 
     [SerializeField] private LayerMask placementLayerMask;
+    [SerializeField] private LayerMask boundsLayerMask;
 
     public (Vector3, RaycastHit) GetSelectedMapPosition()
     {
@@ -18,6 +19,11 @@ public class PlacementInputManger : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100, placementLayerMask))
         {
             lastPosition = hit.transform.position;
+        }
+        else if(Physics.Raycast(ray, out hit, 100, boundsLayerMask))
+        {
+            lastPosition = hit.point;
+            lastPosition.y = 0;
         }
         return (lastPosition, hit);
     }

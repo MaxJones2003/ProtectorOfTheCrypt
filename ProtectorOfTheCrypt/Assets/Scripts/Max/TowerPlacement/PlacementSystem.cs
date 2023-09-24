@@ -18,11 +18,7 @@ public class PlacementSystem : MonoBehaviour
 
     private void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && towerCurrentlySelected == false)
-        {
-            SelectTower("ExampleTower");
-        }
-        else if(Input.GetKeyUp(KeyCode.Mouse0) && towerCurrentlySelected == true)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && towerCurrentlySelected == true)
         {
             SetTowerDown();
         }
@@ -71,7 +67,9 @@ public class PlacementSystem : MonoBehaviour
     /// </summary>
     public void CancelTowerPlacement()
     {
-
+        Destroy(currentTowerModel);
+        currentTowerModel = null;
+        towerCurrentlySelected = false;
     }
 
     /// <summary>

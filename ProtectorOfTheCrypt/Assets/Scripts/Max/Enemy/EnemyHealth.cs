@@ -28,9 +28,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _spawner = spawner;
     }
 
-    public void TakeDamage(float Damage, ElementType DamageType)
+    public void TakeDamage(float Damage, ElementType DamageType, float DamageModifier)
     {
         float damageTaken = Damage * CompareElementTypes(DamageType);
+        damageTaken *= DamageModifier;
         // Makes sure the current health is never negative
         damageTaken = Mathf.Clamp(damageTaken, 0, CurrentHealth);
         CurrentHealth -= damageTaken;

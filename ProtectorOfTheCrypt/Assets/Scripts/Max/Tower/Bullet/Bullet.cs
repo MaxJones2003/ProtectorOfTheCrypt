@@ -13,7 +13,8 @@ public class Bullet : MonoBehaviour
     private bool isTracking = false;
     private Transform target;
     private float speed;
-    Vector3 direction;
+    private Vector3 direction;
+    public float damageModifier;
 
     [field: SerializeField]
     public Vector3 SpawnLocation
@@ -64,12 +65,13 @@ public class Bullet : MonoBehaviour
     /// </summary>
     /// <param name="Speed"></param>
     /// <param name="Target"></param>
-    public void Spawn(float Speed, Transform Target, ElementType DamageType)
+    public void Spawn(float Speed, Transform Target, ElementType DamageType, float DamageModifier)
     {
         SpawnLocation = transform.position;
         speed = Speed;
         target = Target;
         isTracking = true;
+        damageModifier = DamageModifier;
         StartCoroutine(DelayedDisable(DelayedDisableTime));
     }
 
@@ -92,6 +94,7 @@ public class Bullet : MonoBehaviour
 
             yield return null; // Yielding null means the coroutine will run in the same frame.
         }
+        Debug.Log("I didn't hit anything :(");
         OnCollisionEnter(null);
     }
 

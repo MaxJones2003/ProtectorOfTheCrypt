@@ -129,7 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickRandomSeed: 1
   GameSeed: default
-  mapLevels: {fileID: 11400000, guid: ec158bf39aa936f47831c8abf92081b4, type: 2}
+  LevelNumber: 0
+  LevelPrefab: {fileID: 0}
 --- !u!114 &6024401304573393069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +185,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
   - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
   - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
+  loadedPath: {fileID: 0}
+  loadedEnemyPath: []
+  mapBoundPrefab: {fileID: 2730323428394014302, guid: bf9d892eb997ff3478b69dbb8e76673a, type: 3}
 --- !u!114 &4673002648218141217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,19 +236,17 @@ MonoBehaviour:
       Object: {fileID: 11400000, guid: 08e4024f077dafb40a76f7ba3b146319, type: 2}
       NumObjects: 10
     TimeUntilNextWave: 0
+    Dialogue: {fileID: 0}
   - EnemyGroup:
       Object: {fileID: 11400000, guid: 08e4024f077dafb40a76f7ba3b146319, type: 2}
       NumObjects: 20
     TimeUntilNextWave: 1
+    Dialogue: {fileID: 0}
   - EnemyGroup:
       Object: {fileID: 11400000, guid: 08e4024f077dafb40a76f7ba3b146319, type: 2}
       NumObjects: 30
     TimeUntilNextWave: 1
-  CurrentWave:
-    EnemyGroup:
-      Object: {fileID: 0}
-      NumObjects: 0
-    TimeUntilNextWave: 1.5
+    Dialogue: {fileID: 0}
   CurrentWaveCount: -1
   state: 0
 --- !u!114 &5785639069706798447
@@ -263,6 +265,9 @@ MonoBehaviour:
   placementLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  boundsLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &3027338048066020314
 MonoBehaviour:
   m_ObjectHideFlags: 0
