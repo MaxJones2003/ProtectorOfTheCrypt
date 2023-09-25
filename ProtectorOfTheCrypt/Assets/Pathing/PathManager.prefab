@@ -90,8 +90,8 @@ GameObject:
   - component: {fileID: 4673002648218141217}
   - component: {fileID: 3638156756751218669}
   - component: {fileID: 7870458464043887178}
-  - component: {fileID: 5785639069706798447}
   - component: {fileID: 3027338048066020314}
+  - component: {fileID: 8400491918763768993}
   m_Layer: 7
   m_Name: PathManager
   m_TagString: Untagged
@@ -249,25 +249,6 @@ MonoBehaviour:
     Dialogue: {fileID: 0}
   CurrentWaveCount: -1
   state: 0
---- !u!114 &5785639069706798447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6024401304573393066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 248574d319ea1e54e907d723086084c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneCamaera: {fileID: 0}
-  placementLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  boundsLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &3027338048066020314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,5 +263,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PurchasableTowers:
   - {fileID: 11400000, guid: 1c5c87744f911f84cb4e91f865a24837, type: 2}
-  placementInputManger: {fileID: 5785639069706798447}
   grid: {fileID: 3609075191087926674}
+  sceneCamaera: {fileID: 0}
+  placementLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  boundsLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  towerLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &8400491918763768993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024401304573393066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c5ad4a64f451d4248bad51afc285e802, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: TowerPlacementMode
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

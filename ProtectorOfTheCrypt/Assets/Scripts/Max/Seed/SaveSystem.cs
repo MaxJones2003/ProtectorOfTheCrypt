@@ -14,7 +14,6 @@ public static class SaveSystem
 
     public static string Load(string fileName)
     {
-        Debug.Log(SAVE_FOLDER + fileName + ".txt");
         if(File.Exists(SAVE_FOLDER + fileName + ".txt")) 
         {
             string saveString = File.ReadAllText(SAVE_FOLDER + fileName + ".txt");
