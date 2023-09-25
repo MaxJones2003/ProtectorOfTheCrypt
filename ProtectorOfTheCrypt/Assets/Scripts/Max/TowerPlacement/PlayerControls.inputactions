@@ -1,0 +1,84 @@
+{
+    "name": "PlayerControls",
+    "maps": [
+        {
+            "name": "TowerPlacementMode",
+            "id": "7570a76f-7a53-47de-94d1-fda8ce2dc028",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "a360b4be-1b3d-42ce-97f6-0da47964bdc8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b74053f7-7880-482f-bdd2-8349f6c7fc92",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09c4c143-59a9-4829-a0c7-c4c5d1d6a5b6",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "StandardMode",
+            "id": "e3632379-7b7c-4c00-a9d3-2fba00544027",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "d0540003-14f0-46c1-8edc-9bd1796c2e82",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a4d9388a-e0c5-4eaa-9302-8e4bc03edb0d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce750587-683e-48c3-8afb-95a10f55add3",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -43,7 +43,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         if (CurrentHealth == 0 & damageTaken != 0) // Death
         {
-            Debug.Log("test");
             _spawner.SpawnedObjects.Remove(gameObject);
             OnDeath?.Invoke(transform.position);
 

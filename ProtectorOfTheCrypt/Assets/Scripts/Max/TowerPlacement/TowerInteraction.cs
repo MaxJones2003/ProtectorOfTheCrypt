@@ -1,12 +1,28 @@
 using UnityEngine;
-public class TowerInteraction : Interactable
+
+
+public class TowerInteraction : MonoBehaviour 
 {
-    public override void Interact()
+    [SerializeField] private LayerMask placementLayerMask;
+    [SerializeField] private Camera sceneCamaera;
+    void Update()
     {
-        base.Interact();
-        // Open the Upgrade menu
-        // Make sure to check that the menu isn't currently open
-        // Pass in a reference to the tower in question to a upgrade menu script
-        Debug.Log("Interacted with Tower");
+        // Check for click
+    }
+
+
+    public RaycastHit CheckTower()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = sceneCamaera.nearClipPlane;
+        Ray ray = sceneCamaera.ScreenPointToRay(mousePos);
+        RaycastHit hit;
+        if(Physics.Raycast(ray, out hit, 100, placementLayerMask))
+        {
+            return hit;
+        }
+        
+        return hit;
     }
 }
+
