@@ -37,6 +37,8 @@ public class InputSystem : MonoBehaviour
 
         standardClick.started += CheckForTower;
         placementClick.started += SetTowerDown;
+
+        sceneCamaera = Camera.main;
     }
     private void Update() 
     {
