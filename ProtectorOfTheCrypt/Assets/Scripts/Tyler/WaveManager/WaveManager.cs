@@ -91,9 +91,8 @@ public class WaveManager : MonoBehaviour
         {
             Debug.Log("Done spawning");
             state = SpawnState.FINISHED;
-            enabled = false; // turn off the script since its done spawning stuff. probably needs a game over event here.
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            
+            enabled = false; // turn off the script since its done spawning stuff.
+            return;
         }
         else
         {

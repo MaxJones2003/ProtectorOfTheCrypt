@@ -23,7 +23,7 @@ public class EnemyScriptableObject : ScriptableObject
 
         Model = Instantiate(ModelPrefab);
         Model.transform.localPosition = Path[0];
-        Model.AddComponent<EnemyMovementHandler>().Initialize(this, Path, BaseSpeed);
+        Model.AddComponent<EnemyMovementHandler>().Initialize(this, Path, BaseSpeed, Spawner);
 
         Model.AddComponent<EnemyHealth>().Enable(BaseHealth, ElementType, WeaknessDamageMultiplier, Spawner);
 

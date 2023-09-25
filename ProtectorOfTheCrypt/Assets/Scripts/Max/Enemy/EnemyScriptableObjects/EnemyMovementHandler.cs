@@ -10,22 +10,25 @@ public class EnemyMovementHandler : MonoBehaviour
     private Vector3 target;
     private int waypointIndex = 0;
     public float baseSpeed;
+    [HideInInspector]
+    public Spawner spawner;
+
     public void Awake()
     {
         GameManager.instance.OnGamePaused += UpdateGamePaused;
     }
-    public void Initialize(EnemyScriptableObject EnemyToSet, List<Vector3> Path, float BaseSpeed)
+    public void Initialize(EnemyScriptableObject EnemyToSet, List<Vector3> Path, float BaseSpeed, Spawner _spawner)
     {
         enemy = EnemyToSet;
         path = Path;
         target = path[1];
         baseSpeed = BaseSpeed;
+        spawner = _spawner;
     }
 
     private void Update()
     {
-        
-            Move();
+        Move();
     }
 
     public void Move()
@@ -43,6 +46,12 @@ public class EnemyMovementHandler : MonoBehaviour
             {
                 // Reached the last waypoint, stop moving
                 GameManager.instance.RemoveSouls(5);
+                spawner.SpawnedObjects.Remove(gameObject);
+                if (GameManager.instance.GameMode is StoryMode)
+                {
+                    if (GameManager.instance.GameMode.CheckGameWon())
+                        GameManager.instance.GameMode.OnGameWon();
+                }
                 Destroy(gameObject);
                 return;
             }

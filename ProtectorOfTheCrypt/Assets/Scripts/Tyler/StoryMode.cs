@@ -17,22 +17,22 @@ public class StoryMode : GameMode
 
     public override bool CheckGameWon()
     {
-
         return waveManager.state == WaveManager.SpawnState.FINISHED
                && waveManager.EnemySpawner.SpawnedObjects.Count == 0;
     }
 
     public override bool CheckGameLost()
     {
-        return GameManager.instance.Souls == 0;
+        return GameManager.instance.Souls <= 0;
     }
 
-    public void OnGameLost()
+    public override void OnGameLost()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void OnGameWon()
+    public override void OnGameWon()
     {
+        Debug.Log("game won test");
         SceneManager.LoadScene("MainMenuScene");
     }
 }

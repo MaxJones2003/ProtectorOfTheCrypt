@@ -41,13 +41,18 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             OnTakeDamage?.Invoke(damageTaken);
         }
 
-        if(CurrentHealth == 0 & damageTaken != 0) // Death
+        if (CurrentHealth == 0 & damageTaken != 0) // Death
         {
+            Debug.Log("test");
             _spawner.SpawnedObjects.Remove(gameObject);
             OnDeath?.Invoke(transform.position);
-            Destroy(gameObject);
+
             if (GameManager.instance.GameMode is StoryMode)
-                GameManager.instance.GameMode.CheckGameWon();
+            {
+                if (GameManager.instance.GameMode.CheckGameWon())
+                        GameManager.instance.GameMode.OnGameWon();
+            }
+            Destroy(gameObject);
         }
     }
 

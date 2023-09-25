@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public event Action<bool> OnGamePaused;
+    public event Action OnSoulsChanged;
     public static GameManager instance;
 
     public GameMode GameMode;
@@ -22,9 +23,12 @@ public class GameManager : MonoBehaviour
     public void RemoveSouls(int LostSouls)
     {
         Souls -= LostSouls;
-
-        if (GameMode is StoryMode)
-            GameMode.CheckGameLost();
+        OnSoulsChanged?.Invoke();
+        if (GameMode is StoryMode && GameMode.CheckGameLost())
+        {
+            GameMode.OnGameLost();
+        }
+            
     }
 
     // Pass a negative number to give money to the player.
