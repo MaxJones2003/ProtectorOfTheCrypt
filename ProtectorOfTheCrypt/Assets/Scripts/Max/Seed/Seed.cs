@@ -11,8 +11,6 @@ public class Seed : MonoBehaviour
     private int CurrentSeed = 0;
     [Tooltip("This value MUST be DIFFERENT than all other level numbers, else it will override another map")]
     [SerializeField] private int LevelNumber;
-    [Tooltip("Place the loaded Path game object into this slot before you save")]
-    [SerializeField] private GameObject LevelPrefab;
 
     private GridManager gridManager;
 
@@ -62,7 +60,7 @@ public class Seed : MonoBehaviour
         List<Vector3> path = gridManager.loadedEnemyPath;
 
         // Create a new variable containing all the important values
-        MapVariables newMap = new MapVariables(LevelNumber, GameSeed, w, h, min, max, LevelPrefab, path);
+        MapVariables newMap = new MapVariables(LevelNumber, GameSeed, w, h, min, max, path);
 
         string json = JsonUtility.ToJson(newMap);
         SaveSystem.Save(json, "/Level" + newMap.LevelNumber.ToString());
@@ -87,7 +85,6 @@ public class Seed : MonoBehaviour
         gridManager.minPathLength = currentMap.MinPathLength;
         gridManager.maxPathLength = currentMap.MaxPathLength;
         GameSeed = currentMap.Seed;
-        //gridManager.loadedPath = currentMap.LevelPrefab;
         gridManager.loadedPath = levelPrefabs[levelNumber];
         gridManager.loadedEnemyPath = currentMap.LevelEnemyPath;
     }
