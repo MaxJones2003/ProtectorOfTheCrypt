@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExampleTower
   m_EditorClassIdentifier: 
   ImpactType: {fileID: 11400000, guid: 1963707f99ba86549a01731fb79af9f9, type: 2}
-  Type: 3
+  Type: 0
   Name: ExampleTower
   ModelPrefab: {fileID: 2360690859071615756, guid: 48801f54a43b751468f14ac89042136c, type: 3}
   SpawnPoint: {x: 0, y: 0, z: 0}

@@ -27,7 +27,7 @@ public class GridManager : MonoBehaviour
     [SerializeField] private GameObject mapBoundPrefab;
     private void Awake()
     {
-        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 4, -gridHeight / 3);
+        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
         // If the seed script is there, and the seed script's PickRandomSeed value is false:
         // Set the values of the grid/path to those saved in the MapVariables class.
         Seed seedScript = gameObject.GetComponent<Seed>();
@@ -36,7 +36,7 @@ public class GridManager : MonoBehaviour
         if(seedScript.pickRandomSeed)
             return;
 
-        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 4, -gridHeight / 3);
+        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
     }
     private void Start()
     {
