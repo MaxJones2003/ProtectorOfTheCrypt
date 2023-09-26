@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public event Action<bool> OnGamePaused;
     public event Action OnSoulsChanged;
+    public event Action OnMoneyChanged;
+
     public static GameManager instance;
 
     public GameMode GameMode;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         if (Money >= SpentMoney)
         {
             Money -= SpentMoney;
+            OnMoneyChanged?.Invoke();
             return true;
         }
         return false;
