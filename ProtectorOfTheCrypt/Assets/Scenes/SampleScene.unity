@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -991,9 +991,21 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: WavesToSpawn.Array.data[0].Dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: b3ce1621e6bf641c0a76e0136d18b442, type: 2}
+    - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: WavesToSpawn.Array.data[1].Dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: b2769edf712ba46fc811dc2150e5bf81, type: 2}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].TimeUntilNextWave
       value: 0
