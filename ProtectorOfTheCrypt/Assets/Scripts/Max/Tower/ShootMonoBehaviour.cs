@@ -11,6 +11,7 @@ public class ShootMonoBehaviour : MonoBehaviour
 
     #region Upgrades
     public float damageModifierUpgrade = 1f;
+    public float shootTimeUpgrade = 0f;
     #endregion
     public void Awake()
     {
@@ -29,6 +30,6 @@ public class ShootMonoBehaviour : MonoBehaviour
         if(paused)
             return;
         
-        tower.Shoot(damageModifierUpgrade);
+        tower.Shoot(damageModifierUpgrade, shootTimeUpgrade);
     }
 }

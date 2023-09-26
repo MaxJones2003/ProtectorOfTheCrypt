@@ -66,7 +66,7 @@ public class TowerScriptableObject : ScriptableObject
         ShootingAudioSource = Model.GetComponent<AudioSource>();
     }
     #region Shooting
-    public void Shoot(float towerDamageModifier)
+    public void Shoot(float towerDamageModifier, float shootSpeedUpgrade)
     {
         if(Time.time > ProjectileConfig.FireRate + LastShootTime)
         {
@@ -83,7 +83,7 @@ public class TowerScriptableObject : ScriptableObject
             if(canShoot)
             {
                 //AudioConfig.PlayShootingClip(ShootingAudioSource);
-                LastShootTime = Time.time;
+                LastShootTime = Time.time - shootSpeedUpgrade;
                 ShootSystem.Play();
                                     
                 if(shootDirection != Vector3.zero)

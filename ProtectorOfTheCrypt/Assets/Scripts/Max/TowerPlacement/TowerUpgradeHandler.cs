@@ -19,7 +19,18 @@ public class TowerUpgradeHandler : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        Debug.Log("clicked upgrade");
-        gameObject.GetComponent<ShootMonoBehaviour>().damageModifierUpgrade += 0.2f;
+        if (GameManager.instance.RemoveMoney(25))
+        {
+            gameObject.GetComponent<ShootMonoBehaviour>().damageModifierUpgrade += 0.2f;
+            gameObject.GetComponent<ShootMonoBehaviour>().shootTimeUpgrade += 0.1f;
+            gameObject.GetComponent<ShootMonoBehaviour>().shootTimeUpgrade = Mathf.Clamp(gameObject.GetComponent<ShootMonoBehaviour>().shootTimeUpgrade, 0f, 1f);
+        }
+        
+    }
+
+    public void SellTower()
+    {
+        GameManager.instance.RemoveMoney(-5);
+        Destroy(gameObject);
     }
 }
