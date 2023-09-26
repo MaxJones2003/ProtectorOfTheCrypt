@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class InputSystem : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class InputSystem : MonoBehaviour
     [SerializeField] private LayerMask placementLayerMask;
     [SerializeField] private LayerMask boundsLayerMask;
     [SerializeField] private LayerMask towerLayerMask;
+    [SerializeField] private LayerMask UILayerMask;
 
     private bool towerCurrentlySelected = false;
 
@@ -28,7 +30,9 @@ public class InputSystem : MonoBehaviour
     // This allows the script to change the layer of the gridspace where a tower was placed, preventing another tower from being placed on that gridspace
     private RaycastHit hit;
 
-    private void Awake() 
+    private GameObject currentTowerForUpgrade;
+
+    private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerInput.SwitchCurrentActionMap("StandardMode");
@@ -40,9 +44,9 @@ public class InputSystem : MonoBehaviour
 
         sceneCamaera = Camera.main;
     }
-    private void Update() 
+    private void Update()
     {
-        if(currentTowerModel != null)
+        if (currentTowerModel != null)
         {
             Vector3 mousePosition = Vector3.zero;
             (mousePosition, hit) = GetSelectedMapPosition();
@@ -61,7 +65,7 @@ public class InputSystem : MonoBehaviour
         TowerScriptableObject tower = PurchasableTowers.Find(t => t.Name == nameOfTowerToSelect);
 
         // If nothing was found: return and give an error
-        if(tower == null)
+        if (tower == null)
         {
             Debug.LogError($"No TowerScriptableObject found for TowerName: {nameOfTowerToSelect}");
             return;
@@ -83,11 +87,11 @@ public class InputSystem : MonoBehaviour
         mousePos.z = sceneCamaera.nearClipPlane;
         Ray ray = sceneCamaera.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, 100, placementLayerMask))
+        if (Physics.Raycast(ray, out hit, 100, placementLayerMask))
         {
             lastPosition = hit.transform.position;
         }
-        else if(Physics.Raycast(ray, out hit, 100, boundsLayerMask))
+        else if (Physics.Raycast(ray, out hit, 100, boundsLayerMask))
         {
             lastPosition = hit.point;
             lastPosition.y = 0;
@@ -120,7 +124,7 @@ public class InputSystem : MonoBehaviour
     /// </summary>
     public void SetTowerDown(InputAction.CallbackContext ctx)
     {
-        if(!towerCurrentlySelected)
+        if (!towerCurrentlySelected)
             return;
         currentTowerModel.AddComponent<ShootMonoBehaviour>().tower = currentTowerScriptableObject;
         currentTowerScriptableObject.Spawn();
@@ -142,10 +146,25 @@ public class InputSystem : MonoBehaviour
         mousePos.z = sceneCamaera.nearClipPlane;
         Ray ray = sceneCamaera.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, 100, towerLayerMask))
+        if (Physics.Raycast(ray, out hit, 100, towerLayerMask))
         {
-            Debug.Log(hit.transform.name);
+            // Deactivate the previous upgrade ui
+            if (currentTowerForUpgrade != null)
+                currentTowerForUpgrade.GetComponent<TowerUpgradeHandler>().ActivateUI(false);
+            // Activate the new upgrade ui
+            currentTowerForUpgrade = hit.transform.parent.gameObject;
+            currentTowerForUpgrade.GetComponent<TowerUpgradeHandler>().ActivateUI(true);
+        }
+        else if (!Physics.Raycast(ray, 1000, UILayerMask))
+        {
+            if (currentTowerForUpgrade == null)
+                return;
+            currentTowerForUpgrade.GetComponent<TowerUpgradeHandler>().ActivateUI(false);
+            currentTowerForUpgrade = null;
         }
     }
+
+    
     #endregion
 }
+

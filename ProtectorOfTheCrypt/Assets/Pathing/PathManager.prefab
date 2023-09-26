@@ -278,6 +278,9 @@ MonoBehaviour:
   towerLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  UILayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!114 &8400491918763768993
 MonoBehaviour:
   m_ObjectHideFlags: 0
