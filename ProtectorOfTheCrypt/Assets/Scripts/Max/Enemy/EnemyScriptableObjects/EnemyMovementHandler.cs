@@ -13,8 +13,11 @@ public class EnemyMovementHandler : MonoBehaviour
     [HideInInspector]
     public Spawner spawner;
 
+    private Transform model;
+
     public void Awake()
     {
+        model = transform.GetChild(0);
         GameManager.instance.OnGamePaused += UpdateGamePaused;
     }
     public void Initialize(EnemyScriptableObject EnemyToSet, List<Vector3> Path, float BaseSpeed, Spawner _spawner)
@@ -35,9 +38,11 @@ public class EnemyMovementHandler : MonoBehaviour
     {
         if(paused)
             return;
+        target.y = transform.position.y;
         Vector3 dir = target - transform.position;
         dir.Normalize();
         transform.Translate(dir * baseSpeed * Time.deltaTime);
+        model.LookAt(target);
 
         if (Vector3.Distance(transform.position, target) <= 0.1f)
         {

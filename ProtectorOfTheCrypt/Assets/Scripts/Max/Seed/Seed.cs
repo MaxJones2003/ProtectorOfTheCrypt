@@ -16,7 +16,8 @@ public class Seed : MonoBehaviour
 
     private GridManager gridManager;
 
-    private static readonly string SAVE_FOLDER = Application.dataPath + "/Levels";
+    [Header("List of level prefabs")]
+    [SerializeField] private List<GameObject> levelPrefabs;
 
     private void Awake() 
     {
@@ -86,7 +87,8 @@ public class Seed : MonoBehaviour
         gridManager.minPathLength = currentMap.MinPathLength;
         gridManager.maxPathLength = currentMap.MaxPathLength;
         GameSeed = currentMap.Seed;
-        gridManager.loadedPath = currentMap.LevelPrefab;
+        //gridManager.loadedPath = currentMap.LevelPrefab;
+        gridManager.loadedPath = levelPrefabs[levelNumber];
         gridManager.loadedEnemyPath = currentMap.LevelEnemyPath;
     }
 }

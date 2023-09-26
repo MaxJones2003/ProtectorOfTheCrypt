@@ -131,6 +131,10 @@ MonoBehaviour:
   GameSeed: default
   LevelNumber: 0
   LevelPrefab: {fileID: 0}
+  levelPrefabs:
+  - {fileID: 3338072622709627720, guid: 84c2f9add59395149b1ba8365f10f25e, type: 3}
+  - {fileID: 6434740954017540058, guid: 95d2f817a8448684586828cdfe8af3ab, type: 3}
+  - {fileID: 7210624234975989431, guid: 7e9f7d9c65bb03748a618b0b869c2bbc, type: 3}
 --- !u!114 &6024401304573393069
 MonoBehaviour:
   m_ObjectHideFlags: 0
