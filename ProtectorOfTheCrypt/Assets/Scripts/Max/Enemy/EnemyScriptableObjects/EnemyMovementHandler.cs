@@ -15,6 +15,15 @@ public class EnemyMovementHandler : MonoBehaviour
 
     private Transform model;
 
+
+    [Header("Animation")]
+    public float hopAngle = 15.0f;  
+    public float hopSpeed = 2.0f;  
+    public float wobbleAmount = 5.0f;  
+    private Quaternion originalRotation;
+    private float timeElapsed = 0.0f;
+
+
     public void Awake()
     {
         model = transform.GetChild(0);
@@ -27,6 +36,8 @@ public class EnemyMovementHandler : MonoBehaviour
         target = path[1];
         baseSpeed = BaseSpeed;
         spawner = _spawner;
+
+        originalRotation = model.transform.rotation;
     }
 
     private void Update()
@@ -42,7 +53,7 @@ public class EnemyMovementHandler : MonoBehaviour
         Vector3 dir = target - transform.position;
         dir.Normalize();
         transform.Translate(dir * baseSpeed * Time.deltaTime);
-        model.LookAt(target);
+        ModelAnimation();
 
         if (Vector3.Distance(transform.position, target) <= 0.1f)
         {
@@ -62,6 +73,15 @@ public class EnemyMovementHandler : MonoBehaviour
             }
             target = path[waypointIndex];
         }
+    }
+    private void ModelAnimation()
+    {
+        float angle = Mathf.Sin(timeElapsed * hopSpeed) * hopAngle;
+        float wobble = Mathf.Cos(timeElapsed * hopSpeed * 2) * wobbleAmount;
+        Quaternion hopRotation = originalRotation * Quaternion.Euler(Vector3.up * angle) * Quaternion.Euler(Vector3.forward * wobble);
+        model.transform.rotation = Quaternion.LookRotation(target - model.transform.position, Vector3.up) * hopRotation;
+
+        timeElapsed += Time.deltaTime;
     }
 
     private void UpdateGamePaused(bool isPaused)
