@@ -15,7 +15,7 @@ public class GameOver : MonoBehaviour
     // Needs to Restart Active Scene
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
