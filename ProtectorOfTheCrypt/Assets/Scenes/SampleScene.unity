@@ -906,6 +906,10 @@ PrefabInstance:
       propertyPath: placementInputManger
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3638156756751218669, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: TimeBetweenSpawning
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: GameSeed
       value: 
