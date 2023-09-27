@@ -317,14 +317,6 @@ PrefabInstance:
       propertyPath: TowerSelection
       value: 
       objectReference: {fileID: 1547371700}
-    - target: {fileID: 757883611105779895, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2571295426703283723, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3332001715681557983, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
       propertyPath: TowerSelection
       value: 
@@ -333,17 +325,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1551556798}
+    - target: {fileID: 4391316201998925238, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 6071234219829746944, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
       propertyPath: m_Name
       value: UICanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6071234219829746944, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8446884893343286324, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -569,30 +557,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5560111889307045153, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6411699408556227631, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6411699408556227631, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6540801080533561523, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6540801080533561523, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7255148892129313512, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8348505278574619045, guid: 3225a21a425e7c144b22eab38c94f670, type: 3}
-      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1578,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6874752932529542301, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 15.0004425
+      value: 15.000427
       objectReference: {fileID: 0}
     - target: {fileID: 7193702523471509205, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
       propertyPath: m_Name
