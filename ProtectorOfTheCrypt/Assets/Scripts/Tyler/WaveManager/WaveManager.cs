@@ -58,11 +58,19 @@ public class WaveManager : MonoBehaviour
     {
         EnemySpawner.StoppedSpawningObjects -= () => WaveCompleted();
         GameManager.instance.OnGamePaused -= (bool pause) => PauseSpawning(pause);
-
     }
 
     private void SpawnWave()
     {
+        if (CurrentWaveCount + 1 >= WavesToSpawn.Count
+            || GameManager.instance.Souls == 0)
+        {
+            Debug.Log("Done spawning");
+            state = SpawnState.FINISHED;
+            enabled = false; // turn off the script since its done spawning stuff.
+            return;
+        }
+
         CurrentWave = WavesToSpawn[++CurrentWaveCount];
 
         state = SpawnState.SPAWNING;
@@ -85,19 +93,8 @@ public class WaveManager : MonoBehaviour
 
         if (state == SpawnState.HALTED)
             return;
-
-        if (CurrentWaveCount + 1 >= WavesToSpawn.Count
-            || GameManager.instance.Souls == 0)
-        {
-            Debug.Log("Done spawning");
-            state = SpawnState.FINISHED;
-            enabled = false; // turn off the script since its done spawning stuff.
-            return;
-        }
         else
-        {
             state = SpawnState.WAITING;
-        }
 
         Invoke(nameof(SpawnWave), CurrentWave.TimeUntilNextWave);
     }

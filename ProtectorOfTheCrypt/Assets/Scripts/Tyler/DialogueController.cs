@@ -127,7 +127,6 @@ public class DialogueController : MonoBehaviour
 
     public void EndText()
     {
-        //StopAllCoroutines();
         Debug.Log("EndText Called");
         dialogueText.text = "";
         sentences.Clear();
