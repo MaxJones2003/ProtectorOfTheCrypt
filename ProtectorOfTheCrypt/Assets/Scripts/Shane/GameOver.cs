@@ -16,7 +16,7 @@ public class GameOver : MonoBehaviour
     public void Retry()
     {
         Time.timeScale = 1;                                             //Starts game
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);     // Reloads Active Scene
     }
 
 
