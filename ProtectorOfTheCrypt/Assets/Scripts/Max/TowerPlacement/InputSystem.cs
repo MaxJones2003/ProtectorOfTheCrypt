@@ -20,6 +20,11 @@ public class InputSystem : MonoBehaviour
     [SerializeField] private LayerMask towerLayerMask;
     [SerializeField] private LayerMask UILayerMask;
 
+
+    [SerializeField] private GameObject UIButtons;
+    [SerializeField] private GameObject towerSelectionUI;
+
+
     private bool towerCurrentlySelected = false;
 
 
@@ -124,6 +129,11 @@ public class InputSystem : MonoBehaviour
     /// </summary>
     public void SetTowerDown(InputAction.CallbackContext ctx)
     {
+        if(GameManager.instance.isPaused)
+        {
+            CancelTowerPlacement();
+            return;
+        }
         if (!towerCurrentlySelected)
             return;
         currentTowerModel.AddComponent<ShootMonoBehaviour>().tower = currentTowerScriptableObject;
@@ -154,6 +164,9 @@ public class InputSystem : MonoBehaviour
             // Activate the new upgrade ui
             currentTowerForUpgrade = hit.transform.parent.gameObject;
             currentTowerForUpgrade.GetComponent<TowerUpgradeHandler>().ActivateUI(true);
+
+            UIButtons.SetActive(true);
+            towerSelectionUI.SetActive(false);
         }
         else if (!Physics.Raycast(ray, 1000, UILayerMask))
         {
