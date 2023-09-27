@@ -10,6 +10,10 @@ public class StoryMode : GameMode
     public WaveManager waveManager;
     public DialogueController DialogueController;
 
+    public GameObject YouWinScreen;
+    public GameObject GameOverScreen;
+    public GameObject UIButtons;
+
     public void Awake()
     {
         DialogueController = GetComponent<DialogueController>();
@@ -28,11 +32,23 @@ public class StoryMode : GameMode
 
     public override void OnGameLost()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Activate Game Over Screen 
+        GameOverScreen.SetActive(true);
+
+        // Disable Game UI
+        UIButtons.SetActive(false);
+
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public override void OnGameWon()
     {
-        Debug.Log("game won test");
-        SceneManager.LoadScene("MainMenuScene");
+        // Activate You Win Screen 
+        YouWinScreen.SetActive(true);
+
+        // Disable Game UI
+        UIButtons.SetActive(false);
+
+        // Debug.Log("game won test");
+        // SceneManager.LoadScene("MainMenuScene");
     }
 }

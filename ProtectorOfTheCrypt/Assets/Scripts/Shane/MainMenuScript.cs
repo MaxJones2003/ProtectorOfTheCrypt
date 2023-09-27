@@ -15,7 +15,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void TimedMode()
     {
-        SceneManager.LoadScene("SampleScene");      //Load Timed Mode Scene
+        //SceneManager.LoadScene("TimedMode");      //Load Timed Mode Scene
     }
 
     public void Settings()
