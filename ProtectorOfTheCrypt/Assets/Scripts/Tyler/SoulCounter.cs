@@ -8,7 +8,7 @@ public class SoulCounter : MonoBehaviour
 	public void Start()
 	{
 		GameManager.instance.OnSoulsChanged += UpdateCounter;
-        text.text = "Souls Left: " + GameManager.instance.Souls;
+        text.text = GameManager.instance.Souls.ToString();
     }
 
     public void OnDestroy()
@@ -18,6 +18,6 @@ public class SoulCounter : MonoBehaviour
 
     public void UpdateCounter()
     {
-		text.text = "Souls Left: " + GameManager.instance.Souls;
+		text.text = GameManager.instance.Souls.ToString();
     }
 }

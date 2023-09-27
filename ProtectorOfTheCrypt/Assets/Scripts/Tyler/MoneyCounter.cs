@@ -9,7 +9,7 @@ public class MoneyCounter : MonoBehaviour
     public void Start()
     {
         GameManager.instance.OnMoneyChanged += UpdateCounter;
-        text.text = "Money: " + GameManager.instance.Money;
+        text.text = GameManager.instance.Money.ToString();
     }
 
     public void OnDestroy()
@@ -19,6 +19,6 @@ public class MoneyCounter : MonoBehaviour
 
     public void UpdateCounter()
     {
-        text.text = "Money: " + GameManager.instance.Money;
+        text.text = GameManager.instance.Money.ToString();
     }
 }
