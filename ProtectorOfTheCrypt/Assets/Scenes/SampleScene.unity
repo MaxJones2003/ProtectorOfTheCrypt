@@ -366,6 +366,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameOverCanvas 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8076273825323542468, guid: 21f3c558939877c408c55fd7694211a5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8591742387920304861, guid: 21f3c558939877c408c55fd7694211a5, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1093,9 +1097,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: UIButtons
+      value: 
+      objectReference: {fileID: 2089620641}
+    - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneCamaera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: towerSelectionUI
+      value: 
+      objectReference: {fileID: 1547371700}
     - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: placementInputManger
       value: 
@@ -1542,7 +1554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6874752932529542301, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 15.000427
+      value: 15.000488
       objectReference: {fileID: 0}
     - target: {fileID: 7193702523471509205, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
       propertyPath: m_Name
