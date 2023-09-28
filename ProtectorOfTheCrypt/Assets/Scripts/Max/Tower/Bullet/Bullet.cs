@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
     {
         StopAllCoroutines();
         GameManager.instance.OnGamePaused -= UpdateGamePaused;
-        OnCollision -= tower.HandleBulletCollision;
+        //OnCollision -= tower.HandleBulletCollision;
         Rigidbody.velocity = Vector3.zero;
         Rigidbody.angularVelocity = Vector3.zero;
         isTracking = false;
