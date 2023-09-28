@@ -39,7 +39,7 @@ public class DialogueController : MonoBehaviour
         sentences = new Queue<string>();
 
         WaveManager.WaveEndDisplay += () => StartDialogue(WaveManager.CurrentWave);
-        
+
     }
 
     public void StartDialogue(WaveManager.Wave wave)
@@ -50,6 +50,7 @@ public class DialogueController : MonoBehaviour
 
         DialogueStarted?.Invoke();
 
+        // Bug Starts Here
         dialogueCanvasGroup.alpha = 1f;
         dialogueCanvasGroup.blocksRaycasts = true;
         dialogueText.text = "";
@@ -93,7 +94,7 @@ public class DialogueController : MonoBehaviour
         string newSentence = sentences.Dequeue();
 
         StopAllCoroutines();
-        
+
         StartCoroutine(TypeSentence(newSentence));
     }
 
