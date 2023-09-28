@@ -11,6 +11,7 @@ public class MainMenuScript : MonoBehaviour
     public void StoryMode()
     {
         SceneManager.LoadScene("SampleScene");      //Load StoryMode Scene
+        AudioManager.instance.PlayMusicOnSceneChange("SampleScene");
     }
 
     public void TimedMode()

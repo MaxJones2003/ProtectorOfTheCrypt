@@ -24,8 +24,7 @@ public class DialogueController : MonoBehaviour
 
     public float autoContinueTime;
 
-    [SerializeField]
-    private AudioSource audioSource;
+    public AudioClip dialogueBlipSFX;
 
     public delegate void DialogueEnded();
     public static event DialogueEnded DialogueOver;
@@ -115,8 +114,8 @@ public class DialogueController : MonoBehaviour
         {
             dialogueText.text += letter;
             //audio text boops
-            //AudioManager.instance.PlaySound()
             yield return new WaitForSeconds(letterDisplayDelay);
+            AudioManager.instance.PlaySound(AudioManagerChannels.SoundEffectChannel, dialogueBlipSFX);
         }
 
         StartCoroutine(AutoScrollTimer());
@@ -135,9 +134,11 @@ public class DialogueController : MonoBehaviour
 
     public void EndText()
     {
+        AudioManager.instance.StopSound(AudioManagerChannels.SoundEffectChannel);
         Debug.Log("EndText Called");
         dialogueText.text = "";
         sentences.Clear();
+        StopAllCoroutines();
         GameManager.instance.GamePaused(false);
         CloseDialogueBox();
     }

@@ -11,6 +11,7 @@ public class EnemyScriptableObject : ScriptableObject
     public float BaseSpeed = 1f;
     public WeaknessScriptableObject ElementType;
     public float WeaknessDamageMultiplier = 1.5f;
+    public AudioClip deathSound;
 
     private MonoBehaviour ActiveMonoBehaviour;
     private GameObject Model;
@@ -25,7 +26,7 @@ public class EnemyScriptableObject : ScriptableObject
         Model.transform.localPosition = Path[0];
         Model.AddComponent<EnemyMovementHandler>().Initialize(this, Path, BaseSpeed, Spawner);
 
-        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, ElementType, WeaknessDamageMultiplier, Spawner);
+        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, ElementType, WeaknessDamageMultiplier, Spawner, deathSound);
 
         return Model;
     }

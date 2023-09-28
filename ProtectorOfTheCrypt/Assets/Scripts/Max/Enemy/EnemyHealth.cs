@@ -19,13 +19,21 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     [HideInInspector] public Spawner _spawner;
 
-    public void Enable(float maxHealth, WeaknessScriptableObject element, float damageMultiplier, Spawner spawner) 
+    private AudioClip deathSound;
+
+    public void Enable(float maxHealth, WeaknessScriptableObject element, float damageMultiplier, Spawner spawner, AudioClip audio) 
     {
         MaxHealth = maxHealth;
         CurrentHealth = MaxHealth;
         Element = element;
         _damageMultiplier = damageMultiplier;
         _spawner = spawner;
+        deathSound = audio;
+    }
+
+    public void OnDestroy()
+    {
+        AudioManager.instance.PlaySound(AudioManagerChannels.SoundEffectChannel, deathSound);
     }
 
     public void TakeDamage(float Damage, ElementType DamageType, float DamageModifier)

@@ -17,12 +17,14 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1;                                             //Starts game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);     // Reloads Active Scene
+        AudioManager.instance.PlayMusicOnSceneChange("SampleScene");
     }
 
 
     public void MainMenu()
     {
         Time.timeScale = 1;                                             //Starts game
-        SceneManager.LoadScene("MainMenuScene");                        //Load Main Menu Scene
+        SceneManager.LoadScene("MainMenuScene");
+        AudioManager.instance.PlayMusicOnSceneChange("MainMenuScene");//Load Main Menu Scene
     }
 }

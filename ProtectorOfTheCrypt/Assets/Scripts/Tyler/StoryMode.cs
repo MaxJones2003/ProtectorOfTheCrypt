@@ -40,7 +40,6 @@ public class StoryMode : GameMode
         // Freeze Game so that the YouWin bug goes away
         Time.timeScale = 0;                                             //Stops game
 
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public override void OnGameWon()
     {
@@ -51,6 +50,5 @@ public class StoryMode : GameMode
         UIButtons.SetActive(false);
 
         // Debug.Log("game won test");
-        // SceneManager.LoadScene("MainMenuScene");
     }
 }

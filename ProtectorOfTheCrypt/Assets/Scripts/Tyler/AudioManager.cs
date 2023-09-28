@@ -55,12 +55,12 @@ public class AudioManager : MonoBehaviour
 
         switch (sceneName) 
         {
-            case "MenuScene":
+            case "MainMenuScene":
                 {
                     PlaySound(AudioManagerChannels.MusicChannel, TitleMusic);
                     break;
                 }
-            case "GameScene":
+            case "SampleScene":
                 {
                     PlaySound(AudioManagerChannels.MusicChannel, GameMusic);
                     break;
