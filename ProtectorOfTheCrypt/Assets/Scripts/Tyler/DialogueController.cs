@@ -37,12 +37,19 @@ public class DialogueController : MonoBehaviour
     void Start()
     {
         sentences = new Queue<string>();
-
-        WaveManager.WaveEndDisplay += () => StartDialogue(WaveManager.CurrentWave);
-
+        dialogueCanvasGroup = GameObject.Find("Dialogue System Canvas").GetComponent<CanvasGroup>();
+    }
+    public void OnEnable()
+    {
+        WaveEndDisplay += () => StartDialogue(CurrentWave);
     }
 
-    public void StartDialogue(WaveManager.Wave wave)
+    public void OnDisable()
+    {
+        WaveEndDisplay -= () => StartDialogue(CurrentWave);
+    }
+
+    public void StartDialogue(Wave wave)
     {
         if (wave.Dialogue is null) return;
 

@@ -5,15 +5,19 @@ using TMPro;
 public class SoulCounter : MonoBehaviour
 {
 	public TextMeshProUGUI text;
-	public void Start()
-	{
-		GameManager.instance.OnSoulsChanged += UpdateCounter;
+
+    public void Start()
+    {
         text.text = GameManager.instance.Souls.ToString();
     }
+    public void OnEnable()
+	{
+        GameManager.OnSoulsChanged += UpdateCounter;
+    }
 
-    public void OnDestroy()
+    public void OnDisable()
     {
-        GameManager.instance.OnSoulsChanged -= UpdateCounter;
+        GameManager.OnSoulsChanged -= UpdateCounter;
     }
 
     public void UpdateCounter()

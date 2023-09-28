@@ -49,6 +49,14 @@ public class InputSystem : MonoBehaviour
 
         sceneCamaera = Camera.main;
     }
+
+
+    private void OnDisable()
+    {
+        standardClick.started -= CheckForTower;
+        placementClick.started -= SetTowerDown;
+    }
+
     private void Update()
     {
         if (currentTowerModel != null)

@@ -6,15 +6,19 @@ using UnityEngine;
 public class MoneyCounter : MonoBehaviour
 {
     public TextMeshProUGUI text;
+    public void OnEnable()
+    {
+        GameManager.OnMoneyChanged += UpdateCounter;
+    }
+
     public void Start()
     {
-        GameManager.instance.OnMoneyChanged += UpdateCounter;
         text.text = GameManager.instance.Money.ToString();
     }
 
     public void OnDestroy()
     {
-        GameManager.instance.OnMoneyChanged -= UpdateCounter;
+        GameManager.OnMoneyChanged -= UpdateCounter;
     }
 
     public void UpdateCounter()

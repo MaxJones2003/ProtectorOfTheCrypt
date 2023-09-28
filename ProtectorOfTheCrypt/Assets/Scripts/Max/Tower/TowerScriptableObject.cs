@@ -95,6 +95,7 @@ public class TowerScriptableObject : ScriptableObject
     private void DoProjectileShoot(Vector3 ShootDirection, float towerDamageModifier)
     {
         Bullet bullet = Instantiate(ProjectileConfig.BulletPrefab).GetComponent<Bullet>();
+        bullet.tower = this;
         bullet.OnCollision += HandleBulletCollision;
         bullet.transform.position = ShootSystem.transform.position;
         bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform, ProjectileConfig.DamageType, towerDamageModifier);
@@ -139,7 +140,7 @@ public class TowerScriptableObject : ScriptableObject
     #endregion
 
     #region Projectile Impact
-    private void HandleBulletCollision(Bullet Bullet, Collision Collision)
+    public void HandleBulletCollision(Bullet Bullet, Collision Collision)
     {
         TrailRenderer trail = Bullet.GetComponentInChildren<TrailRenderer>();
         if(trail != null)

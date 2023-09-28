@@ -27,8 +27,18 @@ public class EnemyMovementHandler : MonoBehaviour
     public void Awake()
     {
         model = transform.GetChild(0);
+    }
+
+    public void OnEnable()
+    {
         GameManager.instance.OnGamePaused += UpdateGamePaused;
     }
+
+    private void OnDisable()
+    {
+        GameManager.instance.OnGamePaused -= UpdateGamePaused;
+    }
+
     public void Initialize(EnemyScriptableObject EnemyToSet, List<Vector3> Path, float BaseSpeed, Spawner _spawner)
     {
         enemy = EnemyToSet;
@@ -88,8 +98,5 @@ public class EnemyMovementHandler : MonoBehaviour
     {
         paused = isPaused;
     }
-    private void OnDestroy()
-    {
-        GameManager.instance.OnGamePaused -= UpdateGamePaused;
-    }
+    
 }

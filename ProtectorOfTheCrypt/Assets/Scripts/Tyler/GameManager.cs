@@ -6,8 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public event Action<bool> OnGamePaused;
-    public event Action OnSoulsChanged;
-    public event Action OnMoneyChanged;
+    public static event Action OnSoulsChanged;
+    public static event Action OnMoneyChanged;
 
     public static GameManager instance;
 

@@ -9,7 +9,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody Rigidbody;
-
+    public TowerScriptableObject tower;
     private bool isTracking = false;
     private Transform target;
     private float speed;
@@ -35,6 +35,19 @@ public class Bullet : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
         gameObject.layer = LayerMask.NameToLayer("Projectile");
         GameManager.instance.OnGamePaused += UpdateGamePaused;
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        GameManager.instance.OnGamePaused -= UpdateGamePaused;
+        OnCollision -= tower.HandleBulletCollision;
+        Rigidbody.velocity = Vector3.zero;
+        Rigidbody.angularVelocity = Vector3.zero;
+        isTracking = false;
+        target = null;
+        OnCollision = null;
+        Destroy(gameObject);
     }
 
     private void UpdateGamePaused(bool isPaused)
@@ -103,18 +116,9 @@ public class Bullet : MonoBehaviour
         OnCollision?.Invoke(this, Collision);
     }
 
-    private void OnDisable()
-    {
-        StopAllCoroutines();
-        Rigidbody.velocity = Vector3.zero;
-        Rigidbody.angularVelocity = Vector3.zero;
-        isTracking = false;
-        target = null;
-        OnCollision = null;
-        Destroy(gameObject);
-    }
+    
     private void OnDestroy()
     {
-        GameManager.instance.OnGamePaused -= UpdateGamePaused;
+        
     }
 }

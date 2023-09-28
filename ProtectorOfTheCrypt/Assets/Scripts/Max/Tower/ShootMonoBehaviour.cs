@@ -13,7 +13,7 @@ public class ShootMonoBehaviour : MonoBehaviour
     public float damageModifierUpgrade = 1f;
     public float shootTimeUpgrade = 0f;
     #endregion
-    public void Awake()
+    public void OnEnable()
     {
         GameManager.instance.OnGamePaused += UpdateGamePaused;
     }
@@ -21,7 +21,7 @@ public class ShootMonoBehaviour : MonoBehaviour
     {
         paused = isPaused;
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         GameManager.instance.OnGamePaused -= UpdateGamePaused;
     }
