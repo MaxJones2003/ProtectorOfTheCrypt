@@ -21,9 +21,16 @@ public class Seed : MonoBehaviour
     {
         gridManager = gameObject.GetComponent<GridManager>();
 
-        
+        if(pickRandomSeed)
+        {
+            GameSeed = CreateRandomSeed(16);
+            InitializeRandom();
+        }
+        else
+        {
             LoadCurrentLevel(/*Game Manager should probably keep track of the level somehow*/);
             InitializeRandom();
+        }
     }
 
     private void InitializeRandom()
@@ -63,7 +70,7 @@ public class Seed : MonoBehaviour
     {
         // Figure out what level we're on
         // Will do when we have more than one level
-        int levelNumber = 0;
+        int levelNumber = 1;
 
         // Based on the level number, determine the file path of the json to load
         string filePath = "/Level" + levelNumber.ToString();
