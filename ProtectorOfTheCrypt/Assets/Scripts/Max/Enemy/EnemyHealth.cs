@@ -45,7 +45,6 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         {
             _spawner.SpawnedObjects.Remove(gameObject);
             OnDeath?.Invoke(transform.position);
-
             if (GameManager.instance.GameMode is StoryMode)
             {
                 if (GameManager.instance.GameMode.CheckGameWon())
