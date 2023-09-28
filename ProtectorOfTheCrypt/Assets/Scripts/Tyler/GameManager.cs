@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
 
     public GameMode GameMode;
     public bool isPaused;
-    public int Souls { get; private set; } = 20;
-    public int Money { get; private set; } = 250;
+    public int Souls { get; private set; } = 50;
+    public int Money { get; private set; } = 100;
 
     public void Awake()
     {

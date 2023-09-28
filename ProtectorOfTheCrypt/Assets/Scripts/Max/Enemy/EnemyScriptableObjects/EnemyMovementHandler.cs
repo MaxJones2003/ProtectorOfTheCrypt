@@ -19,7 +19,7 @@ public class EnemyMovementHandler : MonoBehaviour
     [Header("Animation")]
     public float hopAngle = 15.0f;  
     public float hopSpeed = 2.0f;  
-    public float wobbleAmount = 5.0f;  
+    public float wobbleAmount = 12f;  
     private Quaternion originalRotation;
     private float timeElapsed = 0.0f;
 

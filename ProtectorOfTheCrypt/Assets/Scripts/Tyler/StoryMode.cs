@@ -4,7 +4,6 @@ using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(DialogueController))]
 public class StoryMode : GameMode
 {
     public WaveManager waveManager;

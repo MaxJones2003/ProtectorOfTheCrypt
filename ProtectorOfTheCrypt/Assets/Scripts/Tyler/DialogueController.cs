@@ -41,12 +41,12 @@ public class DialogueController : MonoBehaviour
     }
     public void OnEnable()
     {
-        WaveEndDisplay += () => StartDialogue(CurrentWave);
+        WaveEndDisplay += StartDialogue;
     }
 
     public void OnDisable()
     {
-        WaveEndDisplay -= () => StartDialogue(CurrentWave);
+        WaveEndDisplay -= StartDialogue;
     }
 
     public void StartDialogue(Wave wave)

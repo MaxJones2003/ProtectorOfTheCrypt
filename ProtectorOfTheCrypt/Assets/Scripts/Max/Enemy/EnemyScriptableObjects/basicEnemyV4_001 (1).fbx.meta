@@ -3,7 +3,62 @@ guid: 5d444b9d572f86c4bb368db7ed5dc72b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyBodyColor002_mat
+    second: {fileID: -6424722280019178986, guid: d0fa05450e9f7ee419cfa16ea883c60a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyBodyColor_mat
+    second: {fileID: 2100000, guid: a9d098abbb7f8cf48a0d99254fc671e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyFeatherColor_mat
+    second: {fileID: 6271573414225017425, guid: 6e48c70bcd3f35845a92692f941f2c5b, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyHelmet_mat
+    second: {fileID: -2896845377614940324, guid: d0fa05450e9f7ee419cfa16ea883c60a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyLeatherColor_mat
+    second: {fileID: 2219708638661225299, guid: d0fa05450e9f7ee419cfa16ea883c60a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyMetalColor_mat
+    second: {fileID: -2896845377614940324, guid: 9b489a6964fd9264c863e1a6b700d88a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyOffWhite_mat
+    second: {fileID: -6424722280019178986, guid: d0fa05450e9f7ee419cfa16ea883c60a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyVisor_mat
+    second: {fileID: -2896845377614940324, guid: d0fa05450e9f7ee419cfa16ea883c60a, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyWoodColor_mat
+    second: {fileID: 2100000, guid: de0429ce7d9cb344c89e4554f9280cd9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemy_blackColor_mat
+    second: {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemytWhiteColor_mat
+    second: {fileID: -3312517360192133750, guid: 9b489a6964fd9264c863e1a6b700d88a, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

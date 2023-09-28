@@ -10,10 +10,10 @@ public class WaveManager : MonoBehaviour
     [Header("Spawners")]
     public Spawner EnemySpawner;
 
-    public delegate void WaveStarted();
+    public delegate void WaveStarted(Wave wave);
     public static event WaveStarted WaveStartDisplay;
 
-    public delegate void WaveEnded();
+    public delegate void WaveEnded(Wave wave);
     public static event WaveEnded WaveEndDisplay;
 
     [System.Serializable]
@@ -53,15 +53,15 @@ public class WaveManager : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemySpawner.StoppedSpawningObjects += () => WaveCompleted();
-        GameManager.instance.OnGamePaused += (bool pause) => PauseSpawning(pause);
+        EnemySpawner.StoppedSpawningObjects += WaveCompleted;
+        GameManager.instance.OnGamePaused += PauseSpawning;
         SpawnWave();
     }
 
     private void OnDisable()
     {
-        EnemySpawner.StoppedSpawningObjects -= () => WaveCompleted();
-        GameManager.instance.OnGamePaused -= (bool pause) => PauseSpawning(pause);
+        EnemySpawner.StoppedSpawningObjects -= WaveCompleted;
+        GameManager.instance.OnGamePaused -= PauseSpawning;
     }
 
     private void SpawnWave()
@@ -80,7 +80,7 @@ public class WaveManager : MonoBehaviour
         state = SpawnState.SPAWNING;
         EnemySpawner.SpawnGroup(CurrentWave.EnemyGroup);
 
-        WaveStartDisplay?.Invoke();
+        WaveStartDisplay?.Invoke(CurrentWave);
     }
 
     private void PauseSpawning(bool hasPaused)
@@ -93,7 +93,7 @@ public class WaveManager : MonoBehaviour
 
     private void WaveCompleted()
     {
-        WaveEndDisplay?.Invoke();
+        WaveEndDisplay?.Invoke(CurrentWave);
 
         if (state == SpawnState.HALTED)
             return;
