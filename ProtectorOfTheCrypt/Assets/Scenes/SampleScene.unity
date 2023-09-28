@@ -1250,23 +1250,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
-      propertyPath: GameSeed
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
-      propertyPath: LevelNumber
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: LevelPrefab
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
-      propertyPath: pickRandomSeed
-      value: 0
+      propertyPath: levelPrefabs.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
-      propertyPath: levelPrefabs.Array.data[1]
+      propertyPath: levelPrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 6134882914831475532, guid: 5f9d46e6b794b8c41b2b9ab72026c801, type: 3}
     - target: {fileID: 5785639069706798447, guid: 39ab09966e46e1746b6ba55120933348, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-    private static readonly string SAVE_FOLDER = Application.dataPath + "/Levels";
+    private static readonly string SAVE_FOLDER = System.IO.Directory.GetCurrentDirectory() + "/Levels";
 
     public static void Save(string saveString, string fileName)
     {

@@ -63,47 +63,7 @@ public class SettingsManager : MonoBehaviour
             QualitySettings.vSyncCount = 0;
         }
 
-#if !UNITY_EDITOR
-        //Check if there is a key for the playerprefs for the resolution and set the int depending on it
-        if (PlayerPrefs.HasKey("resType"))
-            resolutionType = PlayerPrefs.GetInt("resType");
-        else
-            resolutionType = 1;
 
-        resDropdown.value = resolutionType;
-
-        switch (resDropdown.value)
-        {
-            case 0:
-                {
-                    Screen.SetResolution(1920, 1080, fullscreenToggle.isOn);
-                    PlayerPrefs.SetInt("resType", 1);
-                    resolutionType = 1;
-                    break;
-                }
-            case 1:
-                {
-                    Screen.SetResolution(1600, 900, fullscreenToggle.isOn);
-                    PlayerPrefs.SetInt("resType", 2);
-                    resolutionType = 2;
-                    break;
-                }
-            case 2:
-                {
-                    Screen.SetResolution(1366, 768, fullscreenToggle.isOn);
-                    PlayerPrefs.SetInt("resType", 3);
-                    resolutionType = 3;
-                    break;
-                }
-            case 3:
-                {
-                    Screen.SetResolution(1280, 720, fullscreenToggle.isOn);
-                    PlayerPrefs.SetInt("resType", 4);
-                    resolutionType = 3;
-                    break;
-                }
-        }
-#endif
 
     }
     void Start()

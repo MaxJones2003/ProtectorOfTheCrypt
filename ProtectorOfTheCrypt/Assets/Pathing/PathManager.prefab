@@ -127,12 +127,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452581a41f93ca54c94644f2f27a8c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickRandomSeed: 1
-  GameSeed: default
+  pickRandomSeed: 0
+  GameSeed: 
   LevelNumber: 0
   levelPrefabs:
   - {fileID: 3338072622709627720, guid: 84c2f9add59395149b1ba8365f10f25e, type: 3}
-  - {fileID: 6017438922373629892, guid: 0f1abf5727aa6964098998f5859c879e, type: 3}
+  - {fileID: 6134882914831475532, guid: 5f9d46e6b794b8c41b2b9ab72026c801, type: 3}
   - {fileID: 7210624234975989431, guid: 7e9f7d9c65bb03748a618b0b869c2bbc, type: 3}
   - {fileID: 2700959978039216161, guid: b2176bbb92c14c8478138f27e212b3ed, type: 3}
 --- !u!114 &6024401304573393069
@@ -281,6 +281,8 @@ MonoBehaviour:
   UILayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  UIButtons: {fileID: 0}
+  towerSelectionUI: {fileID: 0}
 --- !u!114 &8400491918763768993
 MonoBehaviour:
   m_ObjectHideFlags: 0
