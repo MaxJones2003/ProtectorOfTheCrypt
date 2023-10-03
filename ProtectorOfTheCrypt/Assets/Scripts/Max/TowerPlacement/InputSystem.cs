@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class InputSystem : MonoBehaviour
 {
+    private GridManager gridManager;
     [SerializeField] private List<TowerScriptableObject> PurchasableTowers;
     [SerializeField] private Grid grid;
 
@@ -39,6 +40,7 @@ public class InputSystem : MonoBehaviour
 
     private void Awake()
     {
+        gridManager = GetComponent<GridManager>();
         playerInput = GetComponent<PlayerInput>();
         playerInput.SwitchCurrentActionMap("StandardMode");
         standardClick = playerInput.actions["StandardMode/Click"];
@@ -64,7 +66,8 @@ public class InputSystem : MonoBehaviour
             Vector3 mousePosition = Vector3.zero;
             (mousePosition, hit) = GetSelectedMapPosition();
             Vector3Int gridPosition = grid.WorldToCell(mousePosition);
-            currentTowerModel.transform.position = grid.CellToWorld(gridPosition);
+            if (!gridManager.loadedEnemyPath.Contains(new Vector3(gridPosition.x, 1f, gridPosition.z)))
+                currentTowerModel.transform.position = grid.CellToWorld(gridPosition);
         }
     }
 

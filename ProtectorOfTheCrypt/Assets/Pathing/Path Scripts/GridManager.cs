@@ -24,6 +24,7 @@ public class GridManager : MonoBehaviour
     public GameObject loadedPath = null;
     public List<Vector3> loadedEnemyPath = new List<Vector3>();
 
+
     [SerializeField] private GameObject mapBoundPrefab;
     private void Awake()
     {
@@ -103,6 +104,7 @@ public class GridManager : MonoBehaviour
         {
             path.Add(new Vector3(point.x, 1f, point.y));
         }
+        loadedEnemyPath = path;
         SetUpEnemies(path);
     }
     private void SetUpEnemies(List<Vector3> path)
@@ -124,9 +126,7 @@ public class GridManager : MonoBehaviour
             pathTileCell.transform.parent = parent;
             pathTileCell.transform.Rotate(0f, pathCellObjects[neighborValue].yRotation, 0f);
             pathTileCell.transform.GetChild(0).gameObject.tag = "Enviornment";
-            //yield return null;
         }
-        //yield return null;
     }
 
     private void LaySceneryCells(Transform parent)
