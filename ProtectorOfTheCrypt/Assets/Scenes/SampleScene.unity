@@ -325,10 +325,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1551556798}
-    - target: {fileID: 4391316201998925238, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Pause
-      objectReference: {fileID: 0}
     - target: {fileID: 6071234219829746944, guid: f8b64a6b3ab7afe49a59a9c0c36ef19c, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -365,10 +361,6 @@ PrefabInstance:
     - target: {fileID: 4180832149050105836, guid: 21f3c558939877c408c55fd7694211a5, type: 3}
       propertyPath: m_Name
       value: GameOverCanvas 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8076273825323542468, guid: 21f3c558939877c408c55fd7694211a5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8591742387920304861, guid: 21f3c558939877c408c55fd7694211a5, type: 3}
       propertyPath: m_Pivot.x
@@ -576,10 +568,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1096824614}
     m_Modifications:
-    - target: {fileID: 650406768126351154, guid: 03d08b8b142e3814d9d843a9a06e803f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3732411611038469188, guid: 03d08b8b142e3814d9d843a9a06e803f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1538,10 +1526,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 266793114505269783, guid: 359fee0ed521e6249a377d683b735624, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5444312186916032917, guid: 359fee0ed521e6249a377d683b735624, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7317855348657421185, guid: 359fee0ed521e6249a377d683b735624, type: 3}
