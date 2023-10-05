@@ -9,17 +9,20 @@ public class PathGenerator
     /// </summary>
     private int width,height;
     private List<Vector2Int> pathCells;
+    private List<Vector2Int> invalidCells;
     private List<Vector2Int> route;
+    private Transform hazards;
 
     /// <summary>
     /// Constructor Function that creates a new path generator and sets its height and width. PathGenerator is NOT a Monobehavior
     /// </summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
-    public PathGenerator(int width, int height)
+    public PathGenerator(int width, int height, Transform hazards)
     {
         this.width = width;
         this.height = height;
+        this.hazards = hazards;
     }
 
     /// <summary>
@@ -29,7 +32,7 @@ public class PathGenerator
     public List<Vector2Int> GeneratePath()
     {
         pathCells = new List<Vector2Int>();
-
+        invalidCells = DetermineHazardPositions();
         int y = (int)(height / 2);
         int x = 0;
 
@@ -46,17 +49,17 @@ public class PathGenerator
             {
                 int move = Random.Range(0, 3);
                 // These prevent the path from going back on itself (if last time it went right, it cant go left this time)
-                if(move == 0 || x % 2 == 0 && CellIsEmpty(x+1, y) || x > (width - 2))
+                if(move == 0 || x % 2 == 0 && CellIsEmpty(x+1, y) && !IsPositionHazard(new Vector2Int(x + 1, y)) || x > (width - 2))
                 {
                     x++;
                     validMove = true;
                 }
-                else if(move == 1 && CellIsEmpty(x, y+1) && y < (height - 3))
+                else if(move == 1 && CellIsEmpty(x, y+1) && !IsPositionHazard(new Vector2Int(x, y + 1)) && y < (height - 3))
                 {
                     y++;
                     validMove = true;
                 }
-                else if(move == 2 && CellIsEmpty(x, y-1) && y > 2)
+                else if(move == 2 && CellIsEmpty(x, y-1) && !IsPositionHazard(new Vector2Int(x, y - 1)) && y > 2)
                 {
                     y--;
                     validMove = true;
@@ -67,6 +70,35 @@ public class PathGenerator
         return pathCells;
     }
 
+    private List<Vector2Int> DetermineHazardPositions()
+    {
+        List<Vector2Int> hazardPositions = new List<Vector2Int>();
+        List<Vector2Int> childRange = new List<Vector2Int>();
+        foreach (Transform child in hazards)
+        {
+            Vector3 pos = child.position;
+            Vector3 scale = child.localScale;
+
+            Vector2Int v2Pos = new Vector2Int((int)pos.x, (int)pos.z);
+            Vector2Int topLeftPos = new Vector2Int(v2Pos.x - (int)scale.x / 2, v2Pos.y + (int)scale.z / 2);
+            Vector2Int bottomRightPos = new Vector2Int(v2Pos.x + (int)scale.x / 2, v2Pos.y - (int)scale.z / 2);
+
+            for(int x = topLeftPos.x; x < bottomRightPos.x; x++)
+            {
+                for(int y = topLeftPos.y; y < bottomRightPos.y; y++)
+                    childRange.Add(new Vector2Int(x, y));
+            }
+            hazardPositions.AddRange(childRange);
+            childRange.Clear();
+        }
+        return new List<Vector2Int>();
+    }
+
+    private bool IsPositionHazard(Vector2Int newPos)
+    {
+        if(invalidCells.Contains(newPos)) return false;
+        return true;
+    }
     /// <summary>
     /// After the path was created, GenerateCrossroads looks at path positions and finds viable locations to add a loop to the path. This doesn't allow the loop to interect with the pre-existing path. There must be a gap between the old path and the new loop.
     /// </summary>

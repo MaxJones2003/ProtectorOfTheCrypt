@@ -6,6 +6,7 @@ public class GridManager : MonoBehaviour
 {
     public int gridWidth = 10;
     public int gridHeight = 8;
+    [SerializeField] private Transform hazards;
 
     [Tooltip("The lower the Min Path Length, the less Variation.")]
     public int minPathLength = 15;
@@ -42,7 +43,7 @@ public class GridManager : MonoBehaviour
     }
     private void Start()
     {
-        pathGenerator = new PathGenerator(gridWidth, gridHeight);
+        pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
         WaveManager = GetComponent<WaveManager>();
         
         if(loadedPath == null)
@@ -144,6 +145,26 @@ public class GridManager : MonoBehaviour
                     sceneryTileCell.transform.GetChild(0).gameObject.tag = "Enviornment";
                     //yield return null;
                 }
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (Application.isPlaying) return;
+        foreach (var point in EvauluateGridPoints())
+        {
+            Gizmos.DrawWireCube(point, new Vector3(1, 0, 1));
+        }
+    }
+
+    IEnumerable<Vector3> EvauluateGridPoints()
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            for(int z = 0; z < gridHeight; z++)
+            {
+                yield return new Vector3(x, 0f, z);
             }
         }
     }
