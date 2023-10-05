@@ -810,18 +810,10 @@ PrefabInstance:
       propertyPath: IGButtons
       value: 
       objectReference: {fileID: 2089620641}
-    - target: {fileID: 1134917408692199008, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1744542391884145218, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1232269}
-    - target: {fileID: 1744542391884145218, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenSettings
-      objectReference: {fileID: 0}
     - target: {fileID: 1884531179754702595, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1005,22 +997,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 52279016681617205, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1834369554826134763, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1834369554826134763, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1834369554826134763, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1834369554826134763, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7193702523471509205, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
