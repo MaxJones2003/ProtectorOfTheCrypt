@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: 6a2df9d0f8e66194285062bf0fe6c000
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_Black_mat_BaseMap
+    second: {fileID: 2800000, guid: 838cc4f15b4c00948a2c217999573476, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_BodyEyeBlack_mat_BaseMap
+    second: {fileID: 2800000, guid: d036369ff1bfd894fa5f94267bde5ce1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_BodyEye_mat_BaseMap
+    second: {fileID: 2800000, guid: d1ebfd5af859c1044935b87822b50a2f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_Buckle_mat_BaseMap
+    second: {fileID: 2800000, guid: d3e4886d8d74d57418758987ac805563, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_Buckle_mat_Normal
+    second: {fileID: 2800000, guid: 3fb0a00bf65209845834efa9674e380d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_Leather_mat_BaseMap
+    second: {fileID: 2800000, guid: 5b865d118bd8d584eae4ab18ccafea36, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_MainBody_mat_BaseMap
+    second: {fileID: 2800000, guid: 77d6ec94e036a254598685cd85325037, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_MainBody_mat_Normal
+    second: {fileID: 2800000, guid: 9aed6714f85ff754c879a20c86ac561e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_Pink_mat_BaseMap
+    second: {fileID: 2800000, guid: 1f47ff0a8b630e744bd70f9c1b680703, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldBlack_mat1_BaseMap
+    second: {fileID: 2800000, guid: 4aa96ea58a680a649b939bd6a3f55810, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldBody_mat_BaseMap
+    second: {fileID: 2800000, guid: df6a0a138516c70468809316c447c2fe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldBody_mat_Normal
+    second: {fileID: 2800000, guid: 5b0f182864ddfb849ac49ed15035ccb2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldEyeBlack_mat_BaseMap
+    second: {fileID: 2800000, guid: 44ff1fcb555e9e14fa458ba7e7621aed, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldEye_mat_BaseMap
+    second: {fileID: 2800000, guid: 894eaeddf8c209446a3e9d4d65d8a63d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldSpikes_mat_BaseMap
+    second: {fileID: 2800000, guid: 83cafa7b6dd0a2643a439a961327e86d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldSpikes_mat_Normal
+    second: {fileID: 2800000, guid: 5ffd306c2bf8a6e4ca79246243db4a70, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldTrim_mat_BaseMap
+    second: {fileID: 2800000, guid: 615e1751c445cc24397eb8835c033ee4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_ShieldTrim_mat_Normal
+    second: {fileID: 2800000, guid: 0bd88013a033ab6458e622c66390c6c3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_Spots_mat_BaseMap
+    second: {fileID: 2800000, guid: d99c888f11be02341a2922443619cbbe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_UnderBelly_mat_BaseMap
+    second: {fileID: 2800000, guid: 2283c77ad2b100646806cb58da91393f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_UnderBelly_mat_Normal
+    second: {fileID: 2800000, guid: 2e385cce00205924f9d96d5e6f1ba8d6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: shieldEnemyV1_001_SE_bone_mat5_BaseMap
+    second: {fileID: 2800000, guid: 90c57552548d9044b8a6731fad65f128, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
