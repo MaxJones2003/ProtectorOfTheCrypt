@@ -12,6 +12,8 @@ public class PathGenerator
     private List<Vector2Int> invalidCells;
     private List<Vector2Int> route;
     private Transform hazards;
+    private int maxTimesBacktracked = 25;
+    private int timesBacktracked;
 
     /// <summary>
     /// Constructor Function that creates a new path generator and sets its height and width. PathGenerator is NOT a Monobehavior
@@ -32,38 +34,61 @@ public class PathGenerator
     public List<Vector2Int> GeneratePath()
     {
         pathCells = new List<Vector2Int>();
+        invalidCells = new List<Vector2Int>();
         invalidCells = DetermineHazardPositions();
+
         int y = (int)(height / 2);
         int x = 0;
+        int index = 0;
 
-        // while the x value of the current path vector2int is less than the max width of the path
-        while (x < width)
+        // while the x value of the current path vector2int is less than the max width of the pathw
+        while (x < width )
         {
             // Adds a the current Vector2Int path position
             pathCells.Add(new Vector2Int(x,y));
-
+            index++;
             bool validMove = false;
 
             // Picks a new position to move to, either up down left or right one position
-            while(!validMove)
+            int attempts = 0;
+            while(!validMove && attempts < 10)
             {
                 int move = Random.Range(0, 3);
                 // These prevent the path from going back on itself (if last time it went right, it cant go left this time)
-                if(move == 0 || x % 2 == 0 && CellIsEmpty(x+1, y) && !IsPositionHazard(new Vector2Int(x + 1, y)) || x > (width - 2))
+                if(move == 0 && !CellIsHazard(x + 1, y) || x % 2 == 0 && CellIsEmpty(x + 1, y) || x > (width - 2))
                 {
                     x++;
                     validMove = true;
                 }
-                else if(move == 1 && CellIsEmpty(x, y+1) && !IsPositionHazard(new Vector2Int(x, y + 1)) && y < (height - 3))
+                else if(move == 1 && CellIsEmpty(x, y + 1) && !CellIsHazard(x, y + 1) && y < (height - 3))
                 {
                     y++;
                     validMove = true;
                 }
-                else if(move == 2 && CellIsEmpty(x, y-1) && !IsPositionHazard(new Vector2Int(x, y - 1)) && y > 2)
+                else if(move == 2 && CellIsEmpty(x, y - 1) && !CellIsHazard(x, y - 1) && y > 2)
                 {
                     y--;
                     validMove = true;
                 }
+                attempts++;
+            }
+            // Backtrack a few positions if this takes to many attempts
+            if (attempts >= 10)
+            {
+                if (timesBacktracked >= maxTimesBacktracked)
+                    return null;
+                int backtrackLimit = index - 5;
+                if(backtrackLimit < 1) backtrackLimit = 1;
+                x = pathCells[backtrackLimit].x;
+                y = pathCells[backtrackLimit].y;
+
+                for(int i = index-1; i > backtrackLimit; i--)
+                {
+                    index--;
+                    pathCells.RemoveAt(i);
+                }
+                timesBacktracked++;
+                Debug.Log(timesBacktracked);
             }
         }
 
@@ -74,6 +99,7 @@ public class PathGenerator
     {
         List<Vector2Int> hazardPositions = new List<Vector2Int>();
         List<Vector2Int> childRange = new List<Vector2Int>();
+        
         foreach (Transform child in hazards)
         {
             Vector3 pos = child.position;
@@ -82,23 +108,19 @@ public class PathGenerator
             Vector2Int v2Pos = new Vector2Int((int)pos.x, (int)pos.z);
             Vector2Int topLeftPos = new Vector2Int(v2Pos.x - (int)scale.x / 2, v2Pos.y + (int)scale.z / 2);
             Vector2Int bottomRightPos = new Vector2Int(v2Pos.x + (int)scale.x / 2, v2Pos.y - (int)scale.z / 2);
+            //Debug.Log($"TOPLEFT X: {topLeftPos.x} BOTRIGHT X: {bottomRightPos.x} TOPLEFT Z: {topLeftPos.y} BOTRIGHT Z: {bottomRightPos.y}");
 
-            for(int x = topLeftPos.x; x < bottomRightPos.x; x++)
-            {
-                for(int y = topLeftPos.y; y < bottomRightPos.y; y++)
+            for(int x = topLeftPos.x; x <= bottomRightPos.x; x++)
+                for(int y = topLeftPos.y; y >= bottomRightPos.y; y--)
                     childRange.Add(new Vector2Int(x, y));
-            }
+
             hazardPositions.AddRange(childRange);
             childRange.Clear();
         }
-        return new List<Vector2Int>();
+        return hazardPositions;
     }
 
-    private bool IsPositionHazard(Vector2Int newPos)
-    {
-        if(invalidCells.Contains(newPos)) return false;
-        return true;
-    }
+
     /// <summary>
     /// After the path was created, GenerateCrossroads looks at path positions and finds viable locations to add a loop to the path. This doesn't allow the loop to interect with the pre-existing path. There must be a gap between the old path and the new loop.
     /// </summary>
@@ -116,7 +138,8 @@ public class PathGenerator
                 && CellIsEmpty(pathCell.x-1, pathCell.y+2) && CellIsEmpty(pathCell.x, pathCell.y+2) && CellIsEmpty(pathCell.x+1, pathCell.y+2) && CellIsEmpty(pathCell.x+2, pathCell.y+2) && CellIsEmpty(pathCell.x+3, pathCell.y+2)
                 && CellIsEmpty(pathCell.x-1, pathCell.y+1) && CellIsEmpty(pathCell.x, pathCell.y+1) && CellIsEmpty(pathCell.x+1, pathCell.y+1) && CellIsEmpty(pathCell.x+2, pathCell.y+1) && CellIsEmpty(pathCell.x+3, pathCell.y+1)
                 && CellIsEmpty(pathCell.x+1, pathCell.y) && CellIsEmpty(pathCell.x+2, pathCell.y) && CellIsEmpty(pathCell.x+3, pathCell.y)
-                && CellIsEmpty(pathCell.x+1, pathCell.y-1) && CellIsEmpty(pathCell.x+2, pathCell.y-1))
+                && CellIsEmpty(pathCell.x+1, pathCell.y-1) && CellIsEmpty(pathCell.x+2, pathCell.y-1)
+                /* Now Check if the path being placed is a hazard */ && !CellIsHazard(pathCell.x + 1, pathCell.y) && !CellIsHazard(pathCell.x + 2, pathCell.y) && !CellIsHazard(pathCell.x + 2, pathCell.y + 1) && !CellIsHazard(pathCell.x + 2, pathCell.y + 2) && !CellIsHazard(pathCell.x + 1, pathCell.y + 2) && !CellIsHazard(pathCell.x, pathCell.y + 2) && !CellIsHazard(pathCell.x, pathCell.y + 1))
                 {
                     pathCells.InsertRange(i + 1, new List<Vector2Int> { new Vector2Int(pathCell.x + 1, pathCell.y), new Vector2Int(pathCell.x + 2, pathCell.y), new Vector2Int(pathCell.x + 2, pathCell.y + 1), new Vector2Int(pathCell.x + 2, pathCell.y + 2), new Vector2Int(pathCell.x + 1, pathCell.y + 2), new Vector2Int(pathCell.x, pathCell.y + 2), new Vector2Int(pathCell.x, pathCell.y + 1)});
                     return true;
@@ -126,7 +149,8 @@ public class PathGenerator
                 && CellIsEmpty(pathCell.x-1, pathCell.y-2) && CellIsEmpty(pathCell.x, pathCell.y-2) && CellIsEmpty(pathCell.x+1, pathCell.y-2) && CellIsEmpty(pathCell.x+2, pathCell.y-2) && CellIsEmpty(pathCell.x+3, pathCell.y-2)
                 && CellIsEmpty(pathCell.x-1, pathCell.y-1) && CellIsEmpty(pathCell.x, pathCell.y-1) && CellIsEmpty(pathCell.x+1, pathCell.y-1) && CellIsEmpty(pathCell.x+2, pathCell.y-1) && CellIsEmpty(pathCell.x+3, pathCell.y-1)
                 && CellIsEmpty(pathCell.x+1, pathCell.y) && CellIsEmpty(pathCell.x+2, pathCell.y) && CellIsEmpty(pathCell.x+3, pathCell.y)
-                && CellIsEmpty(pathCell.x+1, pathCell.y+1) && CellIsEmpty(pathCell.x+2, pathCell.y+1))
+                && CellIsEmpty(pathCell.x+1, pathCell.y+1) && CellIsEmpty(pathCell.x+2, pathCell.y+1) 
+                /* Now Check if the path being placed is a hazard */ && !CellIsHazard(pathCell.x+1, pathCell.y) && !CellIsHazard(pathCell.x+2, pathCell.y) && !CellIsHazard(pathCell.x+2, pathCell.y-1) && !CellIsHazard(pathCell.x + 2, pathCell.y-2) && !CellIsHazard(pathCell.x+1, pathCell.y-2) && !CellIsHazard(pathCell.x, pathCell.y-2) && !CellIsHazard(pathCell.x, pathCell.y-1))
                 {
                     pathCells.InsertRange(i + 1, new List<Vector2Int> { new Vector2Int(pathCell.x + 1, pathCell.y), new Vector2Int(pathCell.x + 2, pathCell.y), new Vector2Int(pathCell.x + 2, pathCell.y - 1), new Vector2Int(pathCell.x + 2, pathCell.y - 2), new Vector2Int(pathCell.x + 1, pathCell.y - 2), new Vector2Int(pathCell.x, pathCell.y - 2), new Vector2Int(pathCell.x, pathCell.y - 1)});
                     return true;
@@ -182,6 +206,10 @@ public class PathGenerator
         return route;
 
         
+    }
+    public bool CellIsHazard(int x, int y)
+    { 
+        return invalidCells.Contains(new Vector2Int(x, y));
     }
     public bool CellIsEmpty(int x, int y)
     {

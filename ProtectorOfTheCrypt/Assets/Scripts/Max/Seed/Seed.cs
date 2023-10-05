@@ -17,13 +17,16 @@ public class Seed : MonoBehaviour
     [Header("List of level prefabs")]
     [SerializeField] private List<GameObject> levelPrefabs;
 
+    [SerializeField] private bool LevelMaking_UseSameSeed = false;
+
     private void Awake() 
     {
         gridManager = gameObject.GetComponent<GridManager>();
 
         if(pickRandomSeed)
         {
-            GameSeed = CreateRandomSeed(16);
+            if(!LevelMaking_UseSameSeed) 
+                GameSeed = CreateRandomSeed(16);
             InitializeRandom();
         }
         else

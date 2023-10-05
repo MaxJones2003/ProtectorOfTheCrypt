@@ -136,7 +136,7 @@ public class GridManager : MonoBehaviour
         {
             for(int y = 0; y < gridHeight; y++)
             {
-                if(pathGenerator.CellIsEmpty(x, y))
+                if(pathGenerator.CellIsEmpty(x, y) && !pathGenerator.CellIsHazard(x, y))
                 {
                     int randomCellIndex = Random.Range(0, sceneryCellObjects.Length);
                     GameObject sceneryTileCell = Instantiate(sceneryCellObjects[randomCellIndex].cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);
