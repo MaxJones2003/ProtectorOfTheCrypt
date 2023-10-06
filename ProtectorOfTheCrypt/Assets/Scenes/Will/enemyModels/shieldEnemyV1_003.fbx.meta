@@ -5,6 +5,86 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_Black_mat
+    second: {fileID: 2100000, guid: c1cf8cca454f5234e99fd0e927c2d38e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_BodyEyeBlack_mat
+    second: {fileID: 2100000, guid: 25e68574288bdf445ad542f2f81c04ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_BodyEye_mat
+    second: {fileID: 2100000, guid: 43ffcd6d13d82d4419296bb75e8f9482, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_Buckle_mat
+    second: {fileID: 2100000, guid: 9b49977ea369af14c8aba9b48215eabb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_Leather_mat
+    second: {fileID: 2100000, guid: 52f8b181fbe0b7347a59c6344873c697, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_MainBody_mat
+    second: {fileID: 2100000, guid: 4b1e8fa88945e57428b4cf29848dc2f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_Pink_mat
+    second: {fileID: 2100000, guid: f917aea797f72ab469f3c0598e3e7459, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_ShieldBlack_mat1
+    second: {fileID: 2100000, guid: c61980d199aaf124da81c54dc6633352, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_ShieldBody_mat
+    second: {fileID: 2100000, guid: 8453fbd35311aa14d8db99f7cd6fff87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_ShieldEyeBlack_mat
+    second: {fileID: 2100000, guid: 58119bc46bc9c2a419295ddc8090cdd9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_ShieldEye_mat
+    second: {fileID: 2100000, guid: bc75e2453b7115247af3cf3051863d0e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_ShieldSpikes_mat
+    second: {fileID: 2100000, guid: cc353e9e6dc2e784780bcdf42d7acfdb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_ShieldTrim_mat
+    second: {fileID: 2100000, guid: 3698f3defa1047345b6c3848327015fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_Spots_mat
+    second: {fileID: 2100000, guid: 048ff40839a0ea8448930f9f1d3516ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_UnderBelly_mat
+    second: {fileID: 2100000, guid: c2415f5a89253954e98cfc410a3d1cd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SE_bone_mat5
+    second: {fileID: 2100000, guid: 37ac139bf99e1754d8d0852ddd53cd30, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: shieldEnemyV1_001_SE_Black_mat_BaseMap
