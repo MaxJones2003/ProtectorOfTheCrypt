@@ -88,7 +88,6 @@ public class PathGenerator
                     pathCells.RemoveAt(i);
                 }
                 timesBacktracked++;
-                Debug.Log(timesBacktracked);
             }
         }
 

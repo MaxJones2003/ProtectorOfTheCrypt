@@ -75,14 +75,22 @@ public class GridManager : MonoBehaviour
     {
         List<Vector2Int> pathCells = pathGenerator.GeneratePath();
         int pathSize = pathCells.Count;
-        while (pathGenerator.GenerateCrossroads())
+        int crossroadsAdded = 0;
+        while (pathGenerator.GenerateCrossroads() && crossroadsAdded < 2)
+        {
             pathSize = pathCells.Count;
+            crossroadsAdded++;
+        }
 
         while (pathSize < minPathLength || pathSize > maxPathLength)
         {
             pathCells = pathGenerator.GeneratePath();
-            while (pathGenerator.GenerateCrossroads())
+            crossroadsAdded = 0;
+            while (pathGenerator.GenerateCrossroads() && crossroadsAdded < 2)
+            {                
                 pathSize = pathCells.Count;
+                crossroadsAdded++;
+            }
         }
 
         StartCoroutine(CreateGrid(pathCells));
@@ -126,6 +134,7 @@ public class GridManager : MonoBehaviour
             GameObject pathTileCell = Instantiate(pathTile, new Vector3(pathCell.x, 0f, pathCell.y), Quaternion.identity);
             pathTileCell.transform.parent = parent;
             pathTileCell.transform.Rotate(0f, pathCellObjects[neighborValue].yRotation, 0f);
+            pathTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Path");
             pathTileCell.transform.GetChild(0).gameObject.tag = "Enviornment";
         }
     }

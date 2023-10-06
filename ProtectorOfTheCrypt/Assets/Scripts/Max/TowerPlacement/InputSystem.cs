@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using System;
 
 public class InputSystem : MonoBehaviour
 {
@@ -15,9 +16,9 @@ public class InputSystem : MonoBehaviour
 
     [SerializeField] private Camera sceneCamaera;
     private Vector3 lastPosition;
-
+    [SerializeField] private GameObject placementIndicator;
     [SerializeField] private LayerMask placementLayerMask;
-    [SerializeField] private LayerMask boundsLayerMask;
+    [SerializeField] private LayerMask gridLayerMask;
     [SerializeField] private LayerMask towerLayerMask;
     [SerializeField] private LayerMask UILayerMask;
 
@@ -37,6 +38,9 @@ public class InputSystem : MonoBehaviour
     private RaycastHit hit;
 
     private GameObject currentTowerForUpgrade;
+    private Vector3Int gridPosition;
+    private bool isIndicatorWhite = false;
+    private bool canPlaceTowers = false;
 
     private void Awake()
     {
@@ -50,6 +54,8 @@ public class InputSystem : MonoBehaviour
         placementClick.started += SetTowerDown;
 
         sceneCamaera = Camera.main;
+
+        placementIndicator = Instantiate(placementIndicator);
     }
 
 
@@ -61,13 +67,22 @@ public class InputSystem : MonoBehaviour
 
     private void Update()
     {
-        if (currentTowerModel != null)
+        if (GameManager.instance.isPaused) return;
+        if (currentTowerModel == null)
         {
-            Vector3 mousePosition = Vector3.zero;
-            (mousePosition, hit) = GetSelectedMapPosition();
-            Vector3Int gridPosition = grid.WorldToCell(mousePosition);
-            if (!gridManager.loadedEnemyPath.Contains(new Vector3(gridPosition.x, 1f, gridPosition.z)))
-                currentTowerModel.transform.position = grid.CellToWorld(gridPosition);
+            Vector3 mousePosition;
+            LayerMask layer;
+            (mousePosition, layer) = GetSelectedMapPosition();
+            gridPosition = grid.WorldToCell(mousePosition);
+            placementIndicator.transform.position = grid.CellToWorld(gridPosition);
+
+            // Check if the layer has changed and set the color accordingly
+            bool newIndicatorWhite = (layer & placementLayerMask) != 0;
+            if (newIndicatorWhite != isIndicatorWhite)
+            {
+                isIndicatorWhite = newIndicatorWhite;
+                CheckLayerAndSetColor();
+            }
         }
     }
 
@@ -97,22 +112,36 @@ public class InputSystem : MonoBehaviour
         playerInput.SwitchCurrentActionMap("TowerPlacementMode");
     }
 
-    public (Vector3, RaycastHit) GetSelectedMapPosition()
+    public (Vector3, LayerMask) GetSelectedMapPosition()
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = sceneCamaera.nearClipPlane;
         Ray ray = sceneCamaera.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, placementLayerMask))
+        LayerMask layer = LayerMask.NameToLayer("default");
+        if (Physics.Raycast(ray, out hit, 100, gridLayerMask))
         {
-            lastPosition = hit.transform.position;
+            lastPosition = hit.collider.transform.position;
+            lastPosition.y = 1f;
+            layer = 1 << hit.transform.gameObject.layer;
         }
-        else if (Physics.Raycast(ray, out hit, 100, boundsLayerMask))
+
+        return (lastPosition, layer);
+    }
+    private void CheckLayerAndSetColor()
+    {
+        if (isIndicatorWhite)
         {
-            lastPosition = hit.point;
-            lastPosition.y = 0;
+            // Set the material color to white
+            canPlaceTowers = true;
+            placementIndicator.GetComponent<MeshRenderer>().material.color = Color.white;
         }
-        return (lastPosition, hit);
+        else
+        {
+            canPlaceTowers = false;
+            // Set the material color to red
+            placementIndicator.GetComponent<MeshRenderer>().material.color = Color.red;
+        }
     }
 
     private TowerScriptableObject CreateNewTowerInstance(TowerScriptableObject originalTower)
@@ -178,6 +207,10 @@ public class InputSystem : MonoBehaviour
 
             UIButtons.SetActive(true);
             towerSelectionUI.SetActive(false);
+        }
+        else if(canPlaceTowers)
+        {
+            Debug.Log("Place Tower UI Popup");
         }
         else if (!Physics.Raycast(ray, 1000, UILayerMask))
         {
