@@ -9,9 +9,13 @@ using UnityEngine;
 public class WeaknessScriptableObject : ScriptableObject
 {
     /// <summary>
-    /// The types of element the enemy is weak to
+    /// The types of elements the enemy takes increased damage against
     /// </summary>
-
-
-    public TowerType[] Weaknesses;
+    [Tooltip("The types of elements the enemy takes increased damage against")]
+    public ElementType[] Weaknesses;
+    /// <summary>
+    /// The types of elements the enemy takes reduced damage against
+    /// </summary>
+    [Tooltip("The types of elements the enemy takes reduced damage against")]
+    public ElementType[] Strengths;
 }

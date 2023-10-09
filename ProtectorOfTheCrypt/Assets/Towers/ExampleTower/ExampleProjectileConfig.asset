@@ -16,6 +16,6 @@ MonoBehaviour:
   BulletSpeed: 20
   HitMask:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 4233
   FireRate: 2
   DamageType: 0

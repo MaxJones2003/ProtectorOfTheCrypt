@@ -5,5 +5,6 @@ public enum ElementType
     Basic,
     Fire,
     Ice,
-    Poison
+    Poison,
+    Explosive
 }

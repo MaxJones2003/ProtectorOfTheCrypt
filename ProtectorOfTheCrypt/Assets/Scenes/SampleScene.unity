@@ -1508,6 +1508,14 @@ PrefabInstance:
       propertyPath: placementInputManger
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: PurchasableTowers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: PurchasableTowers.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: bf90880a2d08b8b4ea8cde426e14770c, type: 2}
     - target: {fileID: 3638156756751218669, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: TimeBetweenSpawning
       value: 2
@@ -1520,6 +1528,22 @@ PrefabInstance:
       propertyPath: pickRandomSeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4673002648218141217, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: DefaultSurface
+      value: 
+      objectReference: {fileID: 11400000, guid: fb69a3a6e4144fc4a940105fa9190cf9, type: 2}
+    - target: {fileID: 4673002648218141217, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: Surfaces.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673002648218141217, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: Surfaces.Array.data[0].Albedo
+      value: 
+      objectReference: {fileID: 2800000, guid: a7be2fcab9d14fa45862debbafbb50fe, type: 3}
+    - target: {fileID: 4673002648218141217, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: Surfaces.Array.data[0].Surface
+      value: 
+      objectReference: {fileID: 11400000, guid: fb69a3a6e4144fc4a940105fa9190cf9, type: 2}
     - target: {fileID: 5785639069706798447, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneCamaera
       value: 

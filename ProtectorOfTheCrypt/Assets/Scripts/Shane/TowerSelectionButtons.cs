@@ -23,7 +23,7 @@ public class TowerSelectionButtons : MonoBehaviour
     public void Tower2(int price = 0)
     {
         if (GameManager.instance.RemoveMoney(price)) 
-            PlaceTowerRef.SelectTower("Bomber");                // Change the Name in ""s to match Bombers
+            PlaceTowerRef.SelectTower("ExplosiveTower");                // Change the Name in ""s to match Bombers
     }
 
     // Cancel() is to get rid of the Tower Selection Menu

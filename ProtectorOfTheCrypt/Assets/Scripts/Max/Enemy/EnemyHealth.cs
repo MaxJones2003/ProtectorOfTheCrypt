@@ -8,8 +8,8 @@ using UnityEngine;
 /// </summary>
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    public WeaknessScriptableObject Element;
-    public float _damageMultiplier = 10f;
+    private List<ElementType> strengths;
+    private List<ElementType> weaknesses;
 
     public float MaxHealth { get; set; }
     [SerializeField]public float CurrentHealth { get; set; }
@@ -21,14 +21,18 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private AudioClip deathSound;
 
-    public void Enable(float maxHealth, WeaknessScriptableObject element, float damageMultiplier, Spawner spawner, AudioClip audio) 
+    public void Enable(float maxHealth, WeaknessScriptableObject element, Spawner spawner, AudioClip audio) 
     {
         MaxHealth = maxHealth;
         CurrentHealth = MaxHealth;
-        Element = element;
-        _damageMultiplier = damageMultiplier;
         _spawner = spawner;
         deathSound = audio;
+        strengths = new();
+        weaknesses = new();
+        foreach(ElementType strength in element.Strengths)
+            strengths.Add(strength);
+        foreach(ElementType weakness in element.Weaknesses)
+            weaknesses.Add(weakness);
     }
 
     public void OnDestroy()
@@ -36,10 +40,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         AudioManager.instance.PlaySound(AudioManagerChannels.SoundEffectChannel, deathSound);
     }
 
-    public void TakeDamage(float Damage, ElementType DamageType, float DamageModifier)
+    public void TakeDamage(float Damage, ElementType[] DamageType)
     {
         float damageTaken = Damage * CompareElementTypes(DamageType);
-        damageTaken *= DamageModifier;
         // Makes sure the current health is never negative
         damageTaken = Mathf.Clamp(damageTaken, 0, CurrentHealth);
         CurrentHealth -= damageTaken;
@@ -63,15 +66,22 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
     }
 
-    private float CompareElementTypes(ElementType DamageType)
+    private float CompareElementTypes(ElementType[] DamageType)
     {
-        foreach(ElementType element in Element.Weaknesses) 
+        float damageMultiplier = 1f;
+        foreach(ElementType element in DamageType) 
         {
-            if(element == DamageType)
+            if(weaknesses.Contains(element))
             {
-                return _damageMultiplier;
+                damageMultiplier *= 2f;
+                damageMultiplier = Mathf.Min(damageMultiplier, 4);
+            }
+            else if(strengths.Contains(element))
+            {
+                damageMultiplier /= 2f;
+                damageMultiplier = Mathf.Max(damageMultiplier, 0.25f);
             }
         }
-        return 1f;
+        return damageMultiplier;
     }
 }

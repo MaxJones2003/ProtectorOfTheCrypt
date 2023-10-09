@@ -17,17 +17,68 @@ public class TowerUpgradeHandler : MonoBehaviour
         upgradeUI.SetActive(activate);
     }
 
-    public void UpgradeDamage()
+    public void UpgradeDamageAdd(float upgrade, int cost)
     {
-        if (GameManager.instance.RemoveMoney(25))
+        if (!GameManager.instance.RemoveMoney(cost)) return;
+        AddDamageModifier damageModifier = new()
         {
-            gameObject.GetComponent<ShootMonoBehaviour>().damageModifierUpgrade += 0.2f;
-            gameObject.GetComponent<ShootMonoBehaviour>().shootTimeUpgrade += 0.1f;
-            gameObject.GetComponent<ShootMonoBehaviour>().shootTimeUpgrade = Mathf.Clamp(gameObject.GetComponent<ShootMonoBehaviour>().shootTimeUpgrade, 0f, 1f);
-        }
-        
+            Amount = upgrade,
+            AttributeName = "DamageConfig/DamageCurve"
+        };
+        damageModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
     }
-
+    public void UpgradeDamageMultiply(float upgrade, int cost)
+    {
+        if (!GameManager.instance.RemoveMoney(cost)) return;
+        MultiplyDamageModifier damageModifier = new()
+        {
+            Amount = upgrade,
+            AttributeName = "DamageConfig/DamageCurve"
+        };
+        damageModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
+    }
+    public void UpgradeAOEDamageAdd(float upgrade, int cost)
+    {
+        if (!GameManager.instance.RemoveMoney(cost)) return;
+        AddAOEDamageModifier damageModifier = new()
+        {
+            Amount = upgrade,
+            AttributeName = "DamageConfig/AOEDamage"
+        };
+        damageModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
+        gameObject.GetComponent<ShootMonoBehaviour>().SetExplosiveDamage();
+    }
+    public void UpgradeAOERangeAdd(float upgrade, int cost)
+    {
+        if (!GameManager.instance.RemoveMoney(cost)) return;
+        AddRangeModifier rangeModifier = new()
+        {
+            Amount = upgrade,
+            AttributeName = "DamageConfig/AOERange"
+        };
+        rangeModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
+        gameObject.GetComponent<ShootMonoBehaviour>().SetExplosiveDamage();
+    }
+    public void UpgradeRangeAdd(float upgrade, int cost)
+    {
+        if (!GameManager.instance.RemoveMoney(cost)) return;
+        AddRangeModifier rangeModifier = new()
+        {
+            Amount = upgrade,
+            AttributeName = "ProjectileConfig/Range"
+        };
+        rangeModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
+    }
+    public void UpgradeFireRateSubtract(float upgrade, int cost)
+    {
+        if (!GameManager.instance.RemoveMoney(cost)) return;
+        SubtractFireRateModifier fireRateModifier = new()
+        {
+            Amount = upgrade,
+            AttributeName = "ProjectileConfig/FireRate"
+        };
+        fireRateModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
+    }
     public void SellTower()
     {
         GameManager.instance.RemoveMoney(-5);

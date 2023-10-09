@@ -8,11 +8,16 @@ public class ShootMonoBehaviour : MonoBehaviour
     public TowerScriptableObject tower;
     private bool paused;
 
+    private Transform projectileSpawnPoint;
 
-    #region Upgrades
-    public float damageModifierUpgrade = 1f;
-    public float shootTimeUpgrade = 0f;
-    #endregion
+
+    public void Activate(TowerScriptableObject Tower)
+    {
+        projectileSpawnPoint = transform.Find("ProjectileSpawnpoint");
+        tower = Tower;
+        tower = tower.Clone() as TowerScriptableObject;
+        if(tower.Name == "ExplosiveTower") IsExplosive();
+    }
     public void OnEnable()
     {
         GameManager.instance.OnGamePaused += UpdateGamePaused;
@@ -30,6 +35,29 @@ public class ShootMonoBehaviour : MonoBehaviour
         if(paused)
             return;
         
-        tower.Shoot(damageModifierUpgrade, shootTimeUpgrade);
+        tower.Shoot(projectileSpawnPoint.position);
+    }
+
+    private void IsExplosive()
+    {
+        new ImpactTypeModifier()
+        {
+            Amount = tower.ImpactTypeOverride
+        }.Apply(tower);
+
+        SetExplosiveDamage();
+    }
+
+    public void SetExplosiveDamage()
+    {
+        tower.BulletImpactEffects = new ICollisionHandler[]
+        {
+            new Explode(
+                tower.DamageConfig.AOERange,
+                new AnimationCurve(new Keyframe[] { new Keyframe(0, 1), new Keyframe(1, 1) }), // No damage fall off atm, lowering the y value of the second keyframe will add damage fall off
+                tower.DamageConfig.AOEDamage,
+                10
+            )
+        };
     }
 }

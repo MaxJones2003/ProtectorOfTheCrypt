@@ -41,6 +41,7 @@ public class InputSystem : MonoBehaviour
     private Vector3Int gridPosition;
     private bool isIndicatorWhite = false;
     private bool canPlaceTowers = false;
+    public bool isTowerPlacementUIActive = false;
 
     private void Awake()
     {
@@ -68,7 +69,7 @@ public class InputSystem : MonoBehaviour
     private void Update()
     {
         if (GameManager.instance.isPaused) return;
-        if (currentTowerModel == null)
+        if (currentTowerModel == null && !isTowerPlacementUIActive)
         {
             Vector3 mousePosition;
             LayerMask layer;
@@ -103,13 +104,29 @@ public class InputSystem : MonoBehaviour
         }
 
         // Spawn the model
-        TowerScriptableObject newTowerInstance = CreateNewTowerInstance(tower);
-        currentTowerScriptableObject = newTowerInstance;
-        currentTowerModel = currentTowerScriptableObject.SpawnModel(this);
+        
+        currentTowerScriptableObject = tower;
+        currentTowerModel = currentTowerScriptableObject.SpawnModel(this, placementIndicator.transform.position);
         towerCurrentlySelected = true;
 
         // Change the action map to tower placement mode
         playerInput.SwitchCurrentActionMap("TowerPlacementMode");
+        if(GameManager.instance.isPaused)
+        {
+            CancelTowerPlacement();
+            return;
+        }
+        if (!towerCurrentlySelected)
+            return;
+        currentTowerScriptableObject.Spawn();
+        currentTowerModel.AddComponent<ShootMonoBehaviour>().Activate(currentTowerScriptableObject);
+        currentTowerModel = null;
+        currentTowerScriptableObject = null;
+        towerCurrentlySelected = false;
+        
+
+        // Return to standard mode action map
+        playerInput.SwitchCurrentActionMap("StandardMode");
     }
 
     public (Vector3, LayerMask) GetSelectedMapPosition()
@@ -144,12 +161,6 @@ public class InputSystem : MonoBehaviour
         }
     }
 
-    private TowerScriptableObject CreateNewTowerInstance(TowerScriptableObject originalTower)
-    {
-        TowerScriptableObject newTowerInstance = Instantiate(originalTower);
-        // Set any additional properties or configurations for the new tower instance if needed
-        return newTowerInstance;
-    }
 
     /// <summary>
     /// If the player has a selected tower, they may choose to cancel the selection, this destroys the currentTower and stops the IEnumerator responsible for updateing the tower position.
@@ -210,7 +221,7 @@ public class InputSystem : MonoBehaviour
         }
         else if(canPlaceTowers)
         {
-            Debug.Log("Place Tower UI Popup");
+            SelectTower("ExplosiveTower");
         }
         else if (!Physics.Raycast(ray, 1000, UILayerMask))
         {

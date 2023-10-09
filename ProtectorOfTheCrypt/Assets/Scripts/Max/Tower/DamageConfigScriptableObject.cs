@@ -7,9 +7,11 @@ using static UnityEngine.ParticleSystem;
 /// Contains a DamageCurve. You can use the curve to add a damage falloff or the constant for a set damage.
 /// </summary>
 [CreateAssetMenu(fileName = "Damage Config", menuName = "Towers/Damage Config", order = 1)]
-public class DamageConfigScriptableObject : ScriptableObject
+public class DamageConfigScriptableObject : ScriptableObject, System.ICloneable
 {
     public MinMaxCurve DamageCurve;
+    public float AOEDamage;
+    public float AOERange;
 
     private void Reset()
     {
@@ -19,5 +21,13 @@ public class DamageConfigScriptableObject : ScriptableObject
     public int GetDamage(float Distance = 0)
     {
         return Mathf.CeilToInt(DamageCurve.Evaluate(Distance, Random.value));
+    }
+
+    public object Clone()
+    {
+        DamageConfigScriptableObject config = CreateInstance<DamageConfigScriptableObject>();
+        
+        config.DamageCurve = DamageCurve;
+        return config;
     }
 }

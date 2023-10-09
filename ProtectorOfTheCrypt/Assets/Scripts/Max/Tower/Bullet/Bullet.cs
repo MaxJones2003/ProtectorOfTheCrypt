@@ -14,7 +14,6 @@ public class Bullet : MonoBehaviour
     private Transform target;
     private float speed;
     private Vector3 direction;
-    public float damageModifier;
 
     [field: SerializeField]
     public Vector3 SpawnLocation
@@ -78,13 +77,12 @@ public class Bullet : MonoBehaviour
     /// </summary>
     /// <param name="Speed"></param>
     /// <param name="Target"></param>
-    public void Spawn(float Speed, Transform Target, ElementType DamageType, float DamageModifier)
+    public void Spawn(float Speed, Transform Target)
     {
         SpawnLocation = transform.position;
         speed = Speed;
         target = Target;
         isTracking = true;
-        damageModifier = DamageModifier;
         StartCoroutine(DelayedDisable(DelayedDisableTime));
     }
 

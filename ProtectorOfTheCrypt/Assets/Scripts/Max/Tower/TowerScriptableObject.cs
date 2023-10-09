@@ -8,7 +8,7 @@ using UnityEngine.Pool;
 /// Combines all of the Scriptable Objects necessary to create and operate a tower and handles finding and shooting at enemies.
 /// </summary>
 [CreateAssetMenu(fileName = "Tower", menuName = "Towers/Tower", order = 0)]
-public class TowerScriptableObject : ScriptableObject 
+public class TowerScriptableObject : ScriptableObject, ICloneable
 {
     public ImpactType ImpactType;
     public TowerType Type;
@@ -21,8 +21,9 @@ public class TowerScriptableObject : ScriptableObject
     public ProjectileConfigurationScriptableObject ProjectileConfig;
     public TrailConfigurationScriptableObject TrailConfig;
     public AuidoConfigScriptableObject AudioConfig;
-
     
+    public ImpactType ImpactTypeOverride;
+    public ICollisionHandler[] BulletImpactEffects = new ICollisionHandler[0];
     private MonoBehaviour ActiveMonoBehaviour;
     private GameObject Model;
     private GameObject ProjectileSpawnpoint;
@@ -32,16 +33,13 @@ public class TowerScriptableObject : ScriptableObject
     private ObjectPool BulletPool;
     private ObjectPool<TrailRenderer> TrailPool;
 
-    public float range = 20f;
     private GameObject closestEnemy;
-    
-    public GameObject SpawnModel(MonoBehaviour ActiveMonoBehaviour)
+    private int enemyLayerMask;
+    public GameObject SpawnModel(MonoBehaviour ActiveMonoBehaviour, Vector3 position)
     {
         this.ActiveMonoBehaviour = ActiveMonoBehaviour;
 
-        Model = Instantiate(ModelPrefab);
-        Model.transform.localPosition = SpawnPoint;
-        Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
+        Model = Instantiate(ModelPrefab, position, Quaternion.Euler(SpawnRotation));
 
         return Model;
     }
@@ -55,26 +53,26 @@ public class TowerScriptableObject : ScriptableObject
 
     public void Spawn()
     {
-        LastShootTime = 0;
         TrailPool = new ObjectPool<TrailRenderer>(CreateTrail);
 
-        BulletPool = ObjectPool.CreateInstance(ProjectileConfig.BulletPrefab.GetComponent<PoolableObject>(), 1);
+        //BulletPool = ObjectPool.CreateInstance(ProjectileConfig.BulletPrefab.GetComponent<PoolableObject>(), 1);
 
         ProjectileSpawnpoint = Model.transform.Find("ProjectileSpawnpoint").gameObject;
-
+        enemyLayerMask = LayerMask.GetMask("Enemy");
         ShootSystem = ProjectileSpawnpoint.GetComponent<ParticleSystem>();
+        
         ShootingAudioSource = Model.GetComponent<AudioSource>();
     }
     #region Shooting
-    public void Shoot(float towerDamageModifier, float shootSpeedUpgrade)
+    public void Shoot(Vector3 projectileSpawnPoint)
     {
         if(Time.time > ProjectileConfig.FireRate + LastShootTime)
         {
             Vector3 shootDirection;
             bool canShoot = true;
-            if(closestEnemy == null || Vector3.Distance(ShootSystem.transform.position, closestEnemy.transform.position) >= range)
+            if(closestEnemy == null || Vector3.Distance(ShootSystem.transform.position, closestEnemy.transform.position) >= ProjectileConfig.Range)
             {
-                FindClosestEnemy(out shootDirection, out canShoot);
+                FindClosestEnemy(out shootDirection, out canShoot, projectileSpawnPoint);
             }
             else
             {
@@ -83,30 +81,30 @@ public class TowerScriptableObject : ScriptableObject
             if(canShoot)
             {
                 //AudioConfig.PlayShootingClip(ShootingAudioSource);
-                LastShootTime = Time.time - shootSpeedUpgrade;
+                LastShootTime = Time.time;
                 ShootSystem.Play();
                                     
                 if(shootDirection != Vector3.zero)
-                    DoProjectileShoot(shootDirection, towerDamageModifier);                
+                    DoProjectileShoot(shootDirection);                
             }
         }
     }
 
-    private void DoProjectileShoot(Vector3 ShootDirection, float towerDamageModifier)
+    private void DoProjectileShoot(Vector3 ShootDirection)
     {
         Bullet bullet = Instantiate(ProjectileConfig.BulletPrefab).GetComponent<Bullet>();
         bullet.tower = this;
         bullet.OnCollision += HandleBulletCollision;
         bullet.transform.position = ShootSystem.transform.position;
-        bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform, ProjectileConfig.DamageType, towerDamageModifier);
-        TrailRenderer trail = TrailPool.Get();
+        bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform);
+        /* TrailRenderer trail = TrailPool.Get();
         if(trail != null)
         {
             trail.transform.SetParent(bullet.transform, false);
             trail.transform.localPosition = Vector3.zero;
             trail.emitting = true;
             trail.gameObject.SetActive(true);
-        }
+        } */
     }
         /*Object Pooling Projectile
         Bullet bullet = BulletPool.GetObject().GetComponent<Bullet>();
@@ -115,28 +113,38 @@ public class TowerScriptableObject : ScriptableObject
         bullet.transform.position = ShootSystem.transform.position;
         bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform, ProjectileConfig.DamageType);*/
 
-    private void FindClosestEnemy(out Vector3 directionToEnemy, out bool targetInRange)
+    private void FindClosestEnemy(out Vector3 directionToEnemy, out bool targetInRange, Vector3 origin)
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        float closestDistance = Mathf.Infinity;
         directionToEnemy = Vector3.zero;
         targetInRange = false;
 
-        foreach (GameObject enemy in enemies)
-        {
-            float distanceToEnemy = Vector3.Distance(ShootSystem.transform.position, enemy.transform.position);
+        float closestDistance = Mathf.Infinity;
 
-            if (distanceToEnemy < closestDistance && distanceToEnemy <= range)
+        RaycastHit[] hits = Physics.SphereCastAll(origin, ProjectileConfig.Range, Vector3.up);
+
+        foreach (var hit in hits)
+        {
+            GameObject hitObject = hit.collider.gameObject;
+
+            // Check if the hitObject is not null
+            if (hitObject != null)
             {
-                closestEnemy = enemy;
-                closestDistance = distanceToEnemy;
-                directionToEnemy = (closestEnemy.transform.position - ShootSystem.transform.position).normalized;
-                targetInRange = true;
+                if(hitObject.CompareTag("Enemy"))
+                {
+                    float distanceToEnemy = Vector3.Distance(origin, hitObject.transform.position);
+
+                    if (distanceToEnemy < closestDistance)
+                    {
+                        closestEnemy = hitObject;
+                        closestDistance = distanceToEnemy;
+                        directionToEnemy = (closestEnemy.transform.position - origin).normalized;
+                        targetInRange = true;
+                    }
+                }
             }
         }
-        
     }
+
     #endregion
 
     #region Projectile Impact
@@ -160,13 +168,12 @@ public class TowerScriptableObject : ScriptableObject
                 Vector3.Distance(contactPoint.point, Bullet.SpawnLocation),
                 contactPoint.point,
                 contactPoint.normal,
-                contactPoint.otherCollider,
-                Bullet.damageModifier
+                contactPoint.otherCollider
             );
         }
     }
 
-    private void HandleBulletImpact(float DistanceTraveled, Vector3 HitLocation, Vector3 HitNormal, Collider HitCollider, float DamageModifier)
+    private void HandleBulletImpact(float DistanceTraveled, Vector3 HitLocation, Vector3 HitNormal, Collider HitCollider)
     {
         SurfaceManager.Instance.HandleImpact(
             HitCollider.gameObject,
@@ -178,7 +185,11 @@ public class TowerScriptableObject : ScriptableObject
 
         if(HitCollider.TryGetComponent(out IDamageable damageable))
         {
-            damageable.TakeDamage(DamageConfig.GetDamage(DistanceTraveled), ProjectileConfig.DamageType, DamageModifier);
+            damageable.TakeDamage(DamageConfig.GetDamage(DistanceTraveled), ProjectileConfig.DamageType);
+        }
+        foreach(ICollisionHandler handler in BulletImpactEffects)
+        {
+            handler.HandleImpact(HitCollider, HitLocation, HitNormal, this, ProjectileConfig.DamageType);
         }
     }
     #endregion
@@ -207,6 +218,30 @@ public class TowerScriptableObject : ScriptableObject
         Trail.emitting = false;
         Trail.gameObject.SetActive(false);
         TrailPool.Release(Trail);
+    }
+
+    public object Clone()
+    {
+        TowerScriptableObject config = CreateInstance<TowerScriptableObject>();
+
+        config.ImpactType = ImpactType;
+        config.Type = Type;
+        config.Name = Name;
+        config.DamageConfig = DamageConfig.Clone() as DamageConfigScriptableObject;
+        config.ProjectileConfig = ProjectileConfig.Clone() as ProjectileConfigurationScriptableObject;
+        config.TrailConfig = TrailConfig.Clone() as TrailConfigurationScriptableObject;
+        config.AudioConfig = AudioConfig.Clone() as AuidoConfigScriptableObject;
+
+        config.ModelPrefab = ModelPrefab;
+        config.SpawnPoint = SpawnPoint;
+        config.SpawnRotation = SpawnRotation;
+
+        config.ProjectileSpawnpoint = ProjectileSpawnpoint;
+        config.ShootSystem = ShootSystem;
+
+        config.ImpactTypeOverride = ImpactTypeOverride;
+
+        return config;
     }
     #endregion
 }
