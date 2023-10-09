@@ -24,6 +24,7 @@ public class EnemyScriptableObject : ScriptableObject
 
         Model = Instantiate(ModelPrefab);
         Model.transform.localPosition = Path[0];
+        Model.layer = LayerMask.NameToLayer("Enemy");
         Model.AddComponent<EnemyMovementHandler>().Initialize(this, Path, BaseSpeed, Spawner);
 
         Model.AddComponent<EnemyHealth>().Enable(BaseHealth, ElementType, Spawner, deathSound);

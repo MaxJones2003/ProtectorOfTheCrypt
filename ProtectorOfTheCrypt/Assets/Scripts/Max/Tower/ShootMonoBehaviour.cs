@@ -56,7 +56,7 @@ public class ShootMonoBehaviour : MonoBehaviour
                 tower.DamageConfig.AOERange,
                 new AnimationCurve(new Keyframe[] { new Keyframe(0, 1), new Keyframe(1, 1) }), // No damage fall off atm, lowering the y value of the second keyframe will add damage fall off
                 tower.DamageConfig.AOEDamage,
-                10
+                20
             )
         };
     }

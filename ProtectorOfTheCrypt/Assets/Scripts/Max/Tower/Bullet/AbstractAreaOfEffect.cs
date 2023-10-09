@@ -33,6 +33,7 @@ public abstract class AbstractAreaOfEffect : ICollisionHandler
         {
             if (HitObjects[i].TryGetComponent(out IDamageable damageable))
             {
+                Debug.Log("Explosion Hit");
                 float distance = Vector3.Distance(HitPosition, HitObjects[i].ClosestPoint(HitPosition));
                 damageable.TakeDamage(
                     Mathf.CeilToInt(BaseDamage * DamageFallOff.Evaluate(distance / Radius)),

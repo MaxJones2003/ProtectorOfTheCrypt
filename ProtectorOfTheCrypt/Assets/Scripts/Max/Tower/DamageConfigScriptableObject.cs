@@ -27,7 +27,7 @@ public class DamageConfigScriptableObject : ScriptableObject, System.ICloneable
     {
         DamageConfigScriptableObject config = CreateInstance<DamageConfigScriptableObject>();
         
-        config.DamageCurve = DamageCurve;
+        Utilities.CopyValues(this, config);
         return config;
     }
 }
