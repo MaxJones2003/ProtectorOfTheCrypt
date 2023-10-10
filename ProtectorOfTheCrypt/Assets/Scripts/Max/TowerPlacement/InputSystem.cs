@@ -43,6 +43,9 @@ public class InputSystem : MonoBehaviour
     private bool canPlaceTowers = false;
     public bool isTowerPlacementUIActive = false;
 
+    // Ref for InGameTowerSelection
+    public GameObject IGTS_UI;
+
     private void Awake()
     {
         gridManager = GetComponent<GridManager>();
@@ -104,14 +107,14 @@ public class InputSystem : MonoBehaviour
         }
 
         // Spawn the model
-        
+
         currentTowerScriptableObject = tower;
         currentTowerModel = currentTowerScriptableObject.SpawnModel(this, placementIndicator.transform.position);
         towerCurrentlySelected = true;
 
         // Change the action map to tower placement mode
         playerInput.SwitchCurrentActionMap("TowerPlacementMode");
-        if(GameManager.instance.isPaused)
+        if (GameManager.instance.isPaused)
         {
             CancelTowerPlacement();
             return;
@@ -123,7 +126,7 @@ public class InputSystem : MonoBehaviour
         currentTowerModel = null;
         currentTowerScriptableObject = null;
         towerCurrentlySelected = false;
-        
+
 
         // Return to standard mode action map
         playerInput.SwitchCurrentActionMap("StandardMode");
@@ -180,7 +183,7 @@ public class InputSystem : MonoBehaviour
     /// </summary>
     public void SetTowerDown(InputAction.CallbackContext ctx)
     {
-        if(GameManager.instance.isPaused)
+        if (GameManager.instance.isPaused)
         {
             CancelTowerPlacement();
             return;
@@ -219,9 +222,11 @@ public class InputSystem : MonoBehaviour
             UIButtons.SetActive(true);
             towerSelectionUI.SetActive(false);
         }
-        else if(canPlaceTowers)
+        else if (canPlaceTowers)
         {
-            SelectTower("ExplosiveTower");
+            // Activate IGTS ui
+            IGTS_UI.SetActive(true);
+            //SelectTower("ExplosiveTower");
         }
         else if (!Physics.Raycast(ray, 1000, UILayerMask))
         {
@@ -232,7 +237,7 @@ public class InputSystem : MonoBehaviour
         }
     }
 
-    
+
     #endregion
 }
 

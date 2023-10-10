@@ -137,10 +137,10 @@ RectTransform:
   m_Father: {fileID: 8438530277344382223}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 31.447506, y: -9.82275}
+  m_SizeDelta: {x: 62.89501, y: 19.6455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7943699491478146451
 CanvasRenderer:
@@ -223,7 +223,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9105817539777991955}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2382989155531198778}
+        m_TargetAssemblyTypeName: IGTS_Buttons, Assembly-CSharp
+        m_MethodName: SpawnArchers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3533762887081334606
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +435,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3371010885077862654}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2382989155531198778}
+        m_TargetAssemblyTypeName: IGTS_Buttons, Assembly-CSharp
+        m_MethodName: CancelButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4297421592331377769
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,13 +533,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2702384789181557586}
+  - component: {fileID: 2382989155531198778}
   m_Layer: 0
   m_Name: InGameTowerSelectionUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2702384789181557586
 Transform:
   m_ObjectHideFlags: 0
@@ -532,6 +557,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2382989155531198778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4455301952300251016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4acb292ffd3c444c9264da41febae13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IGTS: {fileID: 4455301952300251016}
 --- !u!1 &4796684655750247827
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,10 +709,10 @@ RectTransform:
   m_Father: {fileID: 8438530277344382223}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 31.447506, y: -29.46825}
+  m_SizeDelta: {x: 62.89501, y: 19.6455}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5717981524847567764
 CanvasRenderer:
@@ -757,4 +795,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9191442900008144877}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2382989155531198778}
+        m_TargetAssemblyTypeName: IGTS_Buttons, Assembly-CSharp
+        m_MethodName: SpawnBombers
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
