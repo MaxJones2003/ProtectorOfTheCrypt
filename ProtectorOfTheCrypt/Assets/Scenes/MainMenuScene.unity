@@ -1653,9 +1653,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5465818343934484191, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5465818343934484191, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5999420096281497963, guid: 359fee0ed521e6249a377d683b735624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301970391296090368, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7301970391296090368, guid: 359fee0ed521e6249a377d683b735624, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7317855348657421185, guid: 359fee0ed521e6249a377d683b735624, type: 3}
       propertyPath: MainReference

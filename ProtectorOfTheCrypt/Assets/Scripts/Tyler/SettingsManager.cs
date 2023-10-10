@@ -105,29 +105,27 @@ public class SettingsManager : MonoBehaviour
     /// <summary>
     /// Adjusts fullscreen based on the parameter
     /// </summary>
-    public void AdjustFullscreen(bool isFullscreenOn)
+    public void AdjustFullscreen()
     {
-        Screen.fullScreen = isFullscreenOn;
-
-        if (isFullscreenOn == false)
+        Screen.fullScreen = fullscreenToggle.isOn;
+        if (!fullscreenToggle.isOn)
         {
-            isFullscreenOn = false;
             PlayerPrefs.SetInt("FullscreenToggleState", 0);
             Debug.Log("Exiting FullScreen");
         }
         else
         {
-            isFullscreenOn = true;
+            Debug.Log("Entering FullScreen");
             PlayerPrefs.SetInt("FullscreenToggleState", 1);
         }
     }
- 
+
     /// <summary>
     /// Adjusts Vsync based on parameter passed
     /// </summary>
-    public void AdjustVysnc(bool isVsyncOn)
+    public void AdjustVysnc()
     {
-        if (isVsyncOn == false)
+        if (!vSyncToggle.isOn)
         {
             PlayerPrefs.SetInt("VsyncToggleState", 0);
             QualitySettings.vSyncCount = 0;
@@ -137,6 +135,7 @@ public class SettingsManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("VsyncToggleState", 1);
             QualitySettings.vSyncCount = 1;
+            Debug.Log("The Vsync is On");
         }
     }
 
