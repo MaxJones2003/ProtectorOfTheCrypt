@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2352239157236506282
 MonoBehaviour:
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicChannel: {fileID: 493352491222110847}
   soundeffectChannel: {fileID: 467609389498044018}
-  TitleMusic: {fileID: 0}
-  GameMusic: {fileID: 0}
+  TitleMusic: {fileID: 8300000, guid: afb82d9e40e0add4c8d946b96feac135, type: 3}
+  GameMusic: {fileID: 8300000, guid: 0a88498ad9df3704ead200f1cca2ff8c, type: 3}
 --- !u!82 &493352491222110847
 AudioSource:
   m_ObjectHideFlags: 0
