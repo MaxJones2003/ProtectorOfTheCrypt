@@ -96,6 +96,7 @@ public class InputSystem : MonoBehaviour
     /// </summary>
     public void SelectTower(string nameOfTowerToSelect)
     {
+        if (GameManager.instance.isPaused) return;
         // Find the correct tower based on the string given
         TowerScriptableObject tower = PurchasableTowers.Find(t => t.Name == nameOfTowerToSelect);
 
@@ -110,15 +111,13 @@ public class InputSystem : MonoBehaviour
 
         currentTowerScriptableObject = tower;
         currentTowerModel = currentTowerScriptableObject.SpawnModel(this, placementIndicator.transform.position);
+        // Make the position below the tower un-placable.
+        ChangeGridLayer();
         towerCurrentlySelected = true;
 
         // Change the action map to tower placement mode
         playerInput.SwitchCurrentActionMap("TowerPlacementMode");
-        if (GameManager.instance.isPaused)
-        {
-            CancelTowerPlacement();
-            return;
-        }
+
         if (!towerCurrentlySelected)
             return;
         currentTowerScriptableObject.Spawn();
@@ -130,6 +129,19 @@ public class InputSystem : MonoBehaviour
 
         // Return to standard mode action map
         playerInput.SwitchCurrentActionMap("StandardMode");
+    }
+    private void ChangeGridLayer()
+    {
+        Ray ray = new Ray(placementIndicator.transform.position, Vector3.down);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo))
+        {
+            if (hitInfo.collider.gameObject.layer != LayerMask.NameToLayer("Environment"))
+            {
+                Debug.LogError("The Raycast did not hit a valid grid position.");
+                return;
+            }
+            hitInfo.collider.gameObject.layer = LayerMask.NameToLayer("Hazard");
+        }
     }
 
     public (Vector3, LayerMask) GetSelectedMapPosition()
@@ -164,30 +176,11 @@ public class InputSystem : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// If the player has a selected tower, they may choose to cancel the selection, this destroys the currentTower and stops the IEnumerator responsible for updateing the tower position.
-    /// </summary>
-    public void CancelTowerPlacement()
-    {
-        Destroy(currentTowerModel);
-        currentTowerModel = null;
-        towerCurrentlySelected = false;
-
-        // Return to standard mode action map
-        playerInput.SwitchCurrentActionMap("StandardMode");
-    }
-
     /// <summary>
     /// Once the player has decided where to place the tower, SetTowerDown runs the code that sets up the rest of the 
     /// </summary>
     public void SetTowerDown(InputAction.CallbackContext ctx)
     {
-        if (GameManager.instance.isPaused)
-        {
-            CancelTowerPlacement();
-            return;
-        }
         if (!towerCurrentlySelected)
             return;
         currentTowerModel.AddComponent<ShootMonoBehaviour>().tower = currentTowerScriptableObject;
@@ -212,30 +205,39 @@ public class InputSystem : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 100, towerLayerMask))
         {
+            TowerPlacementMode(false);
             // Deactivate the previous upgrade ui
             if (currentTowerForUpgrade != null)
+            {
                 currentTowerForUpgrade.GetComponent<TowerUpgradeHandler>().ActivateUI(false);
+            }
             // Activate the new upgrade ui
             currentTowerForUpgrade = hit.transform.parent.gameObject;
             currentTowerForUpgrade.GetComponent<TowerUpgradeHandler>().ActivateUI(true);
 
             UIButtons.SetActive(true);
-            towerSelectionUI.SetActive(false);
         }
-        else if (canPlaceTowers)
+        else if (canPlaceTowers && currentTowerForUpgrade == null)
         {
             // Activate IGTS ui
             IGTS_UI.ActivateUI(placementIndicator.transform.position);
-            isTowerPlacementUIActive = true;
+            TowerPlacementMode(true);
             //SelectTower("ExplosiveTower");
         }
         else if (!Physics.Raycast(ray, 1000, UILayerMask))
         {
+            TowerPlacementMode(false);
             if (currentTowerForUpgrade == null)
                 return;
             currentTowerForUpgrade.GetComponent<TowerUpgradeHandler>().ActivateUI(false);
             currentTowerForUpgrade = null;
         }
+    }
+
+    public void TowerPlacementMode(bool isActive)
+    {
+        isTowerPlacementUIActive = isActive;
+
     }
 
 

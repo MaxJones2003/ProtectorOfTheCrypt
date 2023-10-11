@@ -19,7 +19,8 @@ public class TowerUpgradeHandler : MonoBehaviour
 
     public void UpgradeDamageAdd(float upgrade, int cost)
     {
-        if (!GameManager.instance.RemoveMoney(cost)) return;
+        if (StoreManager.Instance.CannotBuy(cost)) return;
+        StoreManager.Instance.Purchase(cost);
         AddDamageModifier damageModifier = new()
         {
             Amount = upgrade,
@@ -29,7 +30,8 @@ public class TowerUpgradeHandler : MonoBehaviour
     }
     public void UpgradeDamageMultiply(float upgrade, int cost)
     {
-        if (!GameManager.instance.RemoveMoney(cost)) return;
+        if (StoreManager.Instance.CannotBuy(cost)) return;
+        StoreManager.Instance.Purchase(cost);
         MultiplyDamageModifier damageModifier = new()
         {
             Amount = upgrade,
@@ -39,7 +41,8 @@ public class TowerUpgradeHandler : MonoBehaviour
     }
     public void UpgradeAOEDamageAdd(float upgrade, int cost)
     {
-        if (!GameManager.instance.RemoveMoney(cost)) return;
+        if (StoreManager.Instance.CannotBuy(cost)) return;
+        StoreManager.Instance.Purchase(cost);
         AddAOEDamageModifier damageModifier = new()
         {
             Amount = upgrade,
@@ -50,7 +53,8 @@ public class TowerUpgradeHandler : MonoBehaviour
     }
     public void UpgradeAOERangeAdd(float upgrade, int cost)
     {
-        if (!GameManager.instance.RemoveMoney(cost)) return;
+        if (StoreManager.Instance.CannotBuy(cost)) return;
+        StoreManager.Instance.Purchase(cost);
         AddRangeModifier rangeModifier = new()
         {
             Amount = upgrade,
@@ -61,7 +65,8 @@ public class TowerUpgradeHandler : MonoBehaviour
     }
     public void UpgradeRangeAdd(float upgrade, int cost)
     {
-        if (!GameManager.instance.RemoveMoney(cost)) return;
+        if (StoreManager.Instance.CannotBuy(cost)) return;
+        StoreManager.Instance.Purchase(cost);
         AddRangeModifier rangeModifier = new()
         {
             Amount = upgrade,
@@ -71,7 +76,8 @@ public class TowerUpgradeHandler : MonoBehaviour
     }
     public void UpgradeFireRateSubtract(float upgrade, int cost)
     {
-        if (!GameManager.instance.RemoveMoney(cost)) return;
+        if (StoreManager.Instance.CannotBuy(cost)) return;
+        StoreManager.Instance.Purchase(cost);
         SubtractFireRateModifier fireRateModifier = new()
         {
             Amount = upgrade,
@@ -81,7 +87,8 @@ public class TowerUpgradeHandler : MonoBehaviour
     }
     public void SellTower()
     {
-        GameManager.instance.RemoveMoney(-5);
+        int sellPrice = -5;
+        StoreManager.Instance.Purchase(sellPrice);
         Destroy(gameObject);
     }
 }

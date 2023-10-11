@@ -135,7 +135,7 @@ public class GridManager : MonoBehaviour
             pathTileCell.transform.parent = parent;
             pathTileCell.transform.Rotate(0f, pathCellObjects[neighborValue].yRotation, 0f);
             pathTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Path");
-            pathTileCell.transform.GetChild(0).gameObject.tag = "Enviornment";
+            pathTileCell.transform.GetChild(0).gameObject.tag = "Environment";
         }
     }
 
@@ -150,8 +150,8 @@ public class GridManager : MonoBehaviour
                     int randomCellIndex = Random.Range(0, sceneryCellObjects.Length);
                     GameObject sceneryTileCell = Instantiate(sceneryCellObjects[randomCellIndex].cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);
                     sceneryTileCell.transform.parent = parent;
-                    sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Enviornment");
-                    sceneryTileCell.transform.GetChild(0).gameObject.tag = "Enviornment";
+                    sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Environment");
+                    sceneryTileCell.transform.GetChild(0).gameObject.tag = "Environment";
                     //yield return null;
                 }
             }

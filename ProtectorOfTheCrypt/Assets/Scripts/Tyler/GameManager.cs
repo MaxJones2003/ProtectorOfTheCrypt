@@ -34,15 +34,13 @@ public class GameManager : MonoBehaviour
     }
 
     // Pass a negative number to give money to the player.
-    public bool RemoveMoney(int SpentMoney)
+    public void RemoveMoney(int SpentMoney)
     {
         if (Money >= SpentMoney)
         {
             Money -= SpentMoney;
             OnMoneyChanged?.Invoke();
-            return true;
         }
-        return false;
     }
 
     public void GamePaused(bool isPaused)

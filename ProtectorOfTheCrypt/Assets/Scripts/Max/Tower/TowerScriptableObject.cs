@@ -38,7 +38,7 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
     public GameObject SpawnModel(MonoBehaviour ActiveMonoBehaviour, Vector3 position)
     {
         this.ActiveMonoBehaviour = ActiveMonoBehaviour;
-
+        position.y = 0.2f;
         Model = Instantiate(ModelPrefab, position, Quaternion.Euler(SpawnRotation));
 
         return Model;
