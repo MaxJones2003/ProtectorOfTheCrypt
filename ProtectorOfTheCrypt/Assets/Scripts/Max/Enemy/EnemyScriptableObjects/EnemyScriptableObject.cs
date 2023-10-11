@@ -9,7 +9,7 @@ public class EnemyScriptableObject : ScriptableObject
     public GameObject ModelPrefab;
     public float BaseHealth = 10f;
     public float BaseSpeed = 1f;
-    public WeaknessScriptableObject ElementType;
+    public ShieldScriptableObject ShieldType;
     public float WeaknessDamageMultiplier = 1.5f;
     public AudioClip deathSound;
 
@@ -27,7 +27,7 @@ public class EnemyScriptableObject : ScriptableObject
         Model.layer = LayerMask.NameToLayer("Enemy");
         Model.AddComponent<EnemyMovementHandler>().Initialize(this, Path, BaseSpeed, Spawner);
 
-        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, ElementType, Spawner, deathSound);
+        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, ShieldType, Spawner, deathSound);
 
         return Model;
     }

@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Interfaces with the IDamageable script, communicates with other enemy scripts about damage taken and dying.
-/// </summary>
-public class EnemyHealth : MonoBehaviour, IDamageable
+public class ShieldHealth : MonoBehaviour
 {
     private List<ElementType> strengths;
     private List<ElementType> weaknesses;
