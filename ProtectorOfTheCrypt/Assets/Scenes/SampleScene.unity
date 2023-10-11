@@ -542,11 +542,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21f3c558939877c408c55fd7694211a5, type: 3}
---- !u!1 &416984699 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4455301952300251016, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
-  m_PrefabInstance: {fileID: 727434994}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &441672092 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6940390357999414439, guid: 5429499bcdac1f44c808cf69f4056631, type: 3}
@@ -998,6 +993,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1096824614}
     m_Modifications:
+    - target: {fileID: 2382989155531198778, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: inputRef
+      value: 
+      objectReference: {fileID: 229190791}
     - target: {fileID: 2702384789181557586, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1056,6 +1055,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2702384789181557586, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
   m_PrefabInstance: {fileID: 727434994}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &727434996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2382989155531198778, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+  m_PrefabInstance: {fileID: 727434994}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4acb292ffd3c444c9264da41febae13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &770055544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6940390357999414439, guid: 5429499bcdac1f44c808cf69f4056631, type: 3}
@@ -1567,7 +1577,7 @@ PrefabInstance:
     - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: IGTS_UI
       value: 
-      objectReference: {fileID: 416984699}
+      objectReference: {fileID: 727434996}
     - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: UIButtons
       value: 

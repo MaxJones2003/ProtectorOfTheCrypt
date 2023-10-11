@@ -5,7 +5,12 @@ using UnityEngine;
 public class IGTS_Buttons : MonoBehaviour
 {
     public GameObject IGTS;
-    InputSystem inputRef;
+    [SerializeField] InputSystem inputRef;
+    public void ActivateUI(Vector3 position)
+    {
+        IGTS.transform.position = position;
+        IGTS.SetActive(true);
+    }
     public void SpawnArchers()
     {
         inputRef.SelectTower("ExampleTower");

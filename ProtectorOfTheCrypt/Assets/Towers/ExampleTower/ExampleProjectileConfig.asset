@@ -18,4 +18,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4233
   FireRate: 2
-  DamageType: 0
+  Range: 5
+  DamageType: 

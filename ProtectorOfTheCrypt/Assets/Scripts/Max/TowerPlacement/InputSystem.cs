@@ -44,7 +44,7 @@ public class InputSystem : MonoBehaviour
     public bool isTowerPlacementUIActive = false;
 
     // Ref for InGameTowerSelection
-    public GameObject IGTS_UI;
+    [SerializeField] IGTS_Buttons IGTS_UI;
 
     private void Awake()
     {
@@ -225,7 +225,8 @@ public class InputSystem : MonoBehaviour
         else if (canPlaceTowers)
         {
             // Activate IGTS ui
-            IGTS_UI.SetActive(true);
+            IGTS_UI.ActivateUI(placementIndicator.transform.position);
+            isTowerPlacementUIActive = true;
             //SelectTower("ExplosiveTower");
         }
         else if (!Physics.Raycast(ray, 1000, UILayerMask))
