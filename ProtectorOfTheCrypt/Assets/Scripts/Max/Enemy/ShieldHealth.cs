@@ -3,25 +3,21 @@ using UnityEngine;
 
 public class ShieldHealth : MonoBehaviour
 {
+    EnemyHealth Enemy;
     private List<ElementType> strengths;
     private List<ElementType> weaknesses;
 
     public float MaxHealth { get; set; }
     [SerializeField]public float CurrentHealth { get; set; }
 
-    public event IDamageable.TakeDamageEvent OnTakeDamage;
-    public event IDamageable.DeathEvent OnDeath;
+    private AudioClip shieldBreakSound;
 
-    [HideInInspector] public Spawner _spawner;
-
-    private AudioClip deathSound;
-
-    public void Enable(float maxHealth, ShieldScriptableObject shield, Spawner spawner, AudioClip audio) 
+    public void Enable(EnemyHealth enemy, float maxHealth, ShieldScriptableObject shield, AudioClip audio) 
     {
+        Enemy = enemy;
         MaxHealth = maxHealth;
         CurrentHealth = MaxHealth;
-        _spawner = spawner;
-        deathSound = audio;
+        shieldBreakSound = audio;
         strengths = new();
         weaknesses = new();
         foreach(ElementType strength in shield.Strengths)
@@ -32,33 +28,29 @@ public class ShieldHealth : MonoBehaviour
 
     public void OnDestroy()
     {
-        AudioManager.instance.PlaySound(AudioManagerChannels.SoundEffectChannel, deathSound);
+        if(shieldBreakSound != null)
+            AudioManager.instance.PlaySound(AudioManagerChannels.SoundEffectChannel, shieldBreakSound);
     }
 
-    public void TakeDamage(float Damage, ElementType[] DamageType)
+    public float TakeDamage(float Damage, ElementType[] DamageType)
     {
         float damageTaken = Damage * CompareElementTypes(DamageType);
         // Makes sure the current health is never negative
-        damageTaken = Mathf.Clamp(damageTaken, 0, CurrentHealth);
         CurrentHealth -= damageTaken;
 
-        if(damageTaken != 0) // Damage
+        if (CurrentHealth <= 0 & damageTaken != 0) // Death
         {
-            OnTakeDamage?.Invoke(damageTaken);
-        }
-
-        if (CurrentHealth == 0 & damageTaken != 0) // Death
-        {
-            _spawner.SpawnedObjects.Remove(gameObject);
-            OnDeath?.Invoke(transform.position);
             if (GameManager.instance.GameMode is StoryMode)
             {
                 if (GameManager.instance.GameMode.CheckGameWon())
                         GameManager.instance.GameMode.OnGameWon();
             }
-            GameManager.instance.RemoveMoney(-5);
+            Enemy.BreakShield();
             Destroy(gameObject);
+            return damageTaken;
         }
+        return 0f;
+        
     }
 
     private float CompareElementTypes(ElementType[] DamageType)

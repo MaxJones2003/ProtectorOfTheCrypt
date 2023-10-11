@@ -6,9 +6,6 @@ using UnityEngine;
 /// </summary>
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    private List<ElementType> strengths;
-    private List<ElementType> weaknesses;
-
     public float MaxHealth { get; set; }
     [SerializeField]public float CurrentHealth { get; set; }
 
@@ -19,18 +16,18 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private AudioClip deathSound;
 
-    public void Enable(float maxHealth, ShieldScriptableObject shield, Spawner spawner, AudioClip audio) 
+    private ShieldHealth shieldScript;
+
+    public void Enable(float maxHealth, Spawner spawner, AudioClip audio,ShieldScriptableObject shield) 
     {
         MaxHealth = maxHealth;
         CurrentHealth = MaxHealth;
         _spawner = spawner;
         deathSound = audio;
-        strengths = new();
-        weaknesses = new();
-        foreach(ElementType strength in shield.Strengths)
-            strengths.Add(strength);
-        foreach(ElementType weakness in shield.Weaknesses)
-            weaknesses.Add(weakness);
+        
+        // Handle Shield Setup
+        if(shield == null) return;
+        shieldScript = shield.Spawn(transform, this, this, 20);
     }
 
     public void OnDestroy()
@@ -40,7 +37,18 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(float Damage, ElementType[] DamageType)
     {
-        float damageTaken = Damage * CompareElementTypes(DamageType);
+        float damageTaken = Damage;
+
+        // Check if enemy has a shield
+        // If enemy has a shield, call TakeDamage() on the shield.
+        // If the shield is boken its TakeDamage function returns the left over damage which gets dealt to the enemy
+        if(shieldScript != null)
+        {
+            Debug.Log(damageTaken);
+            damageTaken = shieldScript.TakeDamage(Damage, DamageType);
+            Debug.Log(damageTaken);
+        }
+
         // Makes sure the current health is never negative
         damageTaken = Mathf.Clamp(damageTaken, 0, CurrentHealth);
         CurrentHealth -= damageTaken;
@@ -64,22 +72,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
     }
 
-    private float CompareElementTypes(ElementType[] DamageType)
+    public void BreakShield()
     {
-        float damageMultiplier = 1f;
-        foreach(ElementType element in DamageType) 
-        {
-            if(weaknesses.Contains(element))
-            {
-                damageMultiplier *= 2f;
-                damageMultiplier = Mathf.Min(damageMultiplier, 4);
-            }
-            else if(strengths.Contains(element))
-            {
-                damageMultiplier /= 2f;
-                damageMultiplier = Mathf.Max(damageMultiplier, 0.25f);
-            }
-        }
-        return damageMultiplier;
+        shieldScript = null;
     }
+    
 }

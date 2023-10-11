@@ -19,7 +19,7 @@ public class IGTS_Buttons : MonoBehaviour
             // Maybe add some code here to make the button flash red
             return;
         } 
-
+        
         StoreManager.Instance.Purchase(StoreManager.Instance.archerCost);
         inputRef.SelectTower("ExampleTower");
         IGTS.SetActive(false);

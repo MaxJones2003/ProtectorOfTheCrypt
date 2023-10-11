@@ -22,7 +22,7 @@ public class StoreManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     public bool CannotBuy(int cost)
     {
         if(cost <= GameManager.instance.Money)

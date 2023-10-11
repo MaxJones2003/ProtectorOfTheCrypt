@@ -9,8 +9,8 @@ public class EnemyScriptableObject : ScriptableObject
     public GameObject ModelPrefab;
     public float BaseHealth = 10f;
     public float BaseSpeed = 1f;
+    [Tooltip("ONLY FILL SLOT IF ON A SHIELD ENEMY")]
     public ShieldScriptableObject ShieldType;
-    public float WeaknessDamageMultiplier = 1.5f;
     public AudioClip deathSound;
 
     private MonoBehaviour ActiveMonoBehaviour;
@@ -27,7 +27,7 @@ public class EnemyScriptableObject : ScriptableObject
         Model.layer = LayerMask.NameToLayer("Enemy");
         Model.AddComponent<EnemyMovementHandler>().Initialize(this, Path, BaseSpeed, Spawner);
 
-        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, ShieldType, Spawner, deathSound);
+        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, Spawner, deathSound, ShieldType);
 
         return Model;
     }
