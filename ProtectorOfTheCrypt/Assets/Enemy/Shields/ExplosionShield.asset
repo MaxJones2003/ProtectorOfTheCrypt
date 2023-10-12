@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: ExplosionShield
   m_EditorClassIdentifier: 
   ShieldPrefab: {fileID: 0}
+  BaseShieldHealth: 11
+  ShieldBreakSound: {fileID: 0}
   Weaknesses: 00000000
   Strengths: 04000000
