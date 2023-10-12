@@ -199,11 +199,13 @@ public class InputSystem : MonoBehaviour
     #region Tower Interaction
     public void CheckForTower(InputAction.CallbackContext ctx)
     {
+        if (GameManager.instance.isPaused) return;
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = sceneCamaera.nearClipPlane;
         Ray ray = sceneCamaera.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, towerLayerMask))
+        if (Physics.Raycast(ray, 1000, UILayerMask)) return;
+        else if (Physics.Raycast(ray, out hit, 100, towerLayerMask))
         {
             TowerPlacementMode(false);
             // Deactivate the previous upgrade ui
@@ -224,7 +226,7 @@ public class InputSystem : MonoBehaviour
             TowerPlacementMode(true);
             //SelectTower("ExplosiveTower");
         }
-        else if (!Physics.Raycast(ray, 1000, UILayerMask))
+        else
         {
             TowerPlacementMode(false);
             if (currentTowerForUpgrade == null)
