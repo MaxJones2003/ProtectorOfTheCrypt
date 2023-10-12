@@ -140,6 +140,7 @@ public class DialogueController : MonoBehaviour
         sentences.Clear();
         StopAllCoroutines();
         GameManager.instance.GamePaused(false);
+        startedTyping = false;
         CloseDialogueBox();
     }
 
@@ -147,6 +148,7 @@ public class DialogueController : MonoBehaviour
     {
         dialogueCanvasGroup.alpha = 0f;
         dialogueCanvasGroup.blocksRaycasts = false;
+        startedTyping = false;
         DialogueOver?.Invoke();
     }
 }

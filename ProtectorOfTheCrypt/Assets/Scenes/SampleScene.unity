@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 862488828}
   dialogueCanvasGroup: {fileID: 862488827}
-  letterDisplayDelay: 0.1
+  letterDisplayDelay: 0.06
   autoContinueTime: 0.76
   dialogueBlipSFX: {fileID: 8300000, guid: 8419e7c141286ba4e9bc553672789486, type: 3}
 --- !u!4 &201181694 stripped
