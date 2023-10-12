@@ -45,4 +45,27 @@ public class IGTS_Buttons : MonoBehaviour
         IGTS.SetActive(false);
         inputRef.TowerPlacementMode(false);
     }
+
+    public void OnEnable()
+    {
+        GameManager.instance.OnGamePaused += UpdateGamePaused;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.instance.OnGamePaused -= UpdateGamePaused;
+    }
+
+    private void UpdateGamePaused(bool ispaused)
+    {
+        if(ispaused) 
+        {
+            DisableUI();
+        }
+    }
+
+    private void DisableUI()
+    {
+        IGTS.SetActive(false);
+    }
 }

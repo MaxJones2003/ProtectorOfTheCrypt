@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f83f2dfc6612af4cb252046e1c9cab2, type: 3}
+  m_Name: Tombstone1
+  m_EditorClassIdentifier: 
+  cellType: 1
+  cellPrefab: {fileID: 471619929719752713, guid: 0bf56e6d74e189c49a9d7cb65a9b3a93, type: 3}
+  yRotation: 0

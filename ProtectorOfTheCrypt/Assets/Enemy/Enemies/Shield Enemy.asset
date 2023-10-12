@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModelPrefab: {fileID: 8845989981444085929, guid: 2114ca5b9c03f8c498d9381c58272a2e, type: 3}
   BaseHealth: 20
-  BaseSpeed: 3
+  BaseSpeed: 1.5
   ShieldType: {fileID: 11400000, guid: 5d7c9fa97a03e144bba9fdddb0052050, type: 2}
   deathSound: {fileID: 8300000, guid: e56bec273ad342d4ea0ee5d3707b4dc3, type: 3}
