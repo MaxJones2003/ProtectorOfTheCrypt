@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BasicShield
   m_EditorClassIdentifier: 
   ShieldPrefab: {fileID: 8378339777660675238, guid: 581fc02ea9434a64094aeb3b2583bf41, type: 3}
+  BaseShieldHealth: 11
   ShieldBreakSound: {fileID: 0}
   Weaknesses: 04000000
   Strengths: 00000000

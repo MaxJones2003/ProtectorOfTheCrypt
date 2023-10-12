@@ -53,18 +53,6 @@ public class GridManager : MonoBehaviour
             Instantiate(loadedPath);
             SetUpEnemies(loadedEnemyPath);
         }
-        // Set up the tower placement bounds
-        GameObject mapBoundary = Instantiate(mapBoundPrefab);
-        mapBoundary.transform.position = new Vector3(0, 0, gridHeight/2);
-        mapBoundary.transform.localScale = new Vector3(mapBoundary.transform.localScale.x, mapBoundary.transform.localScale.y, gridHeight);
-
-        mapBoundary = Instantiate(mapBoundPrefab);
-        mapBoundary.transform.position = new Vector3(gridWidth, 0, gridHeight);
-        mapBoundary.transform.localScale = new Vector3(gridWidth/2, mapBoundary.transform.localScale.y, mapBoundary.transform.localScale.z);
-
-        mapBoundary = Instantiate(mapBoundPrefab);
-        mapBoundary.transform.position = new Vector3(gridWidth, 0, gridHeight/2);
-        mapBoundary.transform.localScale = new Vector3(mapBoundary.transform.localScale.x, mapBoundary.transform.localScale.y, gridHeight);
     }
 
     /// <summary>

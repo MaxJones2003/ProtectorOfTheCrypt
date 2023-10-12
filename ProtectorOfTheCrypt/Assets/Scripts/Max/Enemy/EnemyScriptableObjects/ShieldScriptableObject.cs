@@ -12,6 +12,8 @@ public class ShieldScriptableObject : ScriptableObject, ICloneable
     [Tooltip("The physical representation of the shield")]
     public GameObject ShieldPrefab;
 
+    public float BaseShieldHealth;
+
     public AudioClip ShieldBreakSound;
     /// <summary>
     /// The types of elements the enemy takes increased damage against
@@ -24,7 +26,7 @@ public class ShieldScriptableObject : ScriptableObject, ICloneable
     [Tooltip("The types of elements the enemy takes reduced damage against")]
     public ElementType[] Strengths;
 
-    public ShieldHealth Spawn(Transform Parent, MonoBehaviour ActiveMonoBehaviour, EnemyHealth enemyHealth, float health)
+    public ShieldHealth Spawn(Transform Parent, MonoBehaviour ActiveMonoBehaviour, EnemyHealth enemyHealth)
     {
 
         GameObject Model = Instantiate(ShieldPrefab);
@@ -33,7 +35,7 @@ public class ShieldScriptableObject : ScriptableObject, ICloneable
         Model.transform.rotation = Parent.rotation;
 
         ShieldHealth shieldHealthScript = Model.AddComponent<ShieldHealth>();
-        shieldHealthScript.Enable(enemyHealth, health, this, ShieldBreakSound);
+        shieldHealthScript.Enable(enemyHealth, BaseShieldHealth, this, ShieldBreakSound);
 
         return shieldHealthScript;
     }

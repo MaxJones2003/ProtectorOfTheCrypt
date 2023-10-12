@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         
         // Handle Shield Setup
         if(shield == null) return;
-        shieldScript = shield.Spawn(transform, this, this, 20);
+        shieldScript = shield.Spawn(transform, this, this);
     }
 
     public void OnDestroy()
