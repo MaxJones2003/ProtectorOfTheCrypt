@@ -223,8 +223,8 @@ MonoBehaviour:
 
     Artist'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 659debd8285dee845a78a7872c725744, type: 2}
+  m_sharedMaterial: {fileID: 1611992030465851896, guid: 659debd8285dee845a78a7872c725744, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -451,8 +451,8 @@ MonoBehaviour:
   m_text: "Tyler Watts\r\nJaleel Gaillard\nMax Jones\r\nChristopher Brown \nShane
     Pearson \nKisha Campos\r\nWill Clevenger"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 659debd8285dee845a78a7872c725744, type: 2}
+  m_sharedMaterial: {fileID: 1611992030465851896, guid: 659debd8285dee845a78a7872c725744, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.55
   m_fontSizeBase: 73
   m_fontWeight: 400
   m_enableAutoSizing: 1
