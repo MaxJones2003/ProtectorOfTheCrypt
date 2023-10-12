@@ -1598,7 +1598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.size
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[0].Dialogue
@@ -1607,7 +1607,7 @@ PrefabInstance:
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].Dialogue
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: b2769edf712ba46fc811dc2150e5bf81, type: 2}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[2].Dialogue
       value: 
@@ -1621,8 +1621,12 @@ PrefabInstance:
       value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: WavesToSpawn.Array.data[1].EnemyGroup.Object
+      value: 
+      objectReference: {fileID: 11400000, guid: b54c982828a5e02458e17883d51beab5, type: 2}
+    - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].TimeUntilNextWave
-      value: 3.1
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[2].TimeUntilNextWave
@@ -1666,7 +1670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].EnemyGroup.NumObjects
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[2].EnemyGroup.NumObjects

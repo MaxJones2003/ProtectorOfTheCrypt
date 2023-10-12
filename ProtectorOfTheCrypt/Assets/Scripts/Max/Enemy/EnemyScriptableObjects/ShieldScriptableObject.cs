@@ -30,6 +30,7 @@ public class ShieldScriptableObject : ScriptableObject, ICloneable
         GameObject Model = Instantiate(ShieldPrefab);
         Model.transform.position = Parent.position;
         Model.transform.parent = Parent;
+        Model.transform.rotation = Parent.rotation;
 
         ShieldHealth shieldHealthScript = Model.AddComponent<ShieldHealth>();
         shieldHealthScript.Enable(enemyHealth, health, this, ShieldBreakSound);
