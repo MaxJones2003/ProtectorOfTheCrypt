@@ -71,7 +71,11 @@ public class InputSystem : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.isPaused) return;
+        if (GameManager.instance.isPaused)
+        {
+            Debug.Log("pauised");
+            return;
+        } 
         if (currentTowerModel == null && !isTowerPlacementUIActive)
         {
             Vector3 mousePosition;

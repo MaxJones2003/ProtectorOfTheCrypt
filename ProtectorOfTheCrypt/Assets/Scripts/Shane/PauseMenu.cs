@@ -17,14 +17,14 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         PausePanel.SetActive(true);                                     //Pause Menu displays
-        Time.timeScale = 0;                                             //Stops game
+        GameManager.instance.GamePaused(true);                                         //Stops game
         IGButtons.GetComponent<UIButtons>().UIButton.SetActive(false);  //Stops in game UI buttons disappear via UIButtons.cs
     }
 
     public void Continue()
     {
         PausePanel.SetActive(false);                                    //Pause menu goes away
-        Time.timeScale = 1;                                             //Game resumes
+        GameManager.instance.GamePaused(false);                                          //Game resumes
         IGButtons.GetComponent<UIButtons>().UIButton.SetActive(true);   //Makes in game UI buttons appear via UIButtons.cs
     }
 
