@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class EnemyMovementHandler : MonoBehaviour
 {
     private EnemyScriptableObject enemy = null;
@@ -15,18 +16,20 @@ public class EnemyMovementHandler : MonoBehaviour
 
     private Transform model;
 
+    private CharacterController characterController; // Add Character Controller component
 
     [Header("Animation")]
-    public float hopAngle = 15.0f;  
-    public float hopSpeed = 2.0f;  
-    public float wobbleAmount = 12f;  
+    public float hopAngle = 15.0f;
+    public float hopSpeed = 2.0f;
+    public float wobbleAmount = 12f;
     private Quaternion originalRotation;
     private float timeElapsed = 0.0f;
-
 
     public void Awake()
     {
         model = transform.GetChild(0);
+        characterController = GetComponent<CharacterController>(); // Initialize the Character Controller
+        characterController.enabled = false;
     }
 
     public void OnEnable()
@@ -48,6 +51,7 @@ public class EnemyMovementHandler : MonoBehaviour
         spawner = _spawner;
 
         originalRotation = model.transform.rotation;
+        characterController.enabled = true;
     }
 
     private void Update()
@@ -57,13 +61,20 @@ public class EnemyMovementHandler : MonoBehaviour
 
     public void Move()
     {
-        if(paused)
+        if (paused)
             return;
         target.y = transform.position.y;
         Vector3 dir = target - transform.position;
         dir.Normalize();
-        transform.Translate(dir * baseSpeed * Time.deltaTime);
+        
+        // Smoothly rotate towards the next waypoint
+        Quaternion targetRotation = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime);
+
+        // Use Character Controller for movement
+        characterController.Move(dir * baseSpeed * Time.deltaTime);
         ModelAnimation();
+        
 
         if (Vector3.Distance(transform.position, target) <= 0.1f)
         {
@@ -82,14 +93,42 @@ public class EnemyMovementHandler : MonoBehaviour
                 return;
             }
             target = path[waypointIndex];
+            if(waypointIndex - 1 >= 0)
+                RotateGameObject(target, path[waypointIndex-1]);
         }
     }
+
+    private void RotateGameObject(Vector3 target, Vector3 lastTarget)
+    {
+        if(target.x > lastTarget.x)
+        {
+            // Rotate to look right (rotate y value to 0)
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            
+        }
+        else if(target.x < lastTarget.x)
+        {
+            // Rotate to look left (rotate y value to 180)
+            transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
+        else if(target.z > lastTarget.z)
+        {
+            // Rotate to look up (rotate y value to -90)
+            transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+        }
+        else if(target.z < lastTarget.z)
+        {
+            // Rotate to look down (rotate y value to 90)
+            transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+        }
+    }
+
     private void ModelAnimation()
     {
         float angle = Mathf.Sin(timeElapsed * hopSpeed) * hopAngle;
         float wobble = Mathf.Cos(timeElapsed * hopSpeed * 2) * wobbleAmount;
-        Quaternion hopRotation = originalRotation * Quaternion.Euler(Vector3.up * angle) * Quaternion.Euler(Vector3.forward * wobble);
-        model.transform.rotation = Quaternion.LookRotation(target - model.transform.position, Vector3.up) * hopRotation;
+        Quaternion hopRotation = Quaternion.Euler(Vector3.up * angle) * Quaternion.Euler(Vector3.forward * wobble);
+        model.transform.rotation = hopRotation * originalRotation * transform.rotation;
 
         timeElapsed += Time.deltaTime;
     }
@@ -98,5 +137,4 @@ public class EnemyMovementHandler : MonoBehaviour
     {
         paused = isPaused;
     }
-    
 }

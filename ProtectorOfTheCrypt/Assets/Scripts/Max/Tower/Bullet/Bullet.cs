@@ -26,6 +26,8 @@ public class Bullet : MonoBehaviour
     private float elapsedTime = 0f; // If the game gets paused, this freezes the bullets and the timer
     public delegate void CollisionEvent(Bullet Bullet, Collision Collision);
     public event CollisionEvent OnCollision;
+    private Quaternion originalRotation;
+    private Transform model;
 
     private bool paused;
 
@@ -34,6 +36,8 @@ public class Bullet : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
         gameObject.layer = LayerMask.NameToLayer("Projectile");
         GameManager.instance.OnGamePaused += UpdateGamePaused;
+        model = transform.GetChild(0);
+        originalRotation = model.rotation;
     }
 
     private void OnDisable()
@@ -56,9 +60,16 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        // If the projectile is active: move towards the target
-        if(isTracking && !paused)
+        if(paused) return;
+
+        Move();
+        Rotate();
+    }
+    private void Move()
+    {
+        if(isTracking)
         {
+            //projectile is active: move towards the target
             if(target != null)
             {
                 direction = target.position - transform.position;
@@ -68,8 +79,14 @@ public class Bullet : MonoBehaviour
             {
                 transform.position += direction.normalized * speed * Time.deltaTime;
             }
-            
+                    
         } 
+    }
+    private void Rotate()
+    {
+        Vector3 lookDirection = target.position - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection) * originalRotation;
+        model.rotation = Quaternion.Slerp(model.rotation, targetRotation, Time.deltaTime);
     }
 
     /// <summary>
@@ -83,6 +100,9 @@ public class Bullet : MonoBehaviour
         speed = Speed;
         target = Target;
         isTracking = true;
+        Vector3 lookDirection = target.position - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(lookDirection) * originalRotation;
+        model.rotation = targetRotation;
         StartCoroutine(DelayedDisable(DelayedDisableTime));
     }
 

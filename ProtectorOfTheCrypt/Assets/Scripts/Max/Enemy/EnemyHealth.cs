@@ -26,8 +26,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         deathSound = audio;
         
         // Handle Shield Setup
-        if(shield == null) return;
-        shieldScript = shield.Spawn(transform, this, this);
+        if(shield != null) shieldScript = shield.Spawn(transform, this, this);
     }
 
     public void OnDestroy()

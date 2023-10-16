@@ -73,7 +73,6 @@ public class InputSystem : MonoBehaviour
     {
         if (GameManager.instance.isPaused)
         {
-            Debug.Log("pauised");
             return;
         } 
         if (currentTowerModel == null && !isTowerPlacementUIActive)
