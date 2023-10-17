@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float TimeBetweenSpawning;
     public List<Vector3> Path = new List<Vector3>();
 
     public delegate void StoppedSpawning();
@@ -13,11 +12,11 @@ public class Spawner : MonoBehaviour
     public List<GameObject> SpawnedObjects = new List<GameObject>();
     public void SpawnGroup(Group group)
     {
-        StartCoroutine(SpawnObject(group.Object, group.NumObjects));
+        StartCoroutine(SpawnObject(group.Object, group.NumObjects, group.TimeBetweenSpawning));
     }
 
     int numSpawned = 0; // A Local Variable to keep track of our current spawn count.
-    public IEnumerator SpawnObject(EnemyScriptableObject EnemyToSpawn, int numToSpawn = 1)
+    public IEnumerator SpawnObject(EnemyScriptableObject EnemyToSpawn, int numToSpawn = 1, float TimeBetweenSpawning = 1f)
     {
         while(numSpawned < numToSpawn)
         {

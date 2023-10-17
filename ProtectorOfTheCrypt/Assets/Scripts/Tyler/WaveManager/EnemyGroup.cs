@@ -5,4 +5,5 @@ public class Group
 {
     public EnemyScriptableObject Object;
     public int NumObjects;
+    public float TimeBetweenSpawning;
 }

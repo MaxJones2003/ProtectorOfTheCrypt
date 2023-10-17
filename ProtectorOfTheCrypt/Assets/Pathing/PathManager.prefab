@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452581a41f93ca54c94644f2f27a8c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickRandomSeed: 1
+  pickRandomSeed: 0
   GameSeed: FWE
   LevelNumber: 0
   levelPrefabs:
@@ -218,7 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a24768472cd994ca8d1b16aba5fc98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimeBetweenSpawning: 1
   Path: []
   SpawnedObjects: []
 --- !u!114 &7870458464043887178
@@ -234,22 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemySpawner: {fileID: 3638156756751218669}
-  WavesToSpawn:
-  - EnemyGroup:
-      Object: {fileID: 11400000, guid: 08e4024f077dafb40a76f7ba3b146319, type: 2}
-      NumObjects: 10
-    TimeUntilNextWave: 0
-    Dialogue: {fileID: 0}
-  - EnemyGroup:
-      Object: {fileID: 11400000, guid: 08e4024f077dafb40a76f7ba3b146319, type: 2}
-      NumObjects: 20
-    TimeUntilNextWave: 1
-    Dialogue: {fileID: 0}
-  - EnemyGroup:
-      Object: {fileID: 11400000, guid: 08e4024f077dafb40a76f7ba3b146319, type: 2}
-      NumObjects: 30
-    TimeUntilNextWave: 1
-    Dialogue: {fileID: 0}
+  WavesToSpawn: []
   CurrentWaveCount: -1
   state: 0
 --- !u!114 &3027338048066020314
@@ -283,6 +267,8 @@ MonoBehaviour:
     m_Bits: 1024
   UIButtons: {fileID: 0}
   towerSelectionUI: {fileID: 0}
+  isTowerPlacementUIActive: 0
+  IGTS_UI: {fileID: 0}
 --- !u!114 &8400491918763768993
 MonoBehaviour:
   m_ObjectHideFlags: 0
