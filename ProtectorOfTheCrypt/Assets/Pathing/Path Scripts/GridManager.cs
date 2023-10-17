@@ -158,7 +158,8 @@ public class GridManager : MonoBehaviour
                 if(pathGenerator.CellIsEmpty(x, y) && !pathGenerator.CellIsHazard(x, y))
                 {
                     GridCellScriptableObject cell = GetWeightedItem(weightTable);
-                    GameObject sceneryTileCell = Instantiate(cell.cellPrefab, new Vector3(x, 0f, y), GetCellRandomRotation());
+                    GameObject sceneryTileCell = Instantiate(cell.cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);
+                    sceneryTileCell.transform.rotation = GetCellRandomRotation();
                     sceneryTileCell.transform.parent = parent;
                     sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Environment");
                     sceneryTileCell.transform.GetChild(0).gameObject.tag = "Environment";
@@ -203,6 +204,7 @@ public class GridManager : MonoBehaviour
                 rotationVector.x = 180f;
                 break;
         }
+        if(rotationVector == Vector3.zero) return Quaternion.identity;
         return Quaternion.LookRotation(rotationVector);
     }
 
