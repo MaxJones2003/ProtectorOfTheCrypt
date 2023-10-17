@@ -37,7 +37,9 @@ public class GridManager : MonoBehaviour
         // If the seed script is there, and the seed script's PickRandomSeed value is false:
         // Set the values of the grid/path to those saved in the MapVariables class.
         Seed seedScript = gameObject.GetComponent<Seed>();
-        if(seedScript == null)
+        WaveManager = GetComponent<WaveManager>();
+
+        if (seedScript == null)
             return;
         if(seedScript.pickRandomSeed)
             return;
@@ -47,7 +49,6 @@ public class GridManager : MonoBehaviour
     private void Start()
     {
         pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
-        WaveManager = GetComponent<WaveManager>();
         
         if(loadedPath == null)
             Generate();

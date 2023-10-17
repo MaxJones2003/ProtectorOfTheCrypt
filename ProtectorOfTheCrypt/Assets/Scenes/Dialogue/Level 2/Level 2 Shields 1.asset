@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e416c15a0d2ad448d669a3ce2fa5c2, type: 3}
-  m_Name: New Dialogue
+  m_Name: Level 2 Shields 1
   m_EditorClassIdentifier: 
-  sentences: []
+  sentences:
+  - You'll need a new type of Unit to break those shields!
+  - Bomber Units are your best bet.
+  - Place one of those Bomber Units on the map and let's see how we fare.

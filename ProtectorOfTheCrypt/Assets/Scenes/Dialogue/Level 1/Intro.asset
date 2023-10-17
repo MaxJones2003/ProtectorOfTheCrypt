@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Intro
   m_EditorClassIdentifier: 
   sentences:
+  - Oh great you're here!
   - "Hiya chief, I\u2019m your advisor."
   - "My job is to make sure you are ready to protect all the souls here in the crypt.
     \n"
@@ -20,7 +21,5 @@ MonoBehaviour:
     you were brought in to stop that.
 
 '
-  - 'Use your resources to pay your troops. To select which troops to send out there,
-    press their icon.
-
-'
+  - "I know it\u2019s your first day, so let's get you familiar with the troops and
+    how to get rid of those pesky monsters!"

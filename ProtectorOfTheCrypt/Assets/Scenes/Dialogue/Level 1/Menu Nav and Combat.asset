@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e416c15a0d2ad448d669a3ce2fa5c2, type: 3}
-  m_Name: Level2
+  m_Name: Menu Nav and Combat
   m_EditorClassIdentifier: 
   sentences:
-  - Alright chief, another night another horde of monsters!
-  - The monsters up ahead look like they have shields.
-  - "Bomber units should help.\r"
-  - "Place one of those bomber units on the map and let\u2019s see how we fare.\r"
+  - "These monsters don\u2019t look too tough so our Archers should be able to handle
+    them.\r\r\n"
+  - To setup an Archer Tower, CLICK on the space in the grid, and SELECT Archers.

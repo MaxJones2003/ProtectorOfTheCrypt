@@ -33,7 +33,7 @@ public class DialogueController : MonoBehaviour
     public static event DialogueBegun DialogueStarted;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         sentences = new Queue<string>();
         dialogueCanvasGroup = GameObject.Find("Dialogue System Canvas").GetComponent<CanvasGroup>();
