@@ -1118,13 +1118,25 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: LevelNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: LevelPrefab
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: pickRandomSeed
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: levelPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: levelPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 7126660806644018715, guid: c1d758f186fd5fa4badd63df3f62d874, type: 3}
     - target: {fileID: 4673002648218141217, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: DefaultSurface
       value: 
@@ -1219,7 +1231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.data[0]
@@ -1236,11 +1248,11 @@ PrefabInstance:
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 917ab2d01cd663a49b207bc8418e1afa, type: 2}
+      objectReference: {fileID: 11400000, guid: 77bce132df4ad114289c29f903d4ba8f, type: 2}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 8ed7dea8835146f4ba58d1ff521c74dc, type: 2}
+      objectReference: {fileID: 11400000, guid: f2003ae9b476bef4c8475d0fd5278bc8, type: 2}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.data[5]
       value: 
