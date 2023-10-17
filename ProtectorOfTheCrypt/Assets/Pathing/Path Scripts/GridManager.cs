@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -16,9 +17,11 @@ public class GridManager : MonoBehaviour
     /// <Summary> Enemy Manager relays the information from the grid and gives it to the enemies</Summary>
     private WaveManager WaveManager;
 
-    /// <summary> Grid Cells, set in inspector, used to place paths based on the path grid</summary>
+    [Tooltip("Grid Cells, set in inspector, used to place paths based on the path grid")]
     public GridCellScriptableObject[] pathCellObjects;
-    /// <summary> Grid Cells, set in inspector, fills empty space that is not used by the path grid </summary>
+    [Tooltip("Empty grid cell, used to fill the map with places to set towers")]
+    public GridCellScriptableObject emptyCell;
+    [Tooltip("Grid Cells, set in inspector, fills empty space that is not used by the path grid")]
     public GridCellScriptableObject[] sceneryCellObjects;
 
     private PathGenerator pathGenerator;
@@ -68,6 +71,16 @@ public class GridManager : MonoBehaviour
         {
             pathSize = pathCells.Count;
             crossroadsAdded++;
+        }
+        float emptyCellWeight = 75;
+        float remaininWeightOutOfHundred = 100 - emptyCellWeight;
+
+        Dictionary<GridCellScriptableObject, float> weightTable = new();
+        weightTable.Add(emptyCell, emptyCellWeight);
+        foreach (GridCellScriptableObject cell in sceneryCellObjects)
+        {
+            float weight = remaininWeightOutOfHundred / sceneryCellObjects.Length;
+            weightTable.Add(cell, weight);
         }
 
         while (pathSize < minPathLength || pathSize > maxPathLength)
@@ -129,14 +142,22 @@ public class GridManager : MonoBehaviour
 
     private void LaySceneryCells(Transform parent)
     {
-        for(int x = 0; x < gridWidth; x++)
+        int emptyCellWeight = 100;
+        int filledCellWeight = 2;
+
+        Dictionary<GridCellScriptableObject, int> weightTable = new();
+        weightTable.Add(emptyCell, emptyCellWeight);
+        foreach (GridCellScriptableObject cell in sceneryCellObjects)
+            weightTable.Add(cell, filledCellWeight);
+        
+        for (int x = 0; x < gridWidth; x++)
         {
             for(int y = 0; y < gridHeight; y++)
             {
                 if(pathGenerator.CellIsEmpty(x, y) && !pathGenerator.CellIsHazard(x, y))
                 {
-                    int randomCellIndex = Random.Range(0, sceneryCellObjects.Length);
-                    GameObject sceneryTileCell = Instantiate(sceneryCellObjects[randomCellIndex].cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);
+                    GridCellScriptableObject cell = GetWeightedItem(weightTable);
+                    GameObject sceneryTileCell = Instantiate(cell.cellPrefab, new Vector3(x, 0f, y), GetCellRandomRotation());
                     sceneryTileCell.transform.parent = parent;
                     sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Environment");
                     sceneryTileCell.transform.GetChild(0).gameObject.tag = "Environment";
@@ -144,6 +165,44 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
+    }
+    
+    private GridCellScriptableObject GetWeightedItem(Dictionary<GridCellScriptableObject, int> weightTable)
+    {
+        int[] weights = weightTable.Values.ToArray();
+        int randomWeight = Random.Range(0, weights.Sum());
+
+        for(int i = 0; i < weights.Length; i++)
+        {
+            randomWeight -= weights[i];
+            if(randomWeight < 0)
+            {
+                return weightTable.ElementAt(i).Key;
+            }
+        }
+
+        return null;
+    }
+    private Quaternion GetCellRandomRotation()
+    {
+        int rotIndex = Random.Range(0, 4);
+        Vector3 rotationVector = Vector3.zero;
+        switch(rotIndex)
+        {
+            case 0:
+                rotationVector.x = 0f;
+                break;
+            case 1:
+                rotationVector.x = 90f;
+                break;
+            case 2:
+                rotationVector.x = -90f;
+                break;
+            case 3:
+                rotationVector.x = 180f;
+                break;
+        }
+        return Quaternion.LookRotation(rotationVector);
     }
 
     private void OnDrawGizmos()

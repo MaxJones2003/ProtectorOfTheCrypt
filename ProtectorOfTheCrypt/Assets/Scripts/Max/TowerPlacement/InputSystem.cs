@@ -60,6 +60,7 @@ public class InputSystem : MonoBehaviour
         sceneCamaera = Camera.main;
 
         placementIndicator = Instantiate(placementIndicator);
+        placementIndicator.layer = LayerMask.NameToLayer("DoNotInteract");
     }
 
 

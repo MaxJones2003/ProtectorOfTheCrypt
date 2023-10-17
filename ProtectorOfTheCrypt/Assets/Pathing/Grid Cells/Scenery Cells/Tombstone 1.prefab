@@ -31,7 +31,7 @@ Transform:
   - {fileID: 4537934689486465854}
   - {fileID: 8453960323547936227}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3569265654225460148
 GameObject:
@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 3788538398658476030}
   - component: {fileID: 7942327538345070259}
   - component: {fileID: 2200200102933351148}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,11 +164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 40849f31ef8b93f41a5d99382230892e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.044897497
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 40849f31ef8b93f41a5d99382230892e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.697
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 40849f31ef8b93f41a5d99382230892e, type: 3}
       propertyPath: m_LocalPosition.z

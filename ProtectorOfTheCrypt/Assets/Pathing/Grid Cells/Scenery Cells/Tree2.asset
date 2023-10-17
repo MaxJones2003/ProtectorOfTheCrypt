@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f83f2dfc6612af4cb252046e1c9cab2, type: 3}
-  m_Name: Trees
+  m_Name: Tree2
   m_EditorClassIdentifier: 
   cellType: 1
-  cellPrefab: {fileID: 5930386378693893344, guid: 95f79f3b32d220f43b93fbaf439bfae4, type: 3}
+  cellPrefab: {fileID: 6687572081845293913, guid: f136e7db115265e4c9cb2f8247d44165, type: 3}
   yRotation: 0

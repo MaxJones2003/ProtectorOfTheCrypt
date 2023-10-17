@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Bullet
-  - Enviornment
+  - Environment
   layers:
   - Default
   - TransparentFX
@@ -21,7 +21,7 @@ TagManager:
   - TowerUI
   - Path
   - Hazard
-  - 
+  - DoNotInteract
   - 
   - 
   - 
