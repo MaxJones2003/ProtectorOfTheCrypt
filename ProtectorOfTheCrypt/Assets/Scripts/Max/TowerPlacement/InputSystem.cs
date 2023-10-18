@@ -141,6 +141,7 @@ public class InputSystem : MonoBehaviour
         {
             if (hitInfo.collider.gameObject.layer != LayerMask.NameToLayer("Environment"))
             {
+                StoreManager.Instance.Purchase(-StoreManager.Instance.archerCost);
                 Debug.LogError("The Raycast did not hit a valid grid position.");
                 return;
             }
