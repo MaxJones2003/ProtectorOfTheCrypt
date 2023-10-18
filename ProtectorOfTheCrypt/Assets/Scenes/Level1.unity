@@ -6236,6 +6236,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2109219444}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: emptyCell
+      value: 
+      objectReference: {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
+    - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: gridWidth
       value: 40
       objectReference: {fileID: 0}
@@ -6253,8 +6257,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.size
-      value: 21
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: sceneryCellObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 020a9c3b1076d084bbb5d36081626b8c, type: 2}
+    - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: sceneryCellObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 917ab2d01cd663a49b207bc8418e1afa, type: 2}
+    - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: sceneryCellObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: db178141a475de94e99ed578e40606f4, type: 2}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.data[20]
       value: 
