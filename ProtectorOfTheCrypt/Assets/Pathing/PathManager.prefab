@@ -127,11 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452581a41f93ca54c94644f2f27a8c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelToLoad: 0
+  loadThisPrefabLevel: {fileID: 0}
   pickRandomSeed: 0
-  GameSeed: FWE
+  GameSeed: default
   LevelNumber: 0
-  levelPrefabs:
-  - {fileID: 6134882914831475532, guid: 5f9d46e6b794b8c41b2b9ab72026c801, type: 3}
   LevelMaking_UseSameSeed: 0
 --- !u!114 &6024401304573393069
 MonoBehaviour:
@@ -167,27 +167,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
   - {fileID: 11400000, guid: d8e32a3f45b823c44b4effb5f2b63170, type: 2}
   - {fileID: 11400000, guid: d8e32a3f45b823c44b4effb5f2b63170, type: 2}
+  emptyCell: {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
   sceneryCellObjects:
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: 3ec92a0f4dfa37843b57bc8ed33656d0, type: 2}
-  - {fileID: 11400000, guid: 620f26d3956d6c841a5c5eb03a28ce53, type: 2}
   - {fileID: 11400000, guid: 020a9c3b1076d084bbb5d36081626b8c, type: 2}
   - {fileID: 11400000, guid: 917ab2d01cd663a49b207bc8418e1afa, type: 2}
-  - {fileID: 11400000, guid: 8ed7dea8835146f4ba58d1ff521c74dc, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
-  - {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
+  - {fileID: 11400000, guid: db178141a475de94e99ed578e40606f4, type: 2}
   loadedPath: {fileID: 0}
   loadedEnemyPath: []
   mapBoundPrefab: {fileID: 2730323428394014302, guid: bf9d892eb997ff3478b69dbb8e76673a, type: 3}
