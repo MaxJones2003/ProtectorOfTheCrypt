@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4209553964698550262}
   m_Layer: 12
   m_Name: Water_Hazard
-  m_TagString: Environment
+  m_TagString: Enviornment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -6,18 +6,23 @@ using System.Linq;
 
 public class Seed : MonoBehaviour
 {
+    [Header("Load Scene: ")]
+    [Tooltip("If the prefab is level1, this int should be 1, if level2 it should be 2.")]
+    [SerializeField] private int levelToLoad = 0;
+    [SerializeField] private GameObject loadThisPrefabLevel;
+    [Header("Seed Information")]
     public bool pickRandomSeed = true;
     [SerializeField] private string GameSeed = "default";
     private int CurrentSeed = 0;
+
+    [Header("Make a new Level")]
     [Tooltip("This value MUST be DIFFERENT than all other level numbers, else it will override another map")]
     [SerializeField] private int LevelNumber;
+    [SerializeField] private bool LevelMaking_UseSameSeed = false;
+
 
     private GridManager gridManager;
 
-    [Header("List of level prefabs")]
-    [SerializeField] private List<GameObject> levelPrefabs;
-
-    [SerializeField] private bool LevelMaking_UseSameSeed = false;
 
     private void Awake() 
     {
@@ -31,7 +36,7 @@ public class Seed : MonoBehaviour
         }
         else
         {
-            LoadCurrentLevel(/*Game Manager should probably keep track of the level somehow*/);
+            LoadCurrentLevel(levelToLoad, loadThisPrefabLevel);
             InitializeRandom();
         }
     }
@@ -69,11 +74,10 @@ public class Seed : MonoBehaviour
         SaveSystem.Save(json, "/Level" + newMap.LevelNumber.ToString());
     }
 
-    public void LoadCurrentLevel(/*Might get the current level number from here*/)
+    public void LoadCurrentLevel(int levelNumber, GameObject path)
     {
         // Figure out what level we're on
         // Will do when we have more than one level
-        int levelNumber = 0;
 
         // Based on the level number, determine the file path of the json to load
         string filePath = "/Level" + levelNumber.ToString();
@@ -88,7 +92,7 @@ public class Seed : MonoBehaviour
         gridManager.minPathLength = currentMap.MinPathLength;
         gridManager.maxPathLength = currentMap.MaxPathLength;
         GameSeed = currentMap.Seed;
-        gridManager.loadedPath = levelPrefabs[levelNumber];
+        gridManager.loadedPath = path;
         gridManager.loadedEnemyPath = currentMap.LevelEnemyPath;
     }
 }

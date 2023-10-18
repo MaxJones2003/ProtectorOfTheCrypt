@@ -84,6 +84,7 @@ public class Bullet : MonoBehaviour
     }
     private void Rotate()
     {
+        if(target == null) return;
         Vector3 lookDirection = target.position - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(lookDirection) * originalRotation;
         model.rotation = Quaternion.Slerp(model.rotation, targetRotation, Time.deltaTime);
