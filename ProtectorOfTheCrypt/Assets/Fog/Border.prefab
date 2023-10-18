@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3802179647102936250
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1200851501400507205, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_Name
+      value: GrayVolumeFog (1) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689210787380660960, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2416213560181344935, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6472413395355164552, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: ShapeModule.randomDirectionAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6472413395355164552, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: InitialModule.startSpeed.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6472413395355164552, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.7764706
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd5aef08a58af417f8f8976ae303c176, type: 3}
