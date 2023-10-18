@@ -11,12 +11,13 @@ public class DialogueController : MonoBehaviour
     private Queue<string> sentences;
 
     public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI dialogueSpeedScaleIndicator;
+
     public CanvasGroup dialogueCanvasGroup;
 
-    [SerializeField]
-    private float letterDisplayDelay = 0.1f;
 
-    private bool startedTyping = false;
+    [HideInInspector]
+    public bool startedTyping = false;
 
     private bool textComplete = false;
 
@@ -25,6 +26,12 @@ public class DialogueController : MonoBehaviour
     public float autoContinueTime;
 
     public AudioClip dialogueBlipSFX;
+
+    [SerializeField]
+    public float letterDisplayDelay;
+    private float letterDisplayDelayOffset = -0.025f;
+    private float minimumValue = 0.05f;
+    private float maxValue = 0.15f;
 
     public delegate void DialogueEnded();
     public static event DialogueEnded DialogueOver;
@@ -113,7 +120,6 @@ public class DialogueController : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            //audio text boops
             yield return new WaitForSeconds(letterDisplayDelay);
             AudioManager.instance.PlaySound(AudioManagerChannels.SoundEffectChannel, dialogueBlipSFX);
         }
@@ -132,16 +138,32 @@ public class DialogueController : MonoBehaviour
         yield break;
     }
 
-    public void EndText()
+    public void EndText(bool unPauseGame = true)
     {
         AudioManager.instance.StopSound(AudioManagerChannels.SoundEffectChannel);
         Debug.Log("EndText Called");
         dialogueText.text = "";
         sentences.Clear();
         StopAllCoroutines();
-        GameManager.instance.GamePaused(false);
+
+        if(unPauseGame)
+            GameManager.instance.GamePaused(false);
+        
         startedTyping = false;
         CloseDialogueBox();
+    }
+
+    public void ChangeTextSpeed()
+    {
+        Debug.Log(letterDisplayDelay == minimumValue);
+        if (letterDisplayDelay <= minimumValue)
+        {
+            letterDisplayDelay = maxValue; 
+            return;
+        }
+            
+        Debug.Log("test2");
+        letterDisplayDelay += letterDisplayDelayOffset;
     }
 
     public void CloseDialogueBox()

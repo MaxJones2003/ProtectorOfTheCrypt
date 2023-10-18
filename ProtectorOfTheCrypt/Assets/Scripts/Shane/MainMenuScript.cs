@@ -10,8 +10,8 @@ public class MainMenuScript : MonoBehaviour
     public SettingsMenu SettRef;
     public void StoryMode()
     {
-        SceneManager.LoadScene("SampleScene");      //Load StoryMode Scene
-        AudioManager.instance.PlayMusicOnSceneChange("SampleScene");
+        SceneManager.LoadScene("Level1");      //Load StoryMode Scene
+        AudioManager.instance.PlayMusicOnSceneChange("Level1");
     }
 
     public void TimedMode()

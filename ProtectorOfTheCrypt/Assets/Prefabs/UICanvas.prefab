@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 3373476421773962833}
   - component: {fileID: 8446884893343286324}
   - component: {fileID: 4391316201998925238}
+  - component: {fileID: 1385501102906101731}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -494,6 +495,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1385501102906101731}
+        m_TargetAssemblyTypeName: ToggleDialogueBox, Assembly-CSharp
+        m_MethodName: CloseDialgoueManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1385501102906101731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963432847216807846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4b0465ee4c3eff42a8bfed25305bd11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5086513097853623742
 GameObject:
   m_ObjectHideFlags: 0

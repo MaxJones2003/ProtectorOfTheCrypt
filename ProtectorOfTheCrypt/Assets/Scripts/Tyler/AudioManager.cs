@@ -60,7 +60,12 @@ public class AudioManager : MonoBehaviour
                     PlaySound(AudioManagerChannels.MusicChannel, TitleMusic);
                     break;
                 }
-            case "SampleScene":
+            case "Level1":
+                {
+                    PlaySound(AudioManagerChannels.MusicChannel, GameMusic);
+                    break;
+                }
+            case "Level2":
                 {
                     PlaySound(AudioManagerChannels.MusicChannel, GameMusic);
                     break;

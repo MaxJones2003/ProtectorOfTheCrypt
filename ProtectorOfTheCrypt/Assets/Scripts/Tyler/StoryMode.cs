@@ -44,8 +44,14 @@ public class StoryMode : GameMode
     public override void OnGameWon()
     {
         // Activate You Win Screen 
-        YouWinScreen.SetActive(true);
+        if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            AudioManager.instance.PlayMusicOnSceneChange(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
+            return;
+        }
 
+        YouWinScreen.SetActive(true);
         // Disable Game UI
         UIButtons.SetActive(false);
 
