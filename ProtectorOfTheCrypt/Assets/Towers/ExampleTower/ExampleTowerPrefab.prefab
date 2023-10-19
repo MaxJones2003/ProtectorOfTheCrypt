@@ -5373,7 +5373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988255157838218706, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RangeButton
+      value: FireRateButton
       objectReference: {fileID: 0}
     - target: {fileID: 6988255157838218706, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
