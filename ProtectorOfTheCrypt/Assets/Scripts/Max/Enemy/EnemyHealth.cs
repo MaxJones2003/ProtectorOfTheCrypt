@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void Enable(float maxHealth, Spawner spawner, AudioClip audio,ShieldScriptableObject shield) 
     {
+        gameObject.GetComponent<Collider>().enabled = false;
+        StartCoroutine(EnableCollider());
         MaxHealth = maxHealth;
         CurrentHealth = MaxHealth;
         _spawner = spawner;
@@ -74,6 +77,12 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void BreakShield()
     {
         shieldScript = null;
+    }
+
+    private IEnumerator EnableCollider()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<Collider>().enabled = true;
     }
     
 }
