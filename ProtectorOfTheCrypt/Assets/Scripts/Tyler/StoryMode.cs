@@ -44,8 +44,9 @@ public class StoryMode : GameMode
     public override void OnGameWon()
     {
         // Activate You Win Screen 
-        if (SceneManager.GetActiveScene().buildIndex + 1 == SceneManager.sceneCountInBuildSettings)
+        if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
+            Debug.Log("test");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             AudioManager.instance.PlayMusicOnSceneChange(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
             return;
