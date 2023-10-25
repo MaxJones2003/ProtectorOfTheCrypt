@@ -3410,6 +3410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameTowerSelectionUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7895707049134730628, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 8701123082842957493, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
