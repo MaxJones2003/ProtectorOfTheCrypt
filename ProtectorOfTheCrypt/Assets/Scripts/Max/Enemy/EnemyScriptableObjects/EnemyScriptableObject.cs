@@ -9,6 +9,9 @@ public class EnemyScriptableObject : ScriptableObject
     public GameObject ModelPrefab;
     public float BaseHealth = 10f;
     public float BaseSpeed = 1f;
+    [TextArea]
+    public string Description;
+    public int Hunger = 5;
     [Tooltip("ONLY FILL SLOT IF ON A SHIELD ENEMY")]
     public ShieldScriptableObject ShieldType;
     public AudioClip deathSound;

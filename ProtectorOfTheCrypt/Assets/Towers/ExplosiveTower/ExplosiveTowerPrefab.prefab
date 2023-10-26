@@ -4877,6 +4877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeUI: {fileID: 2614209105765666850}
+  upgradePS: {fileID: 2829922097340334562}
 --- !u!1001 &509876675444709034
 PrefabInstance:
   m_ObjectHideFlags: 0
