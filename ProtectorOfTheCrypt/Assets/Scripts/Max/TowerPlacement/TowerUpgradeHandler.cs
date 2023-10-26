@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerUpgradeHandler : MonoBehaviour
 {
     [SerializeField] private GameObject upgradeUI;
+    [SerializeField] private ParticleSystem upgradePS;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class TowerUpgradeHandler : MonoBehaviour
     {
         if (StoreManager.Instance.CannotBuy(cost)) return;
         StoreManager.Instance.Purchase(cost);
+        upgradePS.Play();
         AddDamageModifier damageModifier = new()
         {
             Amount = upgrade,
@@ -32,6 +34,7 @@ public class TowerUpgradeHandler : MonoBehaviour
     {
         if (StoreManager.Instance.CannotBuy(cost)) return;
         StoreManager.Instance.Purchase(cost);
+        upgradePS.Play();
         MultiplyDamageModifier damageModifier = new()
         {
             Amount = upgrade,
@@ -43,6 +46,7 @@ public class TowerUpgradeHandler : MonoBehaviour
     {
         if (StoreManager.Instance.CannotBuy(cost)) return;
         StoreManager.Instance.Purchase(cost);
+        upgradePS.Play();
         AddAOEDamageModifier damageModifier = new()
         {
             Amount = upgrade,
@@ -55,6 +59,7 @@ public class TowerUpgradeHandler : MonoBehaviour
     {
         if (StoreManager.Instance.CannotBuy(cost)) return;
         StoreManager.Instance.Purchase(cost);
+        upgradePS.Play();
         AddRangeModifier rangeModifier = new()
         {
             Amount = upgrade,
@@ -67,6 +72,7 @@ public class TowerUpgradeHandler : MonoBehaviour
     {
         if (StoreManager.Instance.CannotBuy(cost)) return;
         StoreManager.Instance.Purchase(cost);
+        upgradePS.Play();
         AddRangeModifier rangeModifier = new()
         {
             Amount = upgrade,
@@ -78,6 +84,7 @@ public class TowerUpgradeHandler : MonoBehaviour
     {
         if (StoreManager.Instance.CannotBuy(cost)) return;
         StoreManager.Instance.Purchase(cost);
+        upgradePS.Play();
         SubtractFireRateModifier fireRateModifier = new()
         {
             Amount = upgrade,
