@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StoryMode : GameMode
+public class EndlessMode : GameMode
 {
     public WaveManager waveManager;
     public DialogueController DialogueController;
@@ -16,7 +15,7 @@ public class StoryMode : GameMode
     public void Awake()
     {
         DialogueController = GetComponent<DialogueController>();
-        Seed.Instance.InitializeSeedScriptStoryMode();
+        Seed.Instance.InitializeSeedScriptEndlessMode();
     }
 
     public override bool CheckGameWon()
@@ -58,5 +57,31 @@ public class StoryMode : GameMode
         UIButtons.SetActive(false);
 
         // Debug.Log("game won test");
+    }
+}
+
+public class MapSizeSettings
+{
+    public int width, height;
+    public int minLength, maxLength;
+
+    public MapSizeSettings(int width, int height, int minLength, int maxLength)
+    {
+        this.width = width;
+        this.height = height;
+        this.minLength = minLength;
+        this.maxLength = maxLength;
+    }
+}
+
+public class EnemyDifficultySettings
+{
+    public float healthMultiplier;
+    public int hungerMultiplier;
+
+    public EnemyDifficultySettings(float healthMultiplier, int hungerMultiplier)
+    {
+        this.healthMultiplier = healthMultiplier;
+        this.hungerMultiplier = hungerMultiplier;
     }
 }

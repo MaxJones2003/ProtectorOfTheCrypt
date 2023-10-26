@@ -28,35 +28,34 @@ public class GridManager : MonoBehaviour
     public GameObject loadedPath = null;
     public List<Vector3> loadedEnemyPath = new List<Vector3>();
 
-
-    [SerializeField] private GameObject mapBoundPrefab;
-    private void Awake()
+    public void GenerateRandomPath()
     {
-        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
-        Camera.main.transform.LookAt(new Vector3(gridWidth/2, 0, gridHeight/2 - 4));
-        // If the seed script is there, and the seed script's PickRandomSeed value is false:
-        // Set the values of the grid/path to those saved in the MapVariables class.
-        Seed seedScript = gameObject.GetComponent<Seed>();
         WaveManager = GetComponent<WaveManager>();
 
-        if (seedScript == null)
-            return;
-        if(seedScript.pickRandomSeed)
-            return;
-
-        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
-    }
-    private void Start()
-    {
         pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
-        
-        if(loadedPath == null)
-            Generate();
-        else
-        {
-            Instantiate(loadedPath);
-            SetUpEnemies(loadedEnemyPath);
-        }
+        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
+        Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
+        //Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
+        hazards.gameObject.SetActive(true);
+        Generate();
+    }
+
+    public void GenerateLoadedPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength, GameObject LoadedPath, List<Vector3> EnemyPath)
+    {
+        WaveManager = GetComponent<WaveManager>();
+
+        gridWidth = GridWith;
+        gridHeight = GridHeight;
+        minPathLength = MinPathLength;
+        maxPathLength = MaxPathLength;
+        loadedPath = LoadedPath;
+        loadedEnemyPath = EnemyPath;
+        Instantiate(loadedPath);
+        SetUpEnemies(loadedEnemyPath);
+        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
+        Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
+
+        hazards.gameObject.SetActive(false);
     }
 
     /// <summary>

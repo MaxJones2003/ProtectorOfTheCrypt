@@ -6,6 +6,14 @@ using System.Linq;
 
 public class Seed : MonoBehaviour
 {
+    private static Seed instance;
+    public static Seed Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
     [Header("Load Scene: ")]
     [Tooltip("If the prefab is level1, this int should be 1, if level2 it should be 2.")]
     [SerializeField] private int levelToLoad = 0;
@@ -23,22 +31,32 @@ public class Seed : MonoBehaviour
 
     private GridManager gridManager;
 
+    
 
     private void Awake() 
     {
+        instance = this;
+    }
+
+    public void InitializeSeedScriptStoryMode()
+    {
+        Debug.Log("Story mode Initialized");
+        Debug.Log(gameObject.name);
         gridManager = gameObject.GetComponent<GridManager>();
 
-        if(pickRandomSeed)
-        {
-            if(!LevelMaking_UseSameSeed) 
-                GameSeed = CreateRandomSeed(16);
-            InitializeRandom();
-        }
-        else
-        {
-            LoadCurrentLevel(levelToLoad, loadThisPrefabLevel);
-            InitializeRandom();
-        }
+        LoadCurrentLevel(levelToLoad, loadThisPrefabLevel);
+        InitializeRandom();
+    }
+
+    public void InitializeSeedScriptEndlessMode()
+    {
+        Debug.Log("Endless mode Initialized");
+        gridManager = gameObject.GetComponent<GridManager>();
+
+        GameSeed = CreateRandomSeed(16);
+        InitializeRandom();
+
+        gridManager.GenerateRandomPath();
     }
 
     private void InitializeRandom()
@@ -87,12 +105,14 @@ public class Seed : MonoBehaviour
         // Load Variables from JSON
   
         MapVariables currentMap = JsonUtility.FromJson<MapVariables>(saveString);
-        gridManager.gridWidth = currentMap.GridWidth;
-        gridManager.gridHeight = currentMap.GridHeight;
-        gridManager.minPathLength = currentMap.MinPathLength;
-        gridManager.maxPathLength = currentMap.MaxPathLength;
         GameSeed = currentMap.Seed;
-        gridManager.loadedPath = path;
-        gridManager.loadedEnemyPath = currentMap.LevelEnemyPath;
+        gridManager.GenerateLoadedPath(currentMap.GridWidth, currentMap.GridHeight, currentMap.MinPathLength, currentMap.MaxPathLength, path, currentMap.LevelEnemyPath);
+        //gridManager.gridWidth = currentMap.GridWidth;
+        //gridManager.gridHeight = currentMap.GridHeight;
+        //gridManager.minPathLength = currentMap.MinPathLength;
+        //gridManager.maxPathLength = currentMap.MaxPathLength;
+        //gridManager.loadedPath = path;
+        //gridManager.loadedEnemyPath = currentMap.LevelEnemyPath;
+        Debug.Log(gridManager.loadedPath);
     }
 }

@@ -16,7 +16,8 @@ public class MainMenuScript : MonoBehaviour
 
     public void TimedMode()
     {
-        //SceneManager.LoadScene("TimedMode");      //Load Timed Mode Scene
+        SceneManager.LoadScene("EndlessMode");      //Load Timed Mode Scene
+        AudioManager.instance.PlayMusicOnSceneChange("EndlessMode");
     }
 
     public void Settings()

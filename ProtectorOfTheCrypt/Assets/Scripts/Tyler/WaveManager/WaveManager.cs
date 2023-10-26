@@ -48,12 +48,18 @@ public class WaveManager : MonoBehaviour
             StoryMode storyMode = GameManager.instance.GameMode as StoryMode;
             storyMode.waveManager = this;
         }
+        else if (GameManager.instance.GameMode is EndlessMode)
+        {
+            EndlessMode endlessMode = GameManager.instance.GameMode as EndlessMode;
+            endlessMode.waveManager = this;
+        }
     }
 
 
     private void OnEnable()
     {
         EnemySpawner.StoppedSpawningObjects += WaveCompleted;
+        Debug.Log(GameManager.instance);
         GameManager.instance.OnGamePaused += PauseSpawning;
         SpawnWave();
     }
