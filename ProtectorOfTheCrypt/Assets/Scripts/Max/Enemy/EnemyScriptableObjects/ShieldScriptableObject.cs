@@ -13,6 +13,7 @@ public class ShieldScriptableObject : ScriptableObject, ICloneable
     public GameObject ShieldPrefab;
 
     public float BaseShieldHealth;
+    public string Description;
 
     public AudioClip ShieldBreakSound;
     /// <summary>
