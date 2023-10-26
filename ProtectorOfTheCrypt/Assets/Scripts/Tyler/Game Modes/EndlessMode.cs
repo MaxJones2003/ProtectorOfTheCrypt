@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndlessMode : GameMode
 {
+    [SerializeField] private EndlessModeSettings[] PresetSettings;
     public WaveManager waveManager;
     public DialogueController DialogueController;
 
@@ -15,7 +16,13 @@ public class EndlessMode : GameMode
     public void Awake()
     {
         DialogueController = GetComponent<DialogueController>();
-        Seed.Instance.InitializeSeedScriptEndlessMode();
+        ReadyToLoadMap();
+    }
+
+    public void ReadyToLoadMap()
+    {
+        EndlessModeSettings setting = PresetSettings[2];
+        Seed.Instance.InitializeSeedScriptEndlessMode(setting);
     }
 
     public override bool CheckGameWon()
@@ -59,8 +66,25 @@ public class EndlessMode : GameMode
         // Debug.Log("game won test");
     }
 }
+public enum EndlessDifficulty { Easy, Standard, Hard, Custom }
 
-public class MapSizeSettings
+[System.Serializable]
+public struct EndlessModeSettings
+{
+    public EndlessDifficulty difficulty;
+    public MapSizeSettings mapSizeSettings;
+    public EnemyDifficultySettings enemyDifficultySettings;
+
+    public EndlessModeSettings(MapSizeSettings mapSizeSettings, EnemyDifficultySettings enemyDifficultySettings, EndlessDifficulty difficulty = EndlessDifficulty.Custom)
+    {
+        this.mapSizeSettings = mapSizeSettings;
+        this.enemyDifficultySettings = enemyDifficultySettings;
+        this.difficulty = difficulty;
+    }
+}
+
+[System.Serializable]
+public struct MapSizeSettings
 {
     public int width, height;
     public int minLength, maxLength;
@@ -74,14 +98,17 @@ public class MapSizeSettings
     }
 }
 
-public class EnemyDifficultySettings
+[System.Serializable]
+public struct EnemyDifficultySettings
 {
     public float healthMultiplier;
     public int hungerMultiplier;
+    public int enemySpawnAmountMultiplier;
 
-    public EnemyDifficultySettings(float healthMultiplier, int hungerMultiplier)
+    public EnemyDifficultySettings(float healthMultiplier, int hungerMultiplier, int enemySpawnAmountMultiplier)
     {
         this.healthMultiplier = healthMultiplier;
         this.hungerMultiplier = hungerMultiplier;
+        this.enemySpawnAmountMultiplier = enemySpawnAmountMultiplier;
     }
 }

@@ -28,11 +28,29 @@ public class GridManager : MonoBehaviour
     public GameObject loadedPath = null;
     public List<Vector3> loadedEnemyPath = new List<Vector3>();
 
-    public void GenerateRandomPath()
+    public void GenerateRandomPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength)
     {
-        WaveManager = GetComponent<WaveManager>();
+        gridWidth = GridWith;
+        gridHeight = GridHeight;
+        minPathLength = MinPathLength;
+        maxPathLength = MaxPathLength;
 
         pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
+
+        WaveManager = GetComponent<WaveManager>();
+
+        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
+        Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
+        //Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
+        hazards.gameObject.SetActive(true);
+        Generate();
+    }
+    public void GenerateRandomPath()
+    {
+        pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
+
+        WaveManager = GetComponent<WaveManager>();
+        
         Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
         Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
         //Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
@@ -102,6 +120,8 @@ public class GridManager : MonoBehaviour
         GameObject parentGO = new GameObject();
         Transform parent = parentGO.transform;
         parent.name = "Path";
+        parent.parent = transform;
+        parent.SetAsFirstSibling();
         LayPathCells(pathCells, parent);
         LaySceneryCells(parent);
 

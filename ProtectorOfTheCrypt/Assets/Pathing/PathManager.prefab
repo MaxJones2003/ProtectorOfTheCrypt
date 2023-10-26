@@ -133,6 +133,7 @@ MonoBehaviour:
   GameSeed: default
   LevelNumber: 0
   LevelMaking_UseSameSeed: 0
+  gridManager: {fileID: 6024401304573393069}
 --- !u!114 &6024401304573393069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +175,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db178141a475de94e99ed578e40606f4, type: 2}
   loadedPath: {fileID: 0}
   loadedEnemyPath: []
-  mapBoundPrefab: {fileID: 2730323428394014302, guid: bf9d892eb997ff3478b69dbb8e76673a, type: 3}
 --- !u!114 &4673002648218141217
 MonoBehaviour:
   m_ObjectHideFlags: 0

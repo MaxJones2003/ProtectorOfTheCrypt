@@ -17,5 +17,19 @@ public class SeedEditor : Editor
         {
             seedScript.SaveCurrentSeed();
         }
+
+        if(GUILayout.Button("Generate Grid"))
+        {
+            Undo.RecordObject(seedScript.transform.GetChild(0), "Removed Old Path");
+            DestroyImmediate(seedScript.transform.GetChild(0).gameObject); // This will remove the child immediately without affecting the scene
+            seedScript.InitializeSeedScriptEndlessModeEditor();
+        }
+
+        if(GUILayout.Button("Generate Grid With Random Seed"))
+        {
+            Undo.RecordObject(seedScript.transform.GetChild(0), "Removed Old Path");
+            DestroyImmediate(seedScript.transform.GetChild(0).gameObject); // This will remove the child immediately without affecting the scene
+            seedScript.InitializeSeedScriptEndlessModeAndRandomizeSeedEditor();
+        }
     }
 }

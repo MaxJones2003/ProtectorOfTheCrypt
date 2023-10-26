@@ -29,9 +29,7 @@ public class Seed : MonoBehaviour
     [SerializeField] private bool LevelMaking_UseSameSeed = false;
 
 
-    private GridManager gridManager;
-
-    
+    public GridManager gridManager;    
 
     private void Awake() 
     {
@@ -40,19 +38,28 @@ public class Seed : MonoBehaviour
 
     public void InitializeSeedScriptStoryMode()
     {
-        Debug.Log("Story mode Initialized");
-        Debug.Log(gameObject.name);
-        gridManager = gameObject.GetComponent<GridManager>();
-
         LoadCurrentLevel(levelToLoad, loadThisPrefabLevel);
         InitializeRandom();
     }
 
-    public void InitializeSeedScriptEndlessMode()
+    public void InitializeSeedScriptEndlessMode(EndlessModeSettings settings)
     {
-        Debug.Log("Endless mode Initialized");
-        gridManager = gameObject.GetComponent<GridManager>();
+        GameSeed = CreateRandomSeed(16);
+        InitializeRandom();
+        MapSizeSettings mapSettings = settings.mapSizeSettings;
 
+        if(transform.GetChild(0).name == "Path") Destroy(transform.GetChild(0).gameObject);
+
+        gridManager.GenerateRandomPath(mapSettings.width, mapSettings.height, mapSettings.minLength, mapSettings.maxLength);
+    }
+    public void InitializeSeedScriptEndlessModeEditor()
+    {
+        InitializeRandom();
+
+        gridManager.GenerateRandomPath();
+    }
+    public void InitializeSeedScriptEndlessModeAndRandomizeSeedEditor()
+    {
         GameSeed = CreateRandomSeed(16);
         InitializeRandom();
 

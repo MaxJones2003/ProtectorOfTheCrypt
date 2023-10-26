@@ -6120,6 +6120,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: gridManager
+      value: 
+      objectReference: {fileID: 1281235888}
+    - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: levelToLoad
       value: 1
       objectReference: {fileID: 0}
@@ -6396,6 +6400,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 568427694}
   m_SourcePrefab: {fileID: 100100000, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+--- !u!114 &1281235888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+  m_PrefabInstance: {fileID: 1281235887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568427686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad69c5f68b5c1c64aaf6b1de94042647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1283597328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6940390357999414439, guid: 5429499bcdac1f44c808cf69f4056631, type: 3}
