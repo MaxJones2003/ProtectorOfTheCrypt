@@ -149,6 +149,7 @@ MonoBehaviour:
   gridWidth: 20
   gridHeight: 16
   hazards: {fileID: 0}
+  hazardPrefab: {fileID: 7024095528963004757, guid: 5429499bcdac1f44c808cf69f4056631, type: 3}
   minPathLength: 28
   maxPathLength: 60
   pathCellObjects:

@@ -8,6 +8,7 @@ public class GridManager : MonoBehaviour
     public int gridWidth = 10;
     public int gridHeight = 8;
     [SerializeField] private Transform hazards;
+    [SerializeField] private GameObject hazardPrefab;
 
     [Tooltip("The lower the Min Path Length, the less Variation.")]
     public int minPathLength = 15;
@@ -28,12 +29,16 @@ public class GridManager : MonoBehaviour
     public GameObject loadedPath = null;
     public List<Vector3> loadedEnemyPath = new List<Vector3>();
 
+    // This should generate hazards at run time
     public void GenerateRandomPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength)
     {
         gridWidth = GridWith;
         gridHeight = GridHeight;
         minPathLength = MinPathLength;
         maxPathLength = MaxPathLength;
+
+        //Generate Hazards
+        GenerateHazards(3);
 
         pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
 
@@ -45,6 +50,70 @@ public class GridManager : MonoBehaviour
         hazards.gameObject.SetActive(true);
         Generate();
     }
+
+    private void GenerateHazards(int hazardGroupsToSpawn)
+    {
+        if(hazards == null)
+        {
+            Transform hazardParent = GameObject.FindWithTag("HazardParent").transform;
+            if(hazardParent == null)
+            {
+                hazardParent = new GameObject().transform;
+                hazardParent.name = "HazardParent";
+                hazardParent.tag = "HazardParent";
+            }
+            hazards = hazardParent;
+        }
+        List<Vector3Int> hazardPositions = new();
+        for(int i = 0; i < hazardGroupsToSpawn; i++)
+        {
+            int randSize = Random.Range(3, 10);
+            Vector3Int randPos = new();
+            int tries = 0;
+            do 
+            {
+                int xPos = Random.Range(2, gridWidth-1);
+                int zPos = Random.Range(2, gridHeight-1);
+                randPos = new Vector3Int(xPos, 0, zPos);
+                tries++;
+                if(tries > 4) break;
+            } while(!CheckGridValidity(randPos, hazardPositions) );
+            CreateHazardGroup(randSize, randPos, ref hazardPositions);
+        }
+
+    }
+    private void CreateHazardGroup(int size, Vector3Int pos, ref List<Vector3Int> hazardPositions)
+    {
+        List<Vector3Int> directions = new List<Vector3Int>
+        {
+            new Vector3Int(0, 0, 0),   // Center
+            new Vector3Int(0, 0, 1),   // Up
+            new Vector3Int(0, 0, -1),  // Down
+            new Vector3Int(-1, 0, 0),  // Left
+            new Vector3Int(1, 0, 0),   // Right
+            new Vector3Int(1, 0, 1),   // Up Right
+            new Vector3Int(-1, 0, 1),  // Up Left
+            new Vector3Int(1, 0, -1),  // Down Right
+            new Vector3Int(-1, 0, -1)    // Down Left
+        };
+        for(int i = 0; i < size; i++)
+        {
+            // Pick a random direction
+            int index = Random.Range(0, directions.Count);
+            Vector3Int newPos = pos + directions[index];
+            directions.RemoveAt(index);
+
+            Transform child = Instantiate(hazardPrefab, newPos, Quaternion.identity).transform;
+            child.parent = hazards;
+            hazardPositions.Add(newPos);
+        }
+    }
+    private bool CheckGridValidity(Vector3Int position, List<Vector3Int> hazards)
+    {
+        return hazards.Contains(position);
+    }
+
+    // This is for in editor and doesn't need to generate random hazards at run time
     public void GenerateRandomPath()
     {
         pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);

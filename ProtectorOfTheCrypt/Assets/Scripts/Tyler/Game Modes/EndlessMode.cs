@@ -16,6 +16,7 @@ public class EndlessMode : GameMode
     public void Awake()
     {
         DialogueController = GetComponent<DialogueController>();
+        ReadyToLoadMap(PresetSettings[2]);
     }
 
     public void ReadyToLoadMap(EndlessModeSettings setting)
