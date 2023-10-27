@@ -16,12 +16,10 @@ public class EndlessMode : GameMode
     public void Awake()
     {
         DialogueController = GetComponent<DialogueController>();
-        ReadyToLoadMap();
     }
 
-    public void ReadyToLoadMap()
+    public void ReadyToLoadMap(EndlessModeSettings setting)
     {
-        EndlessModeSettings setting = PresetSettings[2];
         Seed.Instance.InitializeSeedScriptEndlessMode(setting);
     }
 
@@ -71,12 +69,14 @@ public enum EndlessDifficulty { Easy, Standard, Hard, Custom }
 [System.Serializable]
 public struct EndlessModeSettings
 {
+    public string seed;
     public EndlessDifficulty difficulty;
     public MapSizeSettings mapSizeSettings;
     public EnemyDifficultySettings enemyDifficultySettings;
 
-    public EndlessModeSettings(MapSizeSettings mapSizeSettings, EnemyDifficultySettings enemyDifficultySettings, EndlessDifficulty difficulty = EndlessDifficulty.Custom)
+    public EndlessModeSettings(string seed, MapSizeSettings mapSizeSettings, EnemyDifficultySettings enemyDifficultySettings, EndlessDifficulty difficulty = EndlessDifficulty.Custom)
     {
+        this.seed = seed;
         this.mapSizeSettings = mapSizeSettings;
         this.enemyDifficultySettings = enemyDifficultySettings;
         this.difficulty = difficulty;

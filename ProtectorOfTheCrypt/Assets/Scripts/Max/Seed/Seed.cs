@@ -44,7 +44,7 @@ public class Seed : MonoBehaviour
 
     public void InitializeSeedScriptEndlessMode(EndlessModeSettings settings)
     {
-        GameSeed = CreateRandomSeed(16);
+        GameSeed = settings.seed;
         InitializeRandom();
         MapSizeSettings mapSettings = settings.mapSizeSettings;
 
