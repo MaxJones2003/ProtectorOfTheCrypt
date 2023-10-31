@@ -48,6 +48,10 @@ public class Keypad : MonoBehaviour
         charHolder.characterLimit = 16;
         mapValHolder = 0;
         enemyValHolder = 0;
+        MapDiffChanged();
+        EnemyDiffChanged();
+        seed = Seed.Instance.CreateRandomSeed(charHolder.characterLimit, true);
+        charHolder.text = seed;
     }
 
     public void KeypadValueChanged()
@@ -78,7 +82,7 @@ public class Keypad : MonoBehaviour
     public void EnemyDiffChanged()
     {
         enemyValHolder = enemyDropdown.value;
-
+        
         // 0 = easy, 1 = standard, 2 = hard
         if (enemyValHolder == 0)
         {
@@ -100,6 +104,7 @@ public class Keypad : MonoBehaviour
         EndlessModeSettings settings = new(seed, currentMapValue, currentEnemyValue);
 
         EndlessMode mode = GameManager.instance.GameMode as EndlessMode;
+        Debug.Log(settings);
         mode.ReadyToLoadMap(settings);
     }
 
@@ -183,6 +188,7 @@ public class Keypad : MonoBehaviour
         }
 
         charHolder.text = charHolder.text + i.ToString();
+        SaveButton();
     }
 
     #endregion

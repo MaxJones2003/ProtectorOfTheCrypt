@@ -38,6 +38,7 @@ public class Seed : MonoBehaviour
 
     public void InitializeSeedScriptStoryMode()
     {
+        Debug.Log("Initializing random for story");
         LoadCurrentLevel(levelToLoad, loadThisPrefabLevel);
         InitializeRandom();
     }
@@ -72,9 +73,10 @@ public class Seed : MonoBehaviour
         Random.InitState(CurrentSeed); // Initializes Random to use the seed, this means results using Random will be reproducable via a seed
     }
 
-    private string CreateRandomSeed(int length)
+    public string CreateRandomSeed(int length, bool useNumbersOnly = false)
     {
         string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_!?";
+        if (useNumbersOnly) characters = "0123456789";
         string generated_string = "";
 
         for(int i = 0; i < length; i++)
