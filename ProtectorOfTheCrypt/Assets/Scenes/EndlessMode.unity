@@ -3062,7 +3062,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ENter
+  m_text: Clear
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 659debd8285dee845a78a7872c725744, type: 2}
   m_sharedMaterial: {fileID: 1611992030465851896, guid: 659debd8285dee845a78a7872c725744, type: 2}
@@ -5227,9 +5227,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Clear
-
-'
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 659debd8285dee845a78a7872c725744, type: 2}
   m_sharedMaterial: {fileID: 1611992030465851896, guid: 659debd8285dee845a78a7872c725744, type: 2}
@@ -5319,7 +5317,7 @@ GameObject:
   - component: {fileID: 1091861241}
   - component: {fileID: 1091861240}
   m_Layer: 0
-  m_Name: Enter
+  m_Name: Clear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5392,7 +5390,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 985545901}
         m_TargetAssemblyTypeName: Keypad, Assembly-CSharp
-        m_MethodName: SaveButton
+        m_MethodName: ClearButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9824,7 +9822,7 @@ GameObject:
   - component: {fileID: 1564327830}
   - component: {fileID: 1564327829}
   m_Layer: 0
-  m_Name: Clear
+  m_Name: Backspace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9897,7 +9895,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 985545901}
         m_TargetAssemblyTypeName: Keypad, Assembly-CSharp
-        m_MethodName: ClearButton
+        m_MethodName: BackspaceButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

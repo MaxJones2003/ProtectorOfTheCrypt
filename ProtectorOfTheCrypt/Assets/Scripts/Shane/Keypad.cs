@@ -82,7 +82,7 @@ public class Keypad : MonoBehaviour
     public void EnemyDiffChanged()
     {
         enemyValHolder = enemyDropdown.value;
-        
+
         // 0 = easy, 1 = standard, 2 = hard
         if (enemyValHolder == 0)
         {
@@ -168,6 +168,12 @@ public class Keypad : MonoBehaviour
     {
         keypadNumber = 0;
         UpdateString(keypadNumber);
+    }
+
+    public void BackspaceButton()
+    {
+        int length = charHolder.text.Length;
+        charHolder.text = charHolder.text.Remove(length - 1, 1);
     }
 
     public void ClearButton()
