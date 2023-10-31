@@ -4890,6 +4890,7 @@ MonoBehaviour:
   Enter: {fileID: 1091861238}
   mapDropdown: {fileID: 66674813}
   enemyDropdown: {fileID: 322555244}
+  EndlessCanvas: {fileID: 1667864592}
 --- !u!1001 &1012193590
 PrefabInstance:
   m_ObjectHideFlags: 0

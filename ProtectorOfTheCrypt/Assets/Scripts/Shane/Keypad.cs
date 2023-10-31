@@ -43,8 +43,12 @@ public class Keypad : MonoBehaviour
     [SerializeField] private TMP_Dropdown enemyDropdown;
     int enemyValHolder;
 
+    [Header("References")]
+    [SerializeField] private GameObject EndlessCanvas;
+
     void Start()
     {
+        EndlessCanvas.SetActive(true);
         charHolder.characterLimit = 16;
         mapValHolder = 0;
         enemyValHolder = 0;
@@ -105,6 +109,8 @@ public class Keypad : MonoBehaviour
 
         EndlessMode mode = GameManager.instance.GameMode as EndlessMode;
         Debug.Log(settings);
+        EndlessCanvas.SetActive(false);
+
         mode.ReadyToLoadMap(settings);
     }
 
