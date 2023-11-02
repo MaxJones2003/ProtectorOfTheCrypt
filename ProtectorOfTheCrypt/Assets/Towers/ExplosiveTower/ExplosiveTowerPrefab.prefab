@@ -5146,6 +5146,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4988052125725874611, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+      propertyPath: m_Name
+      value: ExplosionRadius
+      objectReference: {fileID: 0}
     - target: {fileID: 5574415297768011313, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_Size.z
       value: 0.5
@@ -5200,7 +5204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988255157838218706, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FireRateButton
+      value: AOERangeButton
       objectReference: {fileID: 0}
     - target: {fileID: 6988255157838218706, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
