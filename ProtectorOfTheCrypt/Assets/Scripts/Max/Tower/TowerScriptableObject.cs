@@ -17,7 +17,6 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
     public Vector3 SpawnPoint;
     public Vector3 SpawnRotation;
 
-    public DamageConfigScriptableObject DamageConfig;
     public ProjectileConfigurationScriptableObject ProjectileConfig;
     public TrailConfigurationScriptableObject TrailConfig;
     public AuidoConfigScriptableObject AudioConfig;
@@ -35,6 +34,17 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
 
     private GameObject closestEnemy;
     private int enemyLayerMask;
+
+    [Header("Damage")]
+    public float Damage;
+    public float AOEDamage;
+    public float AOERange;
+    [Header("Range")]
+    public float Range;
+    public float FireRate;
+    public float BulletSpeed;
+
+
     public GameObject SpawnModel(MonoBehaviour ActiveMonoBehaviour, Vector3 position)
     {
         this.ActiveMonoBehaviour = ActiveMonoBehaviour;
@@ -66,11 +76,11 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
     #region Shooting
     public void Shoot(Vector3 projectileSpawnPoint)
     {
-        if(Time.time > ProjectileConfig.FireRate + LastShootTime)
+        if(Time.time > FireRate + LastShootTime)
         {
             Vector3 shootDirection;
             bool canShoot = true;
-            if(closestEnemy == null || Vector3.Distance(ShootSystem.transform.position, closestEnemy.transform.position) >= ProjectileConfig.Range)
+            if(closestEnemy == null || Vector3.Distance(ShootSystem.transform.position, closestEnemy.transform.position) >= Range)
             {
                 FindClosestEnemy(out shootDirection, out canShoot, projectileSpawnPoint);
             }
@@ -96,7 +106,7 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
         bullet.tower = this;
         bullet.OnCollision += HandleBulletCollision;
         bullet.transform.position = ShootSystem.transform.position;
-        bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform);
+        bullet.Spawn(BulletSpeed,closestEnemy.transform);
         /* TrailRenderer trail = TrailPool.Get();
         if(trail != null)
         {
@@ -120,7 +130,7 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
 
         float closestDistance = Mathf.Infinity;
 
-        RaycastHit[] hits = Physics.SphereCastAll(origin, ProjectileConfig.Range, Vector3.up);
+        RaycastHit[] hits = Physics.SphereCastAll(origin, Range, Vector3.up);
 
         foreach (var hit in hits)
         {
@@ -185,7 +195,7 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
 
         if(HitCollider.TryGetComponent(out IDamageable damageable))
         {
-            damageable.TakeDamage(DamageConfig.GetDamage(DistanceTraveled), ProjectileConfig.DamageType);
+            damageable.TakeDamage(Damage, ProjectileConfig.DamageType);
         }
         foreach(ICollisionHandler handler in BulletImpactEffects)
         {
@@ -227,7 +237,13 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
         config.ImpactType = ImpactType;
         config.Type = Type;
         config.Name = Name;
-        config.DamageConfig = DamageConfig.Clone() as DamageConfigScriptableObject;
+        config.Damage = Damage;
+        config.AOEDamage = AOEDamage;
+        config.AOERange = AOERange;
+        config.Range = Range;
+        config.FireRate = FireRate;
+        config.BulletSpeed = BulletSpeed;
+
         config.ProjectileConfig = ProjectileConfig.Clone() as ProjectileConfigurationScriptableObject;
         config.TrailConfig = TrailConfig.Clone() as TrailConfigurationScriptableObject;
         config.AudioConfig = AudioConfig.Clone() as AuidoConfigScriptableObject;
