@@ -5070,10 +5070,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 364263734307215627}
     - target: {fileID: 576434142141344485, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 3567295640423565308}
-    - target: {fileID: 576434142141344485, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -5493,8 +5489,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9199410805007726124, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199410805007726124, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.9000015
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3490606313010101524, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 428953212164280829, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
@@ -5539,11 +5544,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!1 &3567295640423565308 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2282194568785421364, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
-  m_PrefabInstance: {fileID: 3326594018304385992}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7105919989795479850
 PrefabInstance:
   m_ObjectHideFlags: 0

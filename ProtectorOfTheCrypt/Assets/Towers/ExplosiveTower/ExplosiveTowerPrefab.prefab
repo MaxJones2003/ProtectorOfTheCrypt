@@ -4959,6 +4959,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 613531150068637109, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 613531150068637109, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -5013,6 +5017,12 @@ PrefabInstance:
     - target: {fileID: 1405774495539163895, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537480303197578365, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+      propertyPath: m_text
+      value: '<b>EXPLOSION RADIUS<b>
+
+        $20'
       objectReference: {fileID: 0}
     - target: {fileID: 1899558268675290917, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
       propertyPath: m_Color.a
@@ -5300,8 +5310,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9199410805007726124, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199410805007726124, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9199410805007726124, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2282194568785421364, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
+    - {fileID: 8401511980873059162, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 428953212164280829, guid: 7d32eef828791674cbe5da7f8d5343b2, type: 3}

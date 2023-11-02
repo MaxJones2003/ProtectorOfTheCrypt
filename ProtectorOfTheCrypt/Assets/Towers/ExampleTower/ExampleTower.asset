@@ -18,8 +18,13 @@ MonoBehaviour:
   ModelPrefab: {fileID: 2360690859071615756, guid: 48801f54a43b751468f14ac89042136c, type: 3}
   SpawnPoint: {x: 0, y: 0, z: 0}
   SpawnRotation: {x: 0, y: 0, z: 0}
-  DamageConfig: {fileID: 11400000, guid: 0c70fc19507288945a94b4d21a7b4753, type: 2}
   ProjectileConfig: {fileID: 11400000, guid: 71d520a0faa70ed4e8a2928085828f21, type: 2}
   TrailConfig: {fileID: 11400000, guid: a4764727514c5ac49be28913666664a7, type: 2}
   AudioConfig: {fileID: 11400000, guid: f740fac2556ad73408d6eaa7236896e1, type: 2}
-  range: 10
+  ImpactTypeOverride: {fileID: 0}
+  Damage: 5
+  AOEDamage: 0
+  AOERange: 0
+  Range: 10
+  FireRate: 4
+  BulletSpeed: 5
