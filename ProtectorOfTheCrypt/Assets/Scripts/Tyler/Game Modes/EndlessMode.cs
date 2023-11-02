@@ -16,11 +16,11 @@ public class EndlessMode : GameMode
     public void Awake()
     {
         DialogueController = GetComponent<DialogueController>();
-        ReadyToLoadMap(PresetSettings[2]);
     }
 
     public void ReadyToLoadMap(EndlessModeSettings setting)
     {
+        Debug.Log(setting);
         Seed.Instance.InitializeSeedScriptEndlessMode(setting);
     }
 
@@ -82,6 +82,11 @@ public struct EndlessModeSettings
         this.enemyDifficultySettings = enemyDifficultySettings;
         this.difficulty = difficulty;
     }
+
+    public override string ToString()
+    {
+        return $"String: {seed}, Map Settings: {mapSizeSettings}";
+    }
 }
 
 [System.Serializable]
@@ -96,6 +101,11 @@ public struct MapSizeSettings
         this.height = height;
         this.minLength = minLength;
         this.maxLength = maxLength;
+    }
+
+    public override string ToString()
+    {
+        return $"Width: {width}, Height: {height}";
     }
 }
 
