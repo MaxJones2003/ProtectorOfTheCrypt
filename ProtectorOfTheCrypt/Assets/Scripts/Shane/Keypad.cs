@@ -20,6 +20,7 @@ public class Keypad : MonoBehaviour
     private MapSizeSettings currentMapValue;
     private EnemyDifficultySettings currentEnemyValue;
     private string seed;
+    private string randomSeed;
 
     [Header("Keypad")]
     public TMP_InputField charHolder;
@@ -45,6 +46,8 @@ public class Keypad : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject EndlessCanvas;
+    [SerializeField] private GameObject KeypadDisplay;
+    [SerializeField] private Toggle RandomSeedToggle;
 
     void Start()
     {
@@ -54,8 +57,8 @@ public class Keypad : MonoBehaviour
         enemyValHolder = 0;
         MapDiffChanged();
         EnemyDiffChanged();
-        seed = Seed.Instance.CreateRandomSeed(charHolder.characterLimit, true);
-        charHolder.text = seed;
+        randomSeed = Seed.Instance.CreateRandomSeed(charHolder.characterLimit, true);
+        //charHolder.text = seed;
     }
 
     public void KeypadValueChanged()
@@ -102,10 +105,30 @@ public class Keypad : MonoBehaviour
         }
     }
 
+    public void UseRandomSeedToggle()
+    {
+        if (RandomSeedToggle.isOn)
+        {
+            KeypadDisplay.SetActive(false);
+        }
+        else
+        {
+            KeypadDisplay.SetActive(true);
+        }
+    }
+
     // Finish Button
     public void Ready()
     {
-        EndlessModeSettings settings = new(seed, currentMapValue, currentEnemyValue);
+        EndlessModeSettings settings;
+        if (RandomSeedToggle.isOn)
+        {
+            settings = new(randomSeed, currentMapValue, currentEnemyValue);
+        }
+        else
+        {
+            settings = new(seed, currentMapValue, currentEnemyValue);
+        }
 
         EndlessMode mode = GameManager.instance.GameMode as EndlessMode;
         Debug.Log(settings);
