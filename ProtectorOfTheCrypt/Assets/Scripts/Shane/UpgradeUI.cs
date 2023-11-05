@@ -38,4 +38,10 @@ public class UpgradeUI : MonoBehaviour
         // Call UpgradeFireRateAdd(upgrade amount, cost);
         TowerUpRef.UpgradeFireRateSubtract(2, 20);
     }
+
+    public void AOERangeButton()
+    {
+        // Call UpgradeAOERangeAdd
+        TowerUpRef.UpgradeAOERangeAdd(2, 25);
+    }
 }
