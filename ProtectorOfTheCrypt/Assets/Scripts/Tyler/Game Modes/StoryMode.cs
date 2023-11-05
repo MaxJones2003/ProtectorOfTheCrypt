@@ -17,6 +17,7 @@ public class StoryMode : GameMode
     {
         DialogueController = GetComponent<DialogueController>();
         Seed.Instance.InitializeSeedScriptStoryMode();
+        waveManager.SpawnFirstWave();
     }
 
     public override bool CheckGameWon()

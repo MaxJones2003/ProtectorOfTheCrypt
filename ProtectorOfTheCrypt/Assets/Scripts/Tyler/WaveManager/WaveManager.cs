@@ -61,13 +61,17 @@ public class WaveManager : MonoBehaviour
         EnemySpawner.StoppedSpawningObjects += WaveCompleted;
         Debug.Log(GameManager.instance);
         GameManager.instance.OnGamePaused += PauseSpawning;
-        SpawnWave();
     }
 
     private void OnDisable()
     {
         EnemySpawner.StoppedSpawningObjects -= WaveCompleted;
         GameManager.instance.OnGamePaused -= PauseSpawning;
+    }
+
+    public void SpawnFirstWave()
+    {
+        SpawnWave();
     }
 
     private void SpawnWave()

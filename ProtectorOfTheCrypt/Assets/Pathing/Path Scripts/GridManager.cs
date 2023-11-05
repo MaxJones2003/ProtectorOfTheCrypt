@@ -180,13 +180,11 @@ public class GridManager : MonoBehaviour
                 crossroadsAdded++;
             }
         }
-        Debug.Log("pahtcells length " + pathCells.Count);
         StartCoroutine(CreateGrid(pathCells));
     }
 
     private IEnumerator CreateGrid(List<Vector2Int> pathCells)
     {
-        Debug.Log(gridWidth + " " +  gridHeight);
         GameObject parentGO = new GameObject();
         Transform parent = parentGO.transform;
         parent.name = "Path";

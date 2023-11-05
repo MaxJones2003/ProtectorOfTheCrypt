@@ -20,8 +20,8 @@ public class EndlessMode : GameMode
 
     public void ReadyToLoadMap(EndlessModeSettings setting)
     {
-        Debug.Log(setting);
         Seed.Instance.InitializeSeedScriptEndlessMode(setting);
+        waveManager.SpawnFirstWave();
     }
 
     public override bool CheckGameWon()
