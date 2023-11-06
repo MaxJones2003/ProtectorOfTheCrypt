@@ -21,6 +21,7 @@ public class Keypad : MonoBehaviour
     private EnemyDifficultySettings currentEnemyValue;
     private string seed;
     private string randomSeed;
+    public float alphaDropper = 100;
 
     [Header("Keypad")]
     public TMP_InputField charHolder;
@@ -48,6 +49,7 @@ public class Keypad : MonoBehaviour
     [SerializeField] private GameObject EndlessCanvas;
     [SerializeField] private GameObject KeypadDisplay;
     [SerializeField] private Toggle RandomSeedToggle;
+    [SerializeField] private GameObject childTransparency;
 
     void Start()
     {
@@ -70,10 +72,10 @@ public class Keypad : MonoBehaviour
     {
         mapValHolder = mapDropdown.value;
 
-        // 0 = easy, 1 = standard, 2 = hard
+        // 0 = small, 1 = standard, 2 = large --- small = hardMap, large = easyMap
         if (mapValHolder == 0)
         {
-            currentMapValue = easyMap;
+            currentMapValue = hardMap;
         }
         else if (mapValHolder == 1)
         {
@@ -81,7 +83,7 @@ public class Keypad : MonoBehaviour
         }
         else if (mapValHolder == 2)
         {
-            currentMapValue = hardMap;
+            currentMapValue = easyMap;
         }
     }
 
@@ -109,11 +111,13 @@ public class Keypad : MonoBehaviour
     {
         if (RandomSeedToggle.isOn)
         {
-            KeypadDisplay.SetActive(false);
+            childTransparency.GetComponent<CanvasGroup>().alpha = 0.2f;
+            childTransparency.GetComponent<CanvasGroup>().interactable = false;
         }
         else
         {
-            KeypadDisplay.SetActive(true);
+            childTransparency.GetComponent<CanvasGroup>().alpha = 1.0f;
+            childTransparency.GetComponent<CanvasGroup>().interactable = true;
         }
     }
 
