@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Cinemachine;
 
 public class GridManager : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class GridManager : MonoBehaviour
     // This should generate hazards at run time
     public void GenerateRandomPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength)
     {
+        CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        
         gridWidth = GridWith;
         gridHeight = GridHeight;
         minPathLength = MinPathLength;
@@ -44,13 +47,48 @@ public class GridManager : MonoBehaviour
 
         WaveManager = GetComponent<WaveManager>();
 
-        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
-        Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
-        //Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
         hazards.gameObject.SetActive(true);
         Generate();
-    }
 
+        GameObject centerPos = new GameObject();
+        centerPos.transform.position = new Vector3(gridWidth / 2, 0, gridHeight / 2);
+
+        GameObject cameraParent = new GameObject();
+        cameraParent.name = "CameraParent";
+        Vector3 offset = new Vector3(0f, gridHeight / 3f, 0f);
+        cameraParent.transform.position = new Vector3(gridWidth / 2, 0,0) + offset; 
+        virtualCamera.Follow = cameraParent.transform;
+        virtualCamera.LookAt = centerPos.transform;
+        virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = Vector3.zero;
+
+        StartCoroutine(SetupCameraPosition(cameraParent));
+    }
+    private GameObject startPathPoint, endPathPoint;
+    [SerializeField] private Transform camera;
+    private IEnumerator SetupCameraPosition(GameObject cameraParent)
+    {
+        Debug.Log("started the coroutine");
+        Renderer startRenderer = startPathPoint.GetComponentInChildren<Renderer>();
+        Renderer endRenderer = endPathPoint.GetComponentInChildren<Renderer>();
+        int iterations = 0;
+        // while the camera is moving to the cameraParents initial position, wait
+        while(Vector3.Distance(camera.position, cameraParent.transform.position) > 1f)
+        {
+            Debug.Log("in the first while loop");
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        Debug.Log("finished the first while loop");
+
+        while((!startRenderer.isVisible && !endRenderer.isVisible))
+        {
+            //if(iterations > 1000) break;
+            cameraParent.transform.position += new Vector3(0f, 1f, -1f);
+            iterations++;
+            yield return new WaitForSeconds(0.1f);
+        }
+        Debug.Log("Start: " + startRenderer.isVisible + " End: " + endRenderer.isVisible);
+    }
     private void GenerateHazards(int hazardGroupsToSpawn)
     {
         if(hazards == null)
@@ -214,8 +252,9 @@ public class GridManager : MonoBehaviour
 
     private void LayPathCells(List<Vector2Int> pathCells, Transform parent)
     {
-        foreach(Vector2Int pathCell in pathCells)
+        for(int i = 0; i < pathCells.Count; i++)
         {
+            Vector2Int pathCell = pathCells[i];
             int neighborValue = pathGenerator.GetCellNeighborValue(pathCell.x, pathCell.y);
 
             GameObject pathTile = pathCellObjects[neighborValue].cellPrefab;
@@ -225,6 +264,15 @@ public class GridManager : MonoBehaviour
             pathTileCell.transform.Rotate(0f, pathCellObjects[neighborValue].yRotation, 0f);
             pathTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Path");
             pathTileCell.transform.GetChild(0).gameObject.tag = "Environment";
+
+            if(i == 0)
+            {
+                startPathPoint = pathTileCell;
+            }
+            else if(i == pathCells.Count - 1)
+            {
+                endPathPoint = pathTileCell;
+            }
         }
     }
 

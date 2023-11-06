@@ -17,6 +17,13 @@ public class StoryMode : GameMode
     {
         DialogueController = GetComponent<DialogueController>();
         Seed.Instance.InitializeSeedScriptStoryMode();
+        GameManager.instance.StartCoroutine(DelayedStart());
+    }
+
+    // This is the worst fix ever. Please forgive me - Max
+    private IEnumerator DelayedStart()
+    {
+        yield return new WaitForSeconds(0.1f);
         waveManager.SpawnFirstWave();
     }
 
