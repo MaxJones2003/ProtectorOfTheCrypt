@@ -20,7 +20,7 @@ public class Seed : MonoBehaviour
     [SerializeField] private GameObject loadThisPrefabLevel;
     [Header("Seed Information")]
     public bool pickRandomSeed = true;
-    [SerializeField] private string GameSeed = "default";
+    [SerializeField] public string GameSeed = "default";
     private int CurrentSeed = 0;
 
     [Header("Make a new Level")]

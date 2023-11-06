@@ -17,10 +17,10 @@ public class ShieldCSVToSO : MonoBehaviour
 #if UNITY_EDITOR
         if (File.Exists(SAVE_FOLDER_Editor + CSV_File + ".csv"))
         {
-            allLines = File.ReadAllLines(SAVE_FOLDER_Editor + CSV_File +".csv");
+            allLines = File.ReadAllLines(SAVE_FOLDER_Editor + CSV_File + ".csv");
         }
 #endif
-        if (File.Exists(SAVE_FOLDER_Game + CSV_File+ ".csv"))
+        if (File.Exists(SAVE_FOLDER_Game + CSV_File + ".csv"))
         {
             allLines = File.ReadAllLines(SAVE_FOLDER_Game + CSV_File + ".csv");
         }
@@ -34,7 +34,7 @@ public class ShieldCSVToSO : MonoBehaviour
 
             shield.name = splitData[0];
             shield.Description = splitData[1];
-            shield.BaseShieldHealth = int.Parse(splitData[2]);
+            // shield.BaseShieldHealth = int.Parse(splitData[2]);            // COMMENTED TO AVOID ERROR
         }
     }
 
