@@ -9,14 +9,10 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public float MaxHealth { get; set; }
     [SerializeField] public float CurrentHealth { get; set; }
-
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
-
     [HideInInspector] public Spawner _spawner;
-
     private AudioClip deathSound;
-
     private ShieldHealth shieldScript;
 
     public void Enable(float maxHealth, Spawner spawner, AudioClip audio, ShieldScriptableObject shield, float baseShieldHealth)
@@ -68,6 +64,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         {
             _spawner.SpawnedObjects.Remove(gameObject);
             OnDeath?.Invoke(transform.position);
+            KillCounter.enemiesKilled++;
             if (GameManager.instance.GameMode is StoryMode)
             {
                 if (GameManager.instance.GameMode.CheckGameWon())

@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     public TextMeshProUGUI seedDisplay;
     private String seedHolder;
 
-    void Awake()
+    void Start()
     {
         if (GameManager.instance.GameMode is EndlessMode)
         {
