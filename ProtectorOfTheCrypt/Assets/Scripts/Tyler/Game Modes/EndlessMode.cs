@@ -94,15 +94,25 @@ public struct MapSizeSettings
 {
     public int width, height;
     public int minLength, maxLength;
+    [Tooltip("The amount of hazard groups that will be spawned in the map + or - 3")]
+    [SerializeField] Vector2Int numOfHazardGroupRange;
+    public int hazardGroups 
+    {
+        get
+        {
+            return Random.Range(numOfHazardGroupRange.x, numOfHazardGroupRange.y);
+        }
+    }
     public GameObject cameraPosition;
 
-    public MapSizeSettings(int width, int height, int minLength, int maxLength, GameObject cameraPosition)
+    public MapSizeSettings(int width, int height, int minLength, int maxLength, GameObject cameraPosition, Vector2Int hazardGroupsRange)
     {
         this.width = width;
         this.height = height;
         this.minLength = minLength;
         this.maxLength = maxLength;
         this.cameraPosition = cameraPosition;
+        numOfHazardGroupRange = hazardGroupsRange;
     }
 
     public override string ToString()

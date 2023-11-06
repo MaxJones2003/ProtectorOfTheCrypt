@@ -965,6 +965,7 @@ MonoBehaviour:
       height: 38
       minLength: 50
       maxLength: 230
+      numOfHazardGroupRange: {x: 0, y: 0}
       cameraPosition: {fileID: 0}
     enemyDifficultySettings:
       healthMultiplier: 0
@@ -977,6 +978,7 @@ MonoBehaviour:
       height: 26
       minLength: 35
       maxLength: 150
+      numOfHazardGroupRange: {x: 0, y: 0}
       cameraPosition: {fileID: 0}
     enemyDifficultySettings:
       healthMultiplier: 0
@@ -989,6 +991,7 @@ MonoBehaviour:
       height: 15
       minLength: 24
       maxLength: 80
+      numOfHazardGroupRange: {x: 0, y: 0}
       cameraPosition: {fileID: 0}
     enemyDifficultySettings:
       healthMultiplier: 0
@@ -5261,18 +5264,21 @@ MonoBehaviour:
     height: 37
     minLength: 60
     maxLength: 250
+    numOfHazardGroupRange: {x: 20, y: 30}
     cameraPosition: {fileID: 19807292}
   standardMap:
     width: 35
     height: 30
     minLength: 45
     maxLength: 175
+    numOfHazardGroupRange: {x: 10, y: 20}
     cameraPosition: {fileID: 604220051}
   hardMap:
     width: 26
     height: 20
     minLength: 30
     maxLength: 75
+    numOfHazardGroupRange: {x: 1, y: 4}
     cameraPosition: {fileID: 1927018064}
   easyEnemy:
     healthMultiplier: 1

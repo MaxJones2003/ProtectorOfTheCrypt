@@ -92,6 +92,16 @@ public class InputSystem : MonoBehaviour
                 CheckLayerAndSetColor();
             }
         }
+        else if(isTowerPlacementUIActive)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = sceneCamaera.nearClipPlane;
+            Ray ray = sceneCamaera.ScreenPointToRay(mousePos);
+            if (Physics.Raycast(ray, 1000, UILayerMask)) return;
+
+            
+        }
+
     }
 
     #region Tower Placement
