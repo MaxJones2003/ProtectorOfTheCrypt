@@ -51,7 +51,7 @@ public class Seed : MonoBehaviour
 
         if(transform.GetChild(0).name == "Path") Destroy(transform.GetChild(0).gameObject);
 
-        gridManager.GenerateRandomPath(mapSettings.width, mapSettings.height, mapSettings.minLength, mapSettings.maxLength);
+        gridManager.GenerateRandomPath(mapSettings.width, mapSettings.height, mapSettings.minLength, mapSettings.maxLength, mapSettings.cameraPosition);
     }
     public void InitializeSeedScriptEndlessModeEditor()
     {

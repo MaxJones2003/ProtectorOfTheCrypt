@@ -94,13 +94,15 @@ public struct MapSizeSettings
 {
     public int width, height;
     public int minLength, maxLength;
+    public GameObject cameraPosition;
 
-    public MapSizeSettings(int width, int height, int minLength, int maxLength)
+    public MapSizeSettings(int width, int height, int minLength, int maxLength, GameObject cameraPosition)
     {
         this.width = width;
         this.height = height;
         this.minLength = minLength;
         this.maxLength = maxLength;
+        this.cameraPosition = cameraPosition;
     }
 
     public override string ToString()

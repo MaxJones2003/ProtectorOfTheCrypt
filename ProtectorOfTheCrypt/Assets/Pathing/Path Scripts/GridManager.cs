@@ -31,7 +31,7 @@ public class GridManager : MonoBehaviour
     public List<Vector3> loadedEnemyPath = new List<Vector3>();
 
     // This should generate hazards at run time
-    public void GenerateRandomPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength)
+    public void GenerateRandomPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength, GameObject cameraPosition)
     {
         CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         
@@ -53,15 +53,12 @@ public class GridManager : MonoBehaviour
         GameObject centerPos = new GameObject();
         centerPos.transform.position = new Vector3(gridWidth / 2, 0, gridHeight / 2);
 
-        GameObject cameraParent = new GameObject();
-        cameraParent.name = "CameraParent";
-        Vector3 offset = new Vector3(0f, gridHeight / 3f, 0f);
-        cameraParent.transform.position = new Vector3(gridWidth / 2, 0,0) + offset; 
-        virtualCamera.Follow = cameraParent.transform;
+       
+        virtualCamera.Follow = cameraPosition.transform;
         virtualCamera.LookAt = centerPos.transform;
         virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = Vector3.zero;
 
-        StartCoroutine(SetupCameraPosition(cameraParent));
+        StartCoroutine(SetupCameraPosition(cameraPosition));
     }
     private GameObject startPathPoint, endPathPoint;
     [SerializeField] private Transform camera;
