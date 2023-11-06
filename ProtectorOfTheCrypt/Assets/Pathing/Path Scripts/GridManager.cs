@@ -31,7 +31,7 @@ public class GridManager : MonoBehaviour
     public List<Vector3> loadedEnemyPath = new List<Vector3>();
 
     // This should generate hazards at run time
-    public void GenerateRandomPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength, GameObject cameraPosition)
+    public void GenerateRandomPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength, GameObject cameraPosition, int hazardGroupsToSpawn)
     {
         CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         
@@ -41,7 +41,8 @@ public class GridManager : MonoBehaviour
         maxPathLength = MaxPathLength;
 
         //Generate Hazards
-        GenerateHazards(3);
+
+        GenerateHazards(hazardGroupsToSpawn);
 
         pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
 
@@ -64,18 +65,15 @@ public class GridManager : MonoBehaviour
     [SerializeField] private Transform camera;
     private IEnumerator SetupCameraPosition(GameObject cameraParent)
     {
-        Debug.Log("started the coroutine");
         Renderer startRenderer = startPathPoint.GetComponentInChildren<Renderer>();
         Renderer endRenderer = endPathPoint.GetComponentInChildren<Renderer>();
         int iterations = 0;
         // while the camera is moving to the cameraParents initial position, wait
         while(Vector3.Distance(camera.position, cameraParent.transform.position) > 1f)
         {
-            Debug.Log("in the first while loop");
             yield return new WaitForSeconds(0.1f);
         }
 
-        Debug.Log("finished the first while loop");
 
         while((!startRenderer.isVisible && !endRenderer.isVisible))
         {
@@ -84,7 +82,6 @@ public class GridManager : MonoBehaviour
             iterations++;
             yield return new WaitForSeconds(0.1f);
         }
-        Debug.Log("Start: " + startRenderer.isVisible + " End: " + endRenderer.isVisible);
     }
     private void GenerateHazards(int hazardGroupsToSpawn)
     {
