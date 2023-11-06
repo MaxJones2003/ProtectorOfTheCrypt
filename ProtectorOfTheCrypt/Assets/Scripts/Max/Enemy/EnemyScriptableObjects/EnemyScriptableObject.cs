@@ -13,6 +13,7 @@ public class EnemyScriptableObject : ScriptableObject
     public string Description;
     public int Hunger = 5;
     [Tooltip("ONLY FILL SLOT IF ON A SHIELD ENEMY")]
+    public float BaseShieldHealth;
     public ShieldScriptableObject ShieldType;
     public AudioClip deathSound;
 
@@ -30,7 +31,7 @@ public class EnemyScriptableObject : ScriptableObject
         Model.layer = LayerMask.NameToLayer("Enemy");
         Model.AddComponent<EnemyMovementHandler>().Initialize(this, Path, BaseSpeed, Spawner);
 
-        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, Spawner, deathSound, ShieldType);
+        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, Spawner, deathSound, ShieldType, BaseShieldHealth);
 
         return Model;
     }

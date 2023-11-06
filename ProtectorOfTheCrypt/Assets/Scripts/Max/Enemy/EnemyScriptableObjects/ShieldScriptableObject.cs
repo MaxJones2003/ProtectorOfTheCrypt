@@ -11,8 +11,6 @@ public class ShieldScriptableObject : ScriptableObject, ICloneable
 {
     [Tooltip("The physical representation of the shield")]
     public GameObject ShieldPrefab;
-
-    public float BaseShieldHealth;
     public string Description;
 
     public AudioClip ShieldBreakSound;
@@ -27,7 +25,7 @@ public class ShieldScriptableObject : ScriptableObject, ICloneable
     [Tooltip("The types of elements the enemy takes reduced damage against")]
     public ElementType[] Strengths;
 
-    public ShieldHealth Spawn(Transform Parent, MonoBehaviour ActiveMonoBehaviour, EnemyHealth enemyHealth)
+    public ShieldHealth Spawn(Transform Parent, MonoBehaviour ActiveMonoBehaviour, EnemyHealth enemyHealth, float BaseShieldHealth)
     {
 
         GameObject Model = Instantiate(ShieldPrefab);

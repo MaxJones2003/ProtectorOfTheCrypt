@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private ShieldHealth shieldScript;
 
-    public void Enable(float maxHealth, Spawner spawner, AudioClip audio,ShieldScriptableObject shield) 
+    public void Enable(float maxHealth, Spawner spawner, AudioClip audio,ShieldScriptableObject shield, float baseShieldHealth) 
     {
         gameObject.GetComponent<Collider>().enabled = false;
         StartCoroutine(EnableCollider());
@@ -29,7 +29,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         deathSound = audio;
         
         // Handle Shield Setup
-        if(shield != null) shieldScript = shield.Spawn(transform, this, this);
+        if(shield != null) shieldScript = shield.Spawn(transform, this, this, baseShieldHealth);
     }
 
     public void OnDestroy()
