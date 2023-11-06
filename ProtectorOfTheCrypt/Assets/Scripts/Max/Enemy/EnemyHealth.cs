@@ -8,7 +8,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public float MaxHealth { get; set; }
-    [SerializeField]public float CurrentHealth { get; set; }
+    [SerializeField] public float CurrentHealth { get; set; }
 
     public event IDamageable.TakeDamageEvent OnTakeDamage;
     public event IDamageable.DeathEvent OnDeath;
@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     private ShieldHealth shieldScript;
 
-    public void Enable(float maxHealth, Spawner spawner, AudioClip audio,ShieldScriptableObject shield, float baseShieldHealth) 
+    public void Enable(float maxHealth, Spawner spawner, AudioClip audio, ShieldScriptableObject shield, float baseShieldHealth)
     {
         gameObject.GetComponent<Collider>().enabled = false;
         StartCoroutine(EnableCollider());
@@ -27,14 +27,18 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         CurrentHealth = MaxHealth;
         _spawner = spawner;
         deathSound = audio;
-        
+
         // Handle Shield Setup
-        if(shield != null) shieldScript = shield.Spawn(transform, this, this, baseShieldHealth);
+        if (shield != null) shieldScript = shield.Spawn(transform, this, this, baseShieldHealth);
     }
 
     public void OnDestroy()
     {
-        AudioManager.instance.PlaySound(AudioManagerChannels.SoundEffectChannel, deathSound);
+        /*
+        if (deathSound != null)
+        {
+            AudioManager.instance.PlaySound(AudioManagerChannels.SoundEffectChannel, deathSound);
+        }*/
     }
 
     public void TakeDamage(float Damage, ElementType[] DamageType)
@@ -44,7 +48,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         // Check if enemy has a shield
         // If enemy has a shield, call TakeDamage() on the shield.
         // If the shield is boken its TakeDamage function returns the left over damage which gets dealt to the enemy
-        if(shieldScript != null)
+        if (shieldScript != null)
         {
             Debug.Log(damageTaken);
             damageTaken = shieldScript.TakeDamage(Damage, DamageType);
@@ -55,7 +59,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         damageTaken = Mathf.Clamp(damageTaken, 0, CurrentHealth);
         CurrentHealth -= damageTaken;
 
-        if(damageTaken != 0) // Damage
+        if (damageTaken != 0) // Damage
         {
             OnTakeDamage?.Invoke(damageTaken);
         }
@@ -67,7 +71,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             if (GameManager.instance.GameMode is StoryMode)
             {
                 if (GameManager.instance.GameMode.CheckGameWon())
-                        GameManager.instance.GameMode.OnGameWon();
+                    GameManager.instance.GameMode.OnGameWon();
             }
             GameManager.instance.RemoveMoney(-5);
             Destroy(gameObject);
@@ -84,5 +88,5 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(0.1f);
         gameObject.GetComponent<Collider>().enabled = true;
     }
-    
+
 }
