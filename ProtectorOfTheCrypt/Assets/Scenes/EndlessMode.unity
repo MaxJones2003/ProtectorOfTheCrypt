@@ -293,7 +293,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19807292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.386546, y: 8.266973, z: -8.977466}
+  m_LocalPosition: {x: 22, y: 20.62, z: -12.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2974,7 +2974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 604220052}
   m_Layer: 0
-  m_Name: MediumlMapCameraPosition (1)
+  m_Name: MediumlMapCameraPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2988,7 +2988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604220051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.386546, y: 8.266973, z: -8.977466}
+  m_LocalPosition: {x: 17, y: 18.81, z: -9.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5261,19 +5261,19 @@ MonoBehaviour:
     height: 37
     minLength: 60
     maxLength: 250
-    cameraPosition: {fileID: 0}
+    cameraPosition: {fileID: 19807292}
   standardMap:
     width: 35
     height: 30
     minLength: 45
     maxLength: 175
-    cameraPosition: {fileID: 0}
+    cameraPosition: {fileID: 604220051}
   hardMap:
     width: 26
     height: 20
     minLength: 30
     maxLength: 75
-    cameraPosition: {fileID: 0}
+    cameraPosition: {fileID: 1927018064}
   easyEnemy:
     healthMultiplier: 1
     hungerMultiplier: 1
@@ -12328,7 +12328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927018064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.386546, y: 8.266973, z: -8.977466}
+  m_LocalPosition: {x: 13, y: 13.82, z: -7.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
