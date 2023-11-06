@@ -70,10 +70,10 @@ public class Keypad : MonoBehaviour
     {
         mapValHolder = mapDropdown.value;
 
-        // 0 = easy, 1 = standard, 2 = hard
+        // 0 = small, 1 = standard, 2 = large --- small = hardMap, large = easyMap
         if (mapValHolder == 0)
         {
-            currentMapValue = easyMap;
+            currentMapValue = hardMap;
         }
         else if (mapValHolder == 1)
         {
@@ -81,7 +81,7 @@ public class Keypad : MonoBehaviour
         }
         else if (mapValHolder == 2)
         {
-            currentMapValue = hardMap;
+            currentMapValue = easyMap;
         }
     }
 
