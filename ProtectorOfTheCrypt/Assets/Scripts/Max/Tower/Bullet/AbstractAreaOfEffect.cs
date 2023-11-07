@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class AbstractAreaOfEffect : ICollisionHandler
 {
+    //public GameObject ParticleEffect;
     public float Radius = 5;
     public AnimationCurve DamageFallOff;
     public float BaseDamage = 20;
@@ -29,6 +30,8 @@ public abstract class AbstractAreaOfEffect : ICollisionHandler
             HitObjects,
             tower.ProjectileConfig.HitMask
         );
+/*         GameObject particleEffect = GameObject.Instantiate(ParticleEffect, HitPosition, Quaternion.identity);
+        MonoBehaviour.Destroy(particleEffect, particleEffect.GetComponent<ParticleSystem>().main.duration); */
         for(int i = 0; i < Hits; i++)
         {
             if (HitObjects[i].TryGetComponent(out IDamageable damageable))
