@@ -38,7 +38,7 @@ public class SurfaceManager : MonoBehaviour
 
     public void HandleImpact(GameObject HitObject, Vector3 HitPoint, Vector3 HitNormal, ImpactType Impact, int TriangleIndex)
     {
-        if (HitObject.TryGetComponent<Terrain>(out Terrain terrain))
+        /* if (HitObject.TryGetComponent<Terrain>(out Terrain terrain))
         {
             List<TextureAlpha> activeTextures = GetActiveTexturesFromTerrain(terrain, HitPoint);
             foreach (TextureAlpha activeTexture in activeTextures)
@@ -66,7 +66,7 @@ public class SurfaceManager : MonoBehaviour
                 }
             }
         }
-        /*else if (HitObject.TryGetComponent<Renderer>(out Renderer renderer))
+        else  */if (HitObject.TryGetComponent<Renderer>(out Renderer renderer))
         {
             Texture activeTexture = GetActiveTextureFromRenderer(renderer, TriangleIndex);
             SurfaceType surfaceType = Surfaces.Find(surface => surface.Albedo == activeTexture);
@@ -90,7 +90,7 @@ public class SurfaceManager : MonoBehaviour
                     }
                 }
             }
-        }*/
+        }
     }
 
     private List<TextureAlpha> GetActiveTexturesFromTerrain(Terrain Terrain, Vector3 HitPoint)

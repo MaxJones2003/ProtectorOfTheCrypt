@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb141bd0ab618d4b850f6fc97e7746c, type: 3}
   m_Name: ExplosiveSpawnObjectEffect
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 8370572857162089278, guid: f1ef63a3d039b5d49b720d38943861d2, type: 3}
+  Prefab: {fileID: 1373139501600285058, guid: c18d8b42cb5d8df4ebe92fdb1cb815e8, type: 3}
   Probability: 1
   RandomizeRotation: 1
   RandomizedRotationMultiplier: {x: 0, y: 0, z: 0}

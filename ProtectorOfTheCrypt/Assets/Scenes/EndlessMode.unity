@@ -609,6 +609,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66674811}
   m_CullTransparentMesh: 1
+--- !u!1 &77994747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 754345907592789057, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+  m_PrefabInstance: {fileID: 727434994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &77994752
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77994747}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &84691808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,6 +3773,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4203544896030565663, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4455301952300251016, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
       propertyPath: m_Name
       value: InGameTowerSelectionUI
@@ -3787,7 +3808,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 754345907592789057, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 77994752}
+    - targetCorrespondingSourceObject: {fileID: 4297421592331377769, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 877805426}
   m_SourcePrefab: {fileID: 100100000, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
 --- !u!4 &727434995 stripped
 Transform:
@@ -4758,6 +4785,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873382457}
   m_CullTransparentMesh: 1
+--- !u!1 &877805422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4297421592331377769, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+  m_PrefabInstance: {fileID: 727434994}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &877805426
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877805422}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &946008403
 GameObject:
   m_ObjectHideFlags: 3
