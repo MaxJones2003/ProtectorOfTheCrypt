@@ -290,7 +290,7 @@ public class GridManager : MonoBehaviour
                     GameObject sceneryTileCell = Instantiate(cell.cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);
                     sceneryTileCell.transform.rotation = GetCellRandomRotation();
                     sceneryTileCell.transform.parent = parent;
-                    sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Environment");
+                    //sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Environment");
                     sceneryTileCell.transform.GetChild(0).gameObject.tag = "Environment";
                     //yield return null;
                 }
