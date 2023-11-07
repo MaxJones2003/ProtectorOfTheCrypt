@@ -13,6 +13,9 @@ public class EndlessMode : GameMode
     public GameObject GameOverScreen;
     public GameObject UIButtons;
 
+    public EnemyScriptableObject basicEnemy;
+    public EnemyScriptableObject shieldEnemy;
+
     public void Awake()
     {
         DialogueController = GetComponent<DialogueController>();
@@ -74,7 +77,6 @@ public struct EndlessModeSettings
     public EndlessDifficulty difficulty;
     public MapSizeSettings mapSizeSettings;
     public EnemyDifficultySettings enemyDifficultySettings;
-
     public EndlessModeSettings(string seed, MapSizeSettings mapSizeSettings, EnemyDifficultySettings enemyDifficultySettings, EndlessDifficulty difficulty = EndlessDifficulty.Custom)
     {
         this.seed = seed;

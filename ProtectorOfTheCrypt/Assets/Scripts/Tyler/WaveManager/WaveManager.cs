@@ -23,6 +23,13 @@ public class WaveManager : MonoBehaviour
         [Range(0f, 20f)]
         public float TimeUntilNextWave;
         public Dialogue Dialogue;
+
+        public Wave(Group enemyGroup, float timeUntilNextWave, Dialogue dialogue)
+        {
+            EnemyGroup = enemyGroup;
+            TimeUntilNextWave = timeUntilNextWave;
+            Dialogue = dialogue;
+        }
     }
     public List<Wave> WavesToSpawn = new List<Wave>();
     public static Wave CurrentWave;
@@ -32,6 +39,9 @@ public class WaveManager : MonoBehaviour
 
     public enum SpawnState { SPAWNING, WAITING, FINISHED, HALTED };
     public SpawnState state = SpawnState.WAITING;
+
+    EndlessMode endlessMode;
+    StoryMode storyMode;
 
 
     private void Awake()
@@ -47,11 +57,15 @@ public class WaveManager : MonoBehaviour
         {
             StoryMode storyMode = GameManager.instance.GameMode as StoryMode;
             storyMode.waveManager = this;
+            this.storyMode = storyMode; 
+
         }
         else if (GameManager.instance.GameMode is EndlessMode)
         {
             EndlessMode endlessMode = GameManager.instance.GameMode as EndlessMode;
             endlessMode.waveManager = this;
+            this.endlessMode = endlessMode;
+            
         }
     }
 
@@ -71,11 +85,42 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnFirstWave()
     {
+        
+
         SpawnWave();
+    }
+
+    public void CreateWave()
+    {
+        System.Random random = new System.Random();
+
+        WavesToSpawn.Add(new Wave(
+            new Group(
+                PickRandomEnemyType(random),
+                random.Next(1, 11), // needs to be a formulaic value
+                random.Next(1, 3)
+            ), random.Next(1, 11),
+            null));
+    }
+
+    public EnemyScriptableObject PickRandomEnemyType(System.Random random)
+    {
+        int selNum = random.Next(0, 2);
+        switch(selNum)
+        {
+            case 0:
+                return endlessMode.basicEnemy;
+            case 1:
+                return endlessMode.shieldEnemy;
+        }
+        return null;
     }
 
     private void SpawnWave()
     {
+        if (endlessMode)
+            CreateWave();
+
         if (CurrentWaveCount + 1 >= WavesToSpawn.Count
             || GameManager.instance.Souls == 0)
         {
