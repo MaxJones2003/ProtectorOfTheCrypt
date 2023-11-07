@@ -92,15 +92,6 @@ public class InputSystem : MonoBehaviour
                 CheckLayerAndSetColor();
             }
         }
-        else if(isTowerPlacementUIActive)
-        {
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.z = sceneCamaera.nearClipPlane;
-            Ray ray = sceneCamaera.ScreenPointToRay(mousePos);
-            if (Physics.Raycast(ray, 1000, UILayerMask)) return;
-
-            
-        }
 
     }
 
@@ -219,7 +210,14 @@ public class InputSystem : MonoBehaviour
         mousePos.z = sceneCamaera.nearClipPlane;
         Ray ray = sceneCamaera.ScreenPointToRay(mousePos);
         RaycastHit hit;
-        if (Physics.Raycast(ray, 1000, UILayerMask)) return;
+        if (Physics.Raycast(ray, 1000, UILayerMask)) 
+        {
+            return;
+        }
+        else if (isTowerPlacementUIActive && Physics.Raycast(ray, 1000, UILayerMask))
+        {
+            IGTS_UI.GetComponent<IGTS_Buttons>().CancelButton();
+        }
         else if (Physics.Raycast(ray, out hit, 100, towerLayerMask))
         {
             TowerPlacementMode(false);
