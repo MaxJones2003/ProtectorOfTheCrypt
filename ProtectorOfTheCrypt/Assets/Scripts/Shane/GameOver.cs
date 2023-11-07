@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
 public class GameOver : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
-    {
+    public TextMeshProUGUI killCount;
 
+    void Start()
+    {
+        if (GameManager.instance.GameMode is EndlessMode)
+        {
+            killCount.text = "Enemies Defeated: " + KillCounter.enemiesKilled;
+        }
+        else
+        {
+            killCount.text = "";
+        }
     }
 
     // Needs to Restart Active Scene
