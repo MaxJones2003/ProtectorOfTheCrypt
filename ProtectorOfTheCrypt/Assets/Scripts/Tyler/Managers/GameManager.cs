@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     {
         Souls -= LostSouls;
         OnSoulsChanged?.Invoke();
-        if (GameMode is StoryMode && GameMode.CheckGameLost())
+        if ((GameMode is StoryMode || GameMode is EndlessMode) && GameMode.CheckGameLost())
         {
             GameMode.OnGameLost();
         }
