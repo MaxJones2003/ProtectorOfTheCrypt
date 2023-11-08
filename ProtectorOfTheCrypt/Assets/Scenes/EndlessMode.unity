@@ -7881,12 +7881,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7126660806644018715, guid: c1d758f186fd5fa4badd63df3f62d874, type: 3}
     - target: {fileID: 4673002648218141217, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
-      propertyPath: DefaultSurface
-      value: 
-      objectReference: {fileID: 11400000, guid: 17c051223fbdada4eb2fdd09cc3d593c, type: 2}
-    - target: {fileID: 4673002648218141217, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: Surfaces.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4673002648218141217, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: Surfaces.Array.data[2].Albedo

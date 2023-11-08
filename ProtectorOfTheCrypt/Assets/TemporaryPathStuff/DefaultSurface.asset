@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac21c4db8f7c50c4c8f2d52f1ccd4184, type: 3}
-  m_Name: Grass
+  m_Name: DefaultSurface
   m_EditorClassIdentifier: 
   ImpactTypeEffects:
   - ImpactType: {fileID: 11400000, guid: 1963707f99ba86549a01731fb79af9f9, type: 2}
-    SurfaceEffect: {fileID: 11400000, guid: 559963d58e24bfd448aaf65328e6251d, type: 2}
-  - ImpactType: {fileID: 11400000, guid: 4d2dae0b5f0f8b946bd5bbc92f3be300, type: 2}
-    SurfaceEffect: {fileID: 11400000, guid: be3130badf8b56249b9a86aa9ee7d2e3, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: 23c272791102a134f888d9429320234a, type: 2}
+  - ImpactType: {fileID: 11400000, guid: 9b0437948f180184a9d2bff3cc24022d, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: 08e738021b465ad42903896e7408aeda, type: 2}
+  - ImpactType: {fileID: 11400000, guid: 3ea6136ff92c52e409eaa8d546fc259d, type: 2}
+    SurfaceEffect: {fileID: 11400000, guid: ad4f639e52e1ba44bab6835e0376691a, type: 2}

@@ -38,7 +38,7 @@ public class SurfaceManager : MonoBehaviour
 
     public void HandleImpact(GameObject HitObject, Vector3 HitPoint, Vector3 HitNormal, ImpactType Impact, int TriangleIndex)
     {
-        Renderer renderer = HitObject.GetComponentInChildren<Renderer>();
+        /* Renderer renderer = HitObject.GetComponentInChildren<Renderer>();
         if(renderer == null) return;
 
         Texture activeTexture = GetActiveTextureFromRenderer(renderer, TriangleIndex);
@@ -53,14 +53,14 @@ public class SurfaceManager : MonoBehaviour
                 }
             }
         }
-        else
+        else */
         {
-            Debug.Log("no surface type found");
             foreach (Surface.SurfaceImpactTypeEffect typeEffect in DefaultSurface.ImpactTypeEffects)
             {
                 if (typeEffect.ImpactType == Impact)
                 {
-                    PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1);
+                    PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1, DefaultPoolSizes);
+                    break;
                 }
             }
         }
@@ -115,7 +115,7 @@ public class SurfaceManager : MonoBehaviour
         return Materials[0].mainTexture;
     }
 
-    private void PlayEffects(Vector3 HitPoint, Vector3 HitNormal, SurfaceEffect SurfaceEffect, float SoundOffset)
+    private void PlayEffects(Vector3 HitPoint, Vector3 HitNormal, SurfaceEffect SurfaceEffect, float SoundOffset, int poolSize)
     {
         foreach (SpawnObjectEffect spawnObjectEffect in SurfaceEffect.SpawnObjectEffects)
         {

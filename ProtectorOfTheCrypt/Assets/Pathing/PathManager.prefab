@@ -195,7 +195,7 @@ MonoBehaviour:
   - Albedo: {fileID: 2800000, guid: 5ab69704aa4984b49bc426da72fabbed, type: 3}
     Surface: {fileID: 11400000, guid: fb69a3a6e4144fc4a940105fa9190cf9, type: 2}
   DefaultPoolSizes: 10
-  DefaultSurface: {fileID: 0}
+  DefaultSurface: {fileID: 11400000, guid: 17c051223fbdada4eb2fdd09cc3d593c, type: 2}
 --- !u!114 &3638156756751218669
 MonoBehaviour:
   m_ObjectHideFlags: 0
