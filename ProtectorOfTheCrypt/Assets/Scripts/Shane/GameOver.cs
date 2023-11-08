@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI killCount;
+    public Button retryButton;
 
     void Start()
     {
         if (GameManager.instance.GameMode is EndlessMode)
         {
             killCount.text = "Enemies Defeated: " + KillCounter.enemiesKilled;
+            retryButton.gameObject.SetActive(false);                                // Retry button only displays in Story Mode
         }
         else
         {
