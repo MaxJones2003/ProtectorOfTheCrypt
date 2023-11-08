@@ -116,12 +116,12 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
             trail.gameObject.SetActive(true);
         } */
     }
-        /*Object Pooling Projectile
+        /* Object Pooling Projectile
         Bullet bullet = BulletPool.GetObject().GetComponent<Bullet>();
         bullet.gameObject.SetActive(true);
         bullet.OnCollision += HandleBulletCollision;
         bullet.transform.position = ShootSystem.transform.position;
-        bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform, ProjectileConfig.DamageType);*/
+        bullet.Spawn(ProjectileConfig.BulletSpeed,closestEnemy.transform, ProjectileConfig.DamageType); */
 
     private void FindClosestEnemy(out Vector3 directionToEnemy, out bool targetInRange, Vector3 origin)
     {
@@ -235,6 +235,7 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
         TowerScriptableObject config = CreateInstance<TowerScriptableObject>();
 
         config.ImpactType = ImpactType;
+        config.ImpactTypeOverride = ImpactTypeOverride;
         config.Type = Type;
         config.Name = Name;
         config.Damage = Damage;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2d6f3859d1dcf4fa78f8100e476a51, type: 3}
   m_Name: ExplosiveTower
   m_EditorClassIdentifier: 
-  ImpactType: {fileID: 11400000, guid: 4d2dae0b5f0f8b946bd5bbc92f3be300, type: 2}
+  ImpactType: {fileID: 11400000, guid: 9b0437948f180184a9d2bff3cc24022d, type: 2}
   Type: 4
   Name: ExplosiveTower
   ModelPrefab: {fileID: 7625658237417080078, guid: 05cd0baac5695f24ba1bc2875406eaca, type: 3}
@@ -21,7 +21,7 @@ MonoBehaviour:
   ProjectileConfig: {fileID: 11400000, guid: 4b2bb2f275f53c9498c394e2bc28ca39, type: 2}
   TrailConfig: {fileID: 11400000, guid: 1d4f97e0f9711334d8423eddfcff305b, type: 2}
   AudioConfig: {fileID: 11400000, guid: 8a36ae985db04fe41b6adc8cf2f80f68, type: 2}
-  ImpactTypeOverride: {fileID: 11400000, guid: 4d2dae0b5f0f8b946bd5bbc92f3be300, type: 2}
+  ImpactTypeOverride: {fileID: 11400000, guid: 9b0437948f180184a9d2bff3cc24022d, type: 2}
   Damage: 1
   AOEDamage: 5
   AOERange: 10

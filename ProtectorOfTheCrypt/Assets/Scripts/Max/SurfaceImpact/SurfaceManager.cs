@@ -38,89 +38,32 @@ public class SurfaceManager : MonoBehaviour
 
     public void HandleImpact(GameObject HitObject, Vector3 HitPoint, Vector3 HitNormal, ImpactType Impact, int TriangleIndex)
     {
-        /* if (HitObject.TryGetComponent<Terrain>(out Terrain terrain))
+        Renderer renderer = HitObject.GetComponentInChildren<Renderer>();
+        if(renderer == null) return;
+
+        Texture activeTexture = GetActiveTextureFromRenderer(renderer, TriangleIndex);
+        SurfaceType surfaceType = Surfaces.Find(surface => surface.Albedo == activeTexture);
+        if (surfaceType != null)
         {
-            List<TextureAlpha> activeTextures = GetActiveTexturesFromTerrain(terrain, HitPoint);
-            foreach (TextureAlpha activeTexture in activeTextures)
+            foreach (Surface.SurfaceImpactTypeEffect typeEffect in surfaceType.Surface.ImpactTypeEffects)
             {
-                SurfaceType surfaceType = Surfaces.Find(surface => surface.Albedo == activeTexture.Texture);
-                if (surfaceType != null)
+                if (typeEffect.ImpactType == Impact)
                 {
-                    foreach (Surface.SurfaceImpactTypeEffect typeEffect in surfaceType.Surface.ImpactTypeEffects)
-                    {
-                        if (typeEffect.ImpactType == Impact)
-                        {
-                            PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, activeTexture.Alpha);
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (Surface.SurfaceImpactTypeEffect typeEffect in DefaultSurface.ImpactTypeEffects)
-                    {
-                        if (typeEffect.ImpactType == Impact)
-                        {
-                            PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1);
-                        }
-                    }
+                    PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1);
                 }
             }
         }
-        else  */if (HitObject.TryGetComponent<Renderer>(out Renderer renderer))
+        else
         {
-            Texture activeTexture = GetActiveTextureFromRenderer(renderer, TriangleIndex);
-            SurfaceType surfaceType = Surfaces.Find(surface => surface.Albedo == activeTexture);
-            if (surfaceType != null)
+            Debug.Log("no surface type found");
+            foreach (Surface.SurfaceImpactTypeEffect typeEffect in DefaultSurface.ImpactTypeEffects)
             {
-                foreach (Surface.SurfaceImpactTypeEffect typeEffect in surfaceType.Surface.ImpactTypeEffects)
+                if (typeEffect.ImpactType == Impact)
                 {
-                    if (typeEffect.ImpactType == Impact)
-                    {
-                        PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1);
-                    }
-                }
-            }
-            else
-            {
-                foreach (Surface.SurfaceImpactTypeEffect typeEffect in DefaultSurface.ImpactTypeEffects)
-                {
-                    if (typeEffect.ImpactType == Impact)
-                    {
-                        PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1);
-                    }
+                    PlayEffects(HitPoint, HitNormal, typeEffect.SurfaceEffect, 1);
                 }
             }
         }
-    }
-
-    private List<TextureAlpha> GetActiveTexturesFromTerrain(Terrain Terrain, Vector3 HitPoint)
-    {
-        Vector3 terrainPosition = HitPoint - Terrain.transform.position;
-        Vector3 splatMapPosition = new Vector3(
-            terrainPosition.x / Terrain.terrainData.size.x,
-            0,
-            terrainPosition.z / Terrain.terrainData.size.z
-        );
-
-        int x = Mathf.FloorToInt(splatMapPosition.x * Terrain.terrainData.alphamapWidth);
-        int z = Mathf.FloorToInt(splatMapPosition.z * Terrain.terrainData.alphamapHeight);
-
-        float[,,] alphaMap = Terrain.terrainData.GetAlphamaps(x, z, 1, 1);
-
-        List<TextureAlpha> activeTextures = new List<TextureAlpha>();
-        for (int i = 0; i < alphaMap.Length; i++)
-        {
-            if (alphaMap[0, 0, i] > 0)
-            {
-                activeTextures.Add(new TextureAlpha()
-                {
-                    Texture = Terrain.terrainData.terrainLayers[i].diffuseTexture,
-                    Alpha = alphaMap[0, 0, i]
-                });
-            }
-        }
-
-        return activeTextures;
     }
 
     private Texture GetActiveTextureFromRenderer(Renderer Renderer, int TriangleIndex)
@@ -143,34 +86,34 @@ public class SurfaceManager : MonoBehaviour
             return null;
         }
 
-        private Texture GetTextureFromMesh(Mesh Mesh, int TriangleIndex, Material[] Materials)
+    private Texture GetTextureFromMesh(Mesh Mesh, int TriangleIndex, Material[] Materials)
+    {
+        /* if (Mesh.subMeshCount > 1)
         {
-            if (Mesh.subMeshCount > 1)
+            int[] hitTriangleIndices = new int[]
             {
-                int[] hitTriangleIndices = new int[]
-                {
-                    Mesh.triangles[TriangleIndex * 3],
-                    Mesh.triangles[TriangleIndex * 3 + 1],
-                    Mesh.triangles[TriangleIndex * 3 + 2]
-                };
+                Mesh.triangles[TriangleIndex * 3],
+                Mesh.triangles[TriangleIndex * 3 + 1],
+                Mesh.triangles[TriangleIndex * 3 + 2]
+            };
 
-                for (int i = 0; i < Mesh.subMeshCount; i++)
+            for (int i = 0; i < Mesh.subMeshCount; i++)
+            {
+                int[] submeshTriangles = Mesh.GetTriangles(i);
+                for (int j = 0; j < submeshTriangles.Length; j += 3)
                 {
-                    int[] submeshTriangles = Mesh.GetTriangles(i);
-                    for (int j = 0; j < submeshTriangles.Length; j += 3)
+                    if (submeshTriangles[j] == hitTriangleIndices[0]
+                        && submeshTriangles[j + 1] == hitTriangleIndices[1]
+                        && submeshTriangles[j + 2] == hitTriangleIndices[2])
                     {
-                        if (submeshTriangles[j] == hitTriangleIndices[0]
-                            && submeshTriangles[j + 1] == hitTriangleIndices[1]
-                            && submeshTriangles[j + 2] == hitTriangleIndices[2])
-                        {
-                            return Materials[i].mainTexture;
-                        }
+                        return Materials[i].mainTexture;
                     }
                 }
             }
+        } */
 
-            return Materials[0].mainTexture;
-        }
+        return Materials[0].mainTexture;
+    }
 
     private void PlayEffects(Vector3 HitPoint, Vector3 HitNormal, SurfaceEffect SurfaceEffect, float SoundOffset)
     {
@@ -196,7 +139,7 @@ public class SurfaceManager : MonoBehaviour
             }
         }
 
-        foreach(PlayAudioEffect playAudioEffect in SurfaceEffect.PlayAudioEffects)
+/*         foreach(PlayAudioEffect playAudioEffect in SurfaceEffect.PlayAudioEffects)
         {
             AudioClip clip = playAudioEffect.AudioClips[Random.Range(0, playAudioEffect.AudioClips.Count)];
             ObjectPool pool = ObjectPool.CreateInstance(playAudioEffect.AudioSourcePrefab.GetComponent<PoolableObject>(), DefaultPoolSizes);
@@ -205,7 +148,7 @@ public class SurfaceManager : MonoBehaviour
             audioSource.transform.position = HitPoint;
             audioSource.PlayOneShot(clip, SoundOffset * Random.Range(playAudioEffect.VolumeRange.x, playAudioEffect.VolumeRange.y));
             StartCoroutine(DisableAudioSource(audioSource, clip.length));
-        }
+        } */
     }
 
     private IEnumerator DisableAudioSource(AudioSource AudioSource, float Time)

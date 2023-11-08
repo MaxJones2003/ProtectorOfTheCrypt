@@ -4946,7 +4946,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -9844,7 +9844,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -14703,6 +14703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1370363402200127130}
+  - component: {fileID: -1905752556073494019}
   m_Layer: 0
   m_Name: Explosion_A
   m_TagString: Untagged
@@ -14728,3 +14729,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1905752556073494019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373139501600285058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7490ded0da4c4c3439b662bcfc5d0856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

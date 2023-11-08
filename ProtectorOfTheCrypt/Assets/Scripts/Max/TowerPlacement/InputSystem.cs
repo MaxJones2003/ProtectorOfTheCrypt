@@ -211,12 +211,10 @@ public class InputSystem : MonoBehaviour
         RaycastHit hit;
         if(isTowerPlacementUIActive && !Physics.Raycast(ray, 1000, UILayerMask))
         {
-            Debug.Log("tower placement active and didn't hit ui");
             IGTS_UI.GetComponent<IGTS_Buttons>().CancelButton();
         }
         else if (Physics.Raycast(ray, 1000, UILayerMask)) 
         {
-            Debug.Log("it ui, returning");
             return;
         }
         else if (Physics.Raycast(ray, out hit, 100, towerLayerMask))

@@ -176,6 +176,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db178141a475de94e99ed578e40606f4, type: 2}
   loadedPath: {fileID: 0}
   loadedEnemyPath: []
+  camera: {fileID: 0}
 --- !u!114 &4673002648218141217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +189,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f90496d2590f3f42a90f74779648771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Surfaces: []
-  DefaultPoolSizes: 20
+  Surfaces:
+  - Albedo: {fileID: 2800000, guid: 019bdfe605f67d04db467c24302ca4b1, type: 3}
+    Surface: {fileID: 11400000, guid: fb69a3a6e4144fc4a940105fa9190cf9, type: 2}
+  - Albedo: {fileID: 2800000, guid: 5ab69704aa4984b49bc426da72fabbed, type: 3}
+    Surface: {fileID: 11400000, guid: fb69a3a6e4144fc4a940105fa9190cf9, type: 2}
+  DefaultPoolSizes: 10
   DefaultSurface: {fileID: 0}
 --- !u!114 &3638156756751218669
 MonoBehaviour:

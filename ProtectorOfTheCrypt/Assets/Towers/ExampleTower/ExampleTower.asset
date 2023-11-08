@@ -21,7 +21,7 @@ MonoBehaviour:
   ProjectileConfig: {fileID: 11400000, guid: 71d520a0faa70ed4e8a2928085828f21, type: 2}
   TrailConfig: {fileID: 11400000, guid: a4764727514c5ac49be28913666664a7, type: 2}
   AudioConfig: {fileID: 11400000, guid: f740fac2556ad73408d6eaa7236896e1, type: 2}
-  ImpactTypeOverride: {fileID: 0}
+  ImpactTypeOverride: {fileID: 11400000, guid: 1963707f99ba86549a01731fb79af9f9, type: 2}
   Damage: 5
   AOEDamage: 0
   AOERange: 0
