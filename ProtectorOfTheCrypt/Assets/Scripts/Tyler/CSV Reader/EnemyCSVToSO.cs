@@ -6,26 +6,19 @@ using UnityEngine;
 
 public class EnemyCSVToSO : MonoBehaviour
 {
-    private static readonly string SAVE_FOLDER_Game = System.IO.Directory.GetCurrentDirectory() + "/Stats/";
-    private static readonly string SAVE_FOLDER_Editor = Application.dataPath + "/Stats/";
-    private static readonly string CSV_File = "EnemyStats";
+    private static readonly string SAVE_FOLDER_Editor = Application.dataPath + "/Stats";
+    private static readonly string CSV_File = "/EnemyStats.csv";
 
     [MenuItem("Utilities/Generate Enemies")]
     public static void GenerateWeapons()
     {
         string[] allLines = null;
-#if UNITY_EDITOR
-        if (File.Exists(SAVE_FOLDER_Editor + CSV_File + ".csv"))
+
+        if (File.Exists(SAVE_FOLDER_Editor + CSV_File))
         {
-            allLines = File.ReadAllLines(SAVE_FOLDER_Editor + CSV_File +".csv");
-        }
-#endif
-        if (File.Exists(SAVE_FOLDER_Game + CSV_File+ ".csv"))
-        {
-            allLines = File.ReadAllLines(SAVE_FOLDER_Game + CSV_File + ".csv");
+            allLines = File.ReadAllLines(SAVE_FOLDER_Editor + CSV_File);
         }
 
-        //Name,Description,Capacity,Reload Time,Firing Delay,Damage,Knockback,Spread,Projectiles,Automatic,Price
         foreach (string s in allLines)
         {
             string[] splitData = s.Split(',');
@@ -38,6 +31,12 @@ public class EnemyCSVToSO : MonoBehaviour
             enemy.BaseSpeed = int.Parse(splitData[3]);
             enemy.Hunger = int.Parse(splitData[4]);
 
+            if(splitData[5] == "Yes")
+            {
+                // Shield stuff
+            }
+            AssetDatabase.SaveAssets();
         }
+
     }
 }
