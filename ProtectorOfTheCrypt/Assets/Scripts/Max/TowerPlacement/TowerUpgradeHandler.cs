@@ -9,8 +9,8 @@ public class TowerUpgradeHandler : MonoBehaviour
     [SerializeField] private GameObject upgradeUITier2Model;
     [SerializeField] private GameObject upgradeUITier3Model;
 
-    private bool hasUpgradedOnce;
-    private bool hasUpgradedTwice;
+    public bool hasUpgradedOnce;
+    public bool hasUpgradedTwice;
 
     [SerializeField] private ParticleSystem upgradePS;
 
@@ -26,9 +26,15 @@ public class TowerUpgradeHandler : MonoBehaviour
     public void ActivateUI(bool activate)
     {
         if (!hasUpgradedOnce)
+        {
             upgradeUITier2.SetActive(activate);
-        if(hasUpgradedOnce && !hasUpgradedTwice)
+            return;
+        }
+        if (hasUpgradedOnce && !hasUpgradedTwice)
+        {
             upgradeUITier3.SetActive(activate);
+            return;
+        }
     }
 
     public void UpgradeDamageAdd(float upgrade, int cost)
@@ -124,9 +130,15 @@ public class TowerUpgradeHandler : MonoBehaviour
     private void ApplyUpgradeFlag()
     {
         if (!hasUpgradedOnce)
+        {
             hasUpgradedOnce = true;
+            return;
+        }
         if (hasUpgradedOnce && !hasUpgradedTwice)
+        {
             hasUpgradedTwice = true;
+            return;
+        }
     }
 
     private void ApplyUpgradedModel()
