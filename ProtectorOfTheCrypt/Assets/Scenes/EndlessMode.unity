@@ -1022,6 +1022,11 @@ MonoBehaviour:
   UIButtons: {fileID: 1012193592}
   basicEnemy: {fileID: 11400000, guid: 08e4024f077dafb40a76f7ba3b146319, type: 2}
   shieldEnemy: {fileID: 11400000, guid: b54c982828a5e02458e17883d51beab5, type: 2}
+--- !u!156049354 &154664589 stripped
+Grid:
+  m_CorrespondingSourceObject: {fileID: 3609075191087926674, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+  m_PrefabInstance: {fileID: 1281235887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &197767987
 GameObject:
   m_ObjectHideFlags: 0
@@ -6783,6 +6788,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: grid
+      value: 
+      objectReference: {fileID: 154664589}
+    - target: {fileID: 3027338048066020314, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: IGTS_UI
       value: 
       objectReference: {fileID: 727434996}
@@ -9720,8 +9729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5785639069706798447, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 5886535364827048890, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6024401304573393066, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
