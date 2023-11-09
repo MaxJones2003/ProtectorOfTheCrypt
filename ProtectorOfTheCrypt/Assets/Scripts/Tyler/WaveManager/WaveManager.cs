@@ -47,8 +47,6 @@ public class WaveManager : MonoBehaviour
     private void Awake()
     {
         EnemySpawner = GetComponent<Spawner>();
-
-        
     }
 
     public void Start()

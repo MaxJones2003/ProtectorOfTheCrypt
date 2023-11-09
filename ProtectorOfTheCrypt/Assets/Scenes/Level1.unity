@@ -979,6 +979,7 @@ GameObject:
   - component: {fileID: 152358334}
   - component: {fileID: 152358333}
   - component: {fileID: 152358335}
+  - component: {fileID: 152358336}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1032,6 +1033,25 @@ MonoBehaviour:
   YouWinScreen: {fileID: 1806293381}
   GameOverScreen: {fileID: 1028532406}
   UIButtons: {fileID: 2089620641}
+--- !u!114 &152358336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152358332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d2c69787b630749b219f3a66fcf761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 862488828}
+  dialogueSpeedScaleIndicator: {fileID: 0}
+  dialogueCanvasGroup: {fileID: 862488827}
+  startedTyping: 0
+  autoContinueTime: 0.76
+  dialogueBlipSFX: {fileID: 8300000, guid: 8419e7c141286ba4e9bc553672789486, type: 3}
+  letterDisplayDelay: 0.06
 --- !u!1001 &153232090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4609,6 +4629,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
+--- !u!225 &862488827 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 2728390279063221307, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
+  m_PrefabInstance: {fileID: 862488826}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &862488828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2807700917999268835, guid: 63c7cfbd221b4004e8db18e244cb71f0, type: 3}
+  m_PrefabInstance: {fileID: 862488826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &865795762
 PrefabInstance:
   m_ObjectHideFlags: 0
