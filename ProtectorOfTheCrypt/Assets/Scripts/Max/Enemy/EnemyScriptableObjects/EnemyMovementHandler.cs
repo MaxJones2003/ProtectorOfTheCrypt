@@ -82,7 +82,7 @@ public class EnemyMovementHandler : MonoBehaviour
             if (waypointIndex >= path.Count)
             {
                 // Reached the last waypoint, stop moving
-                GameManager.instance.RemoveSouls(5);
+                GameManager.instance.RemoveSouls(enemy.Hunger);
                 spawner.SpawnedObjects.Remove(gameObject);
                 if (GameManager.instance.GameMode is StoryMode)
                 {

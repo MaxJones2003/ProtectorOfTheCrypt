@@ -39,7 +39,7 @@ public class TowerUpgradeHandler : MonoBehaviour
         AddDamageModifier damageModifier = new()
         {
             Amount = upgrade,
-            AttributeName = "DamageConfig/DamageCurve"
+            AttributeName = "Damage"
         };
 
         damageModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
@@ -55,7 +55,7 @@ public class TowerUpgradeHandler : MonoBehaviour
         MultiplyDamageModifier damageModifier = new()
         {
             Amount = upgrade,
-            AttributeName = "DamageConfig/DamageCurve"
+            AttributeName = "Damage"
         };
         damageModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
         ApplyUpgradeFlag();
@@ -68,7 +68,7 @@ public class TowerUpgradeHandler : MonoBehaviour
         AddAOEDamageModifier damageModifier = new()
         {
             Amount = upgrade,
-            AttributeName = "DamageConfig/AOEDamage"
+            AttributeName = "AOEDamage"
         };
         damageModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
         gameObject.GetComponent<ShootMonoBehaviour>().SetExplosiveDamage();
@@ -82,7 +82,7 @@ public class TowerUpgradeHandler : MonoBehaviour
         AddRangeModifier rangeModifier = new()
         {
             Amount = upgrade,
-            AttributeName = "DamageConfig/AOERange"
+            AttributeName = "AOERange"
         };
         rangeModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
         gameObject.GetComponent<ShootMonoBehaviour>().SetExplosiveDamage();

@@ -21,8 +21,7 @@ public class Bullet : MonoBehaviour
         get;
         private set;
     }
-    [SerializeField]
-    private float DelayedDisableTime = 10f;
+    [SerializeField] private float DelayedDisableTime = 4f;
     private float elapsedTime = 0f; // If the game gets paused, this freezes the bullets and the timer
     public delegate void CollisionEvent(Bullet Bullet, Collision Collision);
     public event CollisionEvent OnCollision;

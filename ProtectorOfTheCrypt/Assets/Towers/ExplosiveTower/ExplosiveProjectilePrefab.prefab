@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tower: {fileID: 0}
   <SpawnLocation>k__BackingField: {x: 0, y: 0, z: 0}
-  DelayedDisableTime: 10
+  DelayedDisableTime: 4
 --- !u!65 &-3189472524977497039
 BoxCollider:
   m_ObjectHideFlags: 0
