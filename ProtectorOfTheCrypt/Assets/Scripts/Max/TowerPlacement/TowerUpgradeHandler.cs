@@ -6,6 +6,7 @@ public class TowerUpgradeHandler : MonoBehaviour
 {
     [SerializeField] private GameObject upgradeUITier2;
     [SerializeField] private GameObject upgradeUITier3;
+    [SerializeField] private GameObject originalModel;
     [SerializeField] private GameObject upgradeUITier2Model;
     [SerializeField] private GameObject upgradeUITier3Model;
 
@@ -50,7 +51,6 @@ public class TowerUpgradeHandler : MonoBehaviour
 
         damageModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
         ApplyUpgradeFlag();
-        ApplyUpgradedModel();
     }
 
     public void UpgradeDamageMultiply(float upgrade, int cost)
@@ -132,18 +132,16 @@ public class TowerUpgradeHandler : MonoBehaviour
         if (!hasUpgradedOnce)
         {
             hasUpgradedOnce = true;
+            originalModel.SetActive(false);
+            upgradeUITier2Model.SetActive(true);
             return;
         }
         if (hasUpgradedOnce && !hasUpgradedTwice)
         {
             hasUpgradedTwice = true;
+            upgradeUITier2Model.SetActive(false);
+            upgradeUITier3Model.SetActive(true);
             return;
         }
     }
-
-    private void ApplyUpgradedModel()
-    {
-
-    }
-
 }

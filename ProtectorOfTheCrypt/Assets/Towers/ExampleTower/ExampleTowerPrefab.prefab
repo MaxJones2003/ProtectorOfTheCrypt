@@ -4879,8 +4879,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeUITier2: {fileID: 972378209122936128}
   upgradeUITier3: {fileID: 348473604044954347}
-  upgradeUITier2Model: {fileID: 8517451317710213968}
-  upgradeUITier3Model: {fileID: 0}
+  originalModel: {fileID: 5676273530009602525}
+  upgradeUITier2Model: {fileID: 7015036143604428159}
+  upgradeUITier3Model: {fileID: 8517451317710213968}
   hasUpgradedOnce: 0
   hasUpgradedTwice: 0
   upgradePS: {fileID: 8211947240592734712}
@@ -5817,6 +5818,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8fccf5612173c4e45a4683b6bd4c05ef, type: 3}
   m_PrefabInstance: {fileID: 4757847820296385676}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5676273530009602525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8fccf5612173c4e45a4683b6bd4c05ef, type: 3}
+  m_PrefabInstance: {fileID: 4757847820296385676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7105919989795479850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5965,6 +5971,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c0018290696080489298f00a36d54b5, type: 3}
+--- !u!1 &7015036143604428159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1c0018290696080489298f00a36d54b5, type: 3}
+  m_PrefabInstance: {fileID: 7897910655588257838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7643095204767020997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1c0018290696080489298f00a36d54b5, type: 3}
