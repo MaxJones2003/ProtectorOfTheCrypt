@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: BasicEnemy
   m_EditorClassIdentifier: 
   ModelPrefab: {fileID: 8845989981444085929, guid: 77e42f97e518a2542b996a0b581116d6, type: 3}
-  BaseHealth: 25
+  BaseHealth: 20
   BaseSpeed: 3
+  Description: 
+  Hunger: 5
+  BaseShieldHealth: 0
   ShieldType: {fileID: 0}
   deathSound: {fileID: 8300000, guid: e56bec273ad342d4ea0ee5d3707b4dc3, type: 3}

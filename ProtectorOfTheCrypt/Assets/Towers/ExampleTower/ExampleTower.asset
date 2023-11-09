@@ -26,5 +26,5 @@ MonoBehaviour:
   AOEDamage: 0
   AOERange: 0
   Range: 20
-  FireRate: 4
-  BulletSpeed: 5
+  FireRate: 2
+  BulletSpeed: 10
