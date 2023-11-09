@@ -70,6 +70,11 @@ public class AudioManager : MonoBehaviour
                     PlaySound(AudioManagerChannels.MusicChannel, GameMusic);
                     break;
                 }
+            case "EndlessMode":
+                {
+                    PlaySound(AudioManagerChannels.MusicChannel, GameMusic);
+                    break;
+                }
         }
     }
     /// <summary>
