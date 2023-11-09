@@ -6,6 +6,8 @@ using Cinemachine;
 
 public class GridManager : MonoBehaviour
 {
+    [SerializeField] private GameObject enemySpawnerObject;
+    [SerializeField] private GameObject enemyEndPointObject;
     public int gridWidth = 10;
     public int gridHeight = 8;
     [SerializeField] private Transform hazards;
@@ -174,7 +176,7 @@ public class GridManager : MonoBehaviour
         Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
         Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
 
-        hazards.gameObject.SetActive(false);
+        hazards.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -224,6 +226,12 @@ public class GridManager : MonoBehaviour
         parent.SetAsFirstSibling();
         LayPathCells(pathCells, parent);
         LaySceneryCells(parent);
+
+        // place the start and end points
+        GameObject spawn = Instantiate(enemySpawnerObject, new Vector3(pathCells[0].x-0.5f, 1.2f, pathCells[0].y), Quaternion.identity);
+        spawn.transform.parent = parent;
+        GameObject end = Instantiate(enemyEndPointObject, new Vector3(pathCells[pathCells.Count-1].x+3f, 0, pathCells[pathCells.Count-1].y), Quaternion.identity);
+        end.transform.parent = parent;
 
         //EnemyManager.SetPathCell(pathGenerator.GenerateRoute());
         List<Vector2Int> cellPoints = pathGenerator.GenerateRoute();
@@ -280,11 +288,25 @@ public class GridManager : MonoBehaviour
         foreach (GridCellScriptableObject cell in sceneryCellObjects)
             weightTable.Add(cell, filledCellWeight);
         
-        for (int x = 0; x < gridWidth; x++)
+        int minX = -4;
+        int maxX = gridWidth + 4;
+        int minY = -2;
+        int maxY = gridHeight + 2;
+        for (int x = minX; x < maxX; x++)
         {
-            for(int y = 0; y < gridHeight; y++)
+            for(int y = minY; y < maxY; y++)
             {
                 if(pathGenerator.CellIsEmpty(x, y) && !pathGenerator.CellIsHazard(x, y))
+                {
+                    GridCellScriptableObject cell = GetWeightedItem(weightTable);
+                    GameObject sceneryTileCell = Instantiate(cell.cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);
+                    sceneryTileCell.transform.rotation = GetCellRandomRotation();
+                    sceneryTileCell.transform.parent = parent;
+                    //sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Environment");
+                    sceneryTileCell.transform.GetChild(0).gameObject.tag = "Environment";
+                    //yield return null;
+                }
+                if(x == minX || x == maxX-1 || y == minY || y == maxY-1)
                 {
                     GridCellScriptableObject cell = GetWeightedItem(weightTable);
                     GameObject sceneryTileCell = Instantiate(cell.cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);

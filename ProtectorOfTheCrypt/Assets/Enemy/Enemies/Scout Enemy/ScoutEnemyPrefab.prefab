@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 7854445057548898146}
   - component: {fileID: 2162066970672273028}
   - component: {fileID: 2623639818219232791}
+  - component: {fileID: 8806600293214188668}
   m_Layer: 3
   m_Name: ScoutEnemyPrefab
   m_TagString: Enemy
@@ -239,6 +240,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.15, z: -0.14}
+--- !u!114 &8806600293214188668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8845989981444085929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06ec60c976ffd10448e4d2182ba226b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1389123336085119902
 PrefabInstance:
   m_ObjectHideFlags: 0

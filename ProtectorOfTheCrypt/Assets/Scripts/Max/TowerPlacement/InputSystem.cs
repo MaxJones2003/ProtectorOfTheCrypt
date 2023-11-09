@@ -204,7 +204,7 @@ public class InputSystem : MonoBehaviour
     #region Tower Interaction
     public void CheckForTower(InputAction.CallbackContext ctx)
     {
-        if (GameManager.instance.isPaused) return;
+        if (GameManager.instance.isPaused || !GameManager.instance.gameStarted) return;
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = sceneCamaera.nearClipPlane;
         Ray ray = sceneCamaera.ScreenPointToRay(mousePos);

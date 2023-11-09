@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     public GameMode GameMode;
     public bool isPaused;
+    public bool gameStarted;
     public int Souls { get; private set; } = 50;
     public int Money { get; private set; } = 100;
 

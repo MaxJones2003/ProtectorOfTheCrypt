@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad69c5f68b5c1c64aaf6b1de94042647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnerObject: {fileID: 6545830573101803609, guid: dce65c2505401444baabe9631e6bbcbc, type: 3}
+  enemyEndPointObject: {fileID: 1816298619486894690, guid: bdd109a911948de47ad062caaf0044c1, type: 3}
   gridWidth: 20
   gridHeight: 16
   hazards: {fileID: 0}
