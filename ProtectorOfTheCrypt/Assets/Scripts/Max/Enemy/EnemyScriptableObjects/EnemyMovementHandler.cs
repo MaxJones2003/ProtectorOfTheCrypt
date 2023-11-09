@@ -10,7 +10,7 @@ public class EnemyMovementHandler : MonoBehaviour
     private List<Vector3> path = new List<Vector3>();
     private Vector3 target;
     private int waypointIndex = 0;
-    public float baseSpeed;
+    public float speed;
     [HideInInspector]
     public Spawner spawner;
 
@@ -44,10 +44,11 @@ public class EnemyMovementHandler : MonoBehaviour
 
     public void Initialize(EnemyScriptableObject EnemyToSet, List<Vector3> Path, float BaseSpeed, Spawner _spawner)
     {
+        
         enemy = EnemyToSet;
         path = Path;
         target = path[1];
-        baseSpeed = BaseSpeed;
+        speed = BaseSpeed;
         spawner = _spawner;
 
         originalRotation = model.transform.rotation;
@@ -72,7 +73,7 @@ public class EnemyMovementHandler : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime);
 
         // Use Character Controller for movement
-        characterController.Move(dir * baseSpeed * Time.deltaTime);
+        characterController.Move(dir * speed * Time.deltaTime);
         ModelAnimation();
         
 

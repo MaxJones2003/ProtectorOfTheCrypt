@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class ObjectPool
+public class ObjectPool : MonoBehaviour
 {
     private GameObject Parent;
     private PoolableObject Prefab;
@@ -14,6 +16,12 @@ public class ObjectPool
         this.Prefab = Prefab;
         this.Size = Size;
         AvailableObjectsPool = new List<PoolableObject>(Size);
+        SceneManager.activeSceneChanged += OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene arg0, Scene arg1)
+    {
+        ObjectPools.Clear();
     }
 
     public static ObjectPool CreateInstance(PoolableObject Prefab, int Size)
