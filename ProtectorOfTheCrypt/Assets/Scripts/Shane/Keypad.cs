@@ -50,6 +50,7 @@ public class Keypad : MonoBehaviour
     [SerializeField] private GameObject KeypadDisplay;
     [SerializeField] private Toggle RandomSeedToggle;
     [SerializeField] private GameObject childTransparency;
+    [SerializeField] private IGTS_Buttons iGTS;
 
     void Start()
     {
@@ -139,6 +140,7 @@ public class Keypad : MonoBehaviour
         EndlessCanvas.SetActive(false);
 
         mode.ReadyToLoadMap(settings);
+        iGTS.CancelButton();
     }
 
     #region Keypad
