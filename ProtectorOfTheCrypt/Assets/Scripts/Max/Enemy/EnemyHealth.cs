@@ -17,10 +17,16 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     public void Enable(float maxHealth, Spawner spawner, AudioClip audio, ShieldScriptableObject shield, float baseShieldHealth)
     {
+        float healthModifier = 1;
+        if(GameManager.instance.GameMode is EndlessMode)
+        {
+            EndlessMode endlessMode = (EndlessMode)GameManager.instance.GameMode;
+            healthModifier = endlessMode.CurrentSettings.enemyDifficultySettings.healthMultiplier;
+        }
         gameObject.GetComponent<Collider>().enabled = false;
         StartCoroutine(EnableCollider());
         MaxHealth = maxHealth;
-        CurrentHealth = MaxHealth;
+        CurrentHealth = MaxHealth * healthModifier;
         _spawner = spawner;
         deathSound = audio;
 

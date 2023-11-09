@@ -41,14 +41,20 @@ public class EnemyMovementHandler : MonoBehaviour
     {
         GameManager.instance.OnGamePaused -= UpdateGamePaused;
     }
-
+    int hungerModifier = 1;
     public void Initialize(EnemyScriptableObject EnemyToSet, List<Vector3> Path, float BaseSpeed, Spawner _spawner)
     {
-        
+        float speedModifier = 1;
+        if(GameManager.instance.GameMode is EndlessMode)
+        {
+            EndlessMode endlessMode = (EndlessMode)GameManager.instance.GameMode;
+            speedModifier = endlessMode.CurrentSettings.enemyDifficultySettings.speedMultiplier;
+            hungerModifier = endlessMode.CurrentSettings.enemyDifficultySettings.hungerMultiplier;
+        }
         enemy = EnemyToSet;
         path = Path;
         target = path[1];
-        speed = BaseSpeed;
+        speed = BaseSpeed * speedModifier;
         spawner = _spawner;
 
         originalRotation = model.transform.rotation;
@@ -83,7 +89,7 @@ public class EnemyMovementHandler : MonoBehaviour
             if (waypointIndex >= path.Count)
             {
                 // Reached the last waypoint, stop moving
-                GameManager.instance.RemoveSouls(enemy.Hunger);
+                GameManager.instance.RemoveSouls(enemy.Hunger * hungerModifier);
                 spawner.SpawnedObjects.Remove(gameObject);
                 if (GameManager.instance.GameMode is StoryMode)
                 {

@@ -16,6 +16,8 @@ public class EndlessMode : GameMode
     public EnemyScriptableObject basicEnemy;
     public EnemyScriptableObject shieldEnemy;
 
+    public EndlessModeSettings CurrentSettings { get; private set; }
+
     public void Awake()
     {
         DialogueController = GetComponent<DialogueController>();
@@ -23,6 +25,7 @@ public class EndlessMode : GameMode
 
     public void ReadyToLoadMap(EndlessModeSettings setting)
     {
+        CurrentSettings = setting;
         Seed.Instance.InitializeSeedScriptEndlessMode(setting);
         waveManager.SpawnFirstWave();
     }
@@ -128,12 +131,14 @@ public struct EnemyDifficultySettings
 {
     public float healthMultiplier;
     public int hungerMultiplier;
+    public float speedMultiplier;
     public int enemySpawnAmountMultiplier;
 
-    public EnemyDifficultySettings(float healthMultiplier, int hungerMultiplier, int enemySpawnAmountMultiplier)
+    public EnemyDifficultySettings(float healthMultiplier, int hungerMultiplier, int speedMultiplier, int enemySpawnAmountMultiplier)
     {
         this.healthMultiplier = healthMultiplier;
         this.hungerMultiplier = hungerMultiplier;
+        this.speedMultiplier = speedMultiplier;
         this.enemySpawnAmountMultiplier = enemySpawnAmountMultiplier;
     }
 }

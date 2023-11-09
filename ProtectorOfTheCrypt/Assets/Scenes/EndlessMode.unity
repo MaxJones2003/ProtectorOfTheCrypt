@@ -988,6 +988,7 @@ MonoBehaviour:
     enemyDifficultySettings:
       healthMultiplier: 0
       hungerMultiplier: 0
+      speedMultiplier: 0
       enemySpawnAmountMultiplier: 0
   - seed: jkuytjyrt
     difficulty: 1
@@ -1001,6 +1002,7 @@ MonoBehaviour:
     enemyDifficultySettings:
       healthMultiplier: 0
       hungerMultiplier: 0
+      speedMultiplier: 0
       enemySpawnAmountMultiplier: 0
   - seed: fwfewfwefwefew
     difficulty: 2
@@ -1014,6 +1016,7 @@ MonoBehaviour:
     enemyDifficultySettings:
       healthMultiplier: 0
       hungerMultiplier: 0
+      speedMultiplier: 0
       enemySpawnAmountMultiplier: 0
   waveManager: {fileID: 0}
   DialogueController: {fileID: 0}
@@ -5408,16 +5411,19 @@ MonoBehaviour:
     numOfHazardGroupRange: {x: 1, y: 4}
     cameraPosition: {fileID: 1927018064}
   easyEnemy:
-    healthMultiplier: 1
+    healthMultiplier: 0.75
     hungerMultiplier: 1
+    speedMultiplier: 0.75
     enemySpawnAmountMultiplier: 1
   standardEnemy:
     healthMultiplier: 1
     hungerMultiplier: 1
+    speedMultiplier: 1
     enemySpawnAmountMultiplier: 1
   hardEnemy:
-    healthMultiplier: 1
-    hungerMultiplier: 1
+    healthMultiplier: 2
+    hungerMultiplier: 2
+    speedMultiplier: 1.5
     enemySpawnAmountMultiplier: 1
   alphaDropper: 100
   charHolder: {fileID: 204531098}
