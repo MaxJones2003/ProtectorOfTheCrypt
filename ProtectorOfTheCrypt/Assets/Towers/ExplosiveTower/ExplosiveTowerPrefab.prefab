@@ -4879,6 +4879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeUITier2: {fileID: 2614209105765666850}
   upgradeUITier3: {fileID: 4140207855049496382}
+  originalModel: {fileID: 7398642711829960698}
   upgradeUITier2Model: {fileID: 6502793453793314389}
   upgradeUITier3Model: {fileID: 8379178962144278116}
   hasUpgradedOnce: 0
@@ -6346,6 +6347,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdeed06a53f55af48a36a4711a65e4cc, type: 3}
+--- !u!1 &7398642711829960698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bdeed06a53f55af48a36a4711a65e4cc, type: 3}
+  m_PrefabInstance: {fileID: 7668552133564000939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7919178572925242688 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bdeed06a53f55af48a36a4711a65e4cc, type: 3}
