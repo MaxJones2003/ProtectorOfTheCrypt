@@ -7,28 +7,14 @@ public class AddDamageModifier : AbstractValueModifier<float>
     {
         try
         {
-            MinMaxCurve damageCurve = GetAttribute<MinMaxCurve>(
+            float value = GetAttribute<float>(
                 Tower, out object targetObject,
                 out FieldInfo field
             );
-
-            switch(damageCurve.mode)
-            {
-                case UnityEngine.ParticleSystemCurveMode.TwoConstants:
-                    damageCurve.constantMin += Amount;
-                    damageCurve.constantMax += Amount;
-                    break;
-                case UnityEngine.ParticleSystemCurveMode.TwoCurves:
-                    damageCurve.curveMultiplier += Amount;
-                    break;
-                case UnityEngine.ParticleSystemCurveMode.Constant:
-                    damageCurve.constant += Amount;
-                    break;
-            }
-
-            field.SetValue(targetObject, damageCurve);
+            value += Amount;
+            field.SetValue(targetObject, value);
         }
-        catch (InvalidPathSpecifiedException) {} // Log the error
+        catch (InvalidPathSpecifiedException) { } // Log the error
         // So we can fix them
     }
 }
