@@ -148,6 +148,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawnerObject: {fileID: 6545830573101803609, guid: dce65c2505401444baabe9631e6bbcbc, type: 3}
   enemyEndPointObject: {fileID: 1816298619486894690, guid: bdd109a911948de47ad062caaf0044c1, type: 3}
+  treePrefab: {fileID: 8296724219448002976, guid: 3aa62f99a450cf048b3bdf18bc4b0a35, type: 3}
+  cloudPrefabs:
+  - {fileID: 5214424570185688946, guid: 08385b1c46496ca4b89d474ddaac48c1, type: 3}
+  - {fileID: 5598127044778093778, guid: fbfc31c119bc57f4abd3b0372998fb41, type: 3}
+  - {fileID: 3170312137446671835, guid: 5f07a0733ff7f904cadd32cdbb65b14b, type: 3}
+  - {fileID: 1193899488132637960, guid: 59fc5fbed3115154ea5ee019b09fb593, type: 3}
+  - {fileID: 5130341812506714754, guid: 3b6bd6c6bc31e4e4ea1b0314959891ac, type: 3}
+  - {fileID: 5227242911644701467, guid: bd162a1f3ad04d142bb273b0cb6a6287, type: 3}
+  - {fileID: 7400260544141920105, guid: 2aef5c3151a4c6d42af9aced302a3d90, type: 3}
   gridWidth: 20
   gridHeight: 16
   hazards: {fileID: 0}

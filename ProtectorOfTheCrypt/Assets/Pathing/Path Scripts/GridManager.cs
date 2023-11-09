@@ -8,6 +8,8 @@ public class GridManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemySpawnerObject;
     [SerializeField] private GameObject enemyEndPointObject;
+    [SerializeField] private GameObject treePrefab;
+    [SerializeField] private List<GameObject> cloudPrefabs;
     public int gridWidth = 10;
     public int gridHeight = 8;
     [SerializeField] private Transform hazards;
@@ -225,7 +227,7 @@ public class GridManager : MonoBehaviour
         parent.parent = transform;
         parent.SetAsFirstSibling();
         LayPathCells(pathCells, parent);
-        LaySceneryCells(parent);
+        LaySceneryCells(pathCells, parent);
 
         // place the start and end points
         GameObject spawn = Instantiate(enemySpawnerObject, new Vector3(pathCells[0].x-0.5f, 1.2f, pathCells[0].y), Quaternion.identity);
@@ -278,7 +280,7 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    private void LaySceneryCells(Transform parent)
+    private void LaySceneryCells(List<Vector2Int> pathCells, Transform parent)
     {
         int emptyCellWeight = 100;
         int filledCellWeight = 2;
@@ -292,6 +294,8 @@ public class GridManager : MonoBehaviour
         int maxX = gridWidth + 4;
         int minY = -2;
         int maxY = gridHeight + 2;
+        int dontPutMeTherePlease = 0;
+        bool treeOrCloud = false;
         for (int x = minX; x < maxX; x++)
         {
             for(int y = minY; y < maxY; y++)
@@ -306,15 +310,24 @@ public class GridManager : MonoBehaviour
                     sceneryTileCell.transform.GetChild(0).gameObject.tag = "Environment";
                     //yield return null;
                 }
-                if(x == minX || x == maxX-1 || y == minY || y == maxY-1)
+                if((x == minX+1 || x == maxX-1 || y == maxY-1) && (new Vector2Int(x, y) - pathCells[pathCells.Count-1]).magnitude > 9 && (new Vector2Int(x, y) - pathCells[0]).magnitude > 4)
                 {
-                    GridCellScriptableObject cell = GetWeightedItem(weightTable);
-                    GameObject sceneryTileCell = Instantiate(cell.cellPrefab, new Vector3(x, 0f, y), Quaternion.identity);
-                    sceneryTileCell.transform.rotation = GetCellRandomRotation();
-                    sceneryTileCell.transform.parent = parent;
-                    //sceneryTileCell.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Environment");
-                    sceneryTileCell.transform.GetChild(0).gameObject.tag = "Environment";
-                    //yield return null;
+                    dontPutMeTherePlease++;
+                    if(dontPutMeTherePlease%4 == 0)
+                    {
+                        Quaternion rotation = (x == minX+1 || x == maxX-1) ? Quaternion.Euler(0f, 90f, 0f) : Quaternion.identity;
+                        if(treeOrCloud)
+                        {
+                            GameObject cloud = Instantiate(cloudPrefabs[Random.Range(0, cloudPrefabs.Count)], new Vector3(x, 1f, y), rotation);
+                            cloud.transform.parent = parent;
+                        }
+                        else
+                        {
+                            GameObject tree = Instantiate(treePrefab, new Vector3(x, 0f, y), rotation);
+                            tree.transform.parent = parent;
+                        }
+                        treeOrCloud = !treeOrCloud;
+                    }
                 }
             }
         }
