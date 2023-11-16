@@ -308,10 +308,46 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -2757699063612765215, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f1c9fd4e7a0fedf459995df52f43e019, type: 2}
+    - target: {fileID: -2757699063612765215, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 657159e010d8d5c4d9e7dde506c559fd, type: 2}
+    - target: {fileID: -2757699063612765215, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: d216f58e142545146b316500f9ddcb35, type: 2}
+    - target: {fileID: -2757699063612765215, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6521a9eb8153947459e22e42c1c060bc, type: 2}
+    - target: {fileID: -2757699063612765215, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7438f392e92da3941afc603600d83481, type: 2}
+    - target: {fileID: -2757699063612765215, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26e38377526cc654990ee9a3a2411e0d, type: 2}
+    - target: {fileID: -2757699063612765215, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8df11af5c1c78a449b247f737c168a59, type: 2}
     - target: {fileID: -607301947878387711, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 681697461574387379, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 023b94ea6eed5b54d92919c3c995be08, type: 2}
+    - target: {fileID: 681697461574387379, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c404b383cce255a47971fe34dd202315, type: 2}
     - target: {fileID: 919132149155446097, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
       propertyPath: m_Name
       value: model
@@ -328,6 +364,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4910407301156362235, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e2c896d39c14f34992d8070a743c4fb, type: 2}
+    - target: {fileID: 7722760351693017753, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e6083f803017c3c46bd3a486890d3762, type: 2}
+    - target: {fileID: 7722760351693017753, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c404b383cce255a47971fe34dd202315, type: 2}
+    - target: {fileID: 7722760351693017753, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0be267a791eb56b42a76c3c8c475c018, type: 2}
+    - target: {fileID: 7722760351693017753, guid: 5d444b9d572f86c4bb368db7ed5dc72b, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7438f392e92da3941afc603600d83481, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

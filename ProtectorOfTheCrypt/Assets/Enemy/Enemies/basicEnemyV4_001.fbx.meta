@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: 9eb05e946f27e954fa1ad65b363734db
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyBodyColor002_mat
+    second: {fileID: 2100000, guid: af02d1ce6aaf4944e87b5230a0b6b6b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyBodyColor_mat
+    second: {fileID: 2100000, guid: fdbf75500c02cc34ca0d165c6931b095, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyFeatherColor_mat
+    second: {fileID: 2100000, guid: 1ed5f9a1ecfe27741906d8e34e099ff5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyHelmet_mat
+    second: {fileID: 2100000, guid: e4b3d128af2bdd942aff90b6794a7a03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyLeatherColor_mat
+    second: {fileID: 2100000, guid: 713d2dbe74f7fb440a9e2c637c8cfa3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyMetalColor_mat
+    second: {fileID: 2100000, guid: 82940157445a244448624bfd877be847, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyOffWhite_mat
+    second: {fileID: 2100000, guid: fcb8635dd34cc244989f214dde6bfd39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyPinkColor_mat
+    second: {fileID: 2100000, guid: f0e09a44344e9f5448f240b225bc650f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyVisor_mat
+    second: {fileID: 2100000, guid: 7ea386f45d7d0ba4782d5276be2b173c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyWoodColor_mat
+    second: {fileID: 2100000, guid: c206dc80f44131948bb6ec09431b515f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemy_blackColor_mat
+    second: {fileID: 2100000, guid: de102d78857c7aa4391fd664a516ed3f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: basicEnemytWhiteColor_mat
+    second: {fileID: 2100000, guid: 4ae849a4b636ee74f9056b5de334e1f3, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyBodyColor002_mat_BaseMap
+    second: {fileID: 2800000, guid: 019bdfe605f67d04db467c24302ca4b1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyBodyColor002_mat_Normal
+    second: {fileID: 2800000, guid: d83136126f9689345877f1742992aeba, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyBodyColor_mat_BaseMap
+    second: {fileID: 2800000, guid: 12333b36f74bea54da072edc1e674da0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyBodyColor_mat_Normal
+    second: {fileID: 2800000, guid: 25bb9cd683166324e8c17e0a60d7951d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyFeatherColor_mat_BaseMap
+    second: {fileID: 2800000, guid: 863bb8adf63d1724184b606382589f48, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyFeatherColor_mat_Normal
+    second: {fileID: 2800000, guid: c1da6d7161e6c634aa8b23acff17934f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyHelmet_mat_BaseMap
+    second: {fileID: 2800000, guid: 76acb812270fa4d4b87b2973bb100127, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyLeatherColor_mat_BaseMap
+    second: {fileID: 2800000, guid: 1a81613dd576f3e4c8a75ebadba9b921, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyMetalColor_mat_BaseMap
+    second: {fileID: 2800000, guid: c55ea5c60100fa24fa32f125fc3b9a24, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyMetalColor_mat_Normal
+    second: {fileID: 2800000, guid: 643027da50ec96a48918ac49897f09b0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyOffWhite_mat_BaseMap
+    second: {fileID: 2800000, guid: a3aa98bcaf7db824ca0a9f558acc63b2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyPinkColor_mat_BaseMap
+    second: {fileID: 2800000, guid: 399b0903902c6164c9a07acc391e8269, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyVisor_mat_BaseMap
+    second: {fileID: 2800000, guid: fbca3e1521cb0c443b668a68a5871836, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyWoodColor_mat_BaseMap
+    second: {fileID: 2800000, guid: e85dcc1af1c2e0c48b6fc0470ee2e427, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemyWoodColor_mat_Normal
+    second: {fileID: 2800000, guid: de581b05d50302e40b8f28d179dd9fea, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemy_blackColor_mat_BaseMap
+    second: {fileID: 2800000, guid: a7be2fcab9d14fa45862debbafbb50fe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: basicEnemyV2_001_basicEnemytWhiteColor_mat_BaseMap
+    second: {fileID: 2800000, guid: 4479fb3bb20ff724d828ea2fe7b0dae8, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
