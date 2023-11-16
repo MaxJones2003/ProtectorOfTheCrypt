@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
+using static WaveManager;
 
 public class WaveManager : MonoBehaviour
 {
@@ -42,7 +43,18 @@ public class WaveManager : MonoBehaviour
 
     EndlessMode endlessMode;
     StoryMode storyMode;
+    
+    [Header("Endless Mode Enemy Spawn Probabilities")]
+    public float baseSpawnRate = 0.005f;
+    private int baseEnemies = 1;
+    public KeyValuePair<float, GameObject>[] probChance;
+    public int spawnRateIncThreshold = 72000;
 
+    [Range(1f, 6f)]
+    public float timeBetweenWaves;
+    [Range(1f, 1.20f)]
+    public float enemySpawnMultiplier;
+    public float maxWaveLength;
 
     private void Awake()
     {
@@ -56,14 +68,12 @@ public class WaveManager : MonoBehaviour
             StoryMode storyMode = GameManager.instance.GameMode as StoryMode;
             storyMode.waveManager = this;
             this.storyMode = storyMode; 
-
         }
         else if (GameManager.instance.GameMode is EndlessMode)
         {
             EndlessMode endlessMode = GameManager.instance.GameMode as EndlessMode;
             endlessMode.waveManager = this;
             this.endlessMode = endlessMode;
-            
         }
     }
 
@@ -95,9 +105,9 @@ public class WaveManager : MonoBehaviour
         WavesToSpawn.Add(new Wave(
             new Group(
                 PickRandomEnemyType(random),
-                random.Next(1, 11), // needs to be a formulaic value
+                baseEnemies + (int)(1f + Mathf.Pow(enemySpawnMultiplier, CurrentWaveCount)),
                 random.Next(1, 3)
-            ), random.Next(1, 11),
+            ), timeBetweenWaves,
             null));
     }
 
@@ -154,5 +164,28 @@ public class WaveManager : MonoBehaviour
             state = SpawnState.WAITING;
 
         Invoke(nameof(SpawnWave), CurrentWave.TimeUntilNextWave);
+    }
+
+    public GameObject PickRandomEnemy()
+    {
+        float total = 1f;
+        float randomPoint = UnityEngine.Random.value * total;
+        int index = 0;
+        GameObject chosenEnemy;
+
+        for (int i = 0; i < probChance.Length; i++)
+        {
+            if (randomPoint < probChance[i].Key)
+            {
+                index = i;
+                break;
+            }
+            else
+                randomPoint -= probChance[i].Key;
+        }
+
+        chosenEnemy = probChance[probChance.Length - 1].Value; // <= no enemies spawning for some 
+        
+        return chosenEnemy;
     }
 }
