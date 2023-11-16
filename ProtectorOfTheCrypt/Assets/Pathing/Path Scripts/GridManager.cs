@@ -45,6 +45,11 @@ public class GridManager : MonoBehaviour
         maxPathLength = MaxPathLength;
 
         //Generate Hazards
+        if(hazards == null)
+        {
+            hazards = new GameObject().transform;
+            hazards.name = "Hazards";
+        }
 
         GenerateHazards(hazardGroupsToSpawn);
 
