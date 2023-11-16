@@ -45,6 +45,11 @@ public class GridManager : MonoBehaviour
         maxPathLength = MaxPathLength;
 
         //Generate Hazards
+        if(hazards == null)
+        {
+            hazards = new GameObject().transform;
+            hazards.name = "Hazards";
+        }
 
         GenerateHazards(hazardGroupsToSpawn);
 
@@ -228,6 +233,8 @@ public class GridManager : MonoBehaviour
         parent.SetAsFirstSibling();
         LayPathCells(pathCells, parent);
         LaySceneryCells(pathCells, parent);
+
+        GameObject.FindWithTag("HazardParent").transform.parent = parent;
 
         // place the start and end points
         GameObject spawn = Instantiate(enemySpawnerObject, new Vector3(pathCells[0].x-0.5f, 1.2f, pathCells[0].y), Quaternion.identity);
