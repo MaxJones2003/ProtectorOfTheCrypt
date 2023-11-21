@@ -65,8 +65,9 @@ public class GridManager : MonoBehaviour
 
        
         virtualCamera.Follow = cameraPosition.transform;
-        virtualCamera.LookAt = centerPos.transform;
+        
         virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = Vector3.zero;
+        
 
         StartCoroutine(SetupCameraPosition(cameraPosition));
     }
@@ -184,6 +185,7 @@ public class GridManager : MonoBehaviour
         Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
 
         hazards.gameObject.SetActive(true);
+        CameraController.Instance.SetUp(loadedEnemyPath);
     }
 
     /// <summary>
@@ -221,6 +223,7 @@ public class GridManager : MonoBehaviour
                 crossroadsAdded++;
             }
         }
+        
         StartCoroutine(CreateGrid(pathCells));
     }
 
@@ -252,6 +255,7 @@ public class GridManager : MonoBehaviour
             path.Add(new Vector3(point.x, 1f, point.y));
         }
         loadedEnemyPath = path;
+        CameraController.Instance.SetUp(path);
         SetUpEnemies(path);
     }
     private void SetUpEnemies(List<Vector3> path)

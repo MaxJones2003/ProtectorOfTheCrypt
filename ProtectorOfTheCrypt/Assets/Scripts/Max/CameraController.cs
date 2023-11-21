@@ -1,34 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    List<Vector3> pathPositions;
-    private GameObject lookAtMe;
+    private static CameraController instance;
+    public static CameraController Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
 
     private int minValue, maxValue;
     private float currentLerpValue;
-    Slider slider;
+    public Slider slider;
     //https://www.youtube.com/watch?v=nTLgzvklgU8
+
+    [Header("Runtime")]
+    private GameObject lookAtObject;
+    List<Vector3> pathPositions;
+    CinemachineVirtualCamera virtualCamera;
+
+    public void SetUp(List<Vector3> pathPositions)
+    {
+        virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        this.pathPositions = pathPositions;
+        lookAtObject = new GameObject();
+        lookAtObject.transform.position = pathPositions[0];
+        virtualCamera.LookAt = lookAtObject.transform;
+        
+
+        currentLerpValue = 0;
+        slider.value = 0;
+        slider.maxValue = pathPositions.Count - 1;
+    }
 
     private void OnEnable()
     {
-        slider.onValueChanged.AddListener(CameraFocusLerp());
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        slider.onValueChanged.AddListener(CameraFocusLerp);
     }
-    public void InitializeCameraController(List<Vector3> pathPositions)
+    private void OnDisable()
     {
-        this.pathPositions = pathPositions;
-        minValue = 0;
-        maxValue = this.pathPositions.Count;
-        // set the min an max value of the slider
-        slider.minValue = minValue;
-        slider.maxValue = maxValue;
+        slider.onValueChanged.RemoveListener(CameraFocusLerp);
     }
-    
-    public void CameraFocusLerp()
+
+    public void CameraFocusLerp(float value)
     {
-        
+        lookAtObject.transform.position = pathPositions[(int)value];
     }
 }
