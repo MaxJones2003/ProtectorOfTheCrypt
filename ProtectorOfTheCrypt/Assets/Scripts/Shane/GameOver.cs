@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI killCount;
+    public TextMeshProUGUI seed;
     public Button retryButton;
 
     void Start()
@@ -16,11 +17,14 @@ public class GameOver : MonoBehaviour
         if (GameManager.instance.GameMode is EndlessMode)
         {
             killCount.text = "Enemies Defeated: " + KillCounter.enemiesKilled;
+
+            seed.text = "Seed: " + Seed.Instance.GameSeed;
             retryButton.gameObject.SetActive(false);                                // Retry button only displays in Story Mode
         }
         else
         {
             killCount.text = "";
+            seed.text = "";
         }
     }
 
