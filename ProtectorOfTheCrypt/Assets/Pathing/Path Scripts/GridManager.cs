@@ -37,7 +37,7 @@ public class GridManager : MonoBehaviour
     // This should generate hazards at run time
     public void GenerateRandomPath(int GridWith, int GridHeight, int MinPathLength, int MaxPathLength, GameObject cameraPosition, int hazardGroupsToSpawn)
     {
-        CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        //CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         
         gridWidth = GridWith;
         gridHeight = GridHeight;
@@ -60,16 +60,16 @@ public class GridManager : MonoBehaviour
         hazards.gameObject.SetActive(true);
         Generate();
 
-        GameObject centerPos = new GameObject();
+       /* GameObject centerPos = new GameObject();
         centerPos.transform.position = new Vector3(gridWidth / 2, 0, gridHeight / 2);
 
        
         virtualCamera.Follow = cameraPosition.transform;
         
-        virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = Vector3.zero;
+        virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = Vector3.zero; */
         
 
-        StartCoroutine(SetupCameraPosition(cameraPosition));
+        //StartCoroutine(SetupCameraPosition(cameraPosition));
     }
     private GameObject startPathPoint, endPathPoint;
     [SerializeField] private Transform camera;
@@ -162,8 +162,8 @@ public class GridManager : MonoBehaviour
 
         WaveManager = GetComponent<WaveManager>();
         
-        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
-        Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
+        /* Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
+        Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4)); */
         //Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
         hazards.gameObject.SetActive(true);
         Generate();
@@ -181,11 +181,11 @@ public class GridManager : MonoBehaviour
         loadedEnemyPath = EnemyPath;
         Instantiate(loadedPath);
         SetUpEnemies(loadedEnemyPath);
-        Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
-        Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4));
+        /* Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
+        Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4)); */
 
         hazards.gameObject.SetActive(true);
-        CameraController.Instance.SetUp(loadedEnemyPath);
+        CameraController.Instance.SetUp(EnemyPath, gridWidth);
     }
 
     /// <summary>
@@ -223,7 +223,7 @@ public class GridManager : MonoBehaviour
                 crossroadsAdded++;
             }
         }
-        
+        CameraController.Instance.SetUp(pathCells, gridWidth);
         StartCoroutine(CreateGrid(pathCells));
     }
 
@@ -255,7 +255,7 @@ public class GridManager : MonoBehaviour
             path.Add(new Vector3(point.x, 1f, point.y));
         }
         loadedEnemyPath = path;
-        CameraController.Instance.SetUp(path);
+        
         SetUpEnemies(path);
     }
     private void SetUpEnemies(List<Vector3> path)
