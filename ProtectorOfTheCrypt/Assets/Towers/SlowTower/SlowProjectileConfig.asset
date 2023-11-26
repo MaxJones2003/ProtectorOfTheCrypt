@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a521215cd9606a746bb88a067a749dac, type: 3}
+  m_Name: SlowProjectileConfig
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 2759656695588812179, guid: ee966f97b88e1eb47a04ef5d5bd4fcac, type: 3}
+  BulletSpeed: 10
+  HitMask:
+    serializedVersion: 2
+    m_Bits: 8
+  FireRate: 1
+  Range: 15
+  DamageType: 

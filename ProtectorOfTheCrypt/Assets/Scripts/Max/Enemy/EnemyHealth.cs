@@ -52,9 +52,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         // If the shield is boken its TakeDamage function returns the left over damage which gets dealt to the enemy
         if (shieldScript != null)
         {
-            Debug.Log(damageTaken);
             damageTaken = shieldScript.TakeDamage(Damage, DamageType);
-            Debug.Log(damageTaken);
         }
 
         // Makes sure the current health is never negative

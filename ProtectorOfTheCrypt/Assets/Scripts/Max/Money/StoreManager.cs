@@ -8,6 +8,7 @@ public class StoreManager : MonoBehaviour
     [Header("Tower Prices")]
     public int archerCost;
     public int bomberCost;
+    public int slowCost = 30;
     //public int wizardCost;
 
 

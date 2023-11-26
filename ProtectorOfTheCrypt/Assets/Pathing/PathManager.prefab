@@ -233,6 +233,11 @@ MonoBehaviour:
   WavesToSpawn: []
   CurrentWaveCount: -1
   state: 0
+  baseSpawnRate: 0.005
+  spawnRateIncThreshold: 72000
+  timeBetweenWaves: 0
+  enemySpawnMultiplier: 0
+  maxWaveLength: 0
 --- !u!114 &3027338048066020314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +253,7 @@ MonoBehaviour:
   PurchasableTowers:
   - {fileID: 11400000, guid: 1c5c87744f911f84cb4e91f865a24837, type: 2}
   - {fileID: 11400000, guid: bf90880a2d08b8b4ea8cde426e14770c, type: 2}
+  - {fileID: 11400000, guid: f0dd4cb66ee491549b03dd9050b6b01a, type: 2}
   grid: {fileID: 3609075191087926674}
   sceneCamaera: {fileID: 0}
   placementIndicator: {fileID: 2463670899147700546, guid: 3e69342d0b07b6440a89642d360ca3e1, type: 3}

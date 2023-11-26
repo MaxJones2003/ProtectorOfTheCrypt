@@ -40,6 +40,20 @@ public class IGTS_Buttons : MonoBehaviour
         inputRef.TowerPlacementMode(false);
     }
 
+    public void SpawnSlow()
+    {
+        if(StoreManager.Instance.CannotBuy(StoreManager.Instance.slowCost))
+        {
+            // Maybe add some code here to make the button flash red
+            return;
+        } 
+
+        StoreManager.Instance.Purchase(StoreManager.Instance.slowCost);
+        inputRef.SelectTower("SlowTower");
+        IGTS.SetActive(false);
+        inputRef.TowerPlacementMode(false);
+    }
+
     public void CancelButton()
     {
         IGTS.SetActive(false);

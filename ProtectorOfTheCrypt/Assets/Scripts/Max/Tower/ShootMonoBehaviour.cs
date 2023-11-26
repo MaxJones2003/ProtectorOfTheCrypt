@@ -17,6 +17,7 @@ public class ShootMonoBehaviour : MonoBehaviour
         tower = Tower;
         tower = tower.Clone() as TowerScriptableObject;
         if(tower.Name == "ExplosiveTower") IsExplosive();
+        else if(tower.Name == "SlowTower") IsSlow();
     }
     public void OnEnable()
     {
@@ -59,5 +60,30 @@ public class ShootMonoBehaviour : MonoBehaviour
                 20
             )
         };
+    }
+    
+    private void IsSlow()
+    {
+        new ImpactTypeModifier()
+        {
+            Amount = tower.ImpactTypeOverride
+        }.Apply(tower);
+
+        SetSlowDamage();
+    }
+
+    public void SetSlowDamage()
+    {
+        tower.BulletImpactEffects = new ICollisionHandler[]
+        {
+            new Frost(
+                tower.AOERange,
+                new AnimationCurve(new Keyframe[] { new Keyframe(0, 1), new Keyframe(1, 1) }), // No damage fall off atm, lowering the y value of the second keyframe will add damage fall off
+                tower.AOEDamage,
+                20,
+                new AnimationCurve(new Keyframe[] { new Keyframe(0, 0.5f), new Keyframe(tower.DOTTime, 0.5f) }) // No slow fall off atm, lowering the y value of the second keyframe will add slow fall off
+            )
+        };
+        Debug.Log(tower.DOTTime);
     }
 }

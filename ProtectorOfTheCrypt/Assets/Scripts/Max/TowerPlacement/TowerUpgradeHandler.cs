@@ -120,6 +120,21 @@ public class TowerUpgradeHandler : MonoBehaviour
         fireRateModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
         ApplyUpgradeFlag();
     }
+    public void UpgradeDamageOverTimeTimerAdd(float upgrade, int cost)
+    {
+        if (StoreManager.Instance.CannotBuy(cost)) return;
+        StoreManager.Instance.Purchase(cost);
+        upgradePS.Play();
+        AddDamageModifier timeModifier = new()
+        {
+            Amount = upgrade,
+            AttributeName = "DOTTime"
+        };
+
+        timeModifier.Apply(gameObject.GetComponent<ShootMonoBehaviour>().tower);
+        gameObject.GetComponent<ShootMonoBehaviour>().SetSlowDamage();
+        ApplyUpgradeFlag();
+    }
     public void SellTower()
     {
         int sellPrice = -5;

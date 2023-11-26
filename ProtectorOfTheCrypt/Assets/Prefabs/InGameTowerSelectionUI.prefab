@@ -375,7 +375,7 @@ Transform:
   - {fileID: 8258856578372656615}
   - {fileID: 6135832418348750929}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2382989155531198778
 MonoBehaviour:
@@ -784,7 +784,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2382989155531198778}
         m_TargetAssemblyTypeName: IGTS_Buttons, Assembly-CSharp
-        m_MethodName: SpawnBombers
+        m_MethodName: SpawnSlow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -819,8 +819,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8879460079794317453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.02, z: 0.68}
-  m_LocalScale: {x: 0.6599508, y: 0.92590016, z: 1}
+  m_LocalPosition: {x: 0.028909, y: -0.3207, z: 0.68}
+  m_LocalScale: {x: 0.7590754, y: 1.1347833, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2702384789181557586}

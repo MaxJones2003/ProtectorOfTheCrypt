@@ -1,8 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class EnemyMovementHandler : MonoBehaviour
+public class EnemyMovementHandler : MonoBehaviour, ISlowable
 {
     private EnemyScriptableObject enemy = null;
 
@@ -10,6 +11,7 @@ public class EnemyMovementHandler : MonoBehaviour
     private List<Vector3> path = new List<Vector3>();
     private Vector3 target;
     private int waypointIndex = 0;
+    public float BaseSpeed;
     public float speed;
     [HideInInspector]
     public Spawner spawner;
@@ -24,6 +26,8 @@ public class EnemyMovementHandler : MonoBehaviour
     public float wobbleAmount = 12f;
     private Quaternion originalRotation;
     private float timeElapsed = 0.0f;
+
+    private Coroutine SlowCoroutine;
 
     public void Awake()
     {
@@ -54,7 +58,8 @@ public class EnemyMovementHandler : MonoBehaviour
         enemy = EnemyToSet;
         path = Path;
         target = path[1];
-        speed = BaseSpeed * speedModifier;
+        this.BaseSpeed = BaseSpeed * speedModifier;
+        speed = this.BaseSpeed;
         spawner = _spawner;
 
         originalRotation = model.transform.rotation;
@@ -143,5 +148,28 @@ public class EnemyMovementHandler : MonoBehaviour
     private void UpdateGamePaused(bool isPaused)
     {
         paused = isPaused;
+    }
+
+    public void Slow(AnimationCurve SlowCurve)
+    {
+        if (SlowCoroutine != null)
+        {
+            StopCoroutine(SlowCoroutine);
+        }
+        SlowCoroutine = StartCoroutine(SlowDown(SlowCurve));
+    }
+
+    private IEnumerator SlowDown(AnimationCurve SlowCurve)
+    {
+        float time = 0;
+        Debug.Log("Slowing " + speed);
+        while (time < SlowCurve.keys[^1].time)
+        {
+            speed = BaseSpeed * SlowCurve.Evaluate(time);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("UnSlowing " + speed);
+        speed = BaseSpeed;
     }
 }

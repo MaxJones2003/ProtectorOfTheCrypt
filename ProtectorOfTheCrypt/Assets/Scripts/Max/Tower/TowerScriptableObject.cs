@@ -39,6 +39,8 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
     public float Damage;
     public float AOEDamage;
     public float AOERange;
+    [Tooltip("How long damage over time is applied. Only relevant for slow tower.")]
+    public float DOTTime;
     [Header("Range")]
     public float Range;
     public float FireRate;
@@ -244,6 +246,7 @@ public class TowerScriptableObject : ScriptableObject, ICloneable
         config.Range = Range;
         config.FireRate = FireRate;
         config.BulletSpeed = BulletSpeed;
+        config.DOTTime = DOTTime;
 
         config.ProjectileConfig = ProjectileConfig.Clone() as ProjectileConfigurationScriptableObject;
         config.TrailConfig = TrailConfig.Clone() as TrailConfigurationScriptableObject;

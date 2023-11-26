@@ -44,4 +44,10 @@ public class UpgradeUI : MonoBehaviour
         // Call UpgradeAOERangeAdd
         TowerUpRef.UpgradeAOERangeAdd(2, 25);
     }
+
+    public void DOTButton()
+    {
+        // Call UpgradeDamageOverTimeTimerAdd
+        TowerUpRef.UpgradeDamageOverTimeTimerAdd(0.5f, 25);
+    }
 }
