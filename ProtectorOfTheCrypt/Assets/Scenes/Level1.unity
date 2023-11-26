@@ -1700,7 +1700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.data[0]
@@ -1714,6 +1714,14 @@ PrefabInstance:
       propertyPath: sceneryCellObjects.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: db178141a475de94e99ed578e40606f4, type: 2}
+    - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: sceneryCellObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 70ed069fc4fd6d546abe9f3f91425a0f, type: 2}
+    - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: sceneryCellObjects.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 22c9cf0fbe980314782a905bfbfcbdf7, type: 2}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.data[20]
       value: 
