@@ -9630,6 +9630,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: maxWaveLength
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: enemySpawnMultiplier
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: timeIncreaseMultiplier
+      value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.size
       value: 1
       objectReference: {fileID: 0}
