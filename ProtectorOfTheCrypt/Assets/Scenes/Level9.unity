@@ -238,6 +238,7 @@ MonoBehaviour:
   GameMode: {fileID: 0}
   isPaused: 0
   gameStarted: 0
+  souls: 100
 --- !u!4 &152358334
 Transform:
   m_ObjectHideFlags: 0
@@ -1407,7 +1408,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.26162922, y: -0.011767674, z: 0.00319013, w: 0.96509147}
+  m_LocalRotation: {x: 0.2616292, y: -0.011767641, z: 0.0031901211, w: 0.96509147}
   m_LocalPosition: {x: 20, y: 12, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1945,7 +1946,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003377067}
-  m_LocalRotation: {x: 0.26162922, y: -0.011767674, z: 0.00319013, w: 0.96509147}
+  m_LocalRotation: {x: 0.2616292, y: -0.011767641, z: 0.0031901211, w: 0.96509147}
   m_LocalPosition: {x: 20, y: 12, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

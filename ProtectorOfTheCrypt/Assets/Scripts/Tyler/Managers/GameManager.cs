@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public GameMode GameMode;
     public bool isPaused;
     public bool gameStarted;
-    public int Souls { get; private set; } = 999999;
+    [SerializeField] private int souls = 99999;
+    public int Souls { get { return souls; } private set { souls = value; } }
     public int Money { get; private set; } = 100;
 
     public void Awake()
