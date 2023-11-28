@@ -929,6 +929,7 @@ MonoBehaviour:
   GameMode: {fileID: 0}
   isPaused: 0
   gameStarted: 0
+  souls: 99999
 --- !u!4 &152358334
 Transform:
   m_ObjectHideFlags: 0
@@ -8059,7 +8060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.size
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: loadedEnemyPath.Array.data[0].y
@@ -9280,7 +9281,15 @@ PrefabInstance:
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: sceneryCellObjects.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: b8575856408479d4dafc1becd83c6758, type: 2}
+      objectReference: {fileID: 11400000, guid: eadb917bb5662b445984a5c57a21c911, type: 2}
+    - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: sceneryCellObjects.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 70ed069fc4fd6d546abe9f3f91425a0f, type: 2}
+    - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+      propertyPath: sceneryCellObjects.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 22c9cf0fbe980314782a905bfbfcbdf7, type: 2}
     - target: {fileID: 6024401304573393069, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: loadedEnemyPath.Array.data[100].x
       value: 42

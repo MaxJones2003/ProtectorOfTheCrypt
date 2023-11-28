@@ -17,7 +17,7 @@ MonoBehaviour:
   Name: SlowTower
   ModelPrefab: {fileID: 7625658237417080078, guid: 5a531d13f88ad3f4b8b52f23ba9d20ef, type: 3}
   SpawnPoint: {x: 0, y: 0, z: 0}
-  SpawnRotation: {x: 0, y: 0, z: 0}
+  SpawnRotation: {x: 0, y: -90, z: 0}
   ProjectileConfig: {fileID: 11400000, guid: bbe2d340238b7704da3c25a48beb1408, type: 2}
   TrailConfig: {fileID: 11400000, guid: 12b1919b3eefff546a9265fd2f558922, type: 2}
   AudioConfig: {fileID: 11400000, guid: 1ed3997d9990e4241acabfb1de7260b8, type: 2}

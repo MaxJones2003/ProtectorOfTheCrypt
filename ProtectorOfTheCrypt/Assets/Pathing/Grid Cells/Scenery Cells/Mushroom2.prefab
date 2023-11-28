@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 8117230314643765091}
   - component: {fileID: 8363804837289927054}
   - component: {fileID: 3146159592059758226}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ Transform:
   - {fileID: 7211826351446012998}
   - {fileID: 3609601329243384910}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7713678115215389841
 GameObject:
