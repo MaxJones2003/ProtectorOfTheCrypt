@@ -1,1 +1,1 @@
-{"LevelNumber":0,"Seed":"default","GridWidth":40,"GridHeight":26,"MinPathLength":40,"MaxPathLength":218,"LevelEnemyPath":[]}
+{"LevelNumber":0,"Seed":"!21VTWPTD7WYNIIB","GridWidth":40,"GridHeight":26,"MinPathLength":40,"MaxPathLength":218,"LevelEnemyPath":[]}
