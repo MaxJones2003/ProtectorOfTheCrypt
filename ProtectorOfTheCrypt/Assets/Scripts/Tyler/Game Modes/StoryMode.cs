@@ -10,6 +10,7 @@ public class StoryMode : GameMode
     public DialogueController DialogueController;
 
     public GameObject YouWinScreen;
+    public GameObject LevelSuccessScreen;
     public GameObject GameOverScreen;
     public GameObject UIButtons;
 
@@ -55,16 +56,22 @@ public class StoryMode : GameMode
         // Activate You Win Screen 
         if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         {
-            Debug.Log("test");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //Debug.Log("test");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             AudioManager.instance.PlayMusicOnSceneChange(SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).name);
-            return;
+            //return;
         }
 
-        YouWinScreen.SetActive(true);
+        // UPDATE LEVEL 9 TO WHATEVER LEVEL NAME IS FINAL STORY MODE LEVEL
+        if (SceneManager.GetActiveScene().name == "Level9")
+        {
+            YouWinScreen.SetActive(true);
+        }
+        else
+        {
+            LevelSuccessScreen.SetActive(true);
+        }
         // Disable Game UI
         UIButtons.SetActive(false);
-
-        // Debug.Log("game won test");
     }
 }
