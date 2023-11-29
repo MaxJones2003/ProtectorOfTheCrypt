@@ -8,6 +8,7 @@ public class MainMenuScript : MonoBehaviour
     public GameObject MainPanel;
     public CreditsMenu CredRef;
     public SettingsMenu SettRef;
+    public ConfirmQuit ConfirmQuitRef;
     public void StoryMode()
     {
         SceneManager.LoadScene("Level1");      //Load StoryMode Scene
@@ -34,6 +35,8 @@ public class MainMenuScript : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();                         //Completely Close Application
+        ConfirmQuit.closeApp = true;
+        ConfirmQuitRef.confirmQuitPanel.SetActive(true);
+        //Application.Quit();                         //Completely Close Application
     }
 }
