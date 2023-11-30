@@ -36,7 +36,7 @@ public class WaveManager : MonoBehaviour
     public static Wave CurrentWave;
 
     [HideInInspector]
-    public int CurrentWaveCount = -1;
+    public static int CurrentWaveCount = -1;
 
     public enum SpawnState { SPAWNING, WAITING, FINISHED, HALTED };
     public SpawnState state = SpawnState.WAITING;
@@ -45,7 +45,7 @@ public class WaveManager : MonoBehaviour
     StoryMode storyMode;
     
 
-    public KeyValuePair<float, EnemyScriptableObject>[] probChance = new KeyValuePair<float, EnemyScriptableObject>[2];
+    public KeyValuePair<float, EnemyScriptableObject>[] probChance = new KeyValuePair<float, EnemyScriptableObject>[4];
     
     private int baseEnemies = 1;
     private int baseTimeBetweenWaves = 1;
@@ -57,6 +57,7 @@ public class WaveManager : MonoBehaviour
     private void Awake()
     {
         EnemySpawner = GetComponent<Spawner>();
+        CurrentWaveCount = -1;
     }
 
     public void Start()
@@ -73,8 +74,10 @@ public class WaveManager : MonoBehaviour
             endlessMode.waveManager = this;
             this.endlessMode = endlessMode;
 
-            probChance[1] = new KeyValuePair<float, EnemyScriptableObject>(.7f, endlessMode.basicEnemy);
-            probChance[0] = new KeyValuePair<float, EnemyScriptableObject>(.3f, endlessMode.shieldEnemy);
+            probChance[0] = new KeyValuePair<float, EnemyScriptableObject>(.7f, endlessMode.basicEnemy);
+            probChance[1] = new KeyValuePair<float, EnemyScriptableObject>(.2f, endlessMode.shieldEnemy);
+            probChance[2] = new KeyValuePair<float, EnemyScriptableObject>(.98f, endlessMode.wizardEnemy);
+            probChance[3] = new KeyValuePair<float, EnemyScriptableObject>(.02f, endlessMode.goldEnemy);
         }
     }
 
@@ -92,23 +95,37 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnFirstWave()
     {
-        
-
         SpawnWave();
     }
 
     public void CreateWave()
     {
+        EnemyScriptableObject randomEnemy = PickRandomEnemy();
+
         WavesToSpawn.Add(new Wave(
             new Group(
-                PickRandomEnemy(),
-                baseEnemies + (int)(1f + Mathf.Pow(enemySpawnMultiplier, CurrentWaveCount)),
+                randomEnemy,
+                randomEnemy.spawnsAlone ? 1 : CalculateEnemyCount(),
                 UnityEngine.Random.Range(1, 4)
-            ), baseTimeBetweenWaves + (int)(1f + Mathf.Pow(timeIncreaseMultiplier, CurrentWaveCount)),
+            ), randomEnemy.spawnsAlone ? 5 : CalculateTimeBetweenWaves(),
             null));
+    }
 
-        WavesToSpawn[WavesToSpawn.Count - 1].TimeUntilNextWave = Mathf.Clamp(WavesToSpawn[WavesToSpawn.Count - 1].TimeUntilNextWave, 0, 6);
-        WavesToSpawn[WavesToSpawn.Count - 1].EnemyGroup.NumObjects = Mathf.Clamp(WavesToSpawn[WavesToSpawn.Count - 1].EnemyGroup.NumObjects, 0, 50);
+    private int CalculateEnemyCount()
+    {
+        int x = CurrentWaveCount;
+        return (int)(15 / (1f + Mathf.Exp((-.17f * x) + 2)));
+    }
+    private int CalculateTimeBetweenWaves()
+    {
+        int x = CurrentWaveCount;
+        return (int)(30 / (1f + Mathf.Exp((-.15f * x) + 2)));
+    }
+
+    public static int CalculateMoneyToDrop()
+    {
+        int x = CurrentWaveCount;
+        return (int)(-17 / (1f + Mathf.Exp((-.2f * x) + 2.5f)));
     }
 
     private void SpawnWave()

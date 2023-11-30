@@ -17,6 +17,8 @@ public class EnemyScriptableObject : ScriptableObject
     public ShieldScriptableObject ShieldType;
     public AudioClip deathSound;
 
+    public bool spawnsAlone;
+
     private MonoBehaviour ActiveMonoBehaviour;
     private GameObject Model;
     private List<Vector3> Path = new List<Vector3>();
