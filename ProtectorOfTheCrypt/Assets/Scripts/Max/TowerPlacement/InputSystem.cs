@@ -125,8 +125,7 @@ public class InputSystem : MonoBehaviour
         float y = dropCurve.Evaluate(0);
         
         float time = 0f;
-        float finalTime = dropCurve.keys[dropCurve.keys.Length - 1].time;
-        while (time < finalTime)
+        while (time < dropCurve.keys[^1].time)
         {
             currentTowerModel.transform.position = startPos + new Vector3(0, y, 0);
             y = dropCurve.Evaluate(time);
