@@ -14,7 +14,8 @@ public class IGTS_Buttons : MonoBehaviour
     }
     public void SpawnArchers()
     {
-        if(StoreManager.Instance.CannotBuy(StoreManager.Instance.archerCost))
+        if (GameManager.instance.isPaused) return;
+        if (StoreManager.Instance.CannotBuy(StoreManager.Instance.archerCost))
         {
             // Maybe add some code here to make the button flash red
             return;
@@ -28,7 +29,8 @@ public class IGTS_Buttons : MonoBehaviour
 
     public void SpawnBombers()
     {
-        if(StoreManager.Instance.CannotBuy(StoreManager.Instance.bomberCost))
+        if (GameManager.instance.isPaused) return;
+        if (StoreManager.Instance.CannotBuy(StoreManager.Instance.bomberCost))
         {
             // Maybe add some code here to make the button flash red
             return;
@@ -42,7 +44,8 @@ public class IGTS_Buttons : MonoBehaviour
 
     public void SpawnSlow()
     {
-        if(StoreManager.Instance.CannotBuy(StoreManager.Instance.slowCost))
+        if (GameManager.instance.isPaused) return;
+        if (StoreManager.Instance.CannotBuy(StoreManager.Instance.slowCost))
         {
             // Maybe add some code here to make the button flash red
             return;
