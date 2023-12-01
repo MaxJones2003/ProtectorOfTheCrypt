@@ -944,6 +944,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4088666496742509901, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088666496742509901, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088666496742509901, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088666496742509901, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088666496742509901, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088666496742509901, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4455301952300251016, guid: 0d3cfc8e853e66b4497ad67d925f1796, type: 3}
       propertyPath: m_Name
       value: InGameTowerSelectionUI
@@ -1064,6 +1088,10 @@ PrefabInstance:
       propertyPath: IGButtons
       value: 
       objectReference: {fileID: 2089620641}
+    - target: {fileID: 243250082639015522, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
+      propertyPath: ConfirmQuitRef
+      value: 
+      objectReference: {fileID: 1994604675}
     - target: {fileID: 1744542391884145218, guid: 7907fbc635a754047b8e4601abfda1e6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1632,6 +1660,7 @@ Transform:
   - {fileID: 1024966959}
   - {fileID: 727434995}
   - {fileID: 864130700}
+  - {fileID: 1994604674}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1996,6 +2025,123 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 650406768126351154, guid: 03d08b8b142e3814d9d843a9a06e803f, type: 3}
   m_PrefabInstance: {fileID: 565121890}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1994604673
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1096824614}
+    m_Modifications:
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7912824961340331263, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_Name
+      value: ConfirmQuitCanvas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+--- !u!224 &1994604674 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+  m_PrefabInstance: {fileID: 1994604673}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1994604675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 669001240238027218, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+  m_PrefabInstance: {fileID: 1994604673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df97f44d7bf44b43a492abb88a2abc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2003377067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,6 +2596,14 @@ PrefabInstance:
       propertyPath: towerSelectionUI
       value: 
       objectReference: {fileID: 1201573596}
+    - target: {fileID: 9216596348370211945, guid: 5729b79ba385c0941ae35ee88020bc6c, type: 3}
+      propertyPath: PurchasableTowers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216596348370211945, guid: 5729b79ba385c0941ae35ee88020bc6c, type: 3}
+      propertyPath: PurchasableTowers.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: f0dd4cb66ee491549b03dd9050b6b01a, type: 2}
     - target: {fileID: 9221893306184717447, guid: 5729b79ba385c0941ae35ee88020bc6c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
