@@ -9,6 +9,8 @@ TagManager:
   - Environment
   - HazardParent
   - Enviornment
+  - ForwardSprite
+  - BackwardSprite
   layers:
   - Default
   - TransparentFX

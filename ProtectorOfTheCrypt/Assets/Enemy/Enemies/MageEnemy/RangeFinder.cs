@@ -13,7 +13,7 @@ public class RangeFinder : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            
+            Debug.Log("Enemy entered");
             mageEnemyScript.TryBoost(other.gameObject);
         }
     }
@@ -22,6 +22,7 @@ public class RangeFinder : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Enemy exited");
             mageEnemyScript.RemoveBoost(other.gameObject);
         }
     }

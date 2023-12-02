@@ -20,6 +20,8 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
     private Transform model;
 
     private CharacterController characterController; // Add Character Controller component
+    private GameObject forwardSprite;
+    private GameObject backwardSprite;
 
     [Header("Animation")]
     public float hopAngle = 15.0f;
@@ -35,6 +37,18 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
         model = transform.GetChild(0);
         characterController = GetComponent<CharacterController>(); // Initialize the Character Controller
         characterController.enabled = false;
+        // create a list of the transforms children and childrens children
+        List<Transform> children = new List<Transform>();
+        foreach (Transform child in transform)
+        {
+            children.Add(child);
+            foreach (Transform grandChild in child)
+            {
+                children.Add(grandChild);
+            }
+        }
+        forwardSprite = children.Find(child => child.tag == "ForwardSprite").gameObject;
+        backwardSprite = children.Find(child => child.tag == "BackwardSprite").gameObject;
     }
 
     public void OnEnable()
@@ -134,6 +148,7 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
             // Rotate to look down (rotate y value to 90)
             transform.rotation = Quaternion.Euler(0f, 90f, 0f);
         }
+        
     }
 
     private void ModelAnimation()
@@ -159,34 +174,39 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
             isSlowedDown = false;
             Slowed?.Invoke((false, gameObject));
         }
+        
         SlowCoroutine = StartCoroutine(SlowDown(SlowCurve));
     }
 
     private IEnumerator SlowDown(AnimationCurve SlowCurve)
     {
+        backwardSprite.SetActive(true);
+        forwardSprite.SetActive(false);
         Slowed?.Invoke((true, gameObject));
         isSpedUp = false;
         isSlowedDown = true;
         float time = 0;
-        Debug.Log("Slowing " + speed);
+        
         while (time < SlowCurve.keys[^1].time)
         {
             speed = BaseSpeed * SlowCurve.Evaluate(time);
             time += Time.deltaTime;
             yield return null;
         }
-        Debug.Log("UnSlowing " + speed);
+        backwardSprite.SetActive(false);
         speed = BaseSpeed;
         Slowed?.Invoke((false, gameObject));
     }
     public event Action<(bool,GameObject)> Slowed;
     public void BoostSpeed(float increaseBy)
     {
+        forwardSprite.SetActive(true);
         isSpedUp = true;
         speed = BaseSpeed * increaseBy;
     }
     public void UnBoostSpeed()
     {
+        forwardSprite.SetActive(false);
         isSpedUp = false;
         speed = BaseSpeed;
     }
