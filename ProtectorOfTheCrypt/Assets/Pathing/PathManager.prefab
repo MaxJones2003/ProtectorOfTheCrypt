@@ -185,6 +185,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 020a9c3b1076d084bbb5d36081626b8c, type: 2}
   - {fileID: 11400000, guid: 917ab2d01cd663a49b207bc8418e1afa, type: 2}
   - {fileID: 11400000, guid: db178141a475de94e99ed578e40606f4, type: 2}
+  - {fileID: 11400000, guid: 77bce132df4ad114289c29f903d4ba8f, type: 2}
+  - {fileID: 11400000, guid: f2003ae9b476bef4c8475d0fd5278bc8, type: 2}
   loadedPath: {fileID: 0}
   loadedEnemyPath: []
   camera: {fileID: 0}
