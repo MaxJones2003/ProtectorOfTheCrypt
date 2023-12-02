@@ -235,11 +235,8 @@ MonoBehaviour:
   WavesToSpawn: []
   CurrentWaveCount: -1
   state: 0
-  baseSpawnRate: 0.005
-  spawnRateIncThreshold: 72000
-  timeBetweenWaves: 0
   enemySpawnMultiplier: 0
-  maxWaveLength: 0
+  timeIncreaseMultiplier: 0
 --- !u!114 &3027338048066020314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +272,39 @@ MonoBehaviour:
   towerSelectionUI: {fileID: 0}
   isTowerPlacementUIActive: 0
   IGTS_UI: {fileID: 0}
+  dropCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0.034666274
+      outSlope: 0.034666274
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.4604395
+      value: 0
+      inSlope: 0.022240259
+      outSlope: 0.022240259
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.6508718
+    - serializedVersion: 3
+      time: 0.5666346
+      value: 0
+      inSlope: -8.134083
+      outSlope: -8.134083
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.11740581
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8400491918763768993
 MonoBehaviour:
   m_ObjectHideFlags: 0

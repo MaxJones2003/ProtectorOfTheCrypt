@@ -279,6 +279,7 @@ MonoBehaviour:
   PausePanel: {fileID: 1134917408692199008}
   IGButtons: {fileID: 0}
   seedDisplay: {fileID: 7958679411037600205}
+  ConfirmQuitRef: {fileID: 0}
 --- !u!114 &1572987584427883468
 MonoBehaviour:
   m_ObjectHideFlags: 0

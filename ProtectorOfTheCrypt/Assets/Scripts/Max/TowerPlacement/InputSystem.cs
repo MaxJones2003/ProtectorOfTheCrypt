@@ -95,12 +95,13 @@ public class InputSystem : MonoBehaviour
     }
 
     #region Tower Placement
+    public AnimationCurve dropCurve;
+
     /// <summary>
     /// Instantiates the Model of the selected tower. This allows the player to move the tower around the grid, before actually purchasing it.
     /// </summary>
     public void SelectTower(string nameOfTowerToSelect)
     {
-        if (GameManager.instance.isPaused) return;
         // Find the correct tower based on the string given
         TowerScriptableObject tower = PurchasableTowers.Find(t => t.Name == nameOfTowerToSelect);
 
@@ -115,6 +116,30 @@ public class InputSystem : MonoBehaviour
 
         currentTowerScriptableObject = tower;
         currentTowerModel = currentTowerScriptableObject.SpawnModel(this, placementIndicator.transform.position);
+        Vector3 endPosition = currentTowerModel.transform.position;
+        StartCoroutine(TowerPlacement(endPosition));
+    }
+    private IEnumerator TowerPlacement(Vector3 endPos)
+    {
+        Vector3 startPos = endPos;
+        float y = dropCurve.Evaluate(0);
+        
+        float time = 0f;
+        while (time < dropCurve.keys[^1].time)
+        {
+            currentTowerModel.transform.position = startPos + new Vector3(0, y, 0);
+            y = dropCurve.Evaluate(time);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        // Play dust effect + screen shake? + sound?
+
+        // Turn tower on
+        FinishTowerPlacement();
+        
+    }
+    private void FinishTowerPlacement()
+    {
         // Make the position below the tower un-placable.
         ChangeGridLayer();
         towerCurrentlySelected = true;
@@ -125,6 +150,7 @@ public class InputSystem : MonoBehaviour
         if (!towerCurrentlySelected)
             return;
         currentTowerScriptableObject.Spawn();
+
         currentTowerModel.AddComponent<ShootMonoBehaviour>().Activate(currentTowerScriptableObject);
         currentTowerModel = null;
         currentTowerScriptableObject = null;
@@ -197,7 +223,6 @@ public class InputSystem : MonoBehaviour
 
         // Return to standard mode action map
         playerInput.SwitchCurrentActionMap("StandardMode");
-
     }
     #endregion
 

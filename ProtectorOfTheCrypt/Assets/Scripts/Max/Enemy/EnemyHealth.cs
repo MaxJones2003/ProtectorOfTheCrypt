@@ -73,8 +73,19 @@ public class EnemyHealth : MonoBehaviour, IDamageable
             {
                 if (GameManager.instance.GameMode.CheckGameWon())
                     GameManager.instance.GameMode.OnGameWon();
+
+                GameManager.instance.RemoveMoney(-5);
             }
-            GameManager.instance.RemoveMoney(-5);
+
+            if (GameManager.instance.GameMode is EndlessMode)
+            {
+                if (GameManager.instance.GameMode.CheckGameWon())
+                    GameManager.instance.GameMode.OnGameWon();
+
+                GameManager.instance.RemoveMoney(-WaveManager.CalculateMoneyToDrop());
+            }
+
+            
             Destroy(gameObject);
         }
     }

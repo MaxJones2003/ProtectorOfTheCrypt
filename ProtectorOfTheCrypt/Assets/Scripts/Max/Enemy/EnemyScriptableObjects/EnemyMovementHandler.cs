@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -149,18 +150,23 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
     {
         paused = isPaused;
     }
-
+    [HideInInspector] public bool isSpedUp, isSlowedDown;
     public void Slow(AnimationCurve SlowCurve)
     {
         if (SlowCoroutine != null)
         {
             StopCoroutine(SlowCoroutine);
+            isSlowedDown = false;
+            Slowed.Invoke((false, gameObject));
         }
         SlowCoroutine = StartCoroutine(SlowDown(SlowCurve));
     }
 
     private IEnumerator SlowDown(AnimationCurve SlowCurve)
     {
+        Slowed.Invoke((true, gameObject));
+        isSpedUp = false;
+        isSlowedDown = true;
         float time = 0;
         Debug.Log("Slowing " + speed);
         while (time < SlowCurve.keys[^1].time)
@@ -171,5 +177,18 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
         }
         Debug.Log("UnSlowing " + speed);
         speed = BaseSpeed;
+        Slowed.Invoke((false, gameObject));
     }
+    public event Action<(bool,GameObject)> Slowed;
+    public void BoostSpeed(float increaseBy)
+    {
+        isSpedUp = true;
+        speed = BaseSpeed * increaseBy;
+    }
+    public void UnBoostSpeed()
+    {
+        isSpedUp = false;
+        speed = BaseSpeed;
+    }
+
 }

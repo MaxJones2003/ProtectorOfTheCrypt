@@ -36,7 +36,7 @@ public class WaveManager : MonoBehaviour
     public static Wave CurrentWave;
 
     [HideInInspector]
-    public int CurrentWaveCount = -1;
+    public static int CurrentWaveCount = -1;
 
     public enum SpawnState { SPAWNING, WAITING, FINISHED, HALTED };
     public SpawnState state = SpawnState.WAITING;
@@ -44,21 +44,20 @@ public class WaveManager : MonoBehaviour
     EndlessMode endlessMode;
     StoryMode storyMode;
     
-    [Header("Endless Mode Enemy Spawn Probabilities")]
-    public float baseSpawnRate = 0.005f;
-    private int baseEnemies = 1;
-    public KeyValuePair<float, GameObject>[] probChance;
-    public int spawnRateIncThreshold = 72000;
 
-    [Range(1f, 6f)]
-    public float timeBetweenWaves;
-    [Range(1f, 1.20f)]
+    public KeyValuePair<float, EnemyScriptableObject>[] probChance = new KeyValuePair<float, EnemyScriptableObject>[4];
+    
+    private int baseEnemies = 1;
+    private int baseTimeBetweenWaves = 1;
+    [Header("Endless Mode Enemy Spawn Settings")]
+
     public float enemySpawnMultiplier;
-    public float maxWaveLength;
+    public float timeIncreaseMultiplier;
 
     private void Awake()
     {
         EnemySpawner = GetComponent<Spawner>();
+        CurrentWaveCount = -1;
     }
 
     public void Start()
@@ -67,21 +66,24 @@ public class WaveManager : MonoBehaviour
         {
             StoryMode storyMode = GameManager.instance.GameMode as StoryMode;
             storyMode.waveManager = this;
-            this.storyMode = storyMode; 
+            this.storyMode = storyMode;
         }
         else if (GameManager.instance.GameMode is EndlessMode)
         {
             EndlessMode endlessMode = GameManager.instance.GameMode as EndlessMode;
             endlessMode.waveManager = this;
             this.endlessMode = endlessMode;
+
+            probChance[0] = new KeyValuePair<float, EnemyScriptableObject>(.7f, endlessMode.basicEnemy);
+            probChance[1] = new KeyValuePair<float, EnemyScriptableObject>(.2f, endlessMode.shieldEnemy);
+            probChance[2] = new KeyValuePair<float, EnemyScriptableObject>(.98f, endlessMode.wizardEnemy);
+            probChance[3] = new KeyValuePair<float, EnemyScriptableObject>(.02f, endlessMode.goldEnemy);
         }
     }
-
 
     private void OnEnable()
     {
         EnemySpawner.StoppedSpawningObjects += WaveCompleted;
-        Debug.Log(GameManager.instance);
         GameManager.instance.OnGamePaused += PauseSpawning;
     }
 
@@ -93,35 +95,37 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnFirstWave()
     {
-        
-
         SpawnWave();
     }
 
     public void CreateWave()
     {
-        System.Random random = new System.Random();
+        EnemyScriptableObject randomEnemy = PickRandomEnemy();
 
         WavesToSpawn.Add(new Wave(
             new Group(
-                PickRandomEnemyType(random),
-                baseEnemies + (int)(1f + Mathf.Pow(enemySpawnMultiplier, CurrentWaveCount)),
-                random.Next(1, 3)
-            ), timeBetweenWaves,
+                randomEnemy,
+                randomEnemy.spawnsAlone ? 1 : CalculateEnemyCount(),
+                UnityEngine.Random.Range(1, 4)
+            ), randomEnemy.spawnsAlone ? 5 : CalculateTimeBetweenWaves(),
             null));
     }
 
-    public EnemyScriptableObject PickRandomEnemyType(System.Random random)
+    private int CalculateEnemyCount()
     {
-        int selNum = random.Next(0, 2);
-        switch(selNum)
-        {
-            case 0:
-                return endlessMode.basicEnemy;
-            case 1:
-                return endlessMode.shieldEnemy;
-        }
-        return null;
+        int x = CurrentWaveCount;
+        return (int)(15 / (1f + Mathf.Exp((-.17f * x) + 2)));
+    }
+    private int CalculateTimeBetweenWaves()
+    {
+        int x = CurrentWaveCount;
+        return (int)(30 / (1f + Mathf.Exp((-.15f * x) + 2)));
+    }
+
+    public static int CalculateMoneyToDrop()
+    {
+        int x = CurrentWaveCount;
+        return (int)(-17 / (1f + Mathf.Exp((-.2f * x) + 2.5f)));
     }
 
     private void SpawnWave()
@@ -166,12 +170,12 @@ public class WaveManager : MonoBehaviour
         Invoke(nameof(SpawnWave), CurrentWave.TimeUntilNextWave);
     }
 
-    public GameObject PickRandomEnemy()
+    public EnemyScriptableObject PickRandomEnemy()
     {
         float total = 1f;
         float randomPoint = UnityEngine.Random.value * total;
         int index = 0;
-        GameObject chosenEnemy;
+        EnemyScriptableObject chosenEnemy;
 
         for (int i = 0; i < probChance.Length; i++)
         {
@@ -184,7 +188,7 @@ public class WaveManager : MonoBehaviour
                 randomPoint -= probChance[i].Key;
         }
 
-        chosenEnemy = probChance[probChance.Length - 1].Value; // <= no enemies spawning for some 
+        chosenEnemy = probChance[index].Value;
         
         return chosenEnemy;
     }

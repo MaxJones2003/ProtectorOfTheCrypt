@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     public TextMeshProUGUI seedDisplay;
     private String seedHolder;
 
+    public ConfirmQuit ConfirmQuitRef;
+
     void Start()
     {
         if (GameManager.instance.GameMode is EndlessMode)
@@ -48,12 +50,16 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        Time.timeScale = 1;                                             //Re-enables game speed
-        SceneManager.LoadScene("MainMenuScene");                        //Load Main Menu Scene
+        ConfirmQuit.closeApp = false;
+        ConfirmQuitRef.confirmQuitPanel.SetActive(true);
+        //Time.timeScale = 1;                                             //Re-enables game speed
+        //SceneManager.LoadScene("MainMenuScene");                        //Load Main Menu Scene
     }
 
     public void QuitApp()
     {
-        Application.Quit();                         //Completely Close Application
+        ConfirmQuit.closeApp = true;
+        ConfirmQuitRef.confirmQuitPanel.SetActive(true);
+        //Application.Quit();                         //Completely Close Application
     }
 }

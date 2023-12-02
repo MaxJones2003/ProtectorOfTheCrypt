@@ -14,6 +14,6 @@ public class TimedMode : GameMode
 
     public override bool CheckGameWon()
     {
-        return waveManager.CurrentWaveCount + 1 >= waveManager.WavesToSpawn.Count;
+        return WaveManager.CurrentWaveCount + 1 >= waveManager.WavesToSpawn.Count;
     }
 }
