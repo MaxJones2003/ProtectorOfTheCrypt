@@ -27,6 +27,8 @@ public class Seed : MonoBehaviour
     [Tooltip("This value MUST be DIFFERENT than all other level numbers, else it will override another map")]
     [SerializeField] private int LevelNumber;
     [SerializeField] private bool LevelMaking_UseSameSeed = false;
+    [SerializeField] private bool makeRandomHazards = false;
+    [SerializeField] private int minHazardGroup, maxHazardGroup;
 
 
     public GridManager gridManager;    
@@ -57,14 +59,14 @@ public class Seed : MonoBehaviour
     {
         InitializeRandom();
 
-        gridManager.GenerateRandomPath();
+        gridManager.GenerateRandomPath(makeRandomHazards, minHazardGroup, maxHazardGroup);
     }
     public void InitializeSeedScriptEndlessModeAndRandomizeSeedEditor()
     {
         GameSeed = CreateRandomSeed(16);
         InitializeRandom();
 
-        gridManager.GenerateRandomPath();
+        gridManager.GenerateRandomPath(makeRandomHazards, minHazardGroup, maxHazardGroup);
     }
 
     private void InitializeRandom()

@@ -98,7 +98,8 @@ public class PathGenerator
     {
         List<Vector2Int> hazardPositions = new List<Vector2Int>();
         List<Vector2Int> childRange = new List<Vector2Int>();
-        
+        if(hazards == null) return hazardPositions;
+        if(hazards.transform.childCount == 0) return hazardPositions;
         foreach (Transform child in hazards)
         {
             Vector3 pos = child.position;

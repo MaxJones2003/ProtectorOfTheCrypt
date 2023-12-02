@@ -6,6 +6,7 @@ using Cinemachine;
 
 public class GridManager : MonoBehaviour
 {
+    private CameraController cameraController;
     [SerializeField] private GameObject enemySpawnerObject;
     [SerializeField] private GameObject enemyEndPointObject;
     [SerializeField] private GameObject treePrefab;
@@ -50,6 +51,7 @@ public class GridManager : MonoBehaviour
             hazards = new GameObject().transform;
             hazards.name = "Hazards";
         }
+        hazards.gameObject.SetActive(true);
 
         GenerateHazards(hazardGroupsToSpawn);
 
@@ -57,7 +59,6 @@ public class GridManager : MonoBehaviour
 
         WaveManager = GetComponent<WaveManager>();
 
-        hazards.gameObject.SetActive(true);
         Generate();
 
        /* GameObject centerPos = new GameObject();
@@ -156,16 +157,28 @@ public class GridManager : MonoBehaviour
     }
 
     // This is for in editor and doesn't need to generate random hazards at run time
-    public void GenerateRandomPath()
+    public void GenerateRandomPath(bool makeHazards, int minHazards = 0, int maxHazards = 0)
     {
-        pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
 
-        WaveManager = GetComponent<WaveManager>();
         
         /* Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
         Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4)); */
         //Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
+        if(hazards == null)
+        {
+            hazards = new GameObject().transform;
+            hazards.name = "Hazards";
+            hazards.tag = "HazardParent";
+        }
         hazards.gameObject.SetActive(true);
+        if(makeHazards)
+        {
+            int hazardGroupsToSpawn = Random.Range(minHazards, maxHazards);
+            GenerateHazards(hazardGroupsToSpawn);
+        }
+
+        pathGenerator = new PathGenerator(gridWidth, gridHeight, hazards);
+        WaveManager = GetComponent<WaveManager>();
         Generate();
     }
 
@@ -184,8 +197,9 @@ public class GridManager : MonoBehaviour
         /* Camera.main.transform.position = Vector3.zero + new Vector3(gridWidth / 2, (gridHeight * 2) / 2, -gridHeight / 3);
         Camera.main.transform.LookAt(new Vector3(gridWidth / 2, 0, gridHeight / 2 - 4)); */
 
-        hazards.gameObject.SetActive(true);
-        CameraController.Instance.SetUp(EnemyPath, gridWidth);
+        //hazards.gameObject.SetActive(true);
+        if(cameraController == null) cameraController = FindObjectOfType<CameraController>();
+        cameraController.SetUp(EnemyPath, gridWidth);
     }
 
     /// <summary>
@@ -223,27 +237,28 @@ public class GridManager : MonoBehaviour
                 crossroadsAdded++;
             }
         }
-        CameraController.Instance.SetUp(pathCells, gridWidth);
+        pathParent = new GameObject().transform;
+        pathParent.parent = transform;
+        pathParent.name = "Path";
+
+        if(cameraController == null) cameraController = FindObjectOfType<CameraController>();
+        cameraController.SetUp(pathCells, gridWidth, pathParent);
         StartCoroutine(CreateGrid(pathCells));
     }
+    Transform pathParent;
 
     private IEnumerator CreateGrid(List<Vector2Int> pathCells)
     {
-        GameObject parentGO = new GameObject();
-        Transform parent = parentGO.transform;
-        parent.name = "Path";
-        parent.parent = transform;
-        parent.SetAsFirstSibling();
-        LayPathCells(pathCells, parent);
-        LaySceneryCells(pathCells, parent);
+        LayPathCells(pathCells, pathParent);
+        LaySceneryCells(pathCells, pathParent);
 
-        GameObject.FindWithTag("HazardParent").transform.parent = parent;
+        GameObject.FindWithTag("HazardParent").transform.parent = pathParent;
 
         // place the start and end points
         GameObject spawn = Instantiate(enemySpawnerObject, new Vector3(pathCells[0].x-0.5f, 1.2f, pathCells[0].y), Quaternion.identity);
-        spawn.transform.parent = parent;
+        spawn.transform.parent = pathParent;
         GameObject end = Instantiate(enemyEndPointObject, new Vector3(pathCells[pathCells.Count-1].x+3f, 0, pathCells[pathCells.Count-1].y), Quaternion.identity);
-        end.transform.parent = parent;
+        end.transform.parent = pathParent;
 
         //EnemyManager.SetPathCell(pathGenerator.GenerateRoute());
         List<Vector2Int> cellPoints = pathGenerator.GenerateRoute();

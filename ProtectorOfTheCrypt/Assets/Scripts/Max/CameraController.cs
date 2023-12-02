@@ -7,15 +7,6 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
-    private static CameraController instance;
-    public static CameraController Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
-
     public Slider lookAtSlider;
     public Slider followSlider;
 
@@ -26,9 +17,11 @@ public class CameraController : MonoBehaviour
     int mapWidth;
     Vector3 lowestCameraPostion, highestCameraPosition;
     CinemachineVirtualCamera virtualCamera;
+    Transform pathParent;
 
-    public void SetUp(List<Vector2Int> pathPositions2, int width)
+    public void SetUp(List<Vector2Int> pathPositions2, int width, Transform pathParent)
     {
+        this.pathParent = pathParent;
         List<Vector3> path = new();
         // convert the path positions to vector3s
         foreach (Vector2Int pos in pathPositions2)
@@ -56,15 +49,6 @@ public class CameraController : MonoBehaviour
 
     private void OnEnable()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
-
         lookAtSlider.onValueChanged.AddListener(NewCameraFocusLerp);
         followSlider.onValueChanged.AddListener(CameraPositionLerp);
     }
@@ -85,6 +69,8 @@ public class CameraController : MonoBehaviour
         lookAtObject = new GameObject();
         lookAtObject.transform.position = FindPathAtBreadth(mapWidth/2);
         virtualCamera.LookAt = lookAtObject.transform;
+        lookAtObject.name = "LookAtObject";
+        lookAtObject.transform.parent = pathParent;
 
         lookAtSlider.maxValue = pathPositions.Count - 1;
         lookAtSlider.value = (pathPositions.Count - 1)/2;
@@ -96,6 +82,8 @@ public class CameraController : MonoBehaviour
         virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
         lookAtObject = new GameObject();
         virtualCamera.LookAt = lookAtObject.transform;
+        lookAtObject.name = "LookAtObject";
+        lookAtObject.transform.parent = pathParent;
 
         startLook = pathPositions[0];
         endLook = pathPositions[pathPositions.Count - 1];
@@ -118,6 +106,8 @@ public class CameraController : MonoBehaviour
         followObject = new GameObject();
         followObject.transform.position = new Vector3(x, y, z);
         virtualCamera.Follow = followObject.transform;
+        followObject.name = "FollowObject";
+        followObject.transform.parent = pathParent;
 
         // get two positions, the bottom furthest back and the top furthest forward for the camera to tween between
         // use a lamda expression to find the smallest z value path
