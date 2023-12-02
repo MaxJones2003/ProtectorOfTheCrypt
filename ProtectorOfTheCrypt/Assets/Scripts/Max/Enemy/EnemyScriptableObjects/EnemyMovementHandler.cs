@@ -157,14 +157,14 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
         {
             StopCoroutine(SlowCoroutine);
             isSlowedDown = false;
-            Slowed.Invoke((false, gameObject));
+            Slowed?.Invoke((false, gameObject));
         }
         SlowCoroutine = StartCoroutine(SlowDown(SlowCurve));
     }
 
     private IEnumerator SlowDown(AnimationCurve SlowCurve)
     {
-        Slowed.Invoke((true, gameObject));
+        Slowed?.Invoke((true, gameObject));
         isSpedUp = false;
         isSlowedDown = true;
         float time = 0;
@@ -177,7 +177,7 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
         }
         Debug.Log("UnSlowing " + speed);
         speed = BaseSpeed;
-        Slowed.Invoke((false, gameObject));
+        Slowed?.Invoke((false, gameObject));
     }
     public event Action<(bool,GameObject)> Slowed;
     public void BoostSpeed(float increaseBy)
@@ -189,6 +189,12 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
     {
         isSpedUp = false;
         speed = BaseSpeed;
+    }
+
+    public event Action<GameObject> Died;
+    void OnDestroy()
+    {
+        Died?.Invoke(gameObject);
     }
 
 }

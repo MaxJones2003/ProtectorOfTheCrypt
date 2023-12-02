@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MageEnemyScript : MonoBehaviour
@@ -9,56 +10,9 @@ public class MageEnemyScript : MonoBehaviour
     public float boostRadius = 3f;
     public float boostMultiplier = 1.75f;
 
-    public List<GameObject> enemiesInRange;
-    public List<GameObject> foundEnemiesThisFrame;
 
-    public List<GameObject> boostedEnemies;
+    public List<GameObject> boostedEnemies;    
 
-    private void Awake()
-    {
-        enemiesInRange = new List<GameObject>();
-        foundEnemiesThisFrame = new List<GameObject>();
-    }
-
-    private void Update()
-    {
-        CheckArea();
-    }
-
-    private void CheckArea()
-    {
-        RaycastHit[] hits = Physics.SphereCastAll(new Ray(rangeIndicator.transform.position, Vector3.up), boostRadius, 0, enemyLayerMask, QueryTriggerInteraction.Ignore);
-        foreach (RaycastHit hit in hits)
-        {
-            if(hit.collider == null || hit.collider.gameObject == this || enemiesInRange.Contains(hit.collider.gameObject)) continue;
-            Debug.Log("Found enemy");
-            GameObject enemyGO = hit.collider.gameObject;
-            enemiesInRange.Add(enemyGO);
-            foundEnemiesThisFrame.Add(enemyGO);
-            TryBoost(enemyGO);
-            AddEnemySubscription(enemyGO);
-        }
-        foreach(GameObject enemy in enemiesInRange)
-        {
-            if(foundEnemiesThisFrame.Contains(enemy)) continue;
-            // remove boost
-
-            // remove from list
-            enemiesInRange.Remove(enemy);
-        }
-
-        
-    }
-    private void AddEnemySubscription(GameObject enemy)
-    {
-        EnemyMovementHandler moveScript = enemy.GetComponent<EnemyMovementHandler>();
-        if (moveScript != null)
-        {
-            Debug.LogError("Somehow I found an enemy but not its movement script.");
-            return;
-        }
-        moveScript.Slowed += EnemySlowedListiner;
-    }
     private void EnemySlowedListiner((bool isSlowed, GameObject go) enemy)
     {
         if(enemy.isSlowed)
@@ -72,33 +26,52 @@ public class MageEnemyScript : MonoBehaviour
             TryBoost(enemy.go);
         }
     }
-    private void TryBoost(GameObject enemy)
+    public void TryBoost(GameObject enemy)
     {
-        Debug.Log(enemy.name);
-        if (enemy.TryGetComponent<EnemyMovementHandler>(out var moveScript))
+        if (!enemy.TryGetComponent<EnemyMovementHandler>(out var moveScript))
         {
             Debug.LogError("Somehow I found an enemy but not its movement script.");
             return;
         }
+        Debug.Log("Boosting " + enemy.name);
         moveScript.BoostSpeed(boostMultiplier);
         boostedEnemies.Add(enemy);
+        AddEnemySubscription(enemy);
     }
-    private void RemoveBoost(GameObject enemy)
+    private void AddEnemySubscription(GameObject enemy)
     {
-        if (enemy.TryGetComponent<EnemyMovementHandler>(out var moveScript))
+        EnemyMovementHandler moveScript = enemy.GetComponent<EnemyMovementHandler>();
+        if (moveScript == null)
         {
             Debug.LogError("Somehow I found an enemy but not its movement script.");
             return;
         }
-        moveScript.UnBoostSpeed();
+        moveScript.Slowed += EnemySlowedListiner;
+        moveScript.Died += RemoveEnemySubscriptions;
+    }
+    public void RemoveBoost(GameObject enemy)
+    {
+        if (enemy.TryGetComponent<EnemyMovementHandler>(out var moveScript))
+        {
+            Debug.Log("Unboosting " + enemy.name);
+            moveScript.UnBoostSpeed();
+        }
+        Debug.Log("Removing " + enemy.name + " from boosted enemies");
         boostedEnemies.Remove(enemy);
+        RemoveEnemySubscriptions(enemy);
     }
 
-
-
-
-
-
+    private void RemoveEnemySubscriptions(GameObject enemy)
+    {
+        EnemyMovementHandler moveScript = enemy.GetComponent<EnemyMovementHandler>();
+        if (moveScript == null)
+        {
+            Debug.LogError("Somehow I found an enemy but not its movement script.");
+            return;
+        }
+        moveScript.Slowed -= EnemySlowedListiner;
+        moveScript.Died -= RemoveEnemySubscriptions;
+    }
 
 
 
