@@ -86,4 +86,11 @@ public class ShootMonoBehaviour : MonoBehaviour
         };
         Debug.Log(tower.DOTTime);
     }
+
+    void OnDrawGizmos()
+    {
+        // draw a sphere around the tower to show its range
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, tower.Range);
+    }
 }

@@ -22,9 +22,10 @@ MonoBehaviour:
   TrailConfig: {fileID: 11400000, guid: a4764727514c5ac49be28913666664a7, type: 2}
   AudioConfig: {fileID: 11400000, guid: f740fac2556ad73408d6eaa7236896e1, type: 2}
   ImpactTypeOverride: {fileID: 11400000, guid: 1963707f99ba86549a01731fb79af9f9, type: 2}
-  Damage: 5
+  Damage: 15
   AOEDamage: 0
   AOERange: 0
-  Range: 20
-  FireRate: 2
-  BulletSpeed: 10
+  DOTTime: 0
+  Range: 6
+  FireRate: 1.75
+  BulletSpeed: 25

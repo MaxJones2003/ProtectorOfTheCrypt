@@ -14,6 +14,7 @@ public class TowerUpgradeHandler : MonoBehaviour
     public bool hasUpgradedTwice;
 
     [SerializeField] private ParticleSystem upgradePS;
+    [SerializeField] private GameObject rangeIndicator;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class TowerUpgradeHandler : MonoBehaviour
 
     public void ActivateUI(bool activate)
     {
+        DisplayRangeIndicator(activate);
         if (!hasUpgradedOnce)
         {
             upgradeUITier2.SetActive(activate);
@@ -158,5 +160,21 @@ public class TowerUpgradeHandler : MonoBehaviour
             upgradeUITier3Model.SetActive(true);
             return;
         }
+    }
+
+    private void DisplayRangeIndicator(bool display)
+    {
+        SetIndicatorRadius();
+        rangeIndicator.SetActive(display);
+    }
+    private void SetIndicatorRadius()
+    {
+        if(!gameObject.TryGetComponent<ShootMonoBehaviour>(out var shootScript))
+        {
+            return;
+        }
+        float range = shootScript.tower.Range;
+        rangeIndicator.transform.localScale = new Vector3(range, 1, range);
+        return;
     }
 }
