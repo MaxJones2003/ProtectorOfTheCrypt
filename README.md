@@ -27,5 +27,5 @@ Additional Changes:
 1. Revamped UI - Most UI received new art.
 2. Added tower-dropping animation.
 3. Added Camera options, the player can now pan the camera as well as move back and forth.
-4. Replaced old levels with 10 new ones.
+4. Replaced old levels with 9 new ones.
 5. Added more scenery models to level generation.
