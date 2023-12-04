@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2956704418611743782}
   - component: {fileID: 3119362458742476250}
   - component: {fileID: 3439878167893264800}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: YouWinBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1882095150305147451}
   - component: {fileID: 6079637316238445832}
   - component: {fileID: 7786475370589008166}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 7718038515050724368}
   - component: {fileID: 2319042572939949405}
   - component: {fileID: 6909025404281515823}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: VictoryIMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 1174886814468639625}
   - component: {fileID: 8036240437960634258}
   - component: {fileID: 8228459700431655246}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: YouWinCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ RectTransform:
   m_Children:
   - {fileID: 7165010411610830747}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 3082981556713626499}
   - component: {fileID: 7240538069205722372}
   - component: {fileID: 6921368544272619652}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: KillCounterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
