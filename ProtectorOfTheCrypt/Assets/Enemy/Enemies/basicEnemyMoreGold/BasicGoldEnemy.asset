@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: BasicGoldEnemy
   m_EditorClassIdentifier: 
   ModelPrefab: {fileID: 8845989981444085929, guid: a198ad09018d12440a4c436e187361c9, type: 3}
-  BaseHealth: 15
+  BaseHealth: 40
   BaseSpeed: 4
   Description: 
   Hunger: 2
   BaseShieldHealth: 0
   ShieldType: {fileID: 0}
   deathSound: {fileID: 8300000, guid: e56bec273ad342d4ea0ee5d3707b4dc3, type: 3}
-  spawnsAlone: 1
+  spawnsAlone: 0
   GoldMultiplier: 20
