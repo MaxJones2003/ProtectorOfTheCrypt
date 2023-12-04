@@ -506,7 +506,8 @@ MonoBehaviour:
   GameMode: {fileID: 0}
   isPaused: 0
   gameStarted: 0
-  souls: 99999
+  souls: 100
+  money: 25
 --- !u!4 &152358334
 Transform:
   m_ObjectHideFlags: 0
@@ -4049,13 +4050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973698c8cb58a3348b226451ae533bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easyMap:
-    width: 45
-    height: 37
-    minLength: 60
-    maxLength: 250
-    numOfHazardGroupRange: {x: 20, y: 30}
-    cameraPosition: {fileID: 19807292}
   standardMap:
     width: 25
     height: 20
@@ -4063,13 +4057,6 @@ MonoBehaviour:
     maxLength: 175
     numOfHazardGroupRange: {x: 10, y: 20}
     cameraPosition: {fileID: 604220051}
-  hardMap:
-    width: 26
-    height: 20
-    minLength: 30
-    maxLength: 75
-    numOfHazardGroupRange: {x: 1, y: 4}
-    cameraPosition: {fileID: 1927018064}
   easyEnemy:
     healthMultiplier: 1
     hungerMultiplier: 1
