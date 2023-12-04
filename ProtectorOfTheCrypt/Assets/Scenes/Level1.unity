@@ -4205,7 +4205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.size
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[0].Dialogue
@@ -4214,11 +4214,11 @@ PrefabInstance:
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].Dialogue
       value: 
-      objectReference: {fileID: 11400000, guid: b3ce1621e6bf641c0a76e0136d18b442, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[2].Dialogue
       value: 
-      objectReference: {fileID: 11400000, guid: bd0da36c9530ca2429c22323d9c9e3c2, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[3].Dialogue
       value: 
@@ -4242,18 +4242,18 @@ PrefabInstance:
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].EnemyGroup.Object
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: b54c982828a5e02458e17883d51beab5, type: 2}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].TimeUntilNextWave
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[2].EnemyGroup.Object
       value: 
-      objectReference: {fileID: 11400000, guid: 08e4024f077dafb40a76f7ba3b146319, type: 2}
+      objectReference: {fileID: 11400000, guid: e2cfe9a5cb1aa7d409f5665575e12bb8, type: 2}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[2].TimeUntilNextWave
-      value: 13.4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[3].EnemyGroup.Object
@@ -4293,11 +4293,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].EnemyGroup.NumObjects
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[2].EnemyGroup.NumObjects
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[3].EnemyGroup.NumObjects
@@ -4321,7 +4321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[1].EnemyGroup.TimeBetweenSpawning
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: WavesToSpawn.Array.data[2].EnemyGroup.TimeBetweenSpawning
@@ -5000,7 +5000,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1945113306605805257, guid: 8a7f4d6a7e456f6459004bbea96f6fd4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2037740584597476755, guid: 8a7f4d6a7e456f6459004bbea96f6fd4, type: 3}
       propertyPath: m_Pivot.x
@@ -5088,7 +5088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5632648719415958243, guid: 8a7f4d6a7e456f6459004bbea96f6fd4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8776012469285228459, guid: 8a7f4d6a7e456f6459004bbea96f6fd4, type: 3}
       propertyPath: m_Name
