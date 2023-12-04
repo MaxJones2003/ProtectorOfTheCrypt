@@ -20,5 +20,5 @@ MonoBehaviour:
   BaseShieldHealth: 0
   ShieldType: {fileID: 0}
   deathSound: {fileID: 8300000, guid: e56bec273ad342d4ea0ee5d3707b4dc3, type: 3}
-  spawnsAlone: 1
+  spawnsAlone: 0
   GoldMultiplier: 3
