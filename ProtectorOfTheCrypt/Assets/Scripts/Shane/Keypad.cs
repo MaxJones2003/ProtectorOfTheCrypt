@@ -11,9 +11,9 @@ using UnityEngine.UI;
 public class Keypad : MonoBehaviour
 {
     [Header("Endless Mode Settings")]
-    public MapSizeSettings easyMap;
+    //public MapSizeSettings easyMap;
     public MapSizeSettings standardMap;
-    public MapSizeSettings hardMap;
+    //public MapSizeSettings hardMap;
     public EnemyDifficultySettings easyEnemy;
     public EnemyDifficultySettings standardEnemy;
     public EnemyDifficultySettings hardEnemy;
@@ -55,14 +55,17 @@ public class Keypad : MonoBehaviour
     [SerializeField] private GameObject childTransparency;
     [SerializeField] private IGTS_Buttons iGTS;
 
+    EndlessMode endlessMode;
+
     void Start()
     {
+        endlessMode = GameManager.instance.GameMode as EndlessMode;
+        EnemyDiffChanged();
         EndlessCanvas.SetActive(true);
         charHolder.characterLimit = 16;
         mapValHolder = 0;
         enemyValHolder = 0;
         currentMapValue = standardMap;
-        EnemyDiffChanged();
         randomSeed = Seed.Instance.CreateRandomSeed(charHolder.characterLimit, true);
         //charHolder.text = seed;
     }
@@ -72,7 +75,7 @@ public class Keypad : MonoBehaviour
         Debug.Log(charHolder.text);
     }
 
-    public void MapDiffChanged()
+    /* public void MapDiffChanged()
     {
         mapValHolder = mapDropdown.value;
 
@@ -89,7 +92,7 @@ public class Keypad : MonoBehaviour
         {
             currentMapValue = easyMap;
         }
-    }
+    } */
 
     // 0 = easy, 1 = standard, 2 = hard
     public void EnemyDiffChanged()

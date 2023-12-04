@@ -18,6 +18,7 @@ public class StoryMode : GameMode
     {
         DialogueController = GetComponent<DialogueController>();
         Seed.Instance.InitializeSeedScriptStoryMode();
+        waveManager.Initialize();
         GameManager.instance.StartCoroutine(DelayedStart());
     }
 

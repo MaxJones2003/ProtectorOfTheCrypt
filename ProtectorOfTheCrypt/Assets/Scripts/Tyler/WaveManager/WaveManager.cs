@@ -63,7 +63,7 @@ public class WaveManager : MonoBehaviour
         CurrentWaveCount = -1;
     }
 
-    public void Start()
+    public void Initialize()
     {
         if (GameManager.instance.GameMode is StoryMode)
         {
@@ -79,11 +79,12 @@ public class WaveManager : MonoBehaviour
 
             probChance[0] = new KeyValuePair<float, EnemyScriptableObject>(.7f, endlessMode.basicEnemy);
             probChance[1] = new KeyValuePair<float, EnemyScriptableObject>(.2f, endlessMode.shieldEnemy);
-            probChance[2] = new KeyValuePair<float, EnemyScriptableObject>(.98f, endlessMode.wizardEnemy);
+            probChance[2] = new KeyValuePair<float, EnemyScriptableObject>(.08f, endlessMode.wizardEnemy);
             probChance[3] = new KeyValuePair<float, EnemyScriptableObject>(.02f, endlessMode.goldEnemy);
 
             enemyCurve = endlessMode.CurrentSettings.enemyDifficultySettings.enemyCurve;
             WaveManager.goldCurve = endlessMode.CurrentSettings.enemyDifficultySettings.goldCurve;
+
         }
     }
 
@@ -120,6 +121,7 @@ public class WaveManager : MonoBehaviour
     private int CalculateEnemyCount()
     {
         int x = CurrentWaveCount;
+        //Debug.Log((int)(enemyCurve / (1f + Mathf.Exp((-.17f * x) + 2))));
         return (int)(enemyCurve / (1f + Mathf.Exp((-.17f * x) + 2)));
     }
     private int CalculateTimeBetweenWaves()

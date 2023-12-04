@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1393bf3448197544794abf8f4d1cac40, type: 3}
   m_Name: MageEnemy
   m_EditorClassIdentifier: 
-  ModelPrefab: {fileID: 8382792723720279877, guid: a8876f5fbda12454f9c377b53a517035, type: 3}
+  ModelPrefab: {fileID: 3419523559532039751, guid: a8876f5fbda12454f9c377b53a517035, type: 3}
   BaseHealth: 15
   BaseSpeed: 4
   Description: 

@@ -30,6 +30,7 @@ public class EndlessMode : GameMode
     {
         CurrentSettings = setting;
         Seed.Instance.InitializeSeedScriptEndlessMode(setting);
+        waveManager.Initialize();
         waveManager.SpawnFirstWave();
     }
 

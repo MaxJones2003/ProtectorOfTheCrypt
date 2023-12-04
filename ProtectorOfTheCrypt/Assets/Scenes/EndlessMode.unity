@@ -604,7 +604,7 @@ MonoBehaviour:
       enemySpawnAmountMultiplier: 0
       enemyCurve: 0
       goldCurve: 0
-  waveManager: {fileID: 0}
+  waveManager: {fileID: 568427696}
   DialogueController: {fileID: 0}
   YouWinScreen: {fileID: 1806293381}
   GameOverScreen: {fileID: 1028532406}
@@ -2183,6 +2183,17 @@ MonoBehaviour:
   m_DefaultActionMap: TowerPlacementMode
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &568427696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+  m_PrefabInstance: {fileID: 1281235887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568427686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5e766c61b9f254ca98f820ed287516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &596674126
 GameObject:
   m_ObjectHideFlags: 0
@@ -4046,9 +4057,9 @@ MonoBehaviour:
     numOfHazardGroupRange: {x: 20, y: 30}
     cameraPosition: {fileID: 19807292}
   standardMap:
-    width: 35
-    height: 30
-    minLength: 45
+    width: 25
+    height: 20
+    minLength: 30
     maxLength: 175
     numOfHazardGroupRange: {x: 10, y: 20}
     cameraPosition: {fileID: 604220051}
