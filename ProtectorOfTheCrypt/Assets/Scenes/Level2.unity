@@ -239,6 +239,7 @@ MonoBehaviour:
   isPaused: 0
   gameStarted: 0
   souls: 100
+  money: 50
 --- !u!4 &152358334
 Transform:
   m_ObjectHideFlags: 0
@@ -5079,6 +5080,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2037740584597476755, guid: 8a7f4d6a7e456f6459004bbea96f6fd4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5632648719415958243, guid: 8a7f4d6a7e456f6459004bbea96f6fd4, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8776012469285228459, guid: 8a7f4d6a7e456f6459004bbea96f6fd4, type: 3}
