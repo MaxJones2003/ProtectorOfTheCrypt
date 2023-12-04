@@ -15,6 +15,8 @@ public class DialogueController : MonoBehaviour
 
     public CanvasGroup dialogueCanvasGroup;
 
+    public Image KnightSalute;
+    public Image KnightSword;
 
     [HideInInspector]
     public bool startedTyping = false;
@@ -44,6 +46,8 @@ public class DialogueController : MonoBehaviour
     {
         sentences = new Queue<string>();
         dialogueCanvasGroup = GameObject.Find("Dialogue System Canvas").GetComponent<CanvasGroup>();
+        KnightSalute = dialogueCanvasGroup.gameObject.transform.GetChild(0).GetComponent<Image>();
+        KnightSword = dialogueCanvasGroup.gameObject.transform.GetChild(1).GetComponent<Image>();
     }
     public void OnEnable()
     {
@@ -62,6 +66,9 @@ public class DialogueController : MonoBehaviour
         GameManager.instance.GamePaused(true);
 
         DialogueStarted?.Invoke();
+
+        KnightSalute.enabled = true;
+        KnightSword.enabled = false;
 
         // Bug Starts Here
         dialogueCanvasGroup.alpha = 1f;
@@ -96,6 +103,12 @@ public class DialogueController : MonoBehaviour
             Debug.Log("No more sentences");
             EndText();
             return;
+        }
+
+        if (sentences.Count == 1)
+        {
+            KnightSalute.enabled = false;
+            KnightSword.enabled = true;
         }
 
         if (startedTyping)
@@ -162,7 +175,6 @@ public class DialogueController : MonoBehaviour
             return;
         }
             
-        Debug.Log("test2");
         letterDisplayDelay += letterDisplayDelayOffset;
     }
 

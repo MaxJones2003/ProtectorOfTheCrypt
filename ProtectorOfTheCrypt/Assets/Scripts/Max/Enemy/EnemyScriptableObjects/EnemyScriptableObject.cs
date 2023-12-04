@@ -18,6 +18,7 @@ public class EnemyScriptableObject : ScriptableObject
     public AudioClip deathSound;
 
     public bool spawnsAlone;
+    public float GoldMultiplier;
 
     private MonoBehaviour ActiveMonoBehaviour;
     private GameObject Model;
@@ -33,7 +34,7 @@ public class EnemyScriptableObject : ScriptableObject
         Model.layer = LayerMask.NameToLayer("Enemy");
         Model.AddComponent<EnemyMovementHandler>().Initialize(this, Path, BaseSpeed, Spawner);
 
-        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, Spawner, deathSound, ShieldType, BaseShieldHealth);
+        Model.AddComponent<EnemyHealth>().Enable(BaseHealth, Spawner, deathSound, ShieldType, BaseShieldHealth, GoldMultiplier);
 
         return Model;
     }

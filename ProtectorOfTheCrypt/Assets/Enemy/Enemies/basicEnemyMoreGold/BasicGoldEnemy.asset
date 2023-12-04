@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1393bf3448197544794abf8f4d1cac40, type: 3}
-  m_Name: MageEnemy
+  m_Name: BasicGoldEnemy
   m_EditorClassIdentifier: 
-  ModelPrefab: {fileID: 8382792723720279877, guid: a8876f5fbda12454f9c377b53a517035, type: 3}
+  ModelPrefab: {fileID: 8845989981444085929, guid: a198ad09018d12440a4c436e187361c9, type: 3}
   BaseHealth: 15
   BaseSpeed: 4
   Description: 
@@ -21,4 +21,4 @@ MonoBehaviour:
   ShieldType: {fileID: 0}
   deathSound: {fileID: 8300000, guid: e56bec273ad342d4ea0ee5d3707b4dc3, type: 3}
   spawnsAlone: 1
-  GoldMultiplier: 3
+  GoldMultiplier: 20

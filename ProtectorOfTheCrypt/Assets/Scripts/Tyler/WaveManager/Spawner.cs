@@ -23,6 +23,9 @@ public class Spawner : MonoBehaviour
             yield return new WaitForSeconds(TimeBetweenSpawning);
             numSpawned++;
             SpawnedObjects.Add(EnemyToSpawn.Spawn(transform, this, Path, this));
+
+            if (EnemyToSpawn.spawnsAlone)
+                break;
         }
 
         numSpawned = 0; // Reset.

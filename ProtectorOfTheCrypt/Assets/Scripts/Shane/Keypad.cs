@@ -59,7 +59,7 @@ public class Keypad : MonoBehaviour
         charHolder.characterLimit = 16;
         mapValHolder = 0;
         enemyValHolder = 0;
-        MapDiffChanged();
+        currentMapValue = standardMap;
         EnemyDiffChanged();
         randomSeed = Seed.Instance.CreateRandomSeed(charHolder.characterLimit, true);
         //charHolder.text = seed;

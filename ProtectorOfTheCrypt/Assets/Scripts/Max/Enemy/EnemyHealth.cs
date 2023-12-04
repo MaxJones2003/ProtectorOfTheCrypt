@@ -14,8 +14,9 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [HideInInspector] public Spawner _spawner;
     private AudioClip deathSound;
     private ShieldHealth shieldScript;
+    private float GoldMultiplier;
 
-    public void Enable(float maxHealth, Spawner spawner, AudioClip audio, ShieldScriptableObject shield, float baseShieldHealth)
+    public void Enable(float maxHealth, Spawner spawner, AudioClip audio, ShieldScriptableObject shield, float baseShieldHealth, float GoldMultiplier)
     {
         float healthModifier = 1;
         if(GameManager.instance.GameMode is EndlessMode)
@@ -29,7 +30,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         CurrentHealth = MaxHealth * healthModifier;
         _spawner = spawner;
         deathSound = audio;
-
+        this.GoldMultiplier = GoldMultiplier;
         // Handle Shield Setup
         if (shield != null) shieldScript = shield.Spawn(transform, this, this, baseShieldHealth);
     }
@@ -74,7 +75,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
                 if (GameManager.instance.GameMode.CheckGameWon())
                     GameManager.instance.GameMode.OnGameWon();
 
-                GameManager.instance.RemoveMoney(-5);
+                GameManager.instance.RemoveMoney((int)(-5 * GoldMultiplier));
             }
 
             if (GameManager.instance.GameMode is EndlessMode)
