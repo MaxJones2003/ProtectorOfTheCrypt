@@ -537,6 +537,8 @@ MonoBehaviour:
   dialogueText: {fileID: 862488828}
   dialogueSpeedScaleIndicator: {fileID: 0}
   dialogueCanvasGroup: {fileID: 862488827}
+  KnightSalute: {fileID: 0}
+  KnightSword: {fileID: 0}
   startedTyping: 0
   autoContinueTime: 0.76
   dialogueBlipSFX: {fileID: 8300000, guid: 8419e7c141286ba4e9bc553672789486, type: 3}
@@ -568,6 +570,8 @@ MonoBehaviour:
       hungerMultiplier: 0
       speedMultiplier: 0
       enemySpawnAmountMultiplier: 0
+      enemyCurve: 0
+      goldCurve: 0
   - seed: jkuytjyrt
     difficulty: 1
     mapSizeSettings:
@@ -582,6 +586,8 @@ MonoBehaviour:
       hungerMultiplier: 0
       speedMultiplier: 0
       enemySpawnAmountMultiplier: 0
+      enemyCurve: 0
+      goldCurve: 0
   - seed: fwfewfwefwefew
     difficulty: 2
     mapSizeSettings:
@@ -596,6 +602,8 @@ MonoBehaviour:
       hungerMultiplier: 0
       speedMultiplier: 0
       enemySpawnAmountMultiplier: 0
+      enemyCurve: 0
+      goldCurve: 0
   waveManager: {fileID: 0}
   DialogueController: {fileID: 0}
   YouWinScreen: {fileID: 1806293381}
@@ -4052,20 +4060,26 @@ MonoBehaviour:
     numOfHazardGroupRange: {x: 1, y: 4}
     cameraPosition: {fileID: 1927018064}
   easyEnemy:
-    healthMultiplier: 0.75
+    healthMultiplier: 1
     hungerMultiplier: 1
-    speedMultiplier: 0.75
+    speedMultiplier: 1
     enemySpawnAmountMultiplier: 1
+    enemyCurve: 7
+    goldCurve: -15
   standardEnemy:
     healthMultiplier: 1
     hungerMultiplier: 1
     speedMultiplier: 1
     enemySpawnAmountMultiplier: 1
+    enemyCurve: 15
+    goldCurve: -17
   hardEnemy:
-    healthMultiplier: 2
-    hungerMultiplier: 2
-    speedMultiplier: 1.5
+    healthMultiplier: 1
+    hungerMultiplier: 1
+    speedMultiplier: 1
     enemySpawnAmountMultiplier: 1
+    enemyCurve: 18
+    goldCurve: -19
   alphaDropper: 100
   charHolder: {fileID: 204531098}
   b1: {fileID: 280209528}

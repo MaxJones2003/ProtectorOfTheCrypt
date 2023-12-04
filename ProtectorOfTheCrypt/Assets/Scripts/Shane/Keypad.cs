@@ -18,10 +18,12 @@ public class Keypad : MonoBehaviour
     public EnemyDifficultySettings standardEnemy;
     public EnemyDifficultySettings hardEnemy;
 
+
     private MapSizeSettings currentMapValue;
     private EnemyDifficultySettings currentEnemyValue;
     private string seed;
     private string randomSeed;
+    [Space(2)]
     public float alphaDropper = 100;
 
     [Header("Keypad")]

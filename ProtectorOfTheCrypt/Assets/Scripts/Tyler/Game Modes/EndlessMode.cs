@@ -136,11 +136,16 @@ public struct EnemyDifficultySettings
     public float speedMultiplier;
     public int enemySpawnAmountMultiplier;
 
-    public EnemyDifficultySettings(float healthMultiplier, int hungerMultiplier, int speedMultiplier, int enemySpawnAmountMultiplier)
+    public int enemyCurve;
+    public int goldCurve;
+
+    public EnemyDifficultySettings(float healthMultiplier, int hungerMultiplier, int speedMultiplier, int enemySpawnAmountMultiplier, int enemyCurve, int goldCurve)
     {
         this.healthMultiplier = healthMultiplier;
         this.hungerMultiplier = hungerMultiplier;
         this.speedMultiplier = speedMultiplier;
         this.enemySpawnAmountMultiplier = enemySpawnAmountMultiplier;
+        this.enemyCurve = enemyCurve;
+        this.goldCurve = goldCurve;
     }
 }

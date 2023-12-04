@@ -54,6 +54,9 @@ public class WaveManager : MonoBehaviour
     public float enemySpawnMultiplier;
     public float timeIncreaseMultiplier;
 
+    int enemyCurve;
+    public static int goldCurve;
+
     private void Awake()
     {
         EnemySpawner = GetComponent<Spawner>();
@@ -78,6 +81,9 @@ public class WaveManager : MonoBehaviour
             probChance[1] = new KeyValuePair<float, EnemyScriptableObject>(.2f, endlessMode.shieldEnemy);
             probChance[2] = new KeyValuePair<float, EnemyScriptableObject>(.98f, endlessMode.wizardEnemy);
             probChance[3] = new KeyValuePair<float, EnemyScriptableObject>(.02f, endlessMode.goldEnemy);
+
+            enemyCurve = endlessMode.CurrentSettings.enemyDifficultySettings.enemyCurve;
+            WaveManager.goldCurve = endlessMode.CurrentSettings.enemyDifficultySettings.goldCurve;
         }
     }
 
@@ -114,18 +120,18 @@ public class WaveManager : MonoBehaviour
     private int CalculateEnemyCount()
     {
         int x = CurrentWaveCount;
-        return (int)(15 / (1f + Mathf.Exp((-.17f * x) + 2)));
+        return (int)(enemyCurve / (1f + Mathf.Exp((-.17f * x) + 2)));
     }
     private int CalculateTimeBetweenWaves()
     {
         int x = CurrentWaveCount;
-        return (int)(30 / (1f + Mathf.Exp((-.15f * x) + 2)));
+        return (int)(enemyCurve*2 / (1f + Mathf.Exp((-.15f * x) + 2)));
     }
 
     public static int CalculateMoneyToDrop()
     {
         int x = CurrentWaveCount;
-        return (int)(-17 / (1f + Mathf.Exp((-.2f * x) + 2.5f)));
+        return (int)((WaveManager.goldCurve / (1f + Mathf.Exp((-.2f * x) + 2.5f))) + 22);
     }
 
     private void SpawnWave()
