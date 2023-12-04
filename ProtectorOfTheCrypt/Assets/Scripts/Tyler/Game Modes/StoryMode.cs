@@ -29,6 +29,14 @@ public class StoryMode : GameMode
         waveManager.SpawnFirstWave();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
     public override bool CheckGameWon()
     {
         return waveManager.state == WaveManager.SpawnState.FINISHED
