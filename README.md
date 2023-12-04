@@ -11,13 +11,21 @@ Features:
 3. Money System - Kill enemies to gain money and upgrade towers.
 4. Souls System - If an enemy reaches the end of the path, it removes a soul from the total soul count. If the amount of souls hits zero, you lose.
 5. Waves - The enemies spawn in waves. Once all waves are defeated without losing the souls, you win.
+6. Option to Speed up Dialogue - Click the Speed Text Button to make the dialogue speed up or down. (Needs to be better conveyed, however audio blips help for now).
+7. Bomber Tower and AOE - Created a new tower variant that throws bombs, dealing damage to multiple enemies instead of solely single targeting.
+8. Weakness System - Introduced a new variety of enemies "Shield Monsters", that are inherently weak to the aforementioned Bomber Tower.
 
 NEW Features:
-1. Option to Speed up Dialogue - Click the Speed Text Button to make the dialogue speed up or down. (Needs to be better conveyed, however audio blips help for now).
-2. Bomber Tower and AOE - Created a new tower variant that throws bombs, dealing damage to multiple enemies instead of solely single targeting.
-3. Weakness System - Introduced a new variety of enemies "Shield Monsters", that are inherently weak to the aforementioned Bomber Tower.
+1. Added enemy - Mage enemy, speeds up nearby allies.
+2. Added tower - Slows down hit enemies in an AOE. Has low range and damage due to its utility.
+3. Endless Mode Changes -
+    a. Enemy Count Curve - Increases the sum of enemies per wave over time.
+    b. Enemy Spawn Time Curve - Increases the time between waves to account for increased enemy spawning.
+    c. Gold Curve - Increases the amount of gold per enemy over time.
 
-Other Additions:
-- Level 2
-- Refined Tower Selection screen, now opens on clicking a valid grid space. No click and dragging required!
-- Efforts to make the UI more consistent. Will see more improvement moving forward.
+Additional Changes:
+1. Revamped UI - Most UI received new art.
+2. Added tower-dropping animation.
+3. Added Camera options, the player can now pan the camera as well as move back and forth.
+4. Replaced old levels with 10 new ones.
+5. Added more scenery models to level generation.
