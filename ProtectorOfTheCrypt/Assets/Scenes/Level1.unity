@@ -238,7 +238,7 @@ MonoBehaviour:
   GameMode: {fileID: 0}
   isPaused: 0
   gameStarted: 0
-  souls: 99999
+  souls: 100
 --- !u!4 &152358334
 Transform:
   m_ObjectHideFlags: 0
@@ -2379,6 +2379,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1096824614}
     m_Modifications:
+    - target: {fileID: 2449266103261967639, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -241.47253
+      objectReference: {fileID: 0}
+    - target: {fileID: 2449266103261967639, guid: 39892f47186e87f4096528ba864195e8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.118103
+      objectReference: {fileID: 0}
     - target: {fileID: 4624087170546266491, guid: 39892f47186e87f4096528ba864195e8, type: 3}
       propertyPath: m_Pivot.x
       value: 0

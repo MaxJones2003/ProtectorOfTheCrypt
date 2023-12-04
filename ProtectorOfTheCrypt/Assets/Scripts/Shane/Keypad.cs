@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour
@@ -141,6 +142,11 @@ public class Keypad : MonoBehaviour
 
         mode.ReadyToLoadMap(settings);
         iGTS.CancelButton();
+    }
+
+    public void BackToMain()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     #region Keypad
