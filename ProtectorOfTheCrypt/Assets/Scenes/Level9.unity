@@ -238,7 +238,8 @@ MonoBehaviour:
   GameMode: {fileID: 0}
   isPaused: 0
   gameStarted: 0
-  souls: 99999
+  souls: 100
+  money: 50
 --- !u!4 &152358334
 Transform:
   m_ObjectHideFlags: 0
