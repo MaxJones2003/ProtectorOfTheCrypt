@@ -2885,7 +2885,7 @@ PrefabInstance:
       objectReference: {fileID: 1281235888}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: levelToLoad
-      value: 999
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4229636612071459506, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
       propertyPath: maxHazardGroup
