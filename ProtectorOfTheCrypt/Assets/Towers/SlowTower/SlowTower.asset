@@ -15,7 +15,7 @@ MonoBehaviour:
   ImpactType: {fileID: 11400000, guid: 6040146fc5729914a93f1f72a3278841, type: 2}
   Type: 0
   Name: SlowTower
-  ModelPrefab: {fileID: 7625658237417080078, guid: 5a531d13f88ad3f4b8b52f23ba9d20ef, type: 3}
+  ModelPrefab: {fileID: 8320937552323717893, guid: 5a531d13f88ad3f4b8b52f23ba9d20ef, type: 3}
   SpawnPoint: {x: 0, y: 0, z: 0}
   SpawnRotation: {x: 0, y: -90, z: 0}
   ProjectileConfig: {fileID: 11400000, guid: bbe2d340238b7704da3c25a48beb1408, type: 2}

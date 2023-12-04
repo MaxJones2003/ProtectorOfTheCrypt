@@ -15,7 +15,7 @@ MonoBehaviour:
   ImpactType: {fileID: 11400000, guid: 9b0437948f180184a9d2bff3cc24022d, type: 2}
   Type: 4
   Name: ExplosiveTower
-  ModelPrefab: {fileID: 7625658237417080078, guid: 05cd0baac5695f24ba1bc2875406eaca, type: 3}
+  ModelPrefab: {fileID: 5730661465288203894, guid: 05cd0baac5695f24ba1bc2875406eaca, type: 3}
   SpawnPoint: {x: 0, y: 0, z: 0}
   SpawnRotation: {x: 0, y: -90, z: 0}
   ProjectileConfig: {fileID: 11400000, guid: 4b2bb2f275f53c9498c394e2bc28ca39, type: 2}

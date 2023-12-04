@@ -20,6 +20,7 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
     private Transform model;
 
     private CharacterController characterController; // Add Character Controller component
+    Transform canvas;
     private GameObject forwardSprite;
     private GameObject backwardSprite;
 
@@ -47,6 +48,7 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
                 children.Add(grandChild);
             }
         }
+        canvas = children.Find(child => child.tag == "Canvas");
         forwardSprite = children.Find(child => child.tag == "ForwardSprite").gameObject;
         backwardSprite = children.Find(child => child.tag == "BackwardSprite").gameObject;
     }
@@ -131,22 +133,26 @@ public class EnemyMovementHandler : MonoBehaviour, ISlowable
         {
             // Rotate to look right (rotate y value to 0)
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            canvas.localRotation = Quaternion.Euler(0f, 0f, 0f);
             
         }
         else if(target.x < lastTarget.x)
         {
             // Rotate to look left (rotate y value to 180)
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+            canvas.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
         else if(target.z > lastTarget.z)
         {
             // Rotate to look up (rotate y value to -90)
             transform.rotation = Quaternion.Euler(0f, -90f, 0f);
+            canvas.localRotation = Quaternion.Euler(0f, 90f, 0f);
         }
         else if(target.z < lastTarget.z)
         {
             // Rotate to look down (rotate y value to 90)
             transform.rotation = Quaternion.Euler(0f, 90f, 0f);
+            canvas.localRotation = Quaternion.Euler(0f, -90f, 0f);
         }
         
     }

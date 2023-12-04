@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90d95eab194b25b47a2a56e42499495a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveManager: {fileID: 0}
-  DialogueController: {fileID: 0}
+  waveManager: {fileID: 1281235890}
+  DialogueController: {fileID: 152358336}
   YouWinScreen: {fileID: 565121891}
   LevelSuccessScreen: {fileID: 716326367492040166}
   GameOverScreen: {fileID: 371929174}
@@ -4403,6 +4403,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6024401304573393068, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
   m_PrefabInstance: {fileID: 1281235887}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1281235890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7870458464043887178, guid: 39ab09966e46e1746b6ba55120933348, type: 3}
+  m_PrefabInstance: {fileID: 1281235887}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568427686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5e766c61b9f254ca98f820ed287516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1293881502
 PrefabInstance:
   m_ObjectHideFlags: 0

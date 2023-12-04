@@ -11,6 +11,7 @@ TagManager:
   - Enviornment
   - ForwardSprite
   - BackwardSprite
+  - Canvas
   layers:
   - Default
   - TransparentFX
